@@ -1,0 +1,120 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  wiki:
+    name: wiki build + retrieval
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Clone n8n docs source
+        run: git clone --depth 1 https://github.com/n8n-io/n8n-docs.git n8n-docs-source
+
+      - name: Build wiki
+        run: python brain/scripts/forge.py build
+
+      # A build that silently produces fewer pages is a green run that lost content.
+      # Assert the floor so a broken parser fails loudly instead of shrinking the corpus.
+      - name: Assert corpus floor
+        run: |
+          python - <<'PY'
+          import sqlite3, sys
+          conn = sqlite3.connect("brain/data/wiki.db")
+          docs    = conn.execute("SELECT COUNT(*) FROM docs").fetchone()[0]
+          chunks  = conn.execute("SELECT COUNT(*) FROM chunks").fetchone()[0]
+          topics  = conn.execute("SELECT COUNT(DISTINCT topic) FROM docs").fetchone()[0]
+          wf      = conn.execute("SELECT COUNT(*) FROM workflows").fetchone()[0]
+          print(f"docs={docs} chunks={chunks} topics={topics} workflows={wf}")
+          failures = []
+          if docs    < 1200: failures.append(f"docs {docs} < 1200")
+          if chunks  <  8000: failures.append(f"chunks {chunks} < 8000")
+          if topics  <    10: failures.append(f"topics {topics} < 10")
+          if wf      <    10: failures.append(f"workflows {wf} < 10")
+          if failures:
+              print("FAIL: " + "; ".join(failures)); sys.exit(1)
+          print("corpus floor OK")
+          PY
+
+      - name: Retrieval smoke test
+        run: |
+          python brain/scripts/forge.py query "pagination" > /dev/null
+          python brain/scripts/forge.py ask "how do I paginate API results" > /tmp/hits.txt
+          grep -qi "pagination" /tmp/hits.txt || { echo "FAIL: expected a pagination hit"; exit 1; }
+          echo "retrieval OK"
+
+      - name: Record claims
+        run: python brain/scripts/seed_claims.py
+
+  secrets:
+    name: no secrets committed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Scan tracked files for credential patterns
+        run: |
+          # Token patterns only. PEM *headers* are excluded on purpose: the n8n docs show
+          # `-----BEGIN PRIVATE KEY-----` as formatting guidance for Salesforce and Snowflake
+          # credentials, so matching them produces false positives on every run. What matters
+          # is a real key body, which is a long base64 blob on the line after a header.
+          PATTERNS='(sk-[A-Za-z0-9]{20,}|gh[pousr]_[A-Za-z0-9]{36,}|AKIA[0-9A-Z]{16}|xox[baprs]-[A-Za-z0-9-]{10,}|AIza[0-9A-Za-z_-]{35})'
+          if git grep -InE "$PATTERNS" -- . ':!*.lock' ':!package-lock.json'; then
+            echo "FAIL: credential-shaped strings found in tracked files"
+            exit 1
+          fi
+          # A private key body must be judged in context: a bare base64 line is not evidence.
+          # The n8n docs contain a truncated public CERTIFICATE example, and a public cert is
+          # not a secret. Flag base64 only when a PRIVATE KEY header appears within 3 lines above.
+          python - <<'PY'
+          import re, subprocess, sys
+          out = subprocess.run(["git", "ls-files"], capture_output=True, text=True).stdout.split()
+          base64 = re.compile(r"^[A-Za-z0-9+/]{60,}={0,2}$")
+          keyhdr = re.compile(r"-----BEGIN\s+(?:[A-Z ]*\s)?PRIVATE KEY-----")
+          hits = []
+          for path in out:
+              if not path.endswith((".md", ".ts", ".js", ".json", ".yml", ".yaml", ".env", ".sh")):
+                  continue
+              try:
+                  lines = open(path, encoding="utf-8", errors="ignore").read().splitlines()
+              except OSError:
+                  continue
+              for i, line in enumerate(lines):
+                  if not base64.match(line.strip()):
+                      continue
+                  window = "\n".join(lines[max(0, i - 3):i])
+                  if keyhdr.search(window):
+                      hits.append(f"{path}:{i + 1}")
+          if hits:
+              print("FAIL: private key body committed at:")
+              print("\n".join(hits))
+              sys.exit(1)
+          print("no private key bodies found")
+          PY
+          echo "no secrets found"
+
+  license:
+    name: licence position stated
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # ADR-001 changed the architecture because n8n is not MIT. If that ADR is deleted
+      # or the licence note is removed from the README, the licence risk silently returns.
+      - name: Assert licence documentation present
+        run: |
+          test -f brain/decisions/ADR-001-n8n-licence-blocks-hosted-saas.md \
+            || { echo "FAIL: ADR-001 missing"; exit 1; }
+          grep -qi "sustainable use" README.md \
+            || { echo "FAIL: README does not state the n8n licence position"; exit 1; }
+          grep -qi "not ours" README.md \
+            || { echo "FAIL: README does not disclaim ownership of n8n-docs-source"; exit 1; }
+          echo "licence position documented"

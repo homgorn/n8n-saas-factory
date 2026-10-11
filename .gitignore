@@ -1,0 +1,59 @@
+# --- secrets & env -------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- node / python -------------------------------------------------------
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- build output ---------------------------------------------------------
+dist/
+build/
+out/
+*.tsbuildinfo
+.next/
+.turbo/
+*.egg-info/
+
+# --- generated index: small, and the machine-readable entry points -------
+# brain/wiki/, brain/index/ and brain/*.md ARE committed — they are the deliverable.
+# Only the SQLite binary is excluded: 17 MB of regenerable data.
+brain/data/*.db
+brain/data/*.db-shm
+brain/data/*.db-wal
+
+# --- vendored upstream: cloned, not ours ----------------------------------
+n8n-docs-source/
+
+# --- generated saas projects --------------------------------------------
+generated-saas/*/node_modules/
+generated-saas/*/.next/
+generated-saas/*/.env
+generated-saas/*/dist/
+
+# --- agent loop state -----------------------------------------------------
+.loop/
+.openchamber/artifacts/
+
+# --- editors & os --------------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+*.swp
+
+# --- logs ----------------------------------------------------------------
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*

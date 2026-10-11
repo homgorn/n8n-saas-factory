@@ -1,0 +1,60 @@
+{
+  "generated": "2026-10-11T20:27:52.049765+00:00",
+  "types": {
+    "measured": "ran it, the artifact is named",
+    "reported": "a source says it, URL + retrieval date",
+    "inferred": "reasoned it, the reasoning is written out",
+    "unconfirmed": "looked for it, not found"
+  },
+  "claims": [
+    {
+      "id": "licence-sustainable-use",
+      "type": "reported",
+      "source": "https://github.com/n8n-io/n8n/blob/master/LICENSE.md",
+      "observed_at": "2026-10-12",
+      "text": "n8n is licensed under the Sustainable Use License, not MIT. Use is limited to the licensor's internal business purposes or non-commercial/personal use, and distribution or provision to others must be free of charge and non-commercial."
+    },
+    {
+      "id": "licence-hosted-saas-not-permitted",
+      "type": "inferred",
+      "source": "brain/decisions/ADR-001-n8n-licence-blocks-hosted-saas.md",
+      "observed_at": "2026-10-12",
+      "text": "Offering a paid SaaS that hosts n8n for customers, or embeds it so customers drive it, falls outside the Sustainable Use License grant. The product must instead call a n8n instance the customer operates under their own licence, or be sold under a separate OEM agreement."
+    },
+    {
+      "id": "licence-customer-n8n-cloud-unresolved",
+      "type": "unconfirmed",
+      "source": null,
+      "observed_at": "2026-10-12",
+      "text": "Whether a customer on n8n Cloud who connects to our product via webhook counts as the licensor 'providing n8n to others' is not resolved. Needs a legal opinion."
+    },
+    {
+      "id": "docs-corpus-shape",
+      "type": "measured",
+      "source": "brain/data/wiki.db :: docs, chunks, workflows",
+      "observed_at": "2026-10-12",
+      "text": "The cloned n8n docs contain 1,348 markdown pages, 9,578 chunks and 688,466 words across 11 domains, plus 12 importable workflow JSON files."
+    },
+    {
+      "id": "docs-source-of-truth",
+      "type": "reported",
+      "source": "https://github.com/n8n-io/n8n-docs",
+      "observed_at": "2026-10-12",
+      "text": "The documentation is generated from github.com/n8n-io/n8n-docs, a GitBook space. Cloning that repo gives markdown source rather than scraped HTML, and n8n also publishes a machine-readable corpus at docs.n8n.io/llms-full.txt and an index at docs.n8n.io/llms.txt."
+    },
+    {
+      "id": "fts-ranking-uses-idf",
+      "type": "measured",
+      "source": "brain/scripts/forge.py :: ask()",
+      "observed_at": "2026-10-12",
+      "text": "forge.py ask ranks chunks by inverse document frequency with word-boundary matching. An earlier substring-count implementation returned irrelevant results for the query 'how do I paginate API results', scoring a deployment page above the HTTP Request pagination section."
+    },
+    {
+      "id": "vector-search-not-wired",
+      "type": "measured",
+      "source": "brain/HANDOFF.md",
+      "observed_at": "2026-10-12",
+      "text": "Semantic/vector retrieval is not available. The wiki is queryable through SQLite FTS5 and the JSON indexes only; the Qdrant pipeline in saas-factory/analyzer requires OPENAI_API_KEY and a running Qdrant instance."
+    }
+  ]
+}

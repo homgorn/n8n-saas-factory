@@ -1,0 +1,156 @@
+[
+  {
+    "id": "F001",
+    "category": "functional",
+    "description": "Ingest n8n documentation from GitHub clone and llms-full.txt into structured markdown with metadata",
+    "steps": [
+      "Read all .md files from n8n-docs-source/docs/",
+      "Parse frontmatter and extract metadata (category, tags, difficulty, related nodes)",
+      "Chunk documents semantically (by headers, code blocks, sections)",
+      "Generate embeddings for each chunk using text-embedding-3-small",
+      "Store in Qdrant with full metadata payload",
+      "Verify search works for test queries"
+    ],
+    "priority": 1,
+    "passes": false
+  },
+  {
+    "id": "F002",
+    "category": "functional",
+    "description": "Build LLM query interface for n8n knowledge base",
+    "steps": [
+      "Create query router (classify: how-to, node-ref, troubleshooting, architecture, best-practices)",
+      "Implement hybrid search (vector + keyword + metadata filters)",
+      "Build response formatter with citations and code examples",
+      "Add related workflows and next steps suggestions",
+      "Test with 20 diverse queries from each category"
+    ],
+    "priority": 2,
+    "passes": false
+  },
+  {
+    "id": "F003",
+    "category": "functional",
+    "description": "Build n8n workflow analyzer (JSON → structured analysis)",
+    "steps": [
+      "Parse workflow JSON: nodes, connections, credentials, settings",
+      "Identify trigger type and extract API endpoint spec",
+      "Detect AI agents, their models, tools, and prompts",
+      "Map data flow and identify required DB tables",
+      "Extract required credentials and environment variables",
+      "Calculate complexity score and estimate SaaS components",
+      "Output analysis JSON schema"
+    ],
+    "priority": 3,
+    "passes": false
+  },
+  {
+    "id": "F004",
+    "category": "functional",
+    "description": "Create SaaS template: AI Tool (single workflow → Next.js API)",
+    "steps": [
+      "Design Next.js 14 App Router structure with (auth) and (dashboard) groups",
+      "Implement n8n webhook endpoint handler with validation",
+      "Add Clerk authentication with organization support",
+      "Create Supabase database schema (users, workflows, executions, api_keys)",
+      "Build dashboard: workflow list, execution history, API key management",
+      "Add Stripe billing integration (subscription webhooks → n8n)",
+      "Create landing page using saas-landing-pages framework",
+      "Add deployment configuration for Vercel + n8n (Docker/Railway)"
+    ],
+    "priority": 4,
+    "passes": false
+  },
+  {
+    "id": "F005",
+    "category": "functional",
+    "description": "Build workflow-to-code generator (analysis JSON → SaaS project)",
+    "steps": [
+      "Map workflow analysis to template parameters",
+      "Generate Next.js project with templated files",
+      "Create n8n workflow import script",
+      "Generate TypeScript types from workflow I/O",
+      "Create environment variable template (.env.example)",
+      "Generate README with deployment instructions",
+      "Output complete project to generated-saas/<name>/"
+    ],
+    "priority": 5,
+    "passes": false
+  },
+  {
+    "id": "F006",
+    "category": "integration",
+    "description": "Set up OpenChamber project with n8n, GitHub, Vercel, Supabase MCP servers",
+    "steps": [
+      "Configure OpenChamber project directory",
+      "Add n8n MCP server (workflow CRUD, executions, credentials)",
+      "Add GitHub MCP server (repo, PR, issues)",
+      "Add Vercel MCP server (deployments, domains)",
+      "Add Supabase MCP server (database, auth, storage)",
+      "Add Stripe MCP server (products, subscriptions, webhooks)",
+      "Verify all MCP connections work from test session"
+    ],
+    "priority": 6,
+    "passes": false
+  },
+  {
+    "id": "F007",
+    "category": "functional",
+    "description": "Define and register OpenChamber agents (architect, implementer, verifier, researcher, reviewer)",
+    "steps": [
+      "Create .opencode/agents/architect.md with n8n MCP tools",
+      "Create .opencode/agents/implementer.md with write/shell/github MCP",
+      "Create .opencode/agents/verifier.md with playwright/vercel MCP",
+      "Create .opencode/agents/researcher.md with websearch/n8n-docs MCP",
+      "Create .opencode/agents/reviewer.md with thermo-nuclear review",
+      "Update AGENTS.md with routing rules",
+      "Test each agent with sample task"
+    ],
+    "priority": 7,
+    "passes": false
+  },
+  {
+    "id": "F008",
+    "category": "integration",
+    "description": "Build n8n synchronization workflows (docs sync, workflow→code, deploy pipeline)",
+    "steps": [
+      "Create n8n workflow: Daily documentation sync (cron → llms-full.txt → diff → Qdrant)",
+      "Create n8n workflow: Workflow change webhook → analyze → GitHub PR",
+      "Create n8n workflow: GitHub push → Vercel deploy → health check → update n8n webhooks",
+      "Create n8n workflow: OpenChamber session events → update project state",
+      "Deploy all sync workflows to n8n instance",
+      "Test end-to-end: edit workflow in n8n → see PR → see deployment"
+    ],
+    "priority": 8,
+    "passes": false
+  },
+  {
+    "id": "F009",
+    "category": "quality",
+    "description": "Implement verification gates for generated SaaS",
+    "steps": [
+      "Create init.sh that starts n8n, Next.js dev server, Supabase local",
+      "Build verifier agent test suite: auth flow, webhook execution, billing webhook",
+      "Add thermo-nuclear code review to PR pipeline",
+      "Add Playwright smoke tests for critical user journeys",
+      "Configure git hooks: pre-commit (lint, typecheck), pre-push (tests)"
+    ],
+    "priority": 9,
+    "passes": false
+  },
+  {
+    "id": "F010",
+    "category": "ops",
+    "description": "Documentation and developer experience",
+    "steps": [
+      "Write CLAUDE.md with project overview and key commands",
+      "Create CONTRIBUTING.md with agent workflow guide",
+      "Document n8n wiki query API with examples",
+      "Document SaaS factory CLI usage",
+      "Create troubleshooting guide for common sync issues",
+      "Record video walkthrough of full pipeline"
+    ],
+    "priority": 10,
+    "passes": false
+  }
+]
