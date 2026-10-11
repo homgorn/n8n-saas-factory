@@ -10,16 +10,22 @@ navigate it: 1348 pages across 11 domains, indexed at four levels.
 ## State
 
 - Built 2026-10-11 from `n8n-docs-source/docs` (11 domains).
-- Vector search is **not** wired yet. Retrieval today is SQLite FTS5 plus the JSON indexes.
-- No claims have been recorded yet: [`index/claims.json`](index/claims.json) does not exist.
+- Verify with `python brain/scripts/verify.py` — 10 gates, prints `VERDICT`, exits non-zero on failure.
+- Vector search is **not** wired. Retrieval is SQLite FTS5 plus IDF-ranked chunk search.
+- 7 claims recorded in [`index/claims.json`](index/claims.json), re-applied on every rebuild.
+- **ADR-001 changed the architecture.** n8n's Sustainable Use License does not permit providing n8n
+  to third parties for profit, so this project does not host n8n: the customer runs their own
+  instance and we are the layer above it. Read
+  [`decisions/ADR-001-n8n-licence-blocks-hosted-saas.md`](decisions/ADR-001-n8n-licence-blocks-hosted-saas.md)
+  before designing anything.
 
 ## Next three actions
 
-1. Wire embeddings. `saas-factory/analyzer` holds the TypeScript pipeline; it needs `OPENAI_API_KEY`
-   and a Qdrant instance before it can replace FTS.
-2. Record the first claims — pricing, licence terms, plan limits — as `reported` with URL and date, so
-   the SaaS pricing work has a citable source instead of memory.
-3. Add `brain/decisions/ADR-000*.md` for the SaaS template choice once it is actually made.
+1. Build the workflow analyser over the `workflows` table — 12 importable workflow JSON are already
+   indexed. That is what the SaaS generator consumes, and it needs no API key.
+2. Decide the SaaS template shape under ADR-001 and record it as ADR-002.
+3. Wire embeddings only if ranking plateaus. IDF plus heading weighting is currently enough for the
+   queries the gate exercises; embeddings are a cost, not a prerequisite.
 
 ## Where the evidence lives
 
