@@ -26,6 +26,7 @@ Usage:
 from __future__ import annotations
 
 import hashlib
+import math
 import json
 import re
 import sqlite3
@@ -338,9 +339,29 @@ CREATE VIRTUAL TABLE IF NOT EXISTS docs_fts USING fts5(
 
 def db_connect(recreate: bool = False) -> sqlite3.Connection:
     DATA.mkdir(parents=True, exist_ok=True)
-    if recreate and DB_PATH.exists():
-        DB_PATH.unlink()
+    if recreate:
+        # On Windows a stale WAL/SHM sidecar keeps the .db handle open, and unlinking the main
+        # file then fails with WinError 32. Close connections are not enough — clear the
+        # sidecars first, and fall back to dropping the schema rather than deleting the file.
+        for sidecar in (DB_PATH.with_suffix(".db-shm"), DB_PATH.with_suffix(".db-wal")):
+            try:
+                sidecar.unlink()
+            except OSError:
+                pass
+        if DB_PATH.exists():
+            try:
+                DB_PATH.unlink()
+            except OSError:
+                pass  # locked: recreate in place by clearing every table instead
     conn = sqlite3.connect(DB_PATH)
+    if recreate:
+        # A clean slate either way, so a stale table from an older schema cannot leak rows in.
+        conn.executescript(
+            "PRAGMA writable_schema=OFF;"
+            "DROP TABLE IF EXISTS docs; DROP TABLE IF EXISTS chunks; DROP TABLE IF EXISTS entities;"
+            "DROP TABLE IF EXISTS triples; DROP TABLE IF EXISTS claims; DROP TABLE IF EXISTS workflows;"
+            "DROP TABLE IF EXISTS run_log; DROP TABLE IF EXISTS docs_fts;"
+        )
     conn.executescript(SCHEMA)
     conn.executescript(FTS_SCHEMA)
     return conn
@@ -563,6 +584,22 @@ def build() -> dict:
             "INSERT OR REPLACE INTO chunks (chunk_id, doc_id, ordinal, heading, kind, text, tokens) VALUES (?,?,?,?,?,?,?)",
             [(c["chunk_id"], doc_id, c["ordinal"], c["heading"], c["kind"], c["text"], c["tokens"]) for c in chunks],
         )
+
+    # Claims survive a rebuild. They are authored, not derived: forge.py recreates the
+    # database from scratch, so anything asserted by a human must be re-applied from a file
+    # that lives in git. brain/index/claims.json is that file; seed_claims.py writes it.
+    claims_file = INDEX / "claims.json"
+    if claims_file.exists():
+        payload = json.loads(claims_file.read_text(encoding="utf-8"))
+        now_iso = started.isoformat()
+        for claim in payload.get("claims", []):
+            conn.execute(
+                """INSERT OR REPLACE INTO claims (id, text, kind, source, observed_at, doc_id)
+                   VALUES (?,?,?,?,?,?)""",
+                (claim["id"], claim["text"], claim["type"],
+                 claim.get("source"), claim.get("observed_at"), claim.get("doc_id")),
+            )
+        print(f"  re-applied {len(payload.get('claims', []))} claims from {claims_file.name}")
 
     # ---- runnable workflow corpus -------------------------------------
     wf_count, wf_stats = index_workflows(conn, started)
@@ -997,7 +1034,7 @@ def ask(question: str, limit: int = 5) -> None:
             "SELECT COUNT(*) FROM chunks WHERE lower(text) LIKE ?", (pattern,)
         ).fetchone()[0]
         # df==0 means the term is absent; clamp so it never reaches zero relevance
-        idf[term] = max(0.05, __import__("math").log(1 + total_chunks / max(1, df)))
+        idf[term] = max(0.05, math.log(1 + total_chunks / max(1, df)))
 
     word_re = {t: re.compile(rf"\b{re.escape(t)}\b", re.I) for t in terms}
 
@@ -1012,17 +1049,21 @@ def ask(question: str, limit: int = 5) -> None:
             (like,),
         ).fetchall()
         for chunk_id, doc_id, heading, kind, text in rows:
-            # count word-boundary hits, not substring hits
             hits = len(rx.findall(text))
-            if hits:
-                # diminishing returns: the 10th mention says much less than the 2nd
-                scores[chunk_id] += weight * (1 + __import__("math").log(hits))
-                best[chunk_id] = (doc_id, heading, kind, text)
+            if not hits:
+                continue
+            # body mentions count 1x; a match in the section heading counts far more, because a
+            # chunk titled "Error handling" is about error handling, whereas a page that merely
+            # mentions "error" once in passing is not about it.
+            in_heading = 12 if rx.search(heading or "") else 0
+            # diminishing returns within the body: the 10th mention says much less than the 2nd
+            body = 1 + math.log(hits)
+            scores[chunk_id] += weight * (body + in_heading)
+            best[chunk_id] = (doc_id, heading, kind, text)
 
-        # a title hit is a much stronger signal than a body hit
         for slug, title in conn.execute("SELECT slug, title FROM docs WHERE lower(title) LIKE ?", (like,)):
             if rx.search(title):
-                scores[f"title::{slug}"] += weight * 3
+                scores[f"title::{slug}"] += weight * 20
 
     if not scores:
         print(f"no matches for {question!r}")

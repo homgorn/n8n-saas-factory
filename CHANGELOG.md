@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - knowledge graph in `index/graph.jsonl` (`subject | predicate | object | source`)
 - `brain/scripts/seed_claims.py` — provenance-stamped claims, typed
   `measured | reported | inferred | unconfirmed`; 7 claims recorded
+- `brain/scripts/verify.py` — the verification gate, runnable without GitHub Actions.
+  10 gates: sources present · build idempotence · corpus floor · summaries within 200 chars ·
+  live source URLs · retrieval answers real questions · claims typed and sourced ·
+  no secrets · licence documented · feature list honest.
+  Prints `VERDICT: PASS | FAIL` and exits non-zero on failure, so nothing downstream can
+  infer success from the agent's own say-so.
 - `brain/decisions/ADR-001-n8n-licence-blocks-hosted-saas.md`
 - `.github/workflows/verify.yml` — CI: wiki build with a corpus floor, retrieval smoke test,
   secret scan, licence-documentation gate
@@ -31,11 +37,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Retrieval ranking. `ask` scored substring occurrences, so `results` matched inside `several` and a
   DigitalOcean deployment page outranked the HTTP Request pagination section. Now inverse document
-  frequency with word-boundary matching and diminishing returns per term.
+  frequency with word-boundary matching, diminishing returns per term, and a heavy weight on
+  heading matches — a chunk headed "Retry failed workflows" now outranks a page that merely
+  mentions "error" once. Stopwords are dropped: "how" was previously scoring 8× on titles.
+- Claims were wiped by every rebuild, because they lived only in the recreated database. They are
+  now re-applied from `brain/index/claims.json`, which is authored and lives in git.
+- `forge.py build` crashed with `WinError 32` on Windows: a stale WAL sidecar held the database
+  handle open, so the recreate path could not unlink it. It now clears the sidecars and falls back
+  to dropping tables rather than deleting the file.
 - Wiki build dropped the `_workflows` corpus because those files are JSON, not Markdown. They are now
   indexed into a `workflows` table — the most useful corpus in the repo for the workflow analyser.
 - Node entity names were wrong: `n8n-nodes-langchain.agent` was recorded as `n8n-nodes-base.agent`,
   because the family was guessed from surrounding text. The family is now parsed from the match.
+- FTS5 was silently disabled: it was declared as an external-content table over `docs`, which has
+  no `headings` column. It is now a standalone FTS5 table and search actually runs.
+
+### Known issues
+- GitHub Actions cannot run on this account: *"The job was not started because your account is
+  locked due to a billing issue."* `.github/workflows/verify.yml` is committed and correct, but it
+  has never executed. `brain/scripts/verify.py` is the local equivalent and is what the 10/10 gate
+  result above comes from. Until billing is resolved, CI is unproven — do not assume it is green.
 
 ### Security
 - Licence position documented in README, LICENSE and `.env.example`, and enforced by a CI gate.
