@@ -214,6 +214,48 @@ def gate_retrieval():
     return "\n".join(lines)
 
 
+@gate("query interface answers real questions", order=65, needs_build=True)
+def gate_query_interface():
+    """F002: verify the query interface works end-to-end."""
+    import json as _json
+    import subprocess
+
+    # 1. classification
+    for q, expected in [("how to paginate", "how-to"),
+                        ("why does my workflow fail", "troubleshooting"),
+                        ("what parameters does the Slack node have", "node-ref")]:
+        out = subprocess.run(
+            [sys.executable, str(ROOT / "brain" / "scripts" / "query.py"), "--classify", q],
+            capture_output=True, text=True,
+        )
+        if expected not in out.stdout:
+            raise AssertionError(f"classify({q!r}) -> {out.stdout!r}, expected {expected!r}")
+
+    # 2. JSON output shape
+    out = subprocess.run(
+        [sys.executable, str(ROOT / "brain" / "scripts" / "query.py"), "pagination", "--format", "json"],
+        capture_output=True, text=True,
+    )
+    if out.returncode != 0:
+        raise AssertionError(f"query.py failed: {out.stderr}")
+    try:
+        data = _json.loads(out.stdout)
+    except _json.JSONDecodeError:
+        raise AssertionError(f"invalid JSON: {out.stdout[:200]}")
+    for field in ("question", "query_type", "results", "citations", "code_examples", "related_workflows", "next_steps"):
+        if field not in data:
+            raise AssertionError(f"response missing field: {field}")
+    if not data["results"]:
+        raise AssertionError("no results for 'pagination'")
+    if not data["citations"]:
+        raise AssertionError("no citations")
+    if data["query_type"] != "how-to":
+        raise AssertionError(f"expected how-to, got {data['query_type']}")
+
+    return (f"classification OK (3 types) · JSON valid · "
+            f"{len(data['results'])} results · {len(data['citations'])} citations")
+
+
 @gate("claims are typed and sourced", order=70, needs_build=True)
 def gate_claims():
     conn = sqlite3.connect(DB)

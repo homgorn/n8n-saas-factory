@@ -26,7 +26,7 @@
       "Test with 20 diverse queries from each category"
     ],
     "priority": 2,
-    "passes": false
+    "passes": true
   },
   {
     "id": "F003",
