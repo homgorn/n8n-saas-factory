@@ -1,0 +1,247 @@
+{
+  "workflow_id": "DPzMzTIyDrYohiw4",
+  "name": "Tutorial-workflow",
+  "source_path": "n8n-docs-source\\docs\\_workflows\\try-it-out\\quickstart\\tutorial.json",
+  "trigger_type": "n8n-nodes-base.scheduleTrigger",
+  "trigger_count": 1,
+  "triggers": [
+    {
+      "id": "ef14445c-2f5f-4c78-96c8-66732feb7a8f",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "role": "trigger",
+      "position": [
+        -680,
+        100
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "webhook_paths": [],
+  "node_count": 6,
+  "node_type_counts": {
+    "n8n-nodes-base.postBin": 2,
+    "n8n-nodes-base.scheduleTrigger": 1,
+    "n8n-nodes-base.nasa": 1,
+    "n8n-nodes-base.if": 1,
+    "n8n-nodes-base.stickyNote": 1
+  },
+  "classified_nodes": [
+    {
+      "id": "ef14445c-2f5f-4c78-96c8-66732feb7a8f",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "role": "trigger",
+      "position": [
+        -680,
+        100
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "52c58b93-c780-4aff-a216-d67b28195a45",
+      "name": "NASA",
+      "type": "n8n-nodes-base.nasa",
+      "role": "app_action",
+      "position": [
+        -460,
+        100
+      ],
+      "parameters": {
+        "resource": "donkiSolarFlare",
+        "additionalFields": {
+          "startDate": "={{ $today.minus(7, 'days') }}"
+        }
+      },
+      "credentials": {
+        "nasaApi": {
+          "id": "sSVnxV9AcBmBOYn8",
+          "name": "NASA account"
+        }
+      },
+      "disabled": false
+    },
+    {
+      "id": "b54e3289-9ebb-451f-8bac-87edeeeced13",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "role": "flow_control",
+      "position": [
+        -240,
+        100
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2f469c8e-12b3-4ee5-95fc-ff81508d0b43",
+              "leftValue": "={{ $json.classType }}",
+              "rightValue": "C",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "a8b602b6-17b1-4274-8d33-73344b6bb8fb",
+      "name": "PostBin(true)",
+      "type": "n8n-nodes-base.postBin",
+      "role": "app_action",
+      "position": [
+        -20,
+        0
+      ],
+      "parameters": {
+        "resource": "request",
+        "operation": "send",
+        "binId": "1741914338605-0907339996192",
+        "binContent": "=There was a solar flare of class {{$json[\"classType\"]}}",
+        "requestOptions": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "09c2c7a4-c229-430d-a5b0-8d7491515d9f",
+      "name": "PostBin(false)",
+      "type": "n8n-nodes-base.postBin",
+      "role": "app_action",
+      "position": [
+        -20,
+        200
+      ],
+      "parameters": {
+        "resource": "request",
+        "operation": "send",
+        "binId": "1741914338605-0907339996192",
+        "binContent": "=There was a solar flare of class {{$json[\"classType\"]}}",
+        "requestOptions": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "08e0b8f9-c90e-4c9c-a663-01aca805b9be",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        -720,
+        -60
+      ],
+      "parameters": {
+        "content": "## Setup required\n\nYou need to create a NASA account and create credentials, and create a bin with Postbin and enter the ID - see [the documentation](https://docs.n8n.io/try-it-out/longer-introduction/)",
+        "height": 120,
+        "width": 600
+      },
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "ai_agents": [],
+  "ai_component_count": 0,
+  "flow_control_count": 1,
+  "data_transform_count": 0,
+  "flow_path": [
+    "Schedule Trigger",
+    "NASA",
+    "If",
+    "PostBin(true)",
+    "PostBin(false)"
+  ],
+  "connections": [
+    {
+      "from": "Schedule Trigger",
+      "to": "NASA",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "NASA",
+      "to": "If",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "If",
+      "to": "PostBin(true)",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "If",
+      "to": "PostBin(false)",
+      "type": "main",
+      "index": 0
+    }
+  ],
+  "credential_inventory": {
+    "nasaApi": [
+      "NASA"
+    ]
+  },
+  "required_credentials": [
+    "nasaApi"
+  ],
+  "environment_variables": [
+    "NASA_API_KEY"
+  ],
+  "complexity_score": 4.6,
+  "estimated_api_endpoints": 1,
+  "estimated_db_tables": 3,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "createdAt": "2021-06-25T07:47:07.640Z",
+      "updatedAt": "2021-06-25T07:47:07.640Z",
+      "id": "1",
+      "name": "docs"
+    }
+  ],
+  "active": false,
+  "version_id": "37de4877-e4f6-4b9a-b6f0-9b7e7aea0163"
+}

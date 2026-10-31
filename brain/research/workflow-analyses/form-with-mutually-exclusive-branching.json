@@ -1,0 +1,326 @@
+{
+  "workflow_id": "DCotkGqkv0VfT6QT",
+  "name": "Form with mutually exclusive branching",
+  "source_path": "n8n-docs-source\\docs\\_workflows\\integrations\\builtin\\core-nodes\\n8n-nodes-base.form\\mutually-exclusive-branching.json",
+  "trigger_type": "n8n-nodes-base.formTrigger",
+  "trigger_count": 1,
+  "triggers": [
+    {
+      "id": "1adce353-28c9-48b8-8326-c1f41d9311fd",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "role": "trigger",
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "formTitle": "Form with mutually exclusive branching",
+        "formDescription": "This form contains branches, but only one branch will ever be executed.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Would you recommend this site?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Yes"
+                  },
+                  {
+                    "option": "No"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "webhook_paths": [],
+  "node_count": 8,
+  "node_type_counts": {
+    "n8n-nodes-base.form": 4,
+    "n8n-nodes-base.stickyNote": 2,
+    "n8n-nodes-base.formTrigger": 1,
+    "n8n-nodes-base.switch": 1
+  },
+  "classified_nodes": [
+    {
+      "id": "1adce353-28c9-48b8-8326-c1f41d9311fd",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "role": "trigger",
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "formTitle": "Form with mutually exclusive branching",
+        "formDescription": "This form contains branches, but only one branch will ever be executed.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Would you recommend this site?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Yes"
+                  },
+                  {
+                    "option": "No"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "c0d3e3f1-76c5-4bac-8382-c3d70a57ee8a",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "role": "flow_control",
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json['Would you recommend this site?'] }}",
+                    "rightValue": "Yes",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Yes"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1dd9b1f5-6f48-4182-ae04-f47c37e3fa98",
+                    "leftValue": "={{ $json['Would you recommend this site?'] }}",
+                    "rightValue": "No",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "No"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "615cf27a-658c-43be-aff9-c5fda8a04c51",
+      "name": "If not recommended",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        440,
+        200
+      ],
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "What can we do to improve?",
+              "fieldType": "textarea"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "13423b3f-0380-429d-92bf-460cc8b409a3",
+      "name": "Thanks for the review",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        660,
+        -200
+      ],
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "Thank you for your review!",
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "0848a392-41f2-47e8-be17-124fef3d9a63",
+      "name": "Thanks for the feedback",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        660,
+        200
+      ],
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "Thank you for your feedback",
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "57c5e1cd-7dda-4bfb-8bfa-8c9f91110249",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        -160,
+        -260
+      ],
+      "parameters": {
+        "content": "## Form with mutually exclusive branching\nThis form contains a branch where only one of the two paths will execute, depending on your selections.",
+        "width": 380
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "9bde0398-7021-4ec6-b950-d836979c973b",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "content": "This Switch node determines which branch will execute.\n\nThe switch uses data from a dropdown field with single selection enforced, so only one path will execute.",
+        "color": 5
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "9956a49e-964d-4269-910f-28ad8393548e",
+      "name": "If recommended",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        440,
+        -200
+      ],
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Leave your review below",
+              "fieldType": "textarea"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "ai_agents": [],
+  "ai_component_count": 0,
+  "flow_control_count": 1,
+  "data_transform_count": 0,
+  "flow_path": [
+    "On form submission",
+    "Switch",
+    "If recommended",
+    "If not recommended",
+    "Thanks for the review",
+    "Thanks for the feedback"
+  ],
+  "connections": [
+    {
+      "from": "On form submission",
+      "to": "Switch",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Switch",
+      "to": "If recommended",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Switch",
+      "to": "If not recommended",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "If not recommended",
+      "to": "Thanks for the feedback",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "If recommended",
+      "to": "Thanks for the review",
+      "type": "main",
+      "index": 0
+    }
+  ],
+  "credential_inventory": {},
+  "required_credentials": [],
+  "environment_variables": [],
+  "complexity_score": 4.1,
+  "estimated_api_endpoints": 1,
+  "estimated_db_tables": 2,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [],
+  "active": false,
+  "version_id": "6797e22c-1b2b-421a-b16d-869f636d0790"
+}

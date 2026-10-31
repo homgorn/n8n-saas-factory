@@ -1,0 +1,174 @@
+{
+  "workflow_id": "a7ae16b6925f",
+  "name": "Get most recent file",
+  "source_path": "n8n-docs-source\\docs\\_workflows\\integrations\\builtin\\app-nodes\\n8n-nodes-base.googledrive\\get-most-recent-file.json",
+  "trigger_type": "n8n-nodes-base.manualTrigger",
+  "trigger_count": 1,
+  "triggers": [
+    {
+      "id": "ba223e7c-4fed-41dd-8c80-2e8fd742629f",
+      "name": "When clicking ‘Execute workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "role": "trigger",
+      "position": [
+        620,
+        300
+      ],
+      "parameters": {},
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "webhook_paths": [],
+  "node_count": 5,
+  "node_type_counts": {
+    "n8n-nodes-base.googleDrive": 2,
+    "n8n-nodes-base.manualTrigger": 1,
+    "n8n-nodes-base.sort": 1,
+    "n8n-nodes-base.limit": 1
+  },
+  "classified_nodes": [
+    {
+      "id": "45b53bcd-7dcf-4266-8b6e-bfc12008f9e2",
+      "name": "Google Drive1",
+      "type": "n8n-nodes-base.googleDrive",
+      "role": "app_action",
+      "position": [
+        1500,
+        300
+      ],
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "ba223e7c-4fed-41dd-8c80-2e8fd742629f",
+      "name": "When clicking ‘Execute workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "role": "trigger",
+      "position": [
+        620,
+        300
+      ],
+      "parameters": {},
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "42799909-16f3-4f0a-9ad9-4dd0375814a0",
+      "name": "Google Drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "role": "app_action",
+      "position": [
+        840,
+        300
+      ],
+      "parameters": {
+        "resource": "fileFolder",
+        "searchMethod": "query",
+        "returnAll": true,
+        "filter": {
+          "whatToSearch": "files"
+        },
+        "options": {
+          "fields": [
+            "*"
+          ]
+        }
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "bfb8baa6-1b8c-4540-9ad6-b5d7c3f7521b",
+      "name": "Sort",
+      "type": "n8n-nodes-base.sort",
+      "role": "data_transform",
+      "position": [
+        1060,
+        300
+      ],
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "modifiedTime",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "2883d39a-f7d9-4244-bf7d-b06878678ccc",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "role": "data_transform",
+      "position": [
+        1280,
+        300
+      ],
+      "parameters": {},
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "ai_agents": [],
+  "ai_component_count": 0,
+  "flow_control_count": 0,
+  "data_transform_count": 2,
+  "flow_path": [
+    "When clicking ‘Execute workflow’",
+    "Google Drive",
+    "Sort",
+    "Limit",
+    "Google Drive1"
+  ],
+  "connections": [
+    {
+      "from": "When clicking ‘Execute workflow’",
+      "to": "Google Drive",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Google Drive",
+      "to": "Sort",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Sort",
+      "to": "Limit",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Limit",
+      "to": "Google Drive1",
+      "type": "main",
+      "index": 0
+    }
+  ],
+  "credential_inventory": {},
+  "required_credentials": [],
+  "environment_variables": [],
+  "complexity_score": 2.4,
+  "estimated_api_endpoints": 1,
+  "estimated_db_tables": 2,
+  "settings": {},
+  "tags": [],
+  "active": false,
+  "version_id": null
+}

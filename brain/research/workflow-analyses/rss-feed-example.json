@@ -1,0 +1,137 @@
+{
+  "workflow_id": "cd88c2a74205",
+  "name": "RSS feed example",
+  "source_path": "n8n-docs-source\\docs\\_workflows\\integrations\\builtin\\core-nodes\\n8n-nodes-base.splitinbatches\\rss-feed-example.json",
+  "trigger_type": "n8n-nodes-base.manualTrigger",
+  "trigger_count": 1,
+  "triggers": [
+    {
+      "id": "e6e1cfe6-eff1-48bd-b21c-6ba83d4244d9",
+      "name": "When clicking ‘Execute workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "role": "trigger",
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {},
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "webhook_paths": [],
+  "node_count": 4,
+  "node_type_counts": {
+    "n8n-nodes-base.manualTrigger": 1,
+    "n8n-nodes-base.code": 1,
+    "n8n-nodes-base.splitInBatches": 1,
+    "n8n-nodes-base.rssFeedRead": 1
+  },
+  "classified_nodes": [
+    {
+      "id": "e6e1cfe6-eff1-48bd-b21c-6ba83d4244d9",
+      "name": "When clicking ‘Execute workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "role": "trigger",
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {},
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "137f1128-45b6-4bc4-a9fb-8660baa652a9",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "role": "data_transform",
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return [\n\t{\n\t\tjson: {\n\t\t\turl: 'https://medium.com/feed/n8n-io',\n\t\t}\n\t},\n\t{\n\t\tjson: {\n\t\t\turl: 'https://dev.to/feed/n8n',\n\t\t}\n\t}\n];"
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "3449a953-49c2-4a36-ba3d-cbc0573f3f6c",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "role": "flow_control",
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "cc2e59d7-0a9b-4640-8052-d8f7f8d8c9fe",
+      "name": "RSS Read",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "role": "app_action",
+      "position": [
+        660,
+        100
+      ],
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "ai_agents": [],
+  "ai_component_count": 0,
+  "flow_control_count": 1,
+  "data_transform_count": 1,
+  "flow_path": [
+    "When clicking ‘Execute workflow’",
+    "Code",
+    "Loop Over Items",
+    "RSS Read"
+  ],
+  "connections": [
+    {
+      "from": "When clicking ‘Execute workflow’",
+      "to": "Code",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Code",
+      "to": "Loop Over Items",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Loop Over Items",
+      "to": "RSS Read",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "RSS Read",
+      "to": "Loop Over Items",
+      "type": "main",
+      "index": 0
+    }
+  ],
+  "credential_inventory": {},
+  "required_credentials": [],
+  "environment_variables": [],
+  "complexity_score": 3.2,
+  "estimated_api_endpoints": 1,
+  "estimated_db_tables": 2,
+  "settings": {},
+  "tags": [],
+  "active": false,
+  "version_id": null
+}

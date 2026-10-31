@@ -1,0 +1,669 @@
+{
+  "workflow_id": "kl3goXzWrfrWHpYv",
+  "name": "Form that can execute multiple branches",
+  "source_path": "n8n-docs-source\\docs\\_workflows\\integrations\\builtin\\core-nodes\\n8n-nodes-base.form\\multiple-branch-execution.json",
+  "trigger_type": "n8n-nodes-base.formTrigger",
+  "trigger_count": 1,
+  "triggers": [
+    {
+      "id": "ad3f0e0a-a1e9-4504-8711-508bd29bd745",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "role": "trigger",
+      "position": [
+        -300,
+        60
+      ],
+      "parameters": {
+        "formTitle": "Form that may execute multiple branches",
+        "formDescription": "This form contains multiple branches. Depending on the user's responses, more than one branch may execute sequentially.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "What are your favorite film genres",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Documentary"
+                  },
+                  {
+                    "option": "Action"
+                  },
+                  {
+                    "option": "Romance"
+                  },
+                  {
+                    "option": "Comedy"
+                  },
+                  {
+                    "option": "Drama"
+                  }
+                ]
+              },
+              "multiselect": true,
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "webhook_paths": [],
+  "node_count": 17,
+  "node_type_counts": {
+    "n8n-nodes-base.form": 11,
+    "n8n-nodes-base.stickyNote": 4,
+    "n8n-nodes-base.formTrigger": 1,
+    "n8n-nodes-base.switch": 1
+  },
+  "classified_nodes": [
+    {
+      "id": "ad3f0e0a-a1e9-4504-8711-508bd29bd745",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "role": "trigger",
+      "position": [
+        -300,
+        60
+      ],
+      "parameters": {
+        "formTitle": "Form that may execute multiple branches",
+        "formDescription": "This form contains multiple branches. Depending on the user's responses, more than one branch may execute sequentially.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "What are your favorite film genres",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Documentary"
+                  },
+                  {
+                    "option": "Action"
+                  },
+                  {
+                    "option": "Romance"
+                  },
+                  {
+                    "option": "Comedy"
+                  },
+                  {
+                    "option": "Drama"
+                  }
+                ]
+              },
+              "multiselect": true,
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "df96da7b-c7dc-43c6-8941-973842603e0c",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "role": "flow_control",
+      "position": [
+        100,
+        0
+      ],
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e3d995dd-d555-4e7a-b744-a3434ed602ad",
+                    "leftValue": "={{ $json['What are your favorite film genres'] }}",
+                    "rightValue": "Documentary",
+                    "operator": {
+                      "type": "array",
+                      "operation": "contains",
+                      "rightType": "any"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Documentary"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ae94981b-1273-4830-ac2a-991bb25f41d8",
+                    "leftValue": "={{ $json['What are your favorite film genres'] }}",
+                    "rightValue": "Action",
+                    "operator": {
+                      "type": "array",
+                      "operation": "contains",
+                      "rightType": "any"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Action"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "b9545089-4054-484d-9e6c-98f4872e7e9e",
+                    "leftValue": "={{ $json['What are your favorite film genres'] }}",
+                    "rightValue": "Romance",
+                    "operator": {
+                      "type": "array",
+                      "operation": "contains",
+                      "rightType": "any"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Romance"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "71ae5a41-0927-40e3-a583-e569bcebfd1f",
+                    "leftValue": "={{ $json['What are your favorite film genres'] }}",
+                    "rightValue": "Comedy",
+                    "operator": {
+                      "type": "array",
+                      "operation": "contains",
+                      "rightType": "any"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Comedy"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5bfe5981-203a-457a-bfaa-36846d7b79a8",
+                    "leftValue": "={{ $json['What are your favorite film genres'] }}",
+                    "rightValue": "Drama",
+                    "operator": {
+                      "type": "array",
+                      "operation": "contains",
+                      "rightType": "any"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Drama"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "adb1bfc5-08fd-4653-abe0-6f12aedda16a",
+                    "leftValue": "={{ $json['What are your favorite film genres'] }}",
+                    "rightValue": 1,
+                    "operator": {
+                      "type": "array",
+                      "operation": "lengthGt",
+                      "rightType": "number"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Final page"
+            }
+          ]
+        },
+        "options": {
+          "allMatchingOutputs": true
+        }
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "c51af5ad-8f6c-4f2a-8974-65c4abc4fcbf",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        -160,
+        -260
+      ],
+      "parameters": {
+        "content": "## Form that may execute multiple branches\nThis form contains branching where more than one path may execute, depending on the user's selections.",
+        "width": 380
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "eab3ff17-5030-4556-a0c7-2571345e8cdf",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        20,
+        320
+      ],
+      "parameters": {
+        "content": "This Switch node determines which branches will execute.\n\nMultiple conditions may be true, resulting in more than one branch being executed. When this happens, n8n executes the first branch completely before returning to execute the next branch.",
+        "height": 220,
+        "width": 260,
+        "color": 5
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "dc55c82f-7d4f-4368-8ab5-69a673e92027",
+      "name": "Documentary questions",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        700,
+        -500
+      ],
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "What is your favorite documentary?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "3f76b5df-561b-4159-9e14-33a43d8c45a8",
+      "name": "Action questions",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        700,
+        -280
+      ],
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "What is your favorite action film?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "16660e2e-a047-45d2-ba54-12d573633ece",
+      "name": "Documentary thanks",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        920,
+        -500
+      ],
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "Thank you for answering our documentary questions!",
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "1853276a-3ba6-4315-b772-fbeb0c68a477",
+      "name": "Action thanks",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        920,
+        -280
+      ],
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "Thank you for answering our action film questions!",
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "cd7bc8d0-a143-4733-be84-320c88ef241b",
+      "name": "Romance questions",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        700,
+        -20
+      ],
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "What is your favorite romance film?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "42d7c8b5-f66f-4b34-821c-0df91bbaa9ea",
+      "name": "Romance thanks",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        920,
+        -20
+      ],
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "Thank you for answering our romance film questions!",
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "b9422abf-1ad5-44e4-941d-692f72bc2fef",
+      "name": "Comedy questions",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        700,
+        220
+      ],
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "What is your favorite comedy film?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "1db70bda-0752-41b7-a930-b90f6e64b3e7",
+      "name": "Comedy thanks",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        920,
+        220
+      ],
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "Thank you for answering our comedy film questions!",
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "2bef931a-12d2-4873-ad19-9bdb0b5fe78f",
+      "name": "Drama questions",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        700,
+        480
+      ],
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "What is your favorite drama film?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "1fd7fa2f-d1be-430a-bb98-ded89ad8fca0",
+      "name": "Drama thanks",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        920,
+        480
+      ],
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "Thank you for answering our drama film questions!",
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "7b0aeed0-0e13-4fcb-a3e9-c5ff4d6a77ca",
+      "name": "Multi-selection thank you",
+      "type": "n8n-nodes-base.form",
+      "role": "app_action",
+      "position": [
+        700,
+        720
+      ],
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "Thank you for answering our film questions!",
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "7bda913a-d75c-4b20-8be6-a767c008a8f6",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        840,
+        -740
+      ],
+      "parameters": {
+        "content": "n8n Form nodes using the **Form Ending** page type are only executed if they are the last node in the execution path.\n\nThese endings specific to a genre are only executed if this is the only valid branch.",
+        "height": 1400,
+        "width": 280,
+        "color": 5
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "9c3f93a5-5248-4ba1-99b5-9df6d21416c2",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        740,
+        800
+      ],
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe switch includes this **Form Ending** node whenever more than one branch is executed.\n\nBecause this is the [final branch](https://docs.n8n.io/flow-logic/execution-order/) that will be executed, this is the final display whenever multiple branches are executed.",
+        "height": 400,
+        "width": 300,
+        "color": 5
+      },
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "ai_agents": [],
+  "ai_component_count": 0,
+  "flow_control_count": 1,
+  "data_transform_count": 0,
+  "flow_path": [
+    "On form submission",
+    "Switch",
+    "Documentary questions",
+    "Action questions",
+    "Romance questions",
+    "Comedy questions",
+    "Drama questions",
+    "Multi-selection thank you",
+    "Documentary thanks",
+    "Action thanks",
+    "Romance thanks",
+    "Comedy thanks",
+    "Drama thanks"
+  ],
+  "connections": [
+    {
+      "from": "On form submission",
+      "to": "Switch",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Switch",
+      "to": "Documentary questions",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Switch",
+      "to": "Action questions",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Switch",
+      "to": "Romance questions",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Switch",
+      "to": "Comedy questions",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Switch",
+      "to": "Drama questions",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Switch",
+      "to": "Multi-selection thank you",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Documentary questions",
+      "to": "Documentary thanks",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Action questions",
+      "to": "Action thanks",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Romance questions",
+      "to": "Romance thanks",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Comedy questions",
+      "to": "Comedy thanks",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Drama questions",
+      "to": "Drama thanks",
+      "type": "main",
+      "index": 0
+    }
+  ],
+  "credential_inventory": {},
+  "required_credentials": [],
+  "environment_variables": [],
+  "complexity_score": 6,
+  "estimated_api_endpoints": 1,
+  "estimated_db_tables": 2,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [],
+  "active": false,
+  "version_id": "b1d38757-38ea-4ee8-a352-990185b17e31"
+}

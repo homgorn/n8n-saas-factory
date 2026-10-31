@@ -1,0 +1,107 @@
+{
+  "workflow_id": "9i3iDZf5MpjlJ2sh",
+  "name": "Extract from file example",
+  "source_path": "n8n-docs-source\\docs\\_workflows\\integrations\\builtin\\core-nodes\\n8n-nodes-base.extractfromfile\\webhook-example.json",
+  "trigger_type": "n8n-nodes-base.webhook",
+  "trigger_count": 1,
+  "triggers": [
+    {
+      "id": "dfbd51af-6050-47c5-a26c-74cba77f65f7",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "role": "trigger",
+      "position": [
+        -380,
+        -80
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "06696ea7-9dc7-464a-873b-3feb095b0874",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "webhook_paths": [
+    {
+      "node": "Webhook",
+      "path": "06696ea7-9dc7-464a-873b-3feb095b0874",
+      "method": "POST",
+      "responseMode": "onReceived"
+    }
+  ],
+  "node_count": 2,
+  "node_type_counts": {
+    "n8n-nodes-base.webhook": 1,
+    "n8n-nodes-base.extractFromFile": 1
+  },
+  "classified_nodes": [
+    {
+      "id": "dfbd51af-6050-47c5-a26c-74cba77f65f7",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "role": "trigger",
+      "position": [
+        -380,
+        -80
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "06696ea7-9dc7-464a-873b-3feb095b0874",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "1b1e4643-8269-402b-83af-dfd90fd6a0b5",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "role": "file",
+      "position": [
+        -160,
+        -80
+      ],
+      "parameters": {
+        "options": {
+          "headerRow": false
+        }
+      },
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "ai_agents": [],
+  "ai_component_count": 0,
+  "flow_control_count": 0,
+  "data_transform_count": 0,
+  "flow_path": [
+    "Webhook",
+    "Extract from File"
+  ],
+  "connections": [
+    {
+      "from": "Webhook",
+      "to": "Extract from File",
+      "type": "main",
+      "index": 0
+    }
+  ],
+  "credential_inventory": {},
+  "required_credentials": [],
+  "environment_variables": [],
+  "complexity_score": 1.5,
+  "estimated_api_endpoints": 1,
+  "estimated_db_tables": 2,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [],
+  "active": true,
+  "version_id": "dd2bf7f1-692a-41a8-9c2e-7931de57fa13"
+}

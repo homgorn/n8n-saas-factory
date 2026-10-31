@@ -1,0 +1,532 @@
+{
+  "workflow_id": "eb50d236c55e",
+  "name": "Let your AI call an API",
+  "source_path": "n8n-docs-source\\docs\\_workflows\\advanced-ai\\examples\\let_your_ai_call_an_api.json",
+  "trigger_type": "n8n-nodes-base.executeWorkflowTrigger",
+  "trigger_count": 2,
+  "triggers": [
+    {
+      "id": "35ce49a9-eda1-4da5-a6cb-39a39680111b",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "role": "trigger",
+      "position": [
+        520,
+        1140
+      ],
+      "parameters": {},
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "f262f04b-964c-47c0-b7dc-a86b82b0184b",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "role": "trigger",
+      "position": [
+        600,
+        560
+      ],
+      "parameters": {},
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "webhook_paths": [],
+  "node_count": 21,
+  "node_type_counts": {
+    "n8n-nodes-base.stickyNote": 8,
+    "@n8n/n8n-nodes-langchain.lmChatOpenAi": 3,
+    "n8n-nodes-base.executeWorkflowTrigger": 1,
+    "@n8n/n8n-nodes-langchain.chatTrigger": 1,
+    "@n8n/n8n-nodes-langchain.memoryBufferWindow": 1,
+    "@n8n/n8n-nodes-langchain.toolWorkflow": 1,
+    "@n8n/n8n-nodes-langchain.agent": 1,
+    "@n8n/n8n-nodes-langchain.outputParserAutofixing": 1,
+    "@n8n/n8n-nodes-langchain.outputParserStructured": 1,
+    "n8n-nodes-base.httpRequest": 1,
+    "@n8n/n8n-nodes-langchain.chainLlm": 1,
+    "n8n-nodes-base.set": 1
+  },
+  "classified_nodes": [
+    {
+      "id": "35ce49a9-eda1-4da5-a6cb-39a39680111b",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "role": "trigger",
+      "position": [
+        520,
+        1140
+      ],
+      "parameters": {},
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "ec6e261b-922f-401c-9392-12ff73488a5f",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        460,
+        960
+      ],
+      "parameters": {
+        "content": "### Sub-workflow: Custom tool\nThe agent above can call this workflow. It calls an example API called \"Bored API\" and returns a string with an activity idea.",
+        "height": 775.3931210698682,
+        "width": 1180.0825159534493,
+        "color": 7
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "25780e87-0ae0-4bee-9582-75f98bf66635",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        460,
+        460
+      ],
+      "parameters": {
+        "content": "### Main workflow: AI agent using custom tool",
+        "height": 486.5625,
+        "width": 927.5,
+        "color": 7
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "f262f04b-964c-47c0-b7dc-a86b82b0184b",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "role": "trigger",
+      "position": [
+        600,
+        560
+      ],
+      "parameters": {},
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "29678c05-9a48-41ec-9c5c-af36ee0d7fc6",
+      "name": "Simple Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "role": "ai_chain",
+      "position": [
+        860,
+        780
+      ],
+      "parameters": {},
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "e078f88b-489c-42ea-9544-6bdaeae213a0",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        1020,
+        720
+      ],
+      "parameters": {
+        "content": "**This tool calls the sub-workflow below**",
+        "height": 179.21380662202682,
+        "width": 197.45572294791873,
+        "color": 5
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "1d1d1a4e-0d1d-4094-81c7-e01f2674df0d",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        620,
+        720
+      ],
+      "parameters": {
+        "content": "**Set your credentials**",
+        "height": 171,
+        "width": 150,
+        "color": 2
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "8c83d554-bf1f-4b3c-abb9-a6bb76846698",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        880,
+        1540.2624287261167
+      ],
+      "parameters": {
+        "content": "**Set your credentials**",
+        "height": 170.10898979087855,
+        "width": 152.85917676941358,
+        "color": 2
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "82a3c606-0d7a-4b45-aae7-df35525615f7",
+      "name": "Activity tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "role": "ai_chain",
+      "position": [
+        1080,
+        780
+      ],
+      "parameters": {
+        "name": "activity_tool",
+        "description": "=Suggest an activity for a person to do. Use this tool if someone is bored, or asking for ideas of things to do.",
+        "workflowId": "={{ $workflow.id }}",
+        "fields": {
+          "values": [
+            {
+              "name": "chatInput",
+              "stringValue": "={{ $('Chat Trigger').item.json.chatInput }}"
+            }
+          ]
+        }
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "716dea0d-a987-4cf7-ae4a-bf0f7c7d7da9",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "role": "ai_agent",
+      "position": [
+        820,
+        560
+      ],
+      "parameters": {
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "maxIterations": 10
+        }
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "f469fba8-07ae-4c79-a79c-2c49946d94e2",
+      "name": "Auto-fixing Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "role": "ai_chain",
+      "position": [
+        920,
+        1380
+      ],
+      "parameters": {},
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "e6d252d3-d78e-4827-b911-0528c3b80794",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        648.9502850955331,
+        1340
+      ],
+      "parameters": {
+        "content": "**Set your credentials**",
+        "height": 189.79768930311286,
+        "width": 150,
+        "color": 2
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "f65054a9-771c-47f8-94cc-4ed766f89d19",
+      "name": "GPT4 Model 1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "role": "ai_chain",
+      "position": [
+        660,
+        780
+      ],
+      "parameters": {
+        "model": "gpt-4",
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "94c2a6d8-cab9-48c2-8801-4306f0957f50",
+      "name": "GPT4 Model 2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "role": "ai_chain",
+      "position": [
+        700,
+        1420
+      ],
+      "parameters": {
+        "model": "gpt-4",
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "5f423800-2eaf-43f5-bd59-dc1212cb55ad",
+      "name": "GPT4 Model 3",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "role": "ai_chain",
+      "position": [
+        920,
+        1600
+      ],
+      "parameters": {
+        "model": "gpt-4",
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "8ba60ef6-c375-41d9-bf79-1f19f1495adb",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        300,
+        540
+      ],
+      "parameters": {
+        "content": "## Try it out\n\nSelect **Chat** at the bottom and enter:\n\n_Hi! Please suggest something to do. I feel like learning something new._",
+        "height": 214.8397420554627,
+        "width": 185.9375,
+        "color": 4
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "4bbd5942-4f2a-4a9a-a26c-61f95ad57549",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "role": "utility",
+      "position": [
+        1500,
+        1540
+      ],
+      "parameters": {
+        "content": "## Next steps\n\nLearn more about [Advanced AI in n8n](https://docs.n8n.io/advanced-ai/)",
+        "height": 144.50520156238127
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "a50c7858-b0fd-44d6-898d-452ffc5cbd72",
+      "name": "Structure as JSON",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "role": "ai_chain",
+      "position": [
+        1120,
+        1520
+      ],
+      "parameters": {
+        "jsonSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"type\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"data\": {\n          \"enum\": [\"education\", \"recreational\",\"social\",\"diy\",\"charity\",\"cooking\",\"relaxation\",\"music\",\"busywork\"]\n        }\n      }\n    },\n    \"participants\": {\n      \"type\": \"number\"\n    }\n  }\n}"
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "340c2536-6e79-4af6-9cd0-5cbf6eae1983",
+      "name": "Call the API",
+      "type": "n8n-nodes-base.httpRequest",
+      "role": "http",
+      "position": [
+        1120,
+        1140
+      ],
+      "parameters": {
+        "url": "http://www.boredapi.com/api/activity/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "type",
+              "value": "={{ $json.output.type.data }}"
+            },
+            {
+              "name": "participants",
+              "value": "={{ $json.output.participants }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "d7d5455c-2e46-4896-853c-6b527e9403e4",
+      "name": "Work out activity type and number of people",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "role": "ai_chain",
+      "position": [
+        740,
+        1140
+      ],
+      "parameters": {
+        "prompt": "={{ $('Execute Workflow Trigger').item.json.chatInput }}"
+      },
+      "credentials": {},
+      "disabled": false
+    },
+    {
+      "id": "83f9ac05-4583-4cc4-bcc8-29ae450c95cb",
+      "name": "Set 'response' value",
+      "type": "n8n-nodes-base.set",
+      "role": "data_transform",
+      "position": [
+        1340,
+        1140
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e37e64f6-64e7-4fbd-9ea1-e9d3ef99b39c",
+              "name": "response",
+              "value": "={{ $json.activity }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {},
+      "disabled": false
+    }
+  ],
+  "ai_agents": [
+    {
+      "node_id": "716dea0d-a987-4cf7-ae4a-bf0f7c7d7da9",
+      "node_name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "system_prompt": "={{ $json.chatInput }}",
+      "model": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "tools": [
+        "@n8n/n8n-nodes-langchain.toolWorkflow"
+      ],
+      "memory": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "output_parser": null,
+      "sub_nodes": [
+        "Chat Trigger",
+        "Simple Memory",
+        "Activity tool",
+        "GPT4 Model 1"
+      ],
+      "disabled": false
+    }
+  ],
+  "ai_component_count": 8,
+  "flow_control_count": 0,
+  "data_transform_count": 1,
+  "flow_path": [
+    "Execute Workflow Trigger",
+    "Work out activity type and number of people",
+    "Call the API",
+    "Set 'response' value"
+  ],
+  "connections": [
+    {
+      "from": "Chat Trigger",
+      "to": "AI Agent",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Simple Memory",
+      "to": "AI Agent",
+      "type": "ai_memory",
+      "index": 0
+    },
+    {
+      "from": "Execute Workflow Trigger",
+      "to": "Work out activity type and number of people",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Activity tool",
+      "to": "AI Agent",
+      "type": "ai_tool",
+      "index": 0
+    },
+    {
+      "from": "Auto-fixing Output Parser",
+      "to": "Work out activity type and number of people",
+      "type": "ai_outputParser",
+      "index": 0
+    },
+    {
+      "from": "GPT4 Model 1",
+      "to": "AI Agent",
+      "type": "ai_languageModel",
+      "index": 0
+    },
+    {
+      "from": "GPT4 Model 2",
+      "to": "Work out activity type and number of people",
+      "type": "ai_languageModel",
+      "index": 0
+    },
+    {
+      "from": "GPT4 Model 3",
+      "to": "Auto-fixing Output Parser",
+      "type": "ai_languageModel",
+      "index": 0
+    },
+    {
+      "from": "Structure as JSON",
+      "to": "Auto-fixing Output Parser",
+      "type": "ai_outputParser",
+      "index": 0
+    },
+    {
+      "from": "Call the API",
+      "to": "Set 'response' value",
+      "type": "main",
+      "index": 0
+    },
+    {
+      "from": "Work out activity type and number of people",
+      "to": "Call the API",
+      "type": "main",
+      "index": 0
+    }
+  ],
+  "credential_inventory": {},
+  "required_credentials": [],
+  "environment_variables": [
+    "OPENAI_API_KEY"
+  ],
+  "complexity_score": 8,
+  "estimated_api_endpoints": 2,
+  "estimated_db_tables": 3,
+  "settings": {},
+  "tags": [],
+  "active": false,
+  "version_id": null
+}

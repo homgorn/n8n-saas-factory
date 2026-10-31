@@ -1,0 +1,126 @@
+{
+  "generated": "2026-10-31T09:43:25.956191+00:00",
+  "count": 12,
+  "workflows": [
+    {
+      "name": "Agents vs chains",
+      "nodes": 14,
+      "agents": 1,
+      "triggers": 1,
+      "credentials": 1,
+      "complexity": 8.5,
+      "endpoints": 1,
+      "tables": 4
+    },
+    {
+      "name": "Ask a human",
+      "nodes": 17,
+      "agents": 1,
+      "triggers": 2,
+      "credentials": 0,
+      "complexity": 8.8,
+      "endpoints": 2,
+      "tables": 3
+    },
+    {
+      "name": "Chat with Google Sheets (docs version)",
+      "nodes": 23,
+      "agents": 1,
+      "triggers": 2,
+      "credentials": 0,
+      "complexity": 9,
+      "endpoints": 2,
+      "tables": 3
+    },
+    {
+      "name": "Let your AI call an API",
+      "nodes": 21,
+      "agents": 1,
+      "triggers": 2,
+      "credentials": 0,
+      "complexity": 8,
+      "endpoints": 2,
+      "tables": 3
+    },
+    {
+      "name": "Populate a Pinecone vector database from a website",
+      "nodes": 31,
+      "agents": 0,
+      "triggers": 2,
+      "credentials": 2,
+      "complexity": 8,
+      "endpoints": 2,
+      "tables": 4
+    },
+    {
+      "name": "Dynamic credentials using expressions",
+      "nodes": 7,
+      "agents": 0,
+      "triggers": 1,
+      "credentials": 1,
+      "complexity": 3.6,
+      "endpoints": 1,
+      "tables": 3
+    },
+    {
+      "name": "Get most recent file",
+      "nodes": 5,
+      "agents": 0,
+      "triggers": 1,
+      "credentials": 0,
+      "complexity": 2.4,
+      "endpoints": 1,
+      "tables": 2
+    },
+    {
+      "name": "Extract from file example",
+      "nodes": 2,
+      "agents": 0,
+      "triggers": 1,
+      "credentials": 0,
+      "complexity": 1.5,
+      "endpoints": 1,
+      "tables": 2
+    },
+    {
+      "name": "Form that can execute multiple branches",
+      "nodes": 17,
+      "agents": 0,
+      "triggers": 1,
+      "credentials": 0,
+      "complexity": 6,
+      "endpoints": 1,
+      "tables": 2
+    },
+    {
+      "name": "Form with mutually exclusive branching",
+      "nodes": 8,
+      "agents": 0,
+      "triggers": 1,
+      "credentials": 0,
+      "complexity": 4.1,
+      "endpoints": 1,
+      "tables": 2
+    },
+    {
+      "name": "RSS feed example",
+      "nodes": 4,
+      "agents": 0,
+      "triggers": 1,
+      "credentials": 0,
+      "complexity": 3.2,
+      "endpoints": 1,
+      "tables": 2
+    },
+    {
+      "name": "Tutorial-workflow",
+      "nodes": 6,
+      "agents": 0,
+      "triggers": 1,
+      "credentials": 1,
+      "complexity": 4.6,
+      "endpoints": 1,
+      "tables": 3
+    }
+  ]
+}
