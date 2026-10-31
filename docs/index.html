@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>n8n SaaS Factory — Build a SaaS from n8n workflows</title>
+  <meta name="description" content="Turn n8n workflows into deployable SaaS products. Internal knowledge base, workflow analyzer, agent orchestration.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="alternate" hreflang="ru" href="ru/index.html">
+  <link rel="alternate" hreflang="en" href="index.html">
+  <link rel="canonical" href="https://homgorn.github.io/n8n-saas-factory/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="n8n SaaS Factory — Build a SaaS from n8n workflows">
+  <meta property="og:description" content="LLM wiki over n8n docs. Workflow analyzer. SaaS template generator. Agent orchestration.">
+  <meta property="og:url" content="https://homgorn.github.io/n8n-saas-factory/">
+  <meta property="og:image" content="https://homgorn.github.io/n8n-saas-factory/assets/img/og-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="n8n SaaS Factory">
+  <meta name="twitter:description" content="Turn n8n workflows into deployable SaaS. Knowledge base, analyzer, generator, agents.">
+  <meta name="twitter:image" content="https://homgorn.github.io/n8n-saas-factory/assets/img/og-card.jpg">
+  <script src="assets/js/main.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org", "@type":"WebSite", "name":"n8n SaaS Factory", "url":"https://homgorn.github.io/n8n-saas-factory/", "description":"Turn n8n workflows into deployable SaaS products with an internal LLM wiki, workflow analyzer and agent orchestration.", "author":{"@type":"Person","name":"homgorn","url":"https://github.com/homgorn"}, "sameAs":["https://github.com/homgorn/n8n-saas-factory"]}
+  </script>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">n8n SaaS Factory</a>
+      <ul class="nav-links">
+        <li><a href="#hero">Overview</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#timeline">Roadmap</a></li>
+        <li><span class="lang-switch">
+          <a href="ru/index.html">RU</a>
+          <a class="active" href="index.html">EN</a>
+        </span></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="nav-cta" href="https://github.com/homgorn/n8n-saas-factory">GitHub</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="hero" aria-label="Hero">
+      <div class="hero-content">
+        <div class="hero-badge animate-in" aria-label="Project status">
+          <span>Public · MIT · Active research · 10 features · 5 passing</span>
+        </div>
+        <h1 class="animate-in delay-1">
+          Turn n8n workflows into <span class="gradient">deployed SaaS</span>
+        </h1>
+        <p class="animate-in delay-2">
+          A multi-tenant SaaS factory over n8n: internal LLM knowledge base,
+          workflow analyzer, template generator, agent orchestration via OpenChamber,
+          and a verification gate that never takes the agent's word.
+        </p>
+        <div class="hero-actions animate-in delay-3">
+          <a href="#architecture" class="btn-primary">Explore architecture</a>
+          <a href="https://github.com/homgorn/n8n-saas-factory" class="btn-secondary">Open repository</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats" aria-label="Project statistics">
+      <div class="stat animate-in delay-1">
+        <div class="stat-value">1,348</div>
+        <div class="stat-label">Documentation pages</div>
+      </div>
+      <div class="stat animate-in delay-2">
+        <div class="stat-value">9,578</div>
+        <div class="stat-label">Indexed chunks</div>
+      </div>
+      <div class="stat animate-in delay-3">
+        <div class="stat-value">688k</div>
+        <div class="stat-label">Words in corpus</div>
+      </div>
+      <div class="stat animate-in delay-3">
+        <div class="stat-value">7 / 11</div>
+        <div class="stat-label">Provenance claims / gates</div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features" aria-label="Key features">
+      <div class="section-header">
+        <h2>What's built</h2>
+        <p>Every deliverable is verified by the gate in <code>brain/scripts/verify.py</code>. Nothing is marked "done" on the agent's own say.</p>
+      </div>
+      <div class="features-grid">
+        <article class="feature-card animate-in">
+          <div class="feature-icon" aria-hidden="true">📚</div>
+          <h3>LLM Wiki over n8n docs</h3>
+          <p>Four-level indexed knowledge base from the official GitBook source. 1,348 pages, 9,578 chunks, searchable by FTS5, queryable via CLI.</p>
+        </article>
+        <article class="feature-card animate-in delay-1">
+          <div class="feature-icon" aria-hidden="true">🔍</div>
+          <h3>Query interface</h3>
+          <p>Natural-language questions return structured answers: citations, code examples, related workflows, next steps. Classification: how-to, node-ref, troubleshooting, architecture, best-practice.</p>
+        </article>
+        <article class="feature-card animate-in delay-2">
+          <div class="feature-icon" aria-hidden="true">🧩</div>
+          <h3>Workflow analyzer</h3>
+          <p>Reads workflow JSON, detects AI agents, trigger types, data flow, credentials, estimates complexity (0–10) and outputs the spec the generator consumes.</p>
+        </article>
+        <article class="feature-card animate-in delay-3">
+          <div class="feature-icon" aria-hidden="true">⚙️</div>
+          <h3>SaaS template (AI Tool)</h3>
+          <p>Next.js 14 App Router, Clerk auth, Supabase database, Stripe billing, n8n REST client, webhook handler with HMAC verification, dashboard and landing.</p>
+        </article>
+        <article class="feature-card animate-in delay-1">
+          <div class="feature-icon" aria-hidden="true">🤖</div>
+          <h3>Agent orchestration</h3>
+          <p>Seven specialized agents through OpenChamber: explorer, researcher, architect, implementer, verifier (mandatory), reviewer, runner. Routing table in <code>AGENTS.md</code>.</p>
+        </article>
+        <article class="feature-card animate-in delay-2">
+          <div class="feature-icon" aria-hidden="true">🔒</div>
+          <h3>Verification gate</h3>
+          <p>11 automated gates: build idempotence, corpus floor, summaries within 200 chars, live URLs, retrieval accuracy, provenance claims, secrets scan, licence documentation, feature list honesty, query interface.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="section" id="architecture" aria-label="Architecture">
+      <div class="section-header">
+        <h2>How it's wired</h2>
+        <p>Every component is either verified locally or blocked by a known constraint.</p>
+      </div>
+      <div class="arch-diagram">
+        <div class="arch-flow">
+          <div class="arch-box">
+            <h4>Sources</h4>
+            <p>n8n docs (1,348 pages)</p>
+          </div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">
+            <h4>Wiki builder</h4>
+            <p><code>brain/scripts/forge.py</code></p>
+          </div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">
+            <h4>LLM query</h4>
+            <p><code>brain/scripts/query.py</code></p>
+          </div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">
+            <h4>Analyzer</h4>
+            <p><code>brain/scripts/analyzer.py</code></p>
+          </div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">
+            <h4>Generator</h4>
+            <p>12 SaaS projects (27 files each)</p>
+          </div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">
+            <h4>OpenChamber</h4>
+            <p>7 agents, 6 MCP servers</p>
+          </div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-box">
+            <h4>Verification</h4>
+            <p>11 gates, exits non-zero</p>
+          </div>
+        </div>
+        <p style="text-align:center; color: var(--text-secondary); font-size: 0.85rem; margin-top: 2rem;">
+          Every arrow is either verified locally or blocked by a known constraint. See <code>brain/decisions/ADR-001-n8n-licence-blocks-hosted-saas.md</code> for the architecture change that makes the hosted-SaaS path impossible.
+        </p>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section" id="timeline" aria-label="Timeline">
+      <div class="section-header">
+        <h2>What changed, in order</h2>
+        <p>Every structural change is documented. Nothing is hidden.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item animate-in delay-1">
+          <h4>F001 — Ingestion</h4>
+          <p>1,348 docs, 9,578 chunks, 688,466 words. Python stdlib pipeline (idempotent).</p>
+        </div>
+        <div class="timeline-item animate-in delay-2">
+          <h4>F002 — Query</h4>
+          <p>IDF-ranked retrieval with word-boundary matching. Classification router.</p>
+        </div>
+        <div class="timeline-item animate-in delay-3">
+          <h4>F003 — Analyzer</h4>
+          <p>12 workflow JSON files parsed into structured analysis schemas.</p>
+        </div>
+        <div class="timeline-item animate-in delay-1">
+          <h4>F004 — AI Tool Template</h4>
+          <p>Next.js 14 + Clerk + Stripe + Supabase. Customer operates their own n8n (ADR-001).</p>
+        </div>
+        <div class="timeline-item animate-in delay-2">
+          <h4>F005 — Generator</h4>
+          <p>12 SaaS projects (27 files each) generated from analysis JSON.</p>
+        </div>
+        <div class="timeline-item animate-in delay-3">
+          <h4>F006 — OpenChamber</h4>
+          <p>MCP server config + agent routing + agent definitions.</p>
+        </div>
+        <div class="timeline-item animate-in delay-1">
+          <h4>F007 — Agents</h4>
+          <p>7 specialized roles: explorer, researcher, architect, implementer, verifier, reviewer, runner.</p>
+        </div>
+        <div class="timeline-item animate-in delay-2">
+          <h4>F009 — Gates</h4>
+          <p>10 automated gates; `verify.py` exits non-zero; feature state from file only.</p>
+        </div>
+        <div class="timeline-item animate-in delay-3">
+          <h4>ADR-001</h4>
+          <p>Licence constraint documented; architecture changed; CI gate protects it.</p>
+        </div>
+        <div class="timeline-item animate-in delay-1">
+          <h4>ADR-002</h4>
+          <p>SaaS architecture: customer-runs-own-n8n; no hosting, no embedding.</p>
+        </div>
+        <div class="timeline-item animate-in delay-2">
+          <h4>Claims</h4>
+          <p>11 provenance-stamped claims in `brain/index/claims.json`, re-applied on rebuild.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wiki -->
+    <section class="section" id="wiki" aria-label="Wiki">
+      <div class="section-header">
+        <h2>Internal LLM wiki</h2>
+        <p>A regenerable knowledge base. Not for humans — for cold agents.</p>
+      </div>
+      <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <article class="feature-card animate-in">
+          <div class="feature-icon" aria-hidden="true">📚</div>
+          <h3>Four-level index</h3>
+          <p>Domain → Topic → Page → Chunk → JSON. Regenerate with `python brain/scripts/forge.py build`.</p>
+        </article>
+        <article class="feature-card animate-in delay-1">
+          <div class="feature-icon" aria-hidden="true">🔍</div>
+          <h3>Retrieval</h3>
+          <p>FTS5 + IDF-ranked chunks. Query: `python brain/scripts/query.py ask "term"`.</p>
+        </article>
+        <article class="feature-card animate-in delay-2">
+          <div class="feature-icon" aria-hidden="true">📊</div>
+          <h3>Corpus</h3>
+          <p>1,348 docs · 688k words · 2,966 entities · 2,552 triples · 12 workflows.</p>
+        </article>
+        <article class="feature-card animate-in delay-3">
+          <div class="feature-icon" aria-hidden="true">📜</div>
+          <h3>Claims</h3>
+          <p>Every claim typed (`measured` / `reported` / `inferred` / `unconfirmed`) and sourced.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ADR -->
+    <section class="section" id="adr" aria-label="Architecture decisions">
+      <div class="section-header">
+        <h2>Architecture decisions (ADRs)</h2>
+        <p>Every structural change is recorded before it reaches code.</p>
+      </div>
+      <div class="features-grid">
+        <article class="feature-card animate-in">
+          <h3>ADR-001 — Licence constraint</h3>
+          <p>n8n Sustainable Use License blocks hosted-SaaS. Architecture changed: customer runs own n8n; our product is the layer above. <a href="brain/decisions/ADR-001-n8n-licence-blocks-hosted-saas.md">Read →</a></p>
+        </article>
+        <article class="feature-card animate-in delay-1">
+          <h3>ADR-002 — SaaS architecture</h3>
+          <p>Three paths evaluated. OEM (~50k/yr, unconfirmed); host ourselves (not licenced); customer-brings-own-n8n (accepted). <a href="brain/decisions/ADR-002-saas-architecture-under-licence.md">Read →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Agent roles -->
+    <section class="section" id="agents" aria-label="Agent roles">
+      <div class="section-header">
+        <h2>Agent roles</h2>
+        <p>Every subagent needs a distinct job. Two agents with the same prompt are one agent.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item animate-in delay-1">
+          <h4>explorer</h4>
+          <p>Read-only mapping. Cheap model. "Where is X?"</p>
+        </div>
+        <div class="timeline-item animate-in delay-2">
+          <h4>researcher</h4>
+          <p>Search the wiki, docs, web. No writes.</p>
+        </div>
+        <div class="timeline-item animate-in delay-3">
+          <h4>architect</h4>
+          <p>Design SaaS from workflow. Writes SPEC.md.</p>
+        </div>
+        <div class="timeline-item animate-in delay-1">
+          <h4>implementer</h4>
+          <p>Writes code. One feature at a time. No stubs, no TODOs.</p>
+        </div>
+        <div class="timeline-item animate-in delay-2">
+          <h4>verifier</h4>
+          <p>Mandatory before PASS. Read-only. Never fixes. Blocked ≠ Pass.</p>
+        </div>
+        <div class="timeline-item animate-in delay-3">
+          <h4>reviewer</h4>
+          <p>Thermo-nuclear review: security, correctness, maintainability.</p>
+        </div>
+        <div class="timeline-item animate-in delay-1">
+          <h4>runner</h4>
+          <p>Runs builds. Reports only failures.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="section" id="roadmap" aria-label="Roadmap">
+      <div class="section-header">
+        <h2>What is done and what remains</h2>
+        <p>Every feature is verifiable independently by a human with no memory of the project.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item animate-in">
+          <h4>Completed (5 of 10)</h4>
+          <p>F001 docs ingestion · F002 LLM query · F003 workflow analyzer · F004 AI Tool template · F005 generator. Plus: F006 OpenChamber wiring, F007 agent routing, F010 documentation.</p>
+        </div>
+        <div class="timeline-item animate-in delay-1">
+          <h4>In progress (2 of 10)</h4>
+          <p>F008 sync workflows · F009 verification gates for generated SaaS.</p>
+          <p>These are blocked on running n8n (F006) and on deploying a preview SaaS (F009).</p>
+        </div>
+        <div class="timeline-item animate-in delay-2">
+          <h4>Next gates</h4>
+          <p><b>F005 verification:</b> generate for `Agents vs chains` workflow, deploy preview, run Playwright smoke tests. Only after `verifier` returns PASS should `passes: true` be set.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact" aria-label="Contact">
+      <div class="section-header">
+        <h2>Contact</h2>
+        <p>Not an organization. A single developer working in public.</p>
+      </div>
+      <div class="feature-card animate-in">
+        <h3>Owner</h3>
+        <p><b>homgorn</b> — AI universe development with <a href="https://github.com/homgorn">@github</a></p>
+        <p>Location: Earth · Company: <a href="https://refertur.com">Refertur</a></p>
+        <p>Direct: <a href="https://t.me/realhikaz">Telegram @realhikaz</a></p>
+        <p style="margin-top:1rem;color:var(--text-muted);font-size:0.85rem;">
+          The repo is public. Code is MIT. n8n docs are vendored (not ours). See ADR-001.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p><strong>n8n SaaS Factory</strong></p>
+        <p>Turn n8n workflows into deployable SaaS products. Open-source, public.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Wiki</h4>
+        <a href="#wiki">Knowledge base</a>
+        <a href="#">Query API docs</a>
+        <a href="#">Claims (provenance)</a>
+      </div>
+      <div class="footer-col">
+        <h4>Source</h4>
+        <a href="#">n8n docs (vendored)</a>
+        <a href="#">Workflow templates</a>
+        <a href="#">SaaS templates</a>
+      </div>
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="#">Feature list</a>
+        <a href="#">Backlog</a>
+        <a href="#">Changelog</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 — <a href="https://github.com/homgorn/n8n-saas-factory">homgorn/n8n-saas-factory</a></p>
+      <p>This site is not affiliated with n8n GmbH. n8n docs are vendored, not redistributed.</p>
+    </div>
+  </footer>
+</body>
+</html>
