@@ -1,0 +1,72 @@
+{
+  "agents": {
+    "explorer": {
+      "file": ".openchamber/agents/explorer.md",
+      "model": "openrouter:deepseek/deepseek-chat-v3-0324:free",
+      "tools": ["read", "grep", "glob", "shell"],
+      "role": "read-only codebase mapping",
+      "trigger": "where is X, how does Y work"
+    },
+    "researcher": {
+      "file": ".openchamber/agents/researcher.md",
+      "model": "openrouter:deepseek/deepseek-chat-v3-0324:free",
+      "tools": ["read", "grep", "glob", "websearch", "webfetch", "mcp:n8n-docs"],
+      "role": "research n8n docs, find patterns",
+      "trigger": "search n8n docs, find pattern"
+    },
+    "architect": {
+      "file": ".openchamber/agents/architect.md",
+      "model": "openrouter:anthropic/claude-3.5-sonnet:free",
+      "tools": ["read", "write", "grep", "glob", "shell", "mcp:n8n", "mcp:github"],
+      "role": "design SaaS from workflow, create specs",
+      "trigger": "architect, design, spec"
+    },
+    "implementer": {
+      "file": ".openchamber/agents/implementer.md",
+      "model": "openrouter:anthropic/claude-3.5-sonnet:free",
+      "tools": ["read", "write", "edit", "shell", "mcp:n8n", "mcp:github", "mcp:vercel"],
+      "role": "implement features, generate code",
+      "trigger": "implement, generate, create"
+    },
+    "verifier": {
+      "file": ".openchamber/agents/verifier.md",
+      "model": "openrouter:anthropic/claude-3.5-sonnet:free",
+      "tools": ["read", "grep", "glob", "shell", "mcp:playwright", "mcp:vercel", "mcp:supabase"],
+      "role": "prove feature works end-to-end",
+      "trigger": "verify, test, check"
+    },
+    "reviewer": {
+      "file": ".openchamber/agents/reviewer.md",
+      "model": "openrouter:anthropic/claude-3.5-sonnet:free",
+      "tools": ["read", "grep", "glob", "shell"],
+      "role": "thermo-nuclear code review",
+      "trigger": "review, audit, security"
+    },
+    "runner": {
+      "file": ".openchamber/agents/runner.md",
+      "model": "openrouter:deepseek/deepseek-chat-v3-0324:free",
+      "tools": ["shell", "read"],
+      "role": "run builds, tests, report failures",
+      "trigger": "run, build, test"
+    }
+  },
+  "routing": {
+    "where is X": "explorer",
+    "how does Y work": "explorer",
+    "search n8n docs": "researcher",
+    "find pattern": "researcher",
+    "architect": "architect",
+    "design": "architect",
+    "spec": "architect",
+    "implement": "implementer",
+    "generate": "implementer",
+    "create": "implementer",
+    "verify": "verifier",
+    "test": "verifier",
+    "check": "verifier",
+    "review": "reviewer",
+    "audit": "reviewer",
+    "run": "runner",
+    "build": "runner"
+  }
+}

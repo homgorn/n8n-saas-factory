@@ -1,0 +1,51 @@
+{
+  "mcpServers": {
+    "n8n": {
+      "command": "npx",
+      "args": ["-y", "n8n-mcp"],
+      "env": {
+        "N8N_BASE_URL": "${N8N_BASE_URL}",
+        "N8N_API_KEY": "${N8N_API_KEY}"
+      },
+      "description": "n8n workflow CRUD, executions, credentials"
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "description": "GitHub repo, PRs, issues, actions"
+    },
+    "vercel": {
+      "command": "npx",
+      "args": ["-y", "vercel-mcp"],
+      "env": {
+        "VERCEL_TOKEN": "${VERCEL_TOKEN}"
+      },
+      "description": "Vercel deployments, domains, env vars"
+    },
+    "supabase": {
+      "command": "npx",
+      "args": ["-y", "supabase-mcp"],
+      "env": {
+        "SUPABASE_URL": "${NEXT_PUBLIC_SUPABASE_URL}",
+        "SUPABASE_SERVICE_ROLE_KEY": "${SUPABASE_SERVICE_ROLE_KEY}"
+      },
+      "description": "Supabase database, auth, storage, realtime"
+    },
+    "stripe": {
+      "command": "npx",
+      "args": ["-y", "stripe-mcp"],
+      "env": {
+        "STRIPE_SECRET_KEY": "${STRIPE_SECRET_KEY}"
+      },
+      "description": "Stripe products, subscriptions, webhooks"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-playwright"],
+      "description": "Browser automation for verification"
+    }
+  }
+}
