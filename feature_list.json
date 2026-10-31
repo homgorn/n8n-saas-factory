@@ -59,7 +59,7 @@
       "Add deployment configuration for Vercel + n8n (Docker/Railway)"
     ],
     "priority": 4,
-    "passes": false
+    "passes": true
   },
   {
     "id": "F005",
