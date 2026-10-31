@@ -48,7 +48,7 @@ Every claim carries a type, and only typed claims reach a page:
 | `inferred` | reasoned it, the reasoning is written out |
 | `unconfirmed` | where it was looked for, not found |
 
-`claims` is currently empty — nothing has been asserted yet. See [`brain/HANDOFF.md`](brain/HANDOFF.md).
+`claims` currently has 11 typed claims (`measured`, `reported`, `inferred`, `unconfirmed`). See [`brain/index/claims.json`](brain/index/claims.json) and [`brain/HANDOFF.md`](brain/HANDOFF.md) for the cold-start brief.
 
 ## Agents
 
@@ -78,10 +78,29 @@ python brain/scripts/forge.py ask "how do I paginate API results"
 
 Feature state lives in [`feature_list.json`](feature_list.json). Only `verifier` sets `passes: true`.
 
-## Status
+## Project
 
-See [`CHANGELOG.md`](CHANGELOG.md), [`BACKLOG.md`](BACKLOG.md), [`ERROR_LOG.md`](ERROR_LOG.md)
-and [`PROJECT_PLAN.md`](PROJECT_PLAN.md).
+- **Repo**: https://github.com/homgorn/n8n-saas-factory
+- **Pages site**: EN at `/docs/index.html`, RU at `/docs/ru/index.html`
+- **Homepage**: https://homgorn.github.io/n8n-saas-factory/
+
+## Author
+
+- **homgorn** — AI universe development · [github](https://github.com/homgorn)
+- Company: [Refertur](https://refertur.com)
+- Telegram: [@realhikaz](https://t.me/realhikaz)
+- Bio: AI universe development with @github
+
+## About the site
+
+Built as a test project for the SaaS factory pipeline (F010 documentation).
+Modern dark design, responsive, SEO-optimized (hreflang EN/RU, JSON-LD,
+OpenGraph, canonical URLs). Topic tags: `n8n · saas · workflow-automation · llm-wiki · openchamber · typescript · nextjs · ai-agents · verification-gates · sustainable-license`.
+
+## Licence
+
+This project code: MIT (see `LICENSE`).
+The n8n documentation under `n8n-docs-source/` is not ours and carries n8n's Sustainable Use License.
 
 ## Licence
 
