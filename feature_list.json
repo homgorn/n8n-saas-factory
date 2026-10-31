@@ -107,7 +107,7 @@
       "Test each agent with sample task"
     ],
     "priority": 7,
-    "passes": false
+    "passes": true
   },
   {
     "id": "F008",
@@ -151,6 +151,6 @@
       "Record video walkthrough of full pipeline"
     ],
     "priority": 10,
-    "passes": false
+    "passes": true
   }
 ]
