@@ -9,7 +9,7 @@ navigate it: 1348 pages across 11 domains, indexed at four levels.
 
 ## State
 
-- Built 2026-10-11 from `n8n-docs-source/docs` (11 domains).
+- Built 2026-10-31 from `n8n-docs-source/docs` (11 domains).
 - Verify with `python brain/scripts/verify.py` — 10 gates, prints `VERDICT`, exits non-zero on failure.
 - Vector search is **not** wired. Retrieval is SQLite FTS5 plus IDF-ranked chunk search.
 - 7 claims recorded in [`index/claims.json`](index/claims.json), re-applied on every rebuild.

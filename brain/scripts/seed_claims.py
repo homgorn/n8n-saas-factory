@@ -92,6 +92,55 @@ CLAIMS = [
         "doc_id": None,
     },
     {
+        "id": "oem-cost-reported",
+        "kind": "reported",
+        "text": (
+            "The n8n OEM / Embed agreement reportedly costs approximately $50,000 per year. "
+            "This figure comes from third-party sources (Activepieces blog, community forum), "
+            "not from n8n's own pricing page, and is unconfirmed."
+        ),
+        "source": "https://www.activepieces.com/blog/n8n-white-label-cost-and-what-you-can-rebrand-2026",
+        "observed_at": "2026-10-31",
+        "doc_id": None,
+    },
+    {
+        "id": "saas-architecture-decision",
+        "kind": "inferred",
+        "text": (
+            "Given the Sustainable Use License constraint, the product architecture is: the "
+            "customer operates their own n8n instance; our SaaS is a dashboard that calls the "
+            "n8n REST API with the customer's credentials. We never host, embed, or redistribute n8n."
+        ),
+        "source": "brain/decisions/ADR-002-saas-architecture-under-licence.md",
+        "observed_at": "2026-10-31",
+        "doc_id": None,
+    },
+    {
+        "id": "multi-tenant-patterns-exist",
+        "kind": "reported",
+        "text": (
+            "Multi-tenant n8n patterns are documented in the community: Siennabase (boilerplate "
+            "for running n8n across many client instances), dynamic credential management via the "
+            "n8n REST API (five.co, wednesday.is), and per-tenant workflow import via POST /api/v1/workflows."
+        ),
+        "source": "https://community.n8n.io/t/built-a-multi-tenant-boilerplate-for-running-n8n-across-many-client-instances-siennabase/301807",
+        "observed_at": "2026-10-31",
+        "doc_id": None,
+    },
+    {
+        "id": "n8n-api-capabilities",
+        "kind": "reported",
+        "text": (
+            "The n8n public REST API supports: workflow CRUD (GET/POST/PUT/DELETE /api/v1/workflows), "
+            "execution management (GET /api/v1/executions with filters), credential creation "
+            "(POST /api/v1/credentials), and webhook triggering. Authentication is via API key "
+            "created in Settings > n8n API."
+        ),
+        "source": "https://docs.n8n.io/api",
+        "observed_at": "2026-10-31",
+        "doc_id": None,
+    },
+    {
         "id": "vector-search-not-wired",
         "kind": "measured",
         "text": (
