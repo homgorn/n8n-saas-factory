@@ -12,7 +12,7 @@
       "Verify search works for test queries"
     ],
     "priority": 1,
-    "passes": false
+    "passes": true
   },
   {
     "id": "F002",
