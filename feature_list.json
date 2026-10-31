@@ -75,7 +75,7 @@
       "Output complete project to generated-saas/<name>/"
     ],
     "priority": 5,
-    "passes": false
+    "passes": true
   },
   {
     "id": "F006",
