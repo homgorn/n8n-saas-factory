@@ -42,7 +42,7 @@
       "Output analysis JSON schema"
     ],
     "priority": 3,
-    "passes": false
+    "passes": true
   },
   {
     "id": "F004",
