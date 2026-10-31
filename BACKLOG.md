@@ -21,13 +21,12 @@
 
 | ID | Title | Description | Priority | Estimate | Status |
 |----|-------|-------------|----------|----------|--------|
-| BACK-011 | Parse workflow JSON structure | Nodes, connections, credentials, settings | P0 | 4h | 📋 Ready |
-| BACK-012 | Identify trigger type & API spec | Webhook path, method, auth, cron schedule | P0 | 3h | 📋 Ready |
-| BACK-013 | Detect AI agents & configuration | Model, tools, system prompt, memory | P0 | 4h | 📋 Ready |
-| BACK-014 | Map data flow & DB requirements | Input → transform → output, estimate tables | P0 | 4h | 📋 Ready |
-| BACK-014 | Extract credentials & env vars | Required API keys, secrets, OAuth configs | P0 | 2h | 📋 Ready |
-| BACK-015 | Calculate complexity score | Weighted: nodes, branches, AI agents, external calls | P1 | 2h | 📋 Ready |
-| BACK-016 | Output analysis JSON schema | Standardized format for generator | P0 | 2h | 📋 Ready |
+| BACK-011 | Parse workflow JSON structure | Nodes, connections, credentials, settings | P0 | 4h | ✅ Done |
+| BACK-012 | Identify trigger type & API spec | Webhook path, method, auth, cron schedule | P0 | 3h | ✅ Done |
+| BACK-013 | Detect AI agents & configuration | Model, tools, system prompt, memory | P0 | 4h | ✅ Done |
+| BACK-014 | Map data flow & DB requirements | Input → transform → output, estimate tables | P0 | 4h | ✅ Done |
+| BACK-015 | Extract credentials & env vars | Required API keys, secrets, OAuth configs | P0 | 2h | ✅ Done |
+| BACK-016 | Calculate complexity score | Weighted: nodes, branches, AI agents, external calls | P1 | 2h | ✅ Done |
 
 ## Epic: SaaS Factory - Templates
 **Goal**: Reusable templates for different SaaS types
