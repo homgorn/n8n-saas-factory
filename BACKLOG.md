@@ -33,7 +33,7 @@
 
 | ID | Title | Description | Priority | Estimate | Status |
 |----|-------|-------------|----------|----------|--------|
-| BACK-017 | AI Tool Template (single workflow) | Next.js + n8n webhook + Supabase + Clerk + Stripe | P0 | 16h | 📋 Ready |
+| BACK-017 | AI Tool Template (single workflow) | Next.js + n8n webhook + Supabase + Clerk + Stripe | P0 | 16h | ✅ Done |
 | BACK-018 | Automation Platform Template | Multi-workflow dashboard, execution history, scheduling | P1 | 24h | 📋 Ready |
 | BACK-019 | Data Pipeline Template | ETL workflows, ClickHouse/Postgres, monitoring | P1 | 20h | 📋 Ready |
 | BACK-020 | Agent Marketplace Template | Multi-agent, vector DB, usage billing | P2 | 32h | 📋 Ready |
