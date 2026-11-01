@@ -136,7 +136,7 @@
       "Configure git hooks: pre-commit (lint, typecheck), pre-push (tests)"
     ],
     "priority": 9,
-    "passes": false
+    "passes": true
   },
   {
     "id": "F010",
