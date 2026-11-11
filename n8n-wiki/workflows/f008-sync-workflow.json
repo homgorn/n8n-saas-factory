@@ -1,0 +1,114 @@
+{
+  "name": "n8n-docs-sync-daily",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "hours", "hoursInterval": 24 }]
+        },
+        "triggerAtDayOfMonth": [1],
+        "triggerAtHour": 2,
+        "triggerAtMinute": 0
+      },
+      "id": "schedule-trigger",
+      "name": "Daily at 2AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-680, 100]
+    },
+    {
+      "parameters": {
+        "url": "https://docs.n8n.io/llms-full.txt",
+        "options": {
+          "timeout": 30000,
+          "headers": {
+            "Accept": "text/markdown"
+          }
+        }
+      },
+      "id": "fetch-llms-full",
+      "name": "Fetch llms-full.txt",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-460, 100],
+      "credentials": { "httpHeaderAuth": { "id": "", "name": "" } }
+    },
+    {
+      "parameters": {
+        "mode": "mergeByPosition",
+        "combineOperation": "append",
+        "numberInputs": 2,
+        "outputData": {
+          "mergedData": [
+            "={{ JSON.stringify({ source: 'llms-full', chunks: $json.chunks || 0, updated: $today }) }}"]
+        }
+      },
+      "id": "compare-delta",
+      "name": "Compare with previous",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [-240, 100]
+    },
+    {
+      "parameters": {
+        "jsCode": "const prev = require('fs').existsSync('./brain/index/last-fetch.json') ? JSON.parse(require('fs').readFileSync('./brain/index/last-fetch.json')) : { chunks: 0, updated: '' };\nconst current = { chunks: $json.chunks || 0, updated: $today.toISOString() };\nconst delta = {};\nif (current.chunks !== prev.chunks) delta.chunks = { before: prev.chunks, after: current.chunks };\nif (current.updated > prev.updated) delta.refreshed = true;\nrequire('fs').writeFileSync('./brain/index/last-fetch.json', JSON.stringify(current));\nreturn { delta, changed: delta.changed || delta.refreshed || false, current, previous: prev };"
+      },
+      "id": "code-delta-compute",
+      "name": "Compute delta",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-20, 100]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "weeks", "weeksInterval": 1 }]
+        },
+        "triggerAtDayOfMonth": [1],
+        "triggerAtHour": 3,
+        "triggerAtMinute": 0
+      },
+      "id": "schedule-refresh-targets",
+      "name": "Weekly refresh targets",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-20, 300]
+    },
+    {
+      "parameters": {
+        "content": "# Refresh targets extracted\n- `docs/index.md` sitemap — new pages trigger delta update\n- `docs/sitemap.md` full index — monthly rebuild\n- `n8n-io/n8n` release notes — new versions trigger claim refresh\n- `n8n-io/n8n-docs` source — daily ingestion via `forge.py`\n- `brain/index/claims.json` provenance — unconfirmed claims need legal review",
+        "height": 200,
+        "width": 600,
+        "displayInCanvas": true
+      },
+      "id": "sticky-refresh-note",
+      "name": "Refresh targets note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-680, -100]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Daily at 2AM": {
+      "main": [[{ "node": "Fetch llms-full.txt", "type": "main", "index": 0 }]]
+    },
+    "Fetch llms-full.txt": {
+      "main": [[{ "node": "Compare with previous", "type": "main", "index": 0 }]]
+    },
+    "Compare with previous": {
+      "main": [[{ "node": "Compute delta", "type": "main", "index": 0 }]]
+    },
+    "Compute delta": {
+      "main": [[]]
+    },
+    "Weekly refresh targets": {
+      "main": [[{ "node": "Compare with previous", "type": "main", "index": 1 }]]
+    }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "versionId": "f8-sync-workflow-v1",
+  "id": "wf_sync_n8n_docs",
+  "tags": [{ "createdAt": "2026-10-12", "updatedAt": "2026-10-12", "id": 1, "name": "sync" }]
+}
