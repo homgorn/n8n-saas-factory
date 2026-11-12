@@ -55,8 +55,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Known issues
 - GitHub Actions cannot run on this account: *"The job was not started because your account is
   locked due to a billing issue."* `.github/workflows/verify.yml` is committed and correct, but it
-  has never executed. `brain/scripts/verify.py` is the local equivalent and is what the 10/10 gate
-  result above comes from. Until billing is resolved, CI is unproven — do not assume it is green.
+  has never executed. `brain/scripts/verify.py` is the local equivalent and is what the current
+  11/11 gate result comes from. Until billing is resolved, CI is unproven — do not assume it is green.
 
 ### Security
 - Licence position documented in README, LICENSE and `.env.example`, and enforced by a CI gate.

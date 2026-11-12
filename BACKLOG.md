@@ -5,13 +5,13 @@
 
 | ID | Title | Description | Priority | Estimate | Status |
 |----|-------|-------------|----------|----------|--------|
-| BACK-001 | Ingest all n8n docs from GitHub clone | Parse 1,925 markdown files, extract metadata, chunk semantically | P0 | 8h | 📋 Ready |
+| BACK-001 | Ingest all n8n docs from GitHub clone | Parse 1,925 markdown files, extract metadata, chunk semantically | P0 | 8h | ✅ Done |
 | BACK-002 | Ingest llms-full.txt paginated content | Fetch all 14 parts, merge with GitHub source | P0 | 4h | 📋 Ready |
-| BACK-003 | Build vector database (Qdrant) | Store embeddings with full metadata payload | P0 | 6h | 📋 Ready |
-| BACK-004 | Implement hybrid search (vector + keyword) | Combine semantic search with exact matching | P0 | 4h | 📋 Ready |
-| BACK-005 | Build LLM query interface | Route queries, format responses with citations | P0 | 8h | 📋 Ready |
-| BACK-006 | Add query classification router | Classify: how-to, node-ref, troubleshooting, architecture | P1 | 4h | 📋 Ready |
-| BACK-007 | Implement daily sync from docs.n8n.io | Cron job to fetch updates, diff, update vector DB | P1 | 4h | 📋 Ready |
+| BACK-003 | Build vector database (Qdrant) | Store embeddings with full metadata payload | P0 | 6h | 🚫 Blocked (FTS5 + IDF chosen instead; needs OPENAI_API_KEY + Qdrant) |
+| BACK-004 | Implement hybrid search (vector + keyword) | Combine semantic search with exact matching | P0 | 4h | 🔧 Partial (FTS5 + IDF + heading weight verified; no vector side) |
+| BACK-005 | Build LLM query interface | Route queries, format responses with citations | P0 | 8h | ✅ Done |
+| BACK-006 | Add query classification router | Classify: how-to, node-ref, troubleshooting, architecture | P1 | 4h | ✅ Done |
+| BACK-007 | Implement daily sync from docs.n8n.io | Cron job to fetch updates, diff, update DB | P1 | 4h | 🚫 Blocked (workflow draft exists; needs running n8n) |
 | BACK-008 | Add code example extraction | Parse code blocks, link to nodes/workflows | P1 | 4h | 📋 Ready |
 | BACK-009 | Build evaluation dataset | 50 test queries with expected answers | P2 | 4h | 📋 Ready |
 | BACK-010 | Add feedback loop | User ratings → improve retrieval | P2 | 4h | 📋 Ready |
@@ -44,12 +44,12 @@
 
 | ID | Title | Description | Priority | Estimate | Status |
 |----|-------|-------------|----------|----------|--------|
-| BACK-022 | Map analysis to template params | Transform workflow analysis → template variables | P0 | 4h | 📋 Ready |
-| BACK-023 | Generate Next.js project structure | Copy template, replace placeholders | P0 | 4h | 📋 Ready |
-| BACK-024 | Generate TypeScript types from workflow I/O | Input/output schemas → TS interfaces | P0 | 4h | 📋 Ready |
-| BACK-025 | Create n8n workflow import script | Deploy workflow to target n8n instance | P0 | 3h | 📋 Ready |
-| BACK-026 | Generate .env.example & README | All required vars, deployment instructions | P0 | 2h | 📋 Ready |
-| BACK-027 | CLI entry point | `npx saas-factory generate <workflow.json> -o <dir>` | P0 | 3h | 📋 Ready |
+| BACK-022 | Map analysis to template params | Transform workflow analysis → template variables | P0 | 4h | ✅ Done |
+| BACK-023 | Generate Next.js project structure | Copy template, replace placeholders | P0 | 4h | ✅ Done |
+| BACK-024 | Generate TypeScript types from workflow I/O | Input/output schemas → TS interfaces | P0 | 4h | ✅ Done |
+| BACK-025 | Create n8n workflow import script | Deploy workflow to target n8n instance | P0 | 3h | 🔧 Partial (workflow import not implemented; generator emits the project and .env, not the deploy step) |
+| BACK-026 | Generate .env.example & README | All required vars, deployment instructions | P0 | 2h | ✅ Done |
+| BACK-027 | CLI entry point | `npx saas-factory generate <workflow.json> -o <dir>` | P0 | 3h | ✅ Done |
 
 ## Epic: OpenChamber Integration
 **Goal**: Orchestrate agents, sync with n8n/GitHub/Vercel
@@ -63,7 +63,7 @@
 | BACK-032 | Add Supabase MCP server | Database, auth, storage, realtime | P0 | 3h | 📋 Ready |
 | BACK-033 | Add Stripe MCP server | Products, subscriptions, webhooks | P1 | 3h | 📋 Ready |
 | BACK-034 | Register 7 agents | explorer, researcher, architect, implementer, verifier, reviewer, runner | P0 | 2h | ✅ Done |
-| BACK-035 | Build sync workflows in n8n | Docs sync, workflow→code, deploy pipeline | P0 | 8h | 📋 Ready |
+| BACK-035 | Build sync workflows in n8n | Docs sync, workflow→code, deploy pipeline | P0 | 8h | 🚫 Blocked (n8n-docs-sync-daily.json exists; not deployed) |
 
 ## Epic: Verification & Quality Gates
 **Goal**: Automated verification before marking features done
@@ -73,7 +73,7 @@
 | BACK-036 | init.sh environment verification | Check tools, ports, env, start services | P0 | 3h | ✅ Done |
 | BACK-037 | Verifier agent test patterns | Auth, webhook, dashboard, billing, landing | P0 | 4h | ✅ Done |
 | BACK-038 | Thermo-nuclear review integration | Security, correctness, maintainability | P0 | 2h | ✅ Done |
-| BACK-039 | Playwright smoke tests | Critical user journeys | P1 | 4h | 📋 Ready |
+| BACK-039 | Playwright smoke tests | Critical user journeys | P1 | 4h | 🔧 Partial (tests/smoke.spec.ts exists; blocked by deployed preview) |
 | BACK-040 | Git hooks (pre-commit, pre-push) | Lint, typecheck, test | P1 | 2h | 📋 Ready |
 
 ## Epic: Documentation & DX
@@ -81,8 +81,8 @@
 
 | ID | Title | Description | Priority | Estimate | Status |
 |----|-------|-------------|----------|----------|--------|
-| BACK-041 | CLAUDE.md project overview | Key commands, architecture, workflows | P0 | 2h | 📋 Ready |
-| BACK-042 | CONTRIBUTING.md agent workflow | How to use agents, PR process | P0 | 2h | 📋 Ready |
+| BACK-041 | CLAUDE.md project overview | Key commands, architecture, workflows | P0 | 2h | ✅ Done |
+| BACK-042 | CONTRIBUTING.md agent workflow | How to use agents, PR process | P0 | 2h | ✅ Done |
 | BACK-043 | n8n wiki query API docs | REST endpoints, examples | P1 | 2h | 📋 Ready |
 | BACK-044 | SaaS factory CLI docs | Commands, options, examples | P1 | 2h | 📋 Ready |
 | BACK-045 | Troubleshooting guide | Common sync issues, fixes | P1 | 3h | 📋 Ready |

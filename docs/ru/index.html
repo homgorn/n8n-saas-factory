@@ -37,7 +37,7 @@
     <section class="hero" id="hero" aria-label="Главная">
       <div class="hero-content">
         <div class="hero-badge animate-in" aria-label="Статус проекта">
-          <span>Публичный · MIT · 8 из 10 функций готово</span>
+          <span>Публичный · MIT · 9 из 10 функций готово · 11/11 гейтов</span>
         </div>
         <h1 class="animate-in delay-1">
           Преврати воркфлоу n8n в <span class="gradient">готовый SaaS</span>
@@ -99,9 +99,9 @@
     <section class="section" id="roadmap" aria-label="План">
       <div class="section-header"><h2>Что готово и что остаётся</h2><p>Каждая функция проверяется независимо от памяти агента.</p></div>
       <div class="timeline">
-        <div class="timeline-item animate-in"><h4>Готово (8 из 10)</h4><p>F001 · F002 · F003 · F004 · F005 · F006 · F007 · F010</p></div>
-        <div class="timeline-item animate-in delay-1"><h4>Осталось (2)</h4><p>F008 — синхронизация (нужен запущенный n8n) · F009 — Playwright + git hooks</p></div>
-        <div class="timeline-item animate-in delay-2"><h4>Следующий гейт</h4><p><b>F009 верификация</b>: сгенерировать для `Agents vs chains`, развернуть preview, прогнать Playwright. Только после `VERDICT: PASS` — `passes: true`.</p></div>
+        <div class="timeline-item animate-in"><h4>Готово (9 из 10)</h4><p>F001 · F002 · F003 · F004 · F005 · F006 · F007 · F009 (Playwright smoke tests) · F010</p></div>
+        <div class="timeline-item animate-in delay-1"><h4>Осталось (1)</h4><p>F008 — синхронизация (нужен запущенный n8n для webhook/cron-верификации)</p></div>
+        <div class="timeline-item animate-in delay-2"><h4>Следующий гейт</h4><p><b>F008 верификация</b>: запустить n8n локально, импортировать <code>n8n-wiki/workflows/f008-sync-workflow.json</code>, прогнать webhook и cron. Только после этого ставить <code>passes: true</code>.</p></div>
       </div>
     </section>
 
