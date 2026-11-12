@@ -415,6 +415,25 @@ def gate_licence():
     return "ADR-001 present · README states it · .env.example points at it · vendored clone untracked"
 
 
+@gate("MCP servers and agent definitions are wired", order=90, needs_build=True)
+def gate_integrations():
+    """F006 + F007: the config must reference packages that exist, and every agent file
+    must parse and appear in the routing table."""
+    import subprocess
+
+    script = ROOT / "brain" / "scripts" / "verify_integrations.py"
+    proc = subprocess.run(
+        [sys.executable, str(script)],
+        capture_output=True, text=True, timeout=900,
+    )
+    if proc.returncode != 0:
+        tail = "\n".join((proc.stdout or proc.stderr).strip().splitlines()[-12:])
+        raise AssertionError(f"integration checks failed:\n{tail}")
+
+    passed = sum(1 for line in proc.stdout.splitlines() if line.strip().startswith("[PASS]"))
+    return f"{passed} integration checks passed (MCP packages + agent definitions)"
+
+
 @gate("feature list is honest", order=100)
 def gate_features():
     import json
