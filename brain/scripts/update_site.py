@@ -211,7 +211,7 @@ def apply_narrative(html: str, f: dict, features: list[dict], lang: str) -> str:
             ],
         )
         html = re.sub(
-            r"(Corpus\n\s*)[\d,\.]+ docs · [\d\.km]+ words · [\d,]+ entities · [\d,]+ triples · \d+ workflows\.",
+            r"(<h3>Corpus</h3>\s*<p>)[\d,\.]+ docs . [\d\.km]+ words . [\d,]+ entities . [\d,]+ triples . \d+ workflows\.",
             r"\g<1>" + f"{f['PAGES']} docs · {f['WORDS']} words · {f['ENTITIES']} entities · "
                        f"{f['TRIPLES']} triples · {f['WORKFLOWS']} workflows.",
             html,
