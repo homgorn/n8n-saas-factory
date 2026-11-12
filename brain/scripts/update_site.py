@@ -18,7 +18,9 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shutil
 import sqlite3
+import subprocess
 import sys
 from pathlib import Path
 
@@ -265,9 +267,33 @@ def next_gates_html(features: list[dict], lang: str) -> list[str]:
     return lines
 
 
+def update_github_description(f: dict) -> str:
+    """Keep the repo description equal to the measured truth, like the site counters."""
+    description = (
+        f"Turn n8n workflows into deployable SaaS. Internal LLM wiki "
+        f"({f['PAGES_RAW']} docs, {f['CHUNKS_RAW']} chunks, {f['WORDS_RAW']} words), "
+        f"workflow analyzer, SaaS generator, agent orchestration, {f['GATES']}-gate verification. "
+        f"MIT. Customer-runs-own-n8n (ADR-001, ADR-002)."
+    )
+    gh = shutil.which("gh") or shutil.which("gh.exe")
+    if not gh:
+        return "gh CLI not found — repo description left alone"
+    try:
+        proc = subprocess.run(
+            [gh, "repo", "edit", "homgorn/n8n-saas-factory", "--description", description],
+            capture_output=True, text=True, timeout=120,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return f"gh call failed: {type(exc).__name__}"
+    if proc.returncode != 0:
+        return f"gh call failed: {(proc.stderr or '').strip()[:160]}"
+    return "repo description updated"
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true", help="report drift, do not write")
+    ap.add_argument("--skip-github", action="store_true", help="do not touch the repo description")
     args = ap.parse_args()
 
     f = facts()
@@ -296,6 +322,9 @@ def main() -> None:
         sys.exit(1)
     if not args.check and drift:
         print("\nlanding counters rewritten from measured facts")
+
+    if not args.check and not args.skip_github:
+        print(f"  github: {update_github_description(f)}")
 
 
 if __name__ == "__main__":
