@@ -33,6 +33,9 @@ python brain/scripts/generator.py --all -o generated-saas  # generate all SaaS p
 python brain/scripts/verify.py              # 11 gates, prints VERDICT, exits non-zero on failure
 python brain/scripts/verify.py --quick      # skip rebuild, 4 gates
 
+# Site
+python generate_site.py                     # regenerate the 6 EN+RU site pages from brain/ facts
+
 # Environment
 ./init.sh                                   # start dev environment
 ./init.sh --check-only                      # verify tools/ports only
