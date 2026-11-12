@@ -434,6 +434,32 @@ def gate_integrations():
     return f"{passed} integration checks passed (MCP packages + agent definitions)"
 
 
+@gate("backlog statuses match the measured work", order=97)
+def gate_backlog():
+    """BACKLOG.md is a claim about what is done. It must match the measured work.
+
+    The backlog said "Ready" for items that had been finished and verified for weeks, and
+    for items that were blocked by an external environment. A stale backlog is a plan
+    nobody can trust.
+    """
+    import subprocess
+
+    script = ROOT / "brain" / "scripts" / "update_backlog.py"
+    proc = subprocess.run(
+        [sys.executable, str(script)],
+        capture_output=True, text=True, timeout=120,
+    )
+    if proc.returncode != 0:
+        raise AssertionError(f"backlog sync failed: {proc.stderr[-300:]}")
+
+    backlog = (ROOT / "BACKLOG.md").read_text(encoding="utf-8")
+    done = len(re.findall(r"\|\s*✅\s*Done", backlog))
+    blocked = len(re.findall(r"\|\s*🚫\s*Blocked", backlog))
+    partial = len(re.findall(r"\|\s*🔧\s*Partial", backlog))
+    ready = len(re.findall(r"\|\s*📋\s*Ready", backlog))
+    return f"{done} done · {partial} partial · {blocked} blocked · {ready} ready"
+
+
 @gate("site counters match the measured truth", order=95)
 def gate_site_counters():
     """The landing page states the corpus size, the gate count and the verified feature count.
