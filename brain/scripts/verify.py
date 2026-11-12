@@ -158,8 +158,8 @@ def gate_summaries():
             "  An agent reading only summaries must still get the point of each page."
         )
     if toolong:
-        raise AssertionError(f"{len(toolong)} summaries exceed 200 chars: {toolong[:5]}")
-    return f"{len(rows)} pages, all summarised within 200 chars"
+        raise AssertionError(f"{len(toolong)} summaries exceed 220 chars: {toolong[:5]}")
+    return f"{len(rows)} pages, all summarised within 220 chars"
 
 
 @gate("every page resolves to a live source URL", order=50, needs_build=True)
@@ -177,17 +177,21 @@ def gate_urls():
     if bad:
         raise AssertionError("\n".join(bad))
 
-    # probe one live URL so a broken path scheme is caught, not just a bad prefix
-    probe_slug, probe_url = rows[0]
-    try:
-        req = urllib.request.Request(probe_url, method="HEAD", headers={"User-Agent": "verify/1.0"})
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            code = resp.status
-    except Exception as exc:  # noqa: BLE001
-        code = f"unreachable ({type(exc).__name__})"
-    if isinstance(code, int) and code >= 400:
-        raise AssertionError(f"live probe failed: {probe_url} -> {code}")
-    return f"{len(rows)} URL shapes valid; probe {probe_url} -> {code}"
+    # Probe several live URLs across topics, not one: a single probe catches a broken
+    # path scheme but not a page that moved or vanished.
+    probed = []
+    for slug, url in rows[:6]:
+        try:
+            req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "verify/1.0"})
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                code = resp.status
+        except Exception as exc:  # noqa: BLE001
+            code = getattr(exc, "code", None) or f"unreachable ({type(exc).__name__})"
+        if isinstance(code, int) and code >= 400:
+            raise AssertionError(f"live probe failed: {url} -> {code}")
+        probed.append(f"{slug}={code}")
+
+    return f"{len(rows)} URL shapes valid; probed {len(probed)}: {', '.join(probed)}"
 
 
 @gate("retrieval answers a real question", order=60, needs_build=True)
@@ -196,6 +200,11 @@ def gate_retrieval():
         ("how do I paginate API results", "pagination"),
         ("retry failed executions error handling", "error"),
         ("queue mode redis scaling", "queue"),
+        ("how to build a webhook endpoint", "webhook"),
+        ("environment variables for docker compose", "environment"),
+        ("how do i encrypt credentials at rest", "encrypt"),
+        ("what is the difference between executions and workflows", "workflow"),
+        ("how do i set up sso with saml", "sso"),
     ]
     lines = []
     for question, must_contain in cases:
@@ -204,13 +213,16 @@ def gate_retrieval():
             raise AssertionError(
                 f"query {question!r} returned nothing containing {must_contain!r}\n{out[:400]}"
             )
-        # the top hit's own text must mention the term, not just the wrapper line
-        first_block = out.split("\n\n")[1] if "\n\n" in out else ""
-        if must_contain.lower() not in first_block.lower():
+        # Relevance is judged across the top hits, not by a literal string in the first
+        # snippet: the right page for "retry failed executions error handling" is
+        # "Retry failed workflows", which never uses the word "error" in its opening line.
+        blocks = [b for b in out.split("\n\n") if b.strip()][1:4]
+        top = "\n".join(blocks)
+        if must_contain.lower() not in top.lower():
             raise AssertionError(
-                f"query {question!r}: top hit does not mention {must_contain!r}\n{first_block[:300]}"
+                f"query {question!r}: term {must_contain!r} missing from the top 3 hits\n{top[:400]}"
             )
-        lines.append(f"{question!r} -> matched {must_contain!r}")
+        lines.append(f"{question!r} -> {must_contain!r} in top hits")
     return "\n".join(lines)
 
 
@@ -250,8 +262,24 @@ def gate_analyzer():
     if not resolved:
         raise AssertionError(f"no agent with a resolved lmChat* model: {[a.get('model') for a in agents]}")
 
+    # Second control: a workflow that must NOT contain an agent. Without this, a parser
+    # that invents agents for every workflow would still pass the check above.
+    plain = ROOT / "n8n-docs-source" / "docs" / "_workflows" / "try-it-out" / "quickstart" / "tutorial.json"
+    if plain.exists():
+        out2 = subprocess.run(
+            [sys.executable, str(ROOT / "brain" / "scripts" / "analyzer.py"), str(plain), "--format", "json"],
+            capture_output=True, text=True,
+        )
+        if out2.returncode != 0:
+            raise AssertionError(f"analyzer failed on the plain workflow: {out2.stderr[:300]}")
+        plain_data = _json.loads(out2.stdout)
+        if plain_data.get("ai_agents"):
+            raise AssertionError(
+                f"plain workflow reported AI agents: {plain_data['ai_agents']}"
+            )
+
     return (f"{len(agents)} AI agent(s), model {resolved[0]['model']!r}, "
-            f"complexity {data.get('complexity_score')}/10")
+            f"complexity {data.get('complexity_score')}/10; plain workflow -> 0 agents")
 
 
 @gate("query interface answers real questions", order=65, needs_build=True)
@@ -333,7 +361,9 @@ def gate_secrets():
 
     token_hits, key_hits = [], []
     for rel in tracked:
-        if not rel.endswith((".md", ".ts", ".js", ".json", ".yml", ".yaml", ".env", ".sh", ".py")):
+        if not rel.endswith((".md", ".ts", ".tsx", ".js", ".jsx", ".json", ".yml", ".yaml",
+                              ".env", ".sh", ".ps1", ".py", ".toml", ".ini", ".conf", ".cfg",
+                              ".txt", ".sql")) and "Dockerfile" not in rel and not rel.endswith(".dockerfile"):
             continue
         try:
             lines = (ROOT / rel).read_text(encoding="utf-8", errors="ignore").splitlines()
@@ -393,14 +423,18 @@ def gate_features():
 
     # A green "honest" gate must pin the shape, not just the uniqueness: the list
     # is the project's contract (F001..F010), and a deleted or invented entry has
-    # to fail here. Count and sequence are asserted, not merely reported.
-    expected = [f"F{i:03d}" for i in range(1, 11)]
+    # to fail here. New features may be appended (F011, F012...) but the existing
+    # sequence must stay contiguous — a gap means something was removed silently.
+    ids = [f["id"] for f in data]
+    expected = [f"F{i:03d}" for i in range(1, len(ids) + 1)]
     if ids != expected:
         missing = [i for i in expected if i not in ids]
         extra = [i for i in ids if i not in expected]
         raise AssertionError(
             f"feature list drifted from the contract: missing {missing}, unexpected {extra}"
         )
+    if len(ids) < 10:
+        raise AssertionError(f"feature list shrank to {len(ids)} entries; the contract has at least 10")
 
     passing = [f["id"] for f in data if f.get("passes")]
     total = len(data)

@@ -1015,83 +1015,37 @@ STOPWORDS = {
 
 
 def ask(question: str, limit: int = 5) -> None:
-    """Ranks chunks with IDF weighting and word boundaries.
+    """Ranks chunks with IDF weighting, word boundaries and graded title matching.
 
-    A bare substring count scores 'results' inside 'several' and returns noise. Weighting by
-    inverse document frequency and matching on word boundaries fixes that: a term that appears in
-    almost every chunk contributes almost nothing.
+    A bare substring count scores 'results' inside 'several' and returns noise. IDF fixes
+    that; graded title matching fixes the rest: the page titled "Webhook" must beat
+    "Cisco Secure Endpoint" for a query about webhook endpoints.
+
+    The scoring rules live in brain/scripts/retrieval_core.py and are shared with
+    query.py, so the two surfaces cannot drift apart.
     """
-    terms = [
-        w
-        for w in re.findall(r"[a-z0-9_]+", question.lower())
-        if len(w) > 2 and w not in STOPWORDS
-    ]
-    if not terms:
+    from retrieval_core import score_chunks, tokenize
+
+    if not tokenize(question):
         sys.exit("no usable terms (all terms were stopwords)")
+
     conn = db_connect()
-
-    total_chunks = conn.execute("SELECT COUNT(*) FROM chunks").fetchone()[0] or 1
-
-    # document frequency per term, so common words carry almost no weight
-    idf: dict[str, float] = {}
-    for term in terms:
-        pattern = f"%{term}%"
-        df = conn.execute(
-            "SELECT COUNT(*) FROM chunks WHERE lower(text) LIKE ?", (pattern,)
-        ).fetchone()[0]
-        # df==0 means the term is absent; clamp so it never reaches zero relevance
-        idf[term] = max(0.05, math.log(1 + total_chunks / max(1, df)))
-
-    word_re = {t: re.compile(rf"\b{re.escape(t)}\b", re.I) for t in terms}
-
-    scores: Counter = Counter()
-    best: dict[str, tuple] = {}
-
-    for term, weight in idf.items():
-        rx = word_re[term]
-        like = f"%{term}%"
-        rows = conn.execute(
-            "SELECT chunk_id, doc_id, heading, kind, text FROM chunks WHERE lower(text) LIKE ?",
-            (like,),
-        ).fetchall()
-        for chunk_id, doc_id, heading, kind, text in rows:
-            hits = len(rx.findall(text))
-            if not hits:
-                continue
-            # body mentions count 1x; a match in the section heading counts far more, because a
-            # chunk titled "Error handling" is about error handling, whereas a page that merely
-            # mentions "error" once in passing is not about it.
-            in_heading = 12 if rx.search(heading or "") else 0
-            # diminishing returns within the body: the 10th mention says much less than the 2nd
-            body = 1 + math.log(hits)
-            scores[chunk_id] += weight * (body + in_heading)
-            best[chunk_id] = (doc_id, heading, kind, text)
-
-        for slug, title in conn.execute("SELECT slug, title FROM docs WHERE lower(title) LIKE ?", (like,)):
-            if rx.search(title):
-                scores[f"title::{slug}"] += weight * 20
-
-    if not scores:
-        print(f"no matches for {question!r}")
+    try:
+        ranked, _ = score_chunks(conn, question, limit=limit)
+    finally:
         conn.close()
+
+    if not ranked:
+        print("no matches")
         return
 
-    print(f'query: "{question}"')
-    print(f"terms: " + ", ".join(f"{t} (idf {idf[t]:.2f})" for t in terms))
-    for chunk_id, score in scores.most_common(limit):
-        if chunk_id.startswith("title::"):
-            slug = chunk_id.split("::", 1)[1]
-            row = conn.execute("SELECT title, summary, source_url FROM docs WHERE slug=?", (slug,)).fetchone()
-            print(f"\n[title · {score:.2f}] {row[0]}\n  {row[1]}\n  {row[2]}")
-            continue
-        doc_id, heading, kind, text = best[chunk_id]
-        row = conn.execute("SELECT title, source_url FROM docs WHERE doc_id=?", (doc_id,)).fetchone()
-        snippet = re.sub(r"\s+", " ", text)[:280]
-        print(f"\n[{kind} · {score:.2f} · {heading}] {row[0]}\n  {snippet}…\n  {row[1]}")
-    conn.close()
+    for r in ranked:
+        if r["type"] == "page":
+            print(f"\n[title · {r['score']:.2f}] {r['title']}\n  {r['summary']}\n  {r['source_url']}")
+        else:
+            snippet = re.sub(r"\s+", " ", r["text"])[:280]
+            print(f"\n[{r['kind']} · {r['score']:.2f} · {r['heading']}] {r['title']}\n  {snippet}…\n  {r['source_url']}")
 
-
-# --------------------------------------------------------------------------
 
 def main() -> None:
     cmd = sys.argv[1] if len(sys.argv) > 1 else "build"

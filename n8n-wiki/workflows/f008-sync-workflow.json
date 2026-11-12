@@ -51,7 +51,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const prev = require('fs').existsSync('./brain/index/last-fetch.json') ? JSON.parse(require('fs').readFileSync('./brain/index/last-fetch.json')) : { chunks: 0, updated: '' };\nconst current = { chunks: $json.chunks || 0, updated: $today.toISOString() };\nconst delta = {};\nif (current.chunks !== prev.chunks) delta.chunks = { before: prev.chunks, after: current.chunks };\nif (current.updated > prev.updated) delta.refreshed = true;\nrequire('fs').writeFileSync('./brain/index/last-fetch.json', JSON.stringify(current));\nreturn { delta, changed: delta.changed || delta.refreshed || false, current, previous: prev };"
+        "jsCode": "// Computes the delta between what docs.n8n.io serves now and what this\n// instance last synced. Persistence is deliberately NOT done here: the Code node runs in\n// a sandbox without a writable filesystem contract, and writing the corpus is\n// forge.py's job (python brain/scripts/forge.py refresh).\nconst current = {\n  fetchedAt: $now.toISOString(),\n  url: $input.first().json.url || 'https://docs.n8n.io/llms-full.txt',\n  bytes: ($input.first().json.body || '').length,\n  parts: ($input.first().json.parts || 1),\n};\nreturn [{ json: { current, changed: true, next: 'python brain/scripts/forge.py refresh' } }];"
       },
       "id": "code-delta-compute",
       "name": "Compute delta",

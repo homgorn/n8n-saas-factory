@@ -19,26 +19,20 @@ from __future__ import annotations
 
 import argparse
 import json
-import math
 import re
 import sqlite3
 import sys
-from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
+
+# Shared retrieval implementation: forge.py and query.py must not drift apart.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from retrieval_core import score_chunks, tokenize, STOPWORDS  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 DB = ROOT / "brain" / "data" / "wiki.db"
 FORGE = ROOT / "brain" / "scripts" / "forge.py"
-STOPWORDS = {
-    "the", "and", "for", "with", "that", "this", "these", "those", "how", "what",
-    "when", "where", "which", "who", "why", "does", "do", "did", "can", "could",
-    "should", "would", "will", "you", "your", "are", "was", "were", "been", "being",
-    "have", "has", "had", "into", "from", "about", "there", "their", "them", "then",
-    "than", "also", "any", "all", "use", "using", "used", "get", "gets", "make",
-    "need", "want", "like", "just", "only", "more", "most", "some", "such",
-    "over", "under", "out", "off", "per", "via", "n8n", "node", "nodes",
-}
+
 
 # ---------------------------------------------------------------------------
 # Query classification
@@ -92,82 +86,12 @@ def _conn() -> sqlite3.Connection:
 
 
 def search_chunks(question: str, limit: int = 8) -> list[dict]:
-    """IDF-ranked chunk search with heading boost (same as forge.py ask)."""
-    terms = [w for w in re.findall(r"[a-z0-9_]+", question.lower())
-             if len(w) > 2 and w not in STOPWORDS]
-    if not terms:
-        return []
-
+    """IDF-ranked chunk search with graded title matching (shared with forge.py)."""
     conn = _conn()
-    total = conn.execute("SELECT COUNT(*) FROM chunks").fetchone()[0] or 1
-    idf = {}
-    for t in terms:
-        df = conn.execute("SELECT COUNT(*) FROM chunks WHERE lower(text) LIKE ?",
-                          (f"%{t}%",)).fetchone()[0]
-        idf[t] = max(0.05, math.log(1 + total / max(1, df)))
-
-    word_re = {t: re.compile(rf"\b{re.escape(t)}\b", re.I) for t in terms}
-    scores: Counter = Counter()
-    best: dict[str, dict] = {}
-
-    for term, weight in idf.items():
-        rx = word_re[term]
-        rows = conn.execute(
-            "SELECT chunk_id, doc_id, heading, kind, text FROM chunks WHERE lower(text) LIKE ?",
-            (f"%{term}%",),
-        ).fetchall()
-        for r in rows:
-            hits = len(rx.findall(r["text"]))
-            if not hits:
-                continue
-            in_heading = 12 if rx.search(r["heading"] or "") else 0
-            body = 1 + math.log(hits)
-            scores[r["chunk_id"]] += weight * (body + in_heading)
-            if r["chunk_id"] not in best:
-                best[r["chunk_id"]] = dict(r)
-
-        # title boost
-        for slug, title in conn.execute(
-                "SELECT slug, title FROM docs WHERE lower(title) LIKE ?", (f"%{term}%",)):
-            if rx.search(title):
-                scores[f"title::{slug}"] += weight * 20
-
-    results = []
-    for cid, score in scores.most_common(limit):
-        if cid.startswith("title::"):
-            slug = cid.split("::", 1)[1]
-            row = conn.execute(
-                "SELECT slug, title, summary, source_url, difficulty FROM docs WHERE slug=?",
-                (slug,)).fetchone()
-            if row:
-                results.append({
-                    "type": "page",
-                    "slug": row["slug"],
-                    "title": row["title"],
-                    "summary": row["summary"],
-                    "source_url": row["source_url"],
-                    "difficulty": row["difficulty"],
-                    "score": round(score, 2),
-                })
-        else:
-            b = best[cid]
-            row = conn.execute(
-                "SELECT slug, title, source_url, difficulty FROM docs WHERE doc_id=?",
-                (b["doc_id"],)).fetchone()
-            if row:
-                results.append({
-                    "type": "chunk",
-                    "chunk_id": b["chunk_id"],
-                    "title": row["title"],
-                    "slug": row["slug"],
-                    "heading": b["heading"],
-                    "kind": b["kind"],
-                    "text": b["text"],
-                    "source_url": row["source_url"],
-                    "difficulty": row["difficulty"],
-                    "score": round(score, 2),
-                })
-    conn.close()
+    try:
+        results, _ = score_chunks(conn, question, limit=limit)
+    finally:
+        conn.close()
     return results
 
 
@@ -194,8 +118,7 @@ def get_code_examples(slug: str, limit: int = 5) -> list[dict]:
 
 def get_related_workflows(question: str, limit: int = 3) -> list[dict]:
     """Find workflow JSON files relevant to the question."""
-    terms = [w for w in re.findall(r"[a-z0-9_]+", question.lower())
-             if len(w) > 2 and w not in STOPWORDS]
+    terms = tokenize(question)
     conn = _conn()
     try:
         rows = conn.execute(
@@ -345,6 +268,12 @@ def format_text(response: dict) -> str:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
+    # `ask` is an optional prefix: `query.py ask "<question>"` and
+    # `query.py "<question>"` are equivalent. It has to be removed before argparse,
+    # which rejects extra positionals.
+    if len(sys.argv) > 1 and sys.argv[1].lower() == "ask":
+        sys.argv = [sys.argv[0], *sys.argv[2:]]
+
     ap = argparse.ArgumentParser(description="Query the n8n knowledge base")
     ap.add_argument("question", nargs="?", help="natural language question")
     ap.add_argument("--format", choices=["text", "json"], default="text")
