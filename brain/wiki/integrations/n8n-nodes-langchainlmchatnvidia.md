@@ -83,6 +83,6 @@ Use this option to set the probability the completion should use. Use a lower va
 
 ## Related resources
 
-Refer to [NVIDIA's build catalogue](https://build.nvidia.com/models) for the list of Nemotron models and to the [NIM documentation](https://docs.nvidia.com/nim/) for guidance on self-hosting. As the NVIDIA API is OpenAI-spec compatible, you can refer to [LangChain's OpenAI documentation](https://js.langchain.com/docs/integrations/chat/openai/) for more information about the underlying client.
+Refer to [NVIDIA's build catalogue](https://build.nvidia.com/models) for the list of Nemotron models and to the [NIM documentation](https://docs.nvidia.com/nim/) for guidance on self-hosting. As the NVIDIA API is OpenAI-spec compatible, you can refer to [LangChain's OpenAI documentation](https://docs.langchain.com/oss/javascript/integrations/chat/openai) for more information about the underlying client.
 
 [^1]: AI agents are artificial intelligence systems capable of responding to requests, making decisions, and performing real-world tasks for users. They use large language models (LLMs) to interpret user input and make decisions about how to best process requests using the information and resources they have available.

@@ -45,6 +45,8 @@ The following video demonstrates the steps of sharing workflows on the community
 
 ## Contribute a workflow template
 
+Share a workflow that solves a practical problem in the [n8n template library](https://n8n.io/workflows/). See [Create workflow templates](create-templates/README.md) for quality requirements, testing, and submission steps.
+
 ## Build a node
 
 Create an integration for a third-party service. Check out [the node creation docs](https://app.gitbook.com/s/r7wKI4I1BgdBCuq5Cvcx/create-nodes/overview) for guidance on how to create and publish a community node.

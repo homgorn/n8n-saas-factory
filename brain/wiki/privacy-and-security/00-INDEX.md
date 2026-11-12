@@ -4,11 +4,14 @@
 
 License terms, telemetry, data handling and the Sustainable Use License.
 
-**Pages**: 4 · **Words**: 2,023
+**Pages**: 7 · **Words**: 4,460
 
 | Page | Summary | Difficulty | Chunks |
 | --- | --- | --- | --- |
 | [Incident response](incident-response.md) | n8n implements incident response best practices for identifying, documenting, resolving and communicating inci… | intermediate | 1 |
+| [Incident response](incident-response-published.md) | n8n implements incident response best practices for identifying, documenting, resolving and communicating inci… | intermediate | 1 |
+| [Privacy](privacy.md) | This page describes n8n's data privacy practices.… | intermediate | 20 |
 | [Readme](readme.md) | This page describes n8n's data privacy practices.… | intermediate | 18 |
 | [Summary](summary.md) | Summary — reference page with limited prose.… | intermediate | 1 |
 | [What you can do](what-you-can-do.md) | It's also your responsibility as a customer to ensure you are securing your code and data.… | intermediate | 3 |
+| [What you can do](what-you-can-do-published.md) | What you can do to improve privacy and data security when using n8n.… | intermediate | 4 |

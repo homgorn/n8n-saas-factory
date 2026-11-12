@@ -202,8 +202,10 @@ docker run --name n8n-queue -p 5679:5678 -e "EXECUTIONS_MODE=queue" n8nio/n8n we
 To configure your webhook URL, execute the following command on the machine running the main n8n instance:
 
 ```bash
-export WEBHOOK_URL=https://your-webhook-url.com
+export N8N_WEBHOOK_URL=https://your-webhook-url.com
 ```
+
+`N8N_WEBHOOK_URL` is available from n8n 2.30.0; on earlier versions, use `WEBHOOK_URL`.
 
 You can also set this value in the configuration file.
 
@@ -260,7 +262,7 @@ n8n only offloads the response body. It measures the rest of the response, its h
 
 ### Turn on offloading during an upgrade
 
-Only a main instance running n8n 2.34.0 or later reads an offloaded body. An older one returns the storage reference to the client instead of the response body. Upgrade every main and webhook instance first, then set `N8N_WEBHOOK_RESPONSE_RELAY_OFFLOAD_ENABLED` on your workers. A worker with the variable unset sends every response inline and fails one above the limit.
+Only main and webhook instances running n8n 2.34.0 or later fully handle an offloaded body. An older instance can still stream the body to the client, but it sends status code `200` instead of the response's own status code. It also doesn't delete the stored body. Upgrade every main and webhook instance first, then set `N8N_WEBHOOK_RESPONSE_RELAY_OFFLOAD_ENABLED` on your workers. A worker with the variable unset sends every response inline and fails one above the limit.
 
 ### Troubleshoot large webhook responses
 
@@ -324,6 +326,8 @@ If needed, you can adjust the leader key options:
 | ------ | ------ | ----- |
 | `multiMainSetup.ttl:10` | `N8N_MULTI_MAIN_SETUP_KEY_TTL=10` | Time to live (in seconds) for leader key in multi-main setup. |
 | `multiMainSetup.interval:3` | `N8N_MULTI_MAIN_SETUP_CHECK_INTERVAL=3` | Interval (in seconds) for leader check in multi-main setup. |
+
+For a reference multi-main deployment on AWS, including worker autoscaling and Redis high availability, see [Scale and run at high availability on AWS](../../install-options/use-a-cloud-provider/deploy-to-aws-with-terraform/scale-and-run-at-high-availability.md).
 
 ## Related resources
 

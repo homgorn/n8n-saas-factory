@@ -87,6 +87,6 @@ Use this option to set the probability the completion should use. Use a lower va
 
 ## Related resources
 
-As DeepSeek is API-compatible with OpenAI, you can refer to [LangChains's OpenAI documentation](https://js.langchain.com/docs/integrations/chat/openai/) for more information about the service.
+As DeepSeek is API-compatible with OpenAI, you can refer to [LangChain's OpenAI documentation](https://docs.langchain.com/oss/javascript/integrations/chat/openai) for more information about the service.
 
 [^1]: AI agents are artificial intelligence systems capable of responding to requests, making decisions, and performing real-world tasks for users. They use large language models (LLMs) to interpret user input and make decisions about how to best process requests using the information and resources they have available.

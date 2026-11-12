@@ -104,7 +104,7 @@ This Operation Mode includes one **Node option**, the [Metadata Filter](n8n-node
 
 ## Related resources
 
-Refer to [LangChain's Qdrant documentation](https://js.langchain.com/docs/integrations/vectorstores/qdrant) for more information about the service.
+Refer to [LangChain's Qdrant documentation](https://docs.langchain.com/oss/javascript/integrations/vectorstores/qdrant) for more information about the service.
 
 [^1]: A vector store, or vector database, stores mathematical representations of information. Use with embeddings and retrievers to create a database that your AI can access when answering questions.
 [^2]: AI chains allow you to interact with large language models (LLMs) and other resources in sequences of calls to components. AI chains in n8n don't use persistent memory, so you can't use them to reference previous context (use AI agents for this).

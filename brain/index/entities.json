@@ -1,6 +1,6 @@
 {
   "generated": "2026-11-12",
-  "count": 2966,
+  "count": 3262,
   "entities": [
     {
       "name": "NODE_OPTIONS",
@@ -18,6 +18,12 @@
       "name": "A256GCM",
       "kind": "identifier",
       "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "AADSTS65004",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -43,6 +49,12 @@
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 2
+    },
+    {
+      "name": "ANN",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
     },
     {
       "name": "ANTHROPIC_API_KEY",
@@ -114,7 +126,7 @@
       "name": "AccessReview.ReadWrite.All",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 1
     },
     {
       "name": "Alt",
@@ -126,6 +138,24 @@
       "name": "AppCatalog.Read.All",
       "kind": "identifier",
       "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "AppCatalog.ReadWrite.All",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
+      "name": "AppCatalog.Submit",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
+      "name": "Application.ReadWrite.All",
+      "kind": "identifier",
+      "topic": "build",
       "mentions": 1
     },
     {
@@ -186,6 +216,12 @@
       "name": "BASE_PATH",
       "kind": "identifier",
       "topic": "changelog",
+      "mentions": 1
+    },
+    {
+      "name": "BETWEEN",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -321,6 +357,12 @@
       "mentions": 1
     },
     {
+      "name": "Channel",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "Channel.Create",
       "kind": "identifier",
       "topic": "integrations",
@@ -335,20 +377,26 @@
     {
       "name": "Channel.ReadBasic.All",
       "kind": "identifier",
-      "topic": "integrations",
-      "mentions": 1
+      "topic": "build",
+      "mentions": 6
     },
     {
       "name": "ChannelMessage.Read.All",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 3
+      "mentions": 4
+    },
+    {
+      "name": "ChannelMessage.Read.Group",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 2
     },
     {
       "name": "ChannelMessage.ReadWrite",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "ChannelSettings.ReadWrite.All",
@@ -357,7 +405,19 @@
       "mentions": 1
     },
     {
-      "name": "Chat.Read.All",
+      "name": "Chat",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "Chat.Read",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 2
+    },
+    {
+      "name": "Chat.ReadBasic",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
@@ -366,7 +426,19 @@
       "name": "Chat.ReadWrite",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 3
+      "mentions": 4
+    },
+    {
+      "name": "ChatMessage.Read.Chat",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 2
+    },
+    {
+      "name": "ChatOpenAI",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
     },
     {
       "name": "Columns",
@@ -408,6 +480,12 @@
       "name": "CurrentAuthenticationMethod",
       "kind": "identifier",
       "topic": "changelog",
+      "mentions": 1
+    },
+    {
+      "name": "DATABRICKS_SUPERUSER",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -534,13 +612,25 @@
       "name": "DB_POSTGRESDB_SCHEMA",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 2
+      "mentions": 3
+    },
+    {
+      "name": "DB_POSTGRESDB_SCHEMA_FILE",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
     },
     {
       "name": "DB_POSTGRESDB_SSL_CA",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 2
+    },
+    {
+      "name": "DB_POSTGRESDB_SSL_CA_FILE",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
     },
     {
       "name": "DB_POSTGRESDB_SSL_CERT",
@@ -600,7 +690,7 @@
       "name": "DB_TABLE_PREFIX",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "DB_TYPE",
@@ -619,6 +709,12 @@
       "kind": "identifier",
       "topic": "build",
       "mentions": 1
+    },
+    {
+      "name": "DELETE",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 4
     },
     {
       "name": "DOCKER_HOST",
@@ -640,6 +736,12 @@
     },
     {
       "name": "Databricks_Genie_MCP_genie_ask",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "Databricks_Genie_One_MCP_genie_ask",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
@@ -672,7 +774,7 @@
       "name": "DelegatedAdminRelationship.ReadWrite.All",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 1
     },
     {
       "name": "Delete",
@@ -690,7 +792,7 @@
       "name": "Directory.AccessAsUser.All",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 1
     },
     {
       "name": "Directory.Read.All",
@@ -702,7 +804,7 @@
       "name": "Directory.ReadWrite.All",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 1
     },
     {
       "name": "Directory_ObjectNotFound",
@@ -719,8 +821,14 @@
     {
       "name": "Dockerfile",
       "kind": "identifier",
-      "topic": "deploy",
-      "mentions": 2
+      "topic": "connect",
+      "mentions": 3
+    },
+    {
+      "name": "Drafts",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
     },
     {
       "name": "ECONNREFUSED",
@@ -730,6 +838,18 @@
     },
     {
       "name": "EMAIL_ADDRESS",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "ENOTFOUND",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "ERROR",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
@@ -753,6 +873,12 @@
       "mentions": 2
     },
     {
+      "name": "EXECUTE",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "EXECUTIONS_DATA_HARD_DELETE_BUFFER",
       "kind": "identifier",
       "topic": "deploy",
@@ -762,7 +888,7 @@
       "name": "EXECUTIONS_DATA_MAX_AGE",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "EXECUTIONS_DATA_MAX_DISPLAY_SIZE",
@@ -900,7 +1026,7 @@
       "name": "EntitlementManagement.ReadWrite.All",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 1
     },
     {
       "name": "Ephemeral",
@@ -941,8 +1067,8 @@
     {
       "name": "Files.Read.All",
       "kind": "identifier",
-      "topic": "integrations",
-      "mentions": 1
+      "topic": "build",
+      "mentions": 4
     },
     {
       "name": "Files.ReadWrite",
@@ -955,6 +1081,12 @@
       "kind": "identifier",
       "topic": "changelog",
       "mentions": 6
+    },
+    {
+      "name": "FluentRedisVectorStore",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
     },
     {
       "name": "FormData",
@@ -1002,22 +1134,28 @@
       "name": "GET",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 7
+      "mentions": 11
     },
     {
       "name": "GIT_SSL_CAINFO",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "GIT_SSL_CAPATH",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "GMT",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "GRANT",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
@@ -1035,16 +1173,10 @@
       "mentions": 1
     },
     {
-      "name": "Group.Read.All",
-      "kind": "identifier",
-      "topic": "integrations",
-      "mentions": 1
-    },
-    {
       "name": "Group.ReadWrite.All",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 1
+      "mentions": 3
     },
     {
       "name": "Group1.Question1",
@@ -1056,7 +1188,7 @@
       "name": "GroupMember.ReadWrite.All",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 1
     },
     {
       "name": "HS256",
@@ -1099,6 +1231,12 @@
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 5
+    },
+    {
+      "name": "HYBRID",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
     },
     {
       "name": "Html.node.ts",
@@ -1206,6 +1344,12 @@
       "name": "LANGCHAIN_TRACING_V2",
       "kind": "identifier",
       "topic": "build",
+      "mentions": 1
+    },
+    {
+      "name": "LIKE",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -1329,6 +1473,18 @@
       "mentions": 1
     },
     {
+      "name": "N8N_ACTIVITY_LOG_MAX_ENTRIES",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "N8N_ACTIVITY_LOG_RETENTION_DAYS",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "N8N_AGENTS_AI_SANDBOX_ENABLED",
       "kind": "identifier",
       "topic": "deploy",
@@ -1351,6 +1507,12 @@
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 2
+    },
+    {
+      "name": "N8N_AI_ALLOW_SENDING_PARAMETER_VALUES",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
     },
     {
       "name": "N8N_AI_ASSISTANT_BASE_URL",
@@ -1509,10 +1671,16 @@
       "mentions": 1
     },
     {
+      "name": "N8N_CONTENT_SECURITY_POLICY_REPORT_ONLY",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "N8N_CUSTOM_EXTENSIONS",
       "kind": "identifier",
       "topic": "changelog",
-      "mentions": 3
+      "mentions": 5
     },
     {
       "name": "N8N_DATA_TABLES_MAX_SIZE_BYTES",
@@ -1584,7 +1752,7 @@
       "name": "N8N_EDITOR_BASE_URL",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 4
+      "mentions": 5
     },
     {
       "name": "N8N_EMAIL_MODE",
@@ -1611,6 +1779,24 @@
       "mentions": 5
     },
     {
+      "name": "N8N_ENDPOINT_FORM",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
+      "name": "N8N_ENDPOINT_FORM_TEST",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
+      "name": "N8N_ENDPOINT_FORM_WAIT",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
       "name": "N8N_ENDPOINT_HEALTH",
       "kind": "identifier",
       "topic": "deploy",
@@ -1626,19 +1812,19 @@
       "name": "N8N_ENDPOINT_WEBHOOK",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "N8N_ENDPOINT_WEBHOOK_TEST",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "N8N_ENDPOINT_WEBHOOK_WAIT",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "N8N_ENFORCE_GLOBAL_USER_AGENT",
@@ -1667,8 +1853,8 @@
     {
       "name": "N8N_ENV_FEAT_SKIP_DURABLE_SCHEDULER",
       "kind": "identifier",
-      "topic": "deploy",
-      "mentions": 2
+      "topic": "changelog",
+      "mentions": 3
     },
     {
       "name": "N8N_ENV_FEAT_TOKEN_EXCHANGE",
@@ -1842,7 +2028,7 @@
       "name": "N8N_EXTERNAL_STORAGE_S3_BUCKET_NAME",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "N8N_EXTERNAL_STORAGE_S3_BUCKET_REGION",
@@ -1859,8 +2045,8 @@
     {
       "name": "N8N_FEATURE_FLAG_OVERRIDES",
       "kind": "identifier",
-      "topic": "connect",
-      "mentions": 1
+      "topic": "build",
+      "mentions": 3
     },
     {
       "name": "N8N_FORMDATA_FILE_SIZE_MAX",
@@ -1933,6 +2119,12 @@
       "kind": "identifier",
       "topic": "build",
       "mentions": 1
+    },
+    {
+      "name": "N8N_INSECURE_DISABLE_FORM_HTML_SANDBOX",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
     },
     {
       "name": "N8N_INSIGHTS_COMPACTION_BATCH_DELAY_MILLISECONDS",
@@ -2014,6 +2206,12 @@
     },
     {
       "name": "N8N_INSTANCE_AI_MODEL_URL",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "N8N_INSTANCE_AI_NODE_USAGE_ENABLED",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 1
@@ -2160,7 +2358,7 @@
       "name": "N8N_LOG_FORMAT",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "N8N_LOG_LEVEL",
@@ -2457,6 +2655,24 @@
       "mentions": 1
     },
     {
+      "name": "N8N_OTEL_TRACES_CUSTOM_ATTRIBUTE_PREFIXES",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
+      "name": "N8N_OTEL_TRACES_EMIT_NODE_START_SPAN",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
+      "name": "N8N_OTEL_TRACES_EMIT_WORKFLOW_START_SPAN",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
       "name": "N8N_OTEL_TRACES_INCLUDE_NODE_SPANS",
       "kind": "identifier",
       "topic": "deploy",
@@ -2466,7 +2682,7 @@
       "name": "N8N_OTEL_TRACES_INJECT_OUTBOUND",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "N8N_OTEL_TRACES_PRODUCTION_ONLY",
@@ -2557,6 +2773,60 @@
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 1
+    },
+    {
+      "name": "N8N_PUBLIC_API_RATE_LIMIT_ENABLED",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 2
+    },
+    {
+      "name": "N8N_PUBLIC_API_RATE_LIMIT_ENDPOINT_READ_LIMIT",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 2
+    },
+    {
+      "name": "N8N_PUBLIC_API_RATE_LIMIT_ENDPOINT_READ_WINDOW_SECONDS",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 2
+    },
+    {
+      "name": "N8N_PUBLIC_API_RATE_LIMIT_ENDPOINT_WRITE_LIMIT",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 2
+    },
+    {
+      "name": "N8N_PUBLIC_API_RATE_LIMIT_ENDPOINT_WRITE_WINDOW_SECONDS",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 2
+    },
+    {
+      "name": "N8N_PUBLIC_API_RATE_LIMIT_GLOBAL_READ_LIMIT",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 2
+    },
+    {
+      "name": "N8N_PUBLIC_API_RATE_LIMIT_GLOBAL_READ_WINDOW_SECONDS",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 2
+    },
+    {
+      "name": "N8N_PUBLIC_API_RATE_LIMIT_GLOBAL_WRITE_LIMIT",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 2
+    },
+    {
+      "name": "N8N_PUBLIC_API_RATE_LIMIT_GLOBAL_WRITE_WINDOW_SECONDS",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 2
     },
     {
       "name": "N8N_PUBLIC_API_SWAGGERUI_DISABLED",
@@ -2760,7 +3030,7 @@
       "name": "N8N_SCHEDULER_ENABLED",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 3
+      "mentions": 2
     },
     {
       "name": "N8N_SCHEDULER_EXECUTOR_INTERVAL",
@@ -2818,12 +3088,6 @@
     },
     {
       "name": "N8N_SCHEDULER_MAX_CONCURRENT_PASSES",
-      "kind": "identifier",
-      "topic": "deploy",
-      "mentions": 1
-    },
-    {
-      "name": "N8N_SCHEDULER_MIN_INTERVAL",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 1
@@ -2922,7 +3186,7 @@
       "name": "N8N_SCHEDULER_SYSTEM_TASKS_ENABLED",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 3
+      "mentions": 2
     },
     {
       "name": "N8N_SCHEDULER_TRIGGER_NODE_MODE",
@@ -3053,14 +3317,14 @@
     {
       "name": "N8N_SSRF_ALLOWED_HOSTNAMES",
       "kind": "identifier",
-      "topic": "changelog",
-      "mentions": 2
+      "topic": "administer",
+      "mentions": 3
     },
     {
       "name": "N8N_SSRF_ALLOWED_IP_RANGES",
       "kind": "identifier",
-      "topic": "changelog",
-      "mentions": 2
+      "topic": "administer",
+      "mentions": 3
     },
     {
       "name": "N8N_SSRF_BLOCKED_HOSTNAMES",
@@ -3240,7 +3504,7 @@
       "name": "N8N_USE_WORKFLOW_PUBLICATION_SERVICE",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 2
+      "mentions": 4
     },
     {
       "name": "N8N_VECTOR_STORE_MAX_MEMORY",
@@ -3288,7 +3552,7 @@
       "name": "N8N_WEBHOOK_RESPONSE_RELAY_OFFLOAD_ENABLED",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "N8N_WEBHOOK_RESPONSE_RELAY_SIZE_MAX",
@@ -3299,8 +3563,8 @@
     {
       "name": "N8N_WEBHOOK_URL",
       "kind": "identifier",
-      "topic": "deploy",
-      "mentions": 2
+      "topic": "build",
+      "mentions": 10
     },
     {
       "name": "N8N_WORKFLOW_ACTIVATION_BATCH_SIZE",
@@ -3335,8 +3599,8 @@
     {
       "name": "N8N_WORKFLOW_TAGS_DISABLED",
       "kind": "identifier",
-      "topic": "deploy",
-      "mentions": 1
+      "topic": "changelog",
+      "mentions": 2
     },
     {
       "name": "N8nPackage",
@@ -3359,8 +3623,8 @@
     {
       "name": "NODES_EXCLUDE",
       "kind": "identifier",
-      "topic": "build",
-      "mentions": 4
+      "topic": "administer",
+      "mentions": 5
     },
     {
       "name": "NODES_INCLUDE",
@@ -3397,6 +3661,12 @@
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 2
+    },
+    {
+      "name": "NODE_PATH",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
     },
     {
       "name": "NOW",
@@ -3450,7 +3720,7 @@
       "name": "NetworkAccessPolicy.ReadWrite.All",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 1
     },
     {
       "name": "NodeApiError",
@@ -3468,6 +3738,12 @@
       "name": "NodeVersionedType",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "NoncurrentVersionExpiration",
+      "kind": "identifier",
+      "topic": "deploy",
       "mentions": 1
     },
     {
@@ -3508,12 +3784,6 @@
     },
     {
       "name": "OLLAMA_HOST",
-      "kind": "identifier",
-      "topic": "integrations",
-      "mentions": 1
-    },
-    {
-      "name": "OLLAMA_ORIGINS",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
@@ -3573,6 +3843,12 @@
       "mentions": 2
     },
     {
+      "name": "OTEL_PROPAGATORS",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
       "name": "OTEL_SERVICE_NAME",
       "kind": "identifier",
       "topic": "changelog",
@@ -3594,7 +3870,7 @@
       "name": "OnlineMeetings.ReadWrite",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "OnlineMeetings.ReadWrite.All",
@@ -3629,8 +3905,8 @@
     {
       "name": "PATCH",
       "kind": "identifier",
-      "topic": "integrations",
-      "mentions": 1
+      "topic": "connect",
+      "mentions": 4
     },
     {
       "name": "PATH",
@@ -3651,6 +3927,36 @@
       "mentions": 1
     },
     {
+      "name": "PGRST106",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 2
+    },
+    {
+      "name": "PGRST202",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "PGRST204",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "PGRST205",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 2
+    },
+    {
+      "name": "PGRST301",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 3
+    },
+    {
       "name": "PHONE_NUMBER",
       "kind": "identifier",
       "topic": "integrations",
@@ -3666,7 +3972,7 @@
       "name": "POST",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 7
+      "mentions": 10
     },
     {
       "name": "POSTGRES_NON_ROOT_USER",
@@ -3711,6 +4017,12 @@
       "mentions": 2
     },
     {
+      "name": "PUT",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 5
+    },
+    {
       "name": "PayloadTooLargeError",
       "kind": "identifier",
       "topic": "changelog",
@@ -3718,6 +4030,12 @@
     },
     {
       "name": "Pending",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "PendingDeletion",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 1
@@ -3792,7 +4110,7 @@
       "name": "QUEUE_BULL_REDIS_TIMEOUT_THRESHOLD",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "QUEUE_BULL_REDIS_TLS",
@@ -3876,6 +4194,12 @@
       "name": "REQUEST_LIMIT_EXCEEDED",
       "kind": "identifier",
       "topic": "integrations",
+      "mentions": 2
+    },
+    {
+      "name": "RESOURCE_DOES_NOT_EXIST",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -3895,6 +4219,12 @@
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 2
+    },
+    {
+      "name": "RScKsGfrhs4",
+      "kind": "identifier",
+      "topic": "contribute",
+      "mentions": 1
     },
     {
       "name": "RUNNING",
@@ -3925,6 +4255,12 @@
       "kind": "identifier",
       "topic": "changelog",
       "mentions": 1
+    },
+    {
+      "name": "Recreate",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
     },
     {
       "name": "References",
@@ -3984,6 +4320,12 @@
       "name": "Running",
       "kind": "identifier",
       "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "S256",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -4107,6 +4449,12 @@
       "mentions": 2
     },
     {
+      "name": "ServiceMonitor",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "Sheet",
       "kind": "identifier",
       "topic": "connect",
@@ -4128,13 +4476,13 @@
       "name": "Sites.FullControl.All",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 4
+      "mentions": 3
     },
     {
       "name": "Sites.Read.All",
       "kind": "identifier",
       "topic": "changelog",
-      "mentions": 7
+      "mentions": 8
     },
     {
       "name": "Sites.ReadWrite.All",
@@ -4146,7 +4494,7 @@
       "name": "Sites.Selected",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 5
+      "mentions": 6
     },
     {
       "name": "Space",
@@ -4165,12 +4513,6 @@
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 2
-    },
-    {
-      "name": "Subscription.Read.All",
-      "kind": "identifier",
-      "topic": "integrations",
-      "mentions": 1
     },
     {
       "name": "TERMINATED",
@@ -4233,22 +4575,28 @@
       "mentions": 1
     },
     {
-      "name": "Team.ReadBasic.All",
-      "kind": "identifier",
-      "topic": "integrations",
-      "mentions": 2
-    },
-    {
-      "name": "TeamMember.Read.All",
+      "name": "Team",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
     },
     {
+      "name": "Team.ReadBasic.All",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 6
+    },
+    {
+      "name": "TeamMember.Read.All",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 4
+    },
+    {
       "name": "TeamsActivity.Send",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 3
+      "mentions": 4
     },
     {
       "name": "TeamsActivity.Send.User",
@@ -4272,7 +4620,7 @@
       "name": "TeamworkTag.Read",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "TetrisBot",
@@ -4323,6 +4671,12 @@
       "mentions": 1
     },
     {
+      "name": "USAGE",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "USER_CANCELED",
       "kind": "identifier",
       "topic": "integrations",
@@ -4347,16 +4701,28 @@
       "mentions": 1
     },
     {
+      "name": "User.Read",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
       "name": "User.Read.All",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 4
+      "mentions": 5
+    },
+    {
+      "name": "User.ReadBasic.All",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 3
     },
     {
       "name": "User.ReadWrite.All",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 1
     },
     {
       "name": "VUE_APP_URL_BASE_API",
@@ -4380,7 +4746,7 @@
       "name": "WEBHOOK_URL",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 10
+      "mentions": 15
     },
     {
       "name": "WITH_ISSUES",
@@ -4458,7 +4824,7 @@
       "name": "_FILE",
       "kind": "identifier",
       "topic": "changelog",
-      "mentions": 8
+      "mentions": 9
     },
     {
       "name": "_PROXY",
@@ -4512,6 +4878,12 @@
       "name": "_firstName",
       "kind": "identifier",
       "topic": "administer",
+      "mentions": 1
+    },
+    {
+      "name": "_id_seq",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -4721,8 +5093,8 @@
     {
       "name": "action",
       "kind": "identifier",
-      "topic": "changelog",
-      "mentions": 4
+      "topic": "administer",
+      "mentions": 5
     },
     {
       "name": "actions",
@@ -4809,6 +5181,12 @@
       "mentions": 1
     },
     {
+      "name": "add_numbers",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "additional_tags",
       "kind": "identifier",
       "topic": "integrations",
@@ -4863,6 +5241,18 @@
       "mentions": 1
     },
     {
+      "name": "affected_instance_rules",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
+    },
+    {
+      "name": "affected_workflows",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
+    },
+    {
       "name": "age",
       "kind": "identifier",
       "topic": "integrations",
@@ -4871,8 +5261,8 @@
     {
       "name": "agent",
       "kind": "identifier",
-      "topic": "connect",
-      "mentions": 1
+      "topic": "build",
+      "mentions": 2
     },
     {
       "name": "agent.activeVersionId",
@@ -4890,6 +5280,12 @@
       "name": "agent.id",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "agent.json",
+      "kind": "identifier",
+      "topic": "build",
       "mentions": 1
     },
     {
@@ -4929,6 +5325,12 @@
       "mentions": 1
     },
     {
+      "name": "agentIds",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
       "name": "agentUrl",
       "kind": "identifier",
       "topic": "connect",
@@ -4950,7 +5352,7 @@
       "name": "agents",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 3
+      "mentions": 5
     },
     {
       "name": "aiBuilderAssisted",
@@ -4962,6 +5364,12 @@
       "name": "ai_tool",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "aiplatform.googleapis.com",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -4997,8 +5405,8 @@
     {
       "name": "allow",
       "kind": "identifier",
-      "topic": "integrations",
-      "mentions": 3
+      "topic": "administer",
+      "mentions": 4
     },
     {
       "name": "allowUnauthorizedCerts",
@@ -5081,8 +5489,8 @@
     {
       "name": "api",
       "kind": "identifier",
-      "topic": "deploy",
-      "mentions": 2
+      "topic": "administer",
+      "mentions": 3
     },
     {
       "name": "api.crc.testing",
@@ -5169,6 +5577,12 @@
       "mentions": 1
     },
     {
+      "name": "archive",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
       "name": "archive_workflow",
       "kind": "identifier",
       "topic": "connect",
@@ -5177,8 +5591,8 @@
     {
       "name": "archived",
       "kind": "identifier",
-      "topic": "connect",
-      "mentions": 1
+      "topic": "build",
+      "mentions": 2
     },
     {
       "name": "array",
@@ -5295,6 +5709,12 @@
       "mentions": 1
     },
     {
+      "name": "aurora_instance_class",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "auth",
       "kind": "identifier",
       "topic": "connect",
@@ -5323,6 +5743,12 @@
       "kind": "identifier",
       "topic": "connect",
       "mentions": 1
+    },
+    {
+      "name": "authenticator",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 3
     },
     {
       "name": "author_name",
@@ -5397,9 +5823,21 @@
       "mentions": 1
     },
     {
+      "name": "aws",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
       "name": "aws4",
       "kind": "identifier",
       "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "aws_elasticache_cluster",
+      "kind": "identifier",
+      "topic": "deploy",
       "mentions": 1
     },
     {
@@ -5407,6 +5845,12 @@
       "kind": "identifier",
       "topic": "changelog",
       "mentions": 8
+    },
+    {
+      "name": "baggage",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
     },
     {
       "name": "baseConfigHash",
@@ -5454,7 +5898,7 @@
       "name": "binary",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "binaryFile",
@@ -5491,6 +5935,12 @@
       "kind": "identifier",
       "topic": "build",
       "mentions": 7
+    },
+    {
+      "name": "books",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
     },
     {
       "name": "boolean",
@@ -5532,6 +5982,12 @@
       "name": "builderHint",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "bypassrls",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -5601,10 +6057,28 @@
       "mentions": 1
     },
     {
-      "name": "catalog.schema.service",
+      "name": "canceled",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
+    },
+    {
+      "name": "caseSensitive",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "catalog.schema.index",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 2
+    },
+    {
+      "name": "catalog.schema.service",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 3
     },
     {
       "name": "categories",
@@ -5616,7 +6090,7 @@
       "name": "category",
       "kind": "identifier",
       "topic": "connect",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "category_scores",
@@ -5635,6 +6109,12 @@
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
+    },
+    {
+      "name": "certificate_arn",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
     },
     {
       "name": "challengeCode",
@@ -5718,19 +6198,13 @@
       "name": "city",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "class",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 2
-    },
-    {
-      "name": "classType",
-      "kind": "identifier",
-      "topic": "get-started",
-      "mentions": 1
     },
     {
       "name": "claude.json",
@@ -5778,6 +6252,18 @@
       "name": "client_email",
       "kind": "identifier",
       "topic": "integrations",
+      "mentions": 2
+    },
+    {
+      "name": "client_request_id",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "cluster_name",
+      "kind": "identifier",
+      "topic": "deploy",
       "mentions": 1
     },
     {
@@ -5867,8 +6353,8 @@
     {
       "name": "columns",
       "kind": "identifier",
-      "topic": "connect",
-      "mentions": 1
+      "topic": "build",
+      "mentions": 2
     },
     {
       "name": "comma",
@@ -5910,7 +6396,7 @@
       "name": "condition",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "config",
@@ -5946,6 +6432,12 @@
       "name": "configured",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "conflictPolicy",
+      "kind": "identifier",
+      "topic": "build",
       "mentions": 1
     },
     {
@@ -6035,8 +6527,8 @@
     {
       "name": "content",
       "kind": "identifier",
-      "topic": "integrations",
-      "mentions": 4
+      "topic": "connect",
+      "mentions": 6
     },
     {
       "name": "contentType",
@@ -6108,6 +6600,12 @@
       "name": "count",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "counts",
+      "kind": "identifier",
+      "topic": "build",
       "mentions": 1
     },
     {
@@ -6195,6 +6693,42 @@
       "mentions": 1
     },
     {
+      "name": "create_database",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "create_db_kms_key",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "create_eks",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "create_elasticache",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "create_s3_bucket",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "create_s3_kms_key",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "create_workflow_from_code",
       "kind": "identifier",
       "topic": "connect",
@@ -6210,6 +6744,18 @@
       "name": "createdAt",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "createdDateTime",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "created_at",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -6279,6 +6825,18 @@
       "mentions": 1
     },
     {
+      "name": "credentials.incomplete",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
+      "name": "credentials.seeded",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
       "name": "credentials.stubbed",
       "kind": "identifier",
       "topic": "build",
@@ -6294,6 +6852,12 @@
       "name": "credentials.update",
       "kind": "identifier",
       "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "credentials.updated",
+      "kind": "identifier",
+      "topic": "build",
       "mentions": 1
     },
     {
@@ -6429,6 +6993,12 @@
       "mentions": 1
     },
     {
+      "name": "current_version",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
+    },
+    {
       "name": "cursor",
       "kind": "identifier",
       "topic": "connect",
@@ -6498,7 +7068,7 @@
       "name": "data",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 13
+      "mentions": 14
     },
     {
       "name": "dataDisplay.nodeTypeChanged",
@@ -6522,13 +7092,31 @@
       "name": "dataTables",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "database",
       "kind": "identifier",
       "topic": "changelog",
       "mentions": 8
+    },
+    {
+      "name": "databricks_auth",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "databricks_create_role",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 3
+    },
+    {
+      "name": "databricks_postgres",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 2
     },
     {
       "name": "date",
@@ -6573,6 +7161,60 @@
       "mentions": 1
     },
     {
+      "name": "db_delete_automated_backups",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "db_deletion_protection",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "db_final_snapshot_identifier",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "db_host",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "db_kms_key_arn",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "db_logs_kms_key_arn",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "db_password",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "db_password_secret_ref",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "db_skip_final_snapshot",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "dbt_output",
       "kind": "identifier",
       "topic": "integrations",
@@ -6603,10 +7245,22 @@
       "mentions": 1
     },
     {
+      "name": "deep_link",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "default",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 9
+      "mentions": 10
+    },
+    {
+      "name": "defaultAction",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
     },
     {
       "name": "defaultValue",
@@ -6639,6 +7293,12 @@
       "mentions": 1
     },
     {
+      "name": "delegate",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
+    },
+    {
       "name": "delete",
       "kind": "identifier",
       "topic": "build",
@@ -6659,13 +7319,31 @@
     {
       "name": "deleted",
       "kind": "identifier",
-      "topic": "connect",
+      "topic": "build",
+      "mentions": 3
+    },
+    {
+      "name": "deletedWorkflowIds",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
+      "name": "deletion",
+      "kind": "identifier",
+      "topic": "build",
       "mentions": 1
     },
     {
       "name": "demo",
       "kind": "identifier",
       "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "deny",
+      "kind": "identifier",
+      "topic": "administer",
       "mentions": 1
     },
     {
@@ -6684,7 +7362,7 @@
       "name": "description",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 11
+      "mentions": 12
     },
     {
       "name": "descriptions",
@@ -6720,6 +7398,12 @@
       "name": "development",
       "kind": "identifier",
       "topic": "administer",
+      "mentions": 1
+    },
+    {
+      "name": "differs",
+      "kind": "identifier",
+      "topic": "build",
       "mentions": 1
     },
     {
@@ -6787,6 +7471,12 @@
       "kind": "identifier",
       "topic": "changelog",
       "mentions": 8
+    },
+    {
+      "name": "divergent",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
     },
     {
       "name": "docker",
@@ -6903,6 +7593,12 @@
       "mentions": 1
     },
     {
+      "name": "electronics",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "elem1",
       "kind": "identifier",
       "topic": "build",
@@ -6939,6 +7635,18 @@
       "mentions": 1
     },
     {
+      "name": "emitNodeStartSpan",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "emitWorkflowStartSpan",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "emotion",
       "kind": "identifier",
       "topic": "integrations",
@@ -6972,7 +7680,7 @@
       "name": "enabled",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "enc",
@@ -7039,6 +7747,12 @@
       "kind": "identifier",
       "topic": "build",
       "mentions": 2
+    },
+    {
+      "name": "envManagedFields",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
     },
     {
       "name": "environ",
@@ -7133,8 +7847,8 @@
     {
       "name": "example.com",
       "kind": "identifier",
-      "topic": "integrations",
-      "mentions": 1
+      "topic": "deploy",
+      "mentions": 2
     },
     {
       "name": "exception",
@@ -7299,7 +8013,31 @@
       "mentions": 1
     },
     {
+      "name": "executionsFail",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
+    },
+    {
       "name": "executionsList.openDialog",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "existing_eks_cluster_name",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "existing_eks_cluster_prerequisites_confirmed",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "existing_s3_bucket_name",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 1
@@ -7347,9 +8085,9 @@
       "mentions": 1
     },
     {
-      "name": "exportedAt",
+      "name": "exporterProtocol",
       "kind": "identifier",
-      "topic": "build",
+      "topic": "deploy",
       "mentions": 1
     },
     {
@@ -7422,7 +8160,7 @@
       "name": "failed",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "failure",
@@ -7440,7 +8178,7 @@
       "name": "false",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 41
+      "mentions": 47
     },
     {
       "name": "family_name",
@@ -7506,7 +8244,7 @@
       "name": "fields",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "fil",
@@ -7587,6 +8325,12 @@
       "mentions": 1
     },
     {
+      "name": "filters_json",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 2
+    },
+    {
       "name": "find",
       "kind": "identifier",
       "topic": "integrations",
@@ -7649,8 +8393,8 @@
     {
       "name": "folderId",
       "kind": "identifier",
-      "topic": "build",
-      "mentions": 5
+      "topic": "connect",
+      "mentions": 4
     },
     {
       "name": "folderIds",
@@ -7692,7 +8436,7 @@
       "name": "form",
       "kind": "identifier",
       "topic": "changelog",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "form_path",
@@ -7881,6 +8625,12 @@
       "mentions": 1
     },
     {
+      "name": "geo",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "get",
       "kind": "identifier",
       "topic": "connect",
@@ -7906,6 +8656,12 @@
     },
     {
       "name": "get_agent_builder_reference",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "get_agent_session",
       "kind": "identifier",
       "topic": "connect",
       "mentions": 1
@@ -7951,6 +8707,12 @@
       "kind": "identifier",
       "topic": "connect",
       "mentions": 1
+    },
+    {
+      "name": "get_user_preferences",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 2
     },
     {
       "name": "get_workflow_best_practices",
@@ -8109,6 +8871,12 @@
       "mentions": 1
     },
     {
+      "name": "handbook",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "handler",
       "kind": "identifier",
       "topic": "connect",
@@ -8116,6 +8884,12 @@
     },
     {
       "name": "hasMore",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "hasPreferences",
       "kind": "identifier",
       "topic": "connect",
       "mentions": 1
@@ -8181,6 +8955,12 @@
       "mentions": 1
     },
     {
+      "name": "helm",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
       "name": "heroku.yml",
       "kind": "identifier",
       "topic": "deploy",
@@ -8223,6 +9003,12 @@
       "mentions": 2
     },
     {
+      "name": "hooks.example.com",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "host",
       "kind": "identifier",
       "topic": "administer",
@@ -8256,7 +9042,13 @@
       "name": "http",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 4
+      "mentions": 5
+    },
+    {
+      "name": "http.request.method",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
     },
     {
       "name": "httpCode",
@@ -8331,6 +9123,18 @@
       "mentions": 1
     },
     {
+      "name": "impact",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
+    },
+    {
+      "name": "impact_label",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
+    },
+    {
       "name": "import",
       "kind": "identifier",
       "topic": "connect",
@@ -8361,10 +9165,16 @@
       "mentions": 1
     },
     {
-      "name": "index",
+      "name": "incomplete",
       "kind": "identifier",
       "topic": "build",
       "mentions": 1
+    },
+    {
+      "name": "index",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 2
     },
     {
       "name": "index.html",
@@ -8481,6 +9291,30 @@
       "mentions": 1
     },
     {
+      "name": "install_cluster_autoscaler",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "install_keda",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "install_lbc",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "install_metrics_server",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "installed_nodes",
       "kind": "identifier",
       "topic": "deploy",
@@ -8495,8 +9329,8 @@
     {
       "name": "instance",
       "kind": "identifier",
-      "topic": "deploy",
-      "mentions": 1
+      "topic": "connect",
+      "mentions": 2
     },
     {
       "name": "instanceMetadata",
@@ -8506,6 +9340,12 @@
     },
     {
       "name": "instance_role_leader",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "instance_timer",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 1
@@ -8571,6 +9411,12 @@
       "mentions": 1
     },
     {
+      "name": "invalid_client",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 2
+    },
+    {
       "name": "invalid_scope",
       "kind": "identifier",
       "topic": "integrations",
@@ -8580,6 +9426,12 @@
       "name": "invoke_agent",
       "kind": "identifier",
       "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "isArchived",
+      "kind": "identifier",
+      "topic": "build",
       "mentions": 1
     },
     {
@@ -8730,7 +9582,7 @@
       "name": "json",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 9
+      "mentions": 11
     },
     {
       "name": "jsonHeaders",
@@ -8817,6 +9669,12 @@
       "mentions": 1
     },
     {
+      "name": "kubernetes",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
       "name": "kvm",
       "kind": "identifier",
       "topic": "deploy",
@@ -8838,6 +9696,24 @@
       "name": "languageBoost",
       "kind": "identifier",
       "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "laptop",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "laptops",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "large",
+      "kind": "identifier",
+      "topic": "deploy",
       "mentions": 1
     },
     {
@@ -8871,6 +9747,12 @@
       "mentions": 1
     },
     {
+      "name": "lastModifiedDateTime",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "lastName",
       "kind": "identifier",
       "topic": "deploy",
@@ -8897,8 +9779,8 @@
     {
       "name": "latest",
       "kind": "identifier",
-      "topic": "changelog",
-      "mentions": 5
+      "topic": "build",
+      "mentions": 7
     },
     {
       "name": "lax",
@@ -8913,6 +9795,12 @@
       "mentions": 1
     },
     {
+      "name": "ldapsearch",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
+    },
+    {
       "name": "leadFormResponses",
       "kind": "identifier",
       "topic": "integrations",
@@ -8922,6 +9810,18 @@
       "name": "leadNotifications",
       "kind": "identifier",
       "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "leader_timer",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "lease_lost",
+      "kind": "identifier",
+      "topic": "deploy",
       "mentions": 1
     },
     {
@@ -8952,6 +9852,12 @@
       "name": "libvirt",
       "kind": "identifier",
       "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "lifecycleEvent",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -8992,6 +9898,12 @@
     },
     {
       "name": "listSearch",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "list_agent_sessions",
       "kind": "identifier",
       "topic": "connect",
       "mentions": 1
@@ -9144,7 +10056,19 @@
       "name": "main",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 8
+      "mentions": 9
+    },
+    {
+      "name": "main.docs.handbook_index",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "main.tf",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
     },
     {
       "name": "manage_pages",
@@ -9273,6 +10197,12 @@
       "mentions": 2
     },
     {
+      "name": "medium",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "members",
       "kind": "identifier",
       "topic": "connect",
@@ -9343,6 +10273,18 @@
       "kind": "identifier",
       "topic": "connect",
       "mentions": 3
+    },
+    {
+      "name": "microsoftTeamsManagerOAuth2Api",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
+      "name": "migrations",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
     },
     {
       "name": "millisecond",
@@ -9510,7 +10452,13 @@
       "name": "n8n",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 32
+      "mentions": 33
+    },
+    {
+      "name": "n8n.",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
     },
     {
       "name": "n8n.audit",
@@ -9555,6 +10503,54 @@
       "mentions": 1
     },
     {
+      "name": "n8n.audit.promotions",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
+    },
+    {
+      "name": "n8n.audit.promotions.environment.created",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
+    },
+    {
+      "name": "n8n.audit.promotions.environment.deleted",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
+    },
+    {
+      "name": "n8n.audit.promotions.environment.updated",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
+    },
+    {
+      "name": "n8n.audit.promotions.provider.created",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
+    },
+    {
+      "name": "n8n.audit.promotions.provider.deleted",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
+    },
+    {
+      "name": "n8n.audit.promotions.provider.updated",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
+    },
+    {
+      "name": "n8n.audit.user.login.emailConflict",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
+    },
+    {
       "name": "n8n.cloud",
       "kind": "identifier",
       "topic": "integrations",
@@ -9570,7 +10566,7 @@
       "name": "n8n.example.com",
       "kind": "identifier",
       "topic": "connect",
-      "mentions": 4
+      "mentions": 6
     },
     {
       "name": "n8n.execution.crash.detector",
@@ -9639,6 +10635,12 @@
       "mentions": 1
     },
     {
+      "name": "n8n.node",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "n8n.node.custom.",
       "kind": "identifier",
       "topic": "deploy",
@@ -9687,7 +10689,19 @@
       "mentions": 1
     },
     {
+      "name": "n8n.project.custom.",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "n8n.project.id",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "n8n.project.name",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 1
@@ -9700,6 +10714,12 @@
     },
     {
       "name": "n8n.salesmate.io",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "n8n.source",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
@@ -9720,6 +10740,12 @@
       "name": "n8n.workflow.cancelled",
       "kind": "identifier",
       "topic": "administer",
+      "mentions": 1
+    },
+    {
+      "name": "n8n.workflow.custom.",
+      "kind": "identifier",
+      "topic": "deploy",
       "mentions": 1
     },
     {
@@ -9765,6 +10791,12 @@
       "mentions": 1
     },
     {
+      "name": "n8n.workflowId",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "n8nEventLog",
       "kind": "identifier",
       "topic": "deploy",
@@ -9777,13 +10809,67 @@
       "mentions": 3
     },
     {
+      "name": "n8n_chat_histories",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_credentials_overwrite_secret_ref",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_custom_extensions_path",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "n8n_data",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 3
     },
     {
+      "name": "n8n_dns_config",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_domain",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_external_secrets_aws_secret_names",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_extra_volume_mounts",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_extra_volumes",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "n8n_form_submission_duration_seconds",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_image_repository",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 1
@@ -9801,9 +10887,27 @@
       "mentions": 1
     },
     {
+      "name": "n8n_license_key",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_log_streaming_managed_by_env",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "n8n_managed_data_api",
       "kind": "identifier",
       "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_otel_exporter_otlp_endpoint",
+      "kind": "identifier",
+      "topic": "deploy",
       "mentions": 1
     },
     {
@@ -9847,6 +10951,18 @@
       "kind": "identifier",
       "topic": "administer",
       "mentions": 4
+    },
+    {
+      "name": "n8n_proxy_hops",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_redis_timeout_threshold",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
     },
     {
       "name": "n8n_scheduler_dispatch_lag_seconds",
@@ -9969,6 +11085,18 @@
       "mentions": 1
     },
     {
+      "name": "n8n_service_name",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_service_port",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "n8n_system_task_fire_lag_seconds",
       "kind": "identifier",
       "topic": "deploy",
@@ -10035,7 +11163,25 @@
       "mentions": 1
     },
     {
+      "name": "n8n_url",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_webhook_path_prefixes",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "n8n_webhook_request_duration_seconds",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "n8n_webhook_service_name",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 1
@@ -10050,7 +11196,7 @@
       "name": "name",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 18
+      "mentions": 20
     },
     {
       "name": "nameField",
@@ -10143,6 +11289,12 @@
       "mentions": 1
     },
     {
+      "name": "noStem",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "nobody",
       "kind": "identifier",
       "topic": "deploy",
@@ -10152,7 +11304,7 @@
       "name": "node",
       "kind": "identifier",
       "topic": "changelog",
-      "mentions": 3
+      "mentions": 5
     },
     {
       "name": "node.credentials",
@@ -10171,6 +11323,12 @@
       "kind": "identifier",
       "topic": "changelog",
       "mentions": 3
+    },
+    {
+      "name": "node.execute.started",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
     },
     {
       "name": "node.id",
@@ -10350,7 +11508,7 @@
       "name": "node_modules",
       "kind": "identifier",
       "topic": "changelog",
-      "mentions": 1
+      "mentions": 3
     },
     {
       "name": "node_type",
@@ -10395,10 +11553,22 @@
       "mentions": 1
     },
     {
+      "name": "noeviction",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "noindex",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "none",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 9
+      "mentions": 11
     },
     {
       "name": "normalize",
@@ -10476,7 +11646,7 @@
       "name": "null",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 9
+      "mentions": 10
     },
     {
       "name": "num1",
@@ -10504,6 +11674,12 @@
     },
     {
       "name": "numberOfImages",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "numeric",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
@@ -10577,7 +11753,7 @@
     {
       "name": "offline_access",
       "kind": "identifier",
-      "topic": "changelog",
+      "topic": "build",
       "mentions": 10
     },
     {
@@ -10591,6 +11767,12 @@
       "kind": "identifier",
       "topic": "connect",
       "mentions": 1
+    },
+    {
+      "name": "ollama",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 2
     },
     {
       "name": "onError",
@@ -10613,7 +11795,7 @@
     {
       "name": "openid",
       "kind": "identifier",
-      "topic": "changelog",
+      "topic": "build",
       "mentions": 4
     },
     {
@@ -10656,12 +11838,24 @@
       "name": "options",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 8
+      "mentions": 9
+    },
+    {
+      "name": "orders",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
     },
     {
       "name": "orgAdmin",
       "kind": "identifier",
       "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "origin",
+      "kind": "identifier",
+      "topic": "connect",
       "mentions": 1
     },
     {
@@ -10678,6 +11872,12 @@
     },
     {
       "name": "os.environ",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "otel.configure",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 1
@@ -10731,10 +11931,16 @@
       "mentions": 1
     },
     {
+      "name": "override_callback_uri",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "overwrite",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 1
+      "mentions": 3
     },
     {
       "name": "own",
@@ -10745,8 +11951,8 @@
     {
       "name": "package",
       "kind": "identifier",
-      "topic": "build",
-      "mentions": 2
+      "topic": "administer",
+      "mentions": 3
     },
     {
       "name": "package.json",
@@ -10767,6 +11973,12 @@
       "mentions": 1
     },
     {
+      "name": "pageContent",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "paginationToken",
       "kind": "identifier",
       "topic": "connect",
@@ -10776,7 +11988,7 @@
       "name": "pairedItem",
       "kind": "identifier",
       "topic": "changelog",
-      "mentions": 3
+      "mentions": 2
     },
     {
       "name": "pandas",
@@ -10788,6 +12000,18 @@
       "name": "parameters",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "parameters.options.path",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "parameters.path",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -10810,6 +12034,12 @@
     },
     {
       "name": "parentMessageId",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "parentReference.path",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
@@ -10995,6 +12225,12 @@
       "mentions": 1
     },
     {
+      "name": "postgresql",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "preAuthentication",
       "kind": "identifier",
       "topic": "changelog",
@@ -11004,6 +12240,48 @@
       "name": "predefinedCredentialType",
       "kind": "identifier",
       "topic": "changelog",
+      "mentions": 1
+    },
+    {
+      "name": "preference",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "preference.id",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "preference.scope",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "preference.text",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "preference.url",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "preferences",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "prefixMatch",
+      "kind": "identifier",
+      "topic": "deploy",
       "mentions": 1
     },
     {
@@ -11049,6 +12327,12 @@
       "mentions": 1
     },
     {
+      "name": "price",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "primarycontactid",
       "kind": "identifier",
       "topic": "integrations",
@@ -11070,13 +12354,19 @@
       "name": "private_key",
       "kind": "identifier",
       "topic": "integrations",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "private_key_jwt",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 3
+    },
+    {
+      "name": "private_subnets",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
     },
     {
       "name": "prod",
@@ -11094,19 +12384,19 @@
       "name": "production",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 2
+      "mentions": 4
     },
     {
       "name": "profile",
       "kind": "identifier",
-      "topic": "integrations",
-      "mentions": 1
+      "topic": "build",
+      "mentions": 2
     },
     {
       "name": "project",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 3
+      "mentions": 5
     },
     {
       "name": "projectId",
@@ -11202,7 +12492,7 @@
       "name": "public",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 2
+      "mentions": 5
     },
     {
       "name": "public.pem",
@@ -11214,6 +12504,12 @@
       "name": "public_profile",
       "kind": "identifier",
       "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "public_subnets",
+      "kind": "identifier",
+      "topic": "deploy",
       "mentions": 1
     },
     {
@@ -11337,6 +12633,24 @@
       "mentions": 1
     },
     {
+      "name": "query_text",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 2
+    },
+    {
+      "name": "query_type",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "query_vector",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 2
+    },
+    {
       "name": "quest",
       "kind": "identifier",
       "topic": "integrations",
@@ -11424,7 +12738,13 @@
       "name": "reason",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 4
+      "mentions": 5
+    },
+    {
+      "name": "reauthorizationRequired",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
     },
     {
       "name": "reconciled",
@@ -11440,6 +12760,60 @@
     },
     {
       "name": "redirectTo",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "redis_auth_token",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "redis_auth_token_secret_ref",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "redis_high_availability_enabled",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "redis_host",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "redis_key_prefix",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "redis_maxmemory_policy",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "redis_node_type",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "redis_port",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "redis_transit_encryption_enabled",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 1
@@ -11511,9 +12885,27 @@
       "mentions": 1
     },
     {
+      "name": "removed",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "removedFolders",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
       "name": "removedGroups",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "removedWorkflows",
+      "kind": "identifier",
+      "topic": "build",
       "mentions": 1
     },
     {
@@ -11589,6 +12981,12 @@
       "mentions": 2
     },
     {
+      "name": "report",
+      "kind": "identifier",
+      "topic": "get-started",
+      "mentions": 1
+    },
+    {
       "name": "request",
       "kind": "identifier",
       "topic": "changelog",
@@ -11638,6 +13036,12 @@
     },
     {
       "name": "requirements",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 2
+    },
+    {
+      "name": "requirements.agents",
       "kind": "identifier",
       "topic": "build",
       "mentions": 1
@@ -11694,7 +13098,7 @@
       "name": "resource",
       "kind": "identifier",
       "topic": "connect",
-      "mentions": 6
+      "mentions": 7
     },
     {
       "name": "resourceAppId",
@@ -11718,6 +13122,18 @@
       "name": "resourceLocator",
       "kind": "identifier",
       "topic": "changelog",
+      "mentions": 1
+    },
+    {
+      "name": "resource_metadata",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "resourcemanager.projects.get",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -11766,7 +13182,7 @@
       "name": "result",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 3
+      "mentions": 4
     },
     {
       "name": "result.code",
@@ -11883,6 +13299,12 @@
       "mentions": 4
     },
     {
+      "name": "route53_zone_id",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
       "name": "routing",
       "kind": "identifier",
       "topic": "connect",
@@ -11922,6 +13344,30 @@
       "name": "rsa",
       "kind": "identifier",
       "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "rule_id",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
+    },
+    {
+      "name": "rule_kind",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
+    },
+    {
+      "name": "rule_title",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
+    },
+    {
+      "name": "rules",
+      "kind": "identifier",
+      "topic": "administer",
       "mentions": 1
     },
     {
@@ -12048,7 +13494,7 @@
       "name": "running",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "runningAt",
@@ -12063,6 +13509,24 @@
       "mentions": 1
     },
     {
+      "name": "s3_bucket_name",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "s3_force_destroy",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "s3_kms_key_arn",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "sameAsDraft",
       "kind": "identifier",
       "topic": "connect",
@@ -12072,6 +13536,24 @@
       "name": "sameSite",
       "kind": "identifier",
       "topic": "changelog",
+      "mentions": 1
+    },
+    {
+      "name": "sandbox",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
+      "name": "save_user_preference",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 2
+    },
+    {
+      "name": "saved",
+      "kind": "identifier",
+      "topic": "connect",
       "mentions": 1
     },
     {
@@ -12095,13 +13577,19 @@
     {
       "name": "scope",
       "kind": "identifier",
-      "topic": "deploy",
-      "mentions": 2
+      "topic": "connect",
+      "mentions": 3
     },
     {
       "name": "scopes",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "score",
+      "kind": "identifier",
+      "topic": "integrations",
       "mentions": 1
     },
     {
@@ -12207,6 +13695,24 @@
       "mentions": 2
     },
     {
+      "name": "seeded",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
+      "name": "selectedWorkflowIds",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
+      "name": "selector",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
+    },
+    {
       "name": "sendActivityNotification",
       "kind": "identifier",
       "topic": "integrations",
@@ -12231,6 +13737,12 @@
       "mentions": 1
     },
     {
+      "name": "sensitive",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "sensitiveOutputFields",
       "kind": "identifier",
       "topic": "deploy",
@@ -12240,7 +13752,13 @@
       "name": "separator",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 2
+      "mentions": 3
+    },
+    {
+      "name": "serial",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
     },
     {
       "name": "server.conf",
@@ -12294,7 +13812,13 @@
       "name": "sessionId",
       "kind": "identifier",
       "topic": "connect",
-      "mentions": 3
+      "mentions": 4
+    },
+    {
+      "name": "session_id",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
     },
     {
       "name": "session_not_found",
@@ -12405,6 +13929,12 @@
       "mentions": 1
     },
     {
+      "name": "shipped",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "shotType",
       "kind": "identifier",
       "topic": "integrations",
@@ -12467,13 +13997,19 @@
     {
       "name": "skill",
       "kind": "identifier",
-      "topic": "connect",
-      "mentions": 1
+      "topic": "build",
+      "mentions": 2
     },
     {
       "name": "skill.delete",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "skill.json",
+      "kind": "identifier",
+      "topic": "build",
       "mentions": 1
     },
     {
@@ -12491,8 +14027,8 @@
     {
       "name": "skills",
       "kind": "identifier",
-      "topic": "connect",
-      "mentions": 1
+      "topic": "build",
+      "mentions": 2
     },
     {
       "name": "skillsUsed",
@@ -12504,7 +14040,7 @@
       "name": "skip",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "skipSslCertificateValidation",
@@ -12579,9 +14115,9 @@
       "mentions": 1
     },
     {
-      "name": "slackchannelid",
+      "name": "small",
       "kind": "identifier",
-      "topic": "build",
+      "topic": "deploy",
       "mentions": 1
     },
     {
@@ -12621,10 +14157,16 @@
       "mentions": 1
     },
     {
+      "name": "sortable",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "source",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 3
+      "mentions": 5
     },
     {
       "name": "sourceId",
@@ -12732,7 +14274,7 @@
       "name": "staging",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "stale_config",
@@ -12817,6 +14359,12 @@
       "kind": "identifier",
       "topic": "connect",
       "mentions": 2
+    },
+    {
+      "name": "storage.buckets.get",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
     },
     {
       "name": "storage.yaml",
@@ -12969,6 +14517,18 @@
       "mentions": 1
     },
     {
+      "name": "subscribed_apps",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "subscriptionRemoved",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "subtitle",
       "kind": "identifier",
       "topic": "connect",
@@ -13005,6 +14565,12 @@
       "mentions": 1
     },
     {
+      "name": "synced_at",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
+    },
+    {
       "name": "system",
       "kind": "identifier",
       "topic": "integrations",
@@ -13012,6 +14578,12 @@
     },
     {
       "name": "system.ai",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 4
+    },
+    {
+      "name": "system.ai.genie_one_mcp",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 2
@@ -13032,7 +14604,7 @@
       "name": "tag",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "tag_entity",
@@ -13044,7 +14616,7 @@
       "name": "tags",
       "kind": "identifier",
       "topic": "build",
-      "mentions": 5
+      "mentions": 6
     },
     {
       "name": "tar",
@@ -13098,6 +14670,12 @@
       "name": "targetProject.type",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "target_version",
+      "kind": "identifier",
+      "topic": "changelog",
       "mentions": 1
     },
     {
@@ -13179,10 +14757,22 @@
       "mentions": 1
     },
     {
+      "name": "temp_c",
+      "kind": "identifier",
+      "topic": "get-started",
+      "mentions": 1
+    },
+    {
       "name": "temperature",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 5
+    },
+    {
+      "name": "tenant.id",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
     },
     {
       "name": "tenant123",
@@ -13195,6 +14785,12 @@
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 2
+    },
+    {
+      "name": "terraform.tfstate",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
     },
     {
       "name": "test",
@@ -13230,7 +14826,7 @@
       "name": "text",
       "kind": "identifier",
       "topic": "changelog",
-      "mentions": 14
+      "mentions": 17
     },
     {
       "name": "textarea",
@@ -13302,6 +14898,12 @@
       "name": "tid_",
       "kind": "identifier",
       "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "timed_out",
+      "kind": "identifier",
+      "topic": "deploy",
       "mentions": 1
     },
     {
@@ -13437,16 +15039,28 @@
       "mentions": 1
     },
     {
+      "name": "total_workflows",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
+    },
+    {
+      "name": "tracecontext",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
       "name": "traceparent",
       "kind": "identifier",
       "topic": "changelog",
       "mentions": 3
     },
     {
-      "name": "tracesstate",
+      "name": "tracestate",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "traefik_data",
@@ -13506,7 +15120,7 @@
       "name": "true",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 59
+      "mentions": 63
     },
     {
       "name": "truncate",
@@ -13536,7 +15150,7 @@
       "name": "type",
       "kind": "identifier",
       "topic": "administer",
-      "mentions": 18
+      "mentions": 21
     },
     {
       "name": "typeOptions",
@@ -13575,6 +15189,12 @@
       "mentions": 4
     },
     {
+      "name": "undo_user_preference",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 2
+    },
+    {
       "name": "unit",
       "kind": "identifier",
       "topic": "build",
@@ -13603,6 +15223,12 @@
       "kind": "identifier",
       "topic": "build",
       "mentions": 2
+    },
+    {
+      "name": "unresolved_workflows",
+      "kind": "identifier",
+      "topic": "changelog",
+      "mentions": 1
     },
     {
       "name": "update",
@@ -13659,10 +15285,22 @@
       "mentions": 1
     },
     {
+      "name": "update_credential_description",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
       "name": "update_progress",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
+    },
+    {
+      "name": "update_user_preference",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 2
     },
     {
       "name": "update_workflow",
@@ -13677,9 +15315,27 @@
       "mentions": 1
     },
     {
+      "name": "updatedAfter",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
       "name": "updatedAt",
       "kind": "identifier",
       "topic": "changelog",
+      "mentions": 2
+    },
+    {
+      "name": "updatedBefore",
+      "kind": "identifier",
+      "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "upn",
+      "kind": "identifier",
+      "topic": "administer",
       "mentions": 2
     },
     {
@@ -13707,7 +15363,7 @@
       "mentions": 1
     },
     {
-      "name": "usedByWorkflows",
+      "name": "usedBy",
       "kind": "identifier",
       "topic": "build",
       "mentions": 1
@@ -13716,7 +15372,7 @@
       "name": "user",
       "kind": "identifier",
       "topic": "connect",
-      "mentions": 5
+      "mentions": 6
     },
     {
       "name": "user.assignedroles",
@@ -13725,7 +15381,19 @@
       "mentions": 1
     },
     {
+      "name": "user.id",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "userId",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 1
+    },
+    {
+      "name": "userPrincipalName",
       "kind": "identifier",
       "topic": "administer",
       "mentions": 1
@@ -13739,8 +15407,8 @@
     {
       "name": "user_impersonation",
       "kind": "identifier",
-      "topic": "integrations",
-      "mentions": 1
+      "topic": "build",
+      "mentions": 2
     },
     {
       "name": "user_preferences.access_token",
@@ -13770,6 +15438,12 @@
       "name": "uuidgen",
       "kind": "identifier",
       "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "vaSl03",
+      "kind": "identifier",
+      "topic": "build",
       "mentions": 1
     },
     {
@@ -13931,8 +15605,8 @@
     {
       "name": "version",
       "kind": "identifier",
-      "topic": "changelog",
-      "mentions": 7
+      "topic": "administer",
+      "mentions": 9
     },
     {
       "name": "version.author",
@@ -13977,6 +15651,12 @@
       "mentions": 1
     },
     {
+      "name": "view_ask",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "view_sales",
       "kind": "identifier",
       "topic": "integrations",
@@ -14001,6 +15681,12 @@
       "mentions": 1
     },
     {
+      "name": "void",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
       "name": "volume",
       "kind": "identifier",
       "topic": "integrations",
@@ -14019,6 +15705,12 @@
       "mentions": 3
     },
     {
+      "name": "vpc_id",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
+    },
+    {
       "name": "w_organization_social",
       "kind": "identifier",
       "topic": "integrations",
@@ -14034,7 +15726,7 @@
       "name": "waiting",
       "kind": "identifier",
       "topic": "deploy",
-      "mentions": 1
+      "mentions": 2
     },
     {
       "name": "warn",
@@ -14051,8 +15743,8 @@
     {
       "name": "warnings",
       "kind": "identifier",
-      "topic": "connect",
-      "mentions": 1
+      "topic": "administer",
+      "mentions": 2
     },
     {
       "name": "web",
@@ -14068,6 +15760,12 @@
     },
     {
       "name": "webSearch",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "webUrl",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
@@ -14121,16 +15819,46 @@
       "mentions": 2
     },
     {
+      "name": "weight",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 1
+    },
+    {
+      "name": "wf7Kq2",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
+      "name": "wfBg02",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
+      "name": "wfQ4r1",
+      "kind": "identifier",
+      "topic": "build",
+      "mentions": 1
+    },
+    {
       "name": "wget",
       "kind": "identifier",
       "topic": "deploy",
       "mentions": 2
     },
     {
-      "name": "whatsapp_business_management",
+      "name": "whatsapp_business_api_data.id",
       "kind": "identifier",
       "topic": "integrations",
       "mentions": 1
+    },
+    {
+      "name": "whatsapp_business_management",
+      "kind": "identifier",
+      "topic": "integrations",
+      "mentions": 2
     },
     {
       "name": "whsec_",
@@ -14172,6 +15900,12 @@
       "name": "with_execution",
       "kind": "identifier",
       "topic": "deploy",
+      "mentions": 1
+    },
+    {
+      "name": "wont_fix_workflows",
+      "kind": "identifier",
+      "topic": "changelog",
       "mentions": 1
     },
     {
@@ -14325,6 +16059,12 @@
       "mentions": 2
     },
     {
+      "name": "workflow.execute.started",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 2
+    },
+    {
       "name": "workflow.id",
       "kind": "identifier",
       "topic": "connect",
@@ -14334,6 +16074,12 @@
       "name": "workflow.isArchived",
       "kind": "identifier",
       "topic": "connect",
+      "mentions": 1
+    },
+    {
+      "name": "workflow.json",
+      "kind": "identifier",
+      "topic": "build",
       "mentions": 1
     },
     {
@@ -14436,12 +16182,6 @@
       "name": "workflow.versionId",
       "kind": "identifier",
       "topic": "connect",
-      "mentions": 1
-    },
-    {
-      "name": "workflowConflictPolicy",
-      "kind": "identifier",
-      "topic": "build",
       "mentions": 1
     },
     {
@@ -14577,6 +16317,12 @@
       "mentions": 1
     },
     {
+      "name": "write_repository",
+      "kind": "identifier",
+      "topic": "administer",
+      "mentions": 2
+    },
+    {
       "name": "wufoo.com",
       "kind": "identifier",
       "topic": "integrations",
@@ -14587,6 +16333,12 @@
       "kind": "identifier",
       "topic": "build",
       "mentions": 2
+    },
+    {
+      "name": "yes",
+      "kind": "identifier",
+      "topic": "deploy",
+      "mentions": 1
     },
     {
       "name": "your.awesome.home",
@@ -15036,7 +16788,7 @@
       "name": "n8n-nodes-base.compression",
       "kind": "node",
       "topic": "build",
-      "mentions": 5
+      "mentions": 6
     },
     {
       "name": "n8n-nodes-base.confluence",
@@ -15120,19 +16872,19 @@
       "name": "n8n-nodes-base.databricks",
       "kind": "node",
       "topic": "changelog",
-      "mentions": 7
+      "mentions": 10
     },
     {
       "name": "n8n-nodes-base.databrickstrigger",
       "kind": "node",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "n8n-nodes-base.datatable",
       "kind": "node",
       "topic": "build",
-      "mentions": 7
+      "mentions": 9
     },
     {
       "name": "n8n-nodes-base.datetime",
@@ -15204,7 +16956,7 @@
       "name": "n8n-nodes-base.editimage",
       "kind": "node",
       "topic": "build",
-      "mentions": 4
+      "mentions": 5
     },
     {
       "name": "n8n-nodes-base.egoi",
@@ -15354,7 +17106,7 @@
       "name": "n8n-nodes-base.form",
       "kind": "node",
       "topic": "changelog",
-      "mentions": 4
+      "mentions": 5
     },
     {
       "name": "n8n-nodes-base.formiotrigger",
@@ -15372,7 +17124,7 @@
       "name": "n8n-nodes-base.formtrigger",
       "kind": "node",
       "topic": "administer",
-      "mentions": 8
+      "mentions": 9
     },
     {
       "name": "n8n-nodes-base.freshdesk",
@@ -15455,8 +17207,8 @@
     {
       "name": "n8n-nodes-base.gmail",
       "kind": "node",
-      "topic": "build",
-      "mentions": 15
+      "topic": "administer",
+      "mentions": 16
     },
     {
       "name": "n8n-nodes-base.gmailtrigger",
@@ -15546,7 +17298,7 @@
       "name": "n8n-nodes-base.googlecloudstorage",
       "kind": "node",
       "topic": "changelog",
-      "mentions": 4
+      "mentions": 5
     },
     {
       "name": "n8n-nodes-base.googlecontacts",
@@ -15708,7 +17460,7 @@
       "name": "n8n-nodes-base.httprequest",
       "kind": "node",
       "topic": "build",
-      "mentions": 29
+      "mentions": 30
     },
     {
       "name": "n8n-nodes-base.hubspot",
@@ -15738,7 +17490,7 @@
       "name": "n8n-nodes-base.if",
       "kind": "node",
       "topic": "build",
-      "mentions": 17
+      "mentions": 18
     },
     {
       "name": "n8n-nodes-base.intercom",
@@ -16110,7 +17862,13 @@
       "name": "n8n-nodes-base.microsoftsharepoint",
       "kind": "node",
       "topic": "integrations",
-      "mentions": 5
+      "mentions": 6
+    },
+    {
+      "name": "n8n-nodes-base.microsoftsharepointtrigger",
+      "kind": "node",
+      "topic": "integrations",
+      "mentions": 3
     },
     {
       "name": "n8n-nodes-base.microsoftsql",
@@ -16128,7 +17886,7 @@
       "name": "n8n-nodes-base.microsoftteamstrigger",
       "kind": "node",
       "topic": "integrations",
-      "mentions": 4
+      "mentions": 5
     },
     {
       "name": "n8n-nodes-base.microsofttodo",
@@ -16229,8 +17987,8 @@
     {
       "name": "n8n-nodes-base.nasa",
       "kind": "node",
-      "topic": "get-started",
-      "mentions": 5
+      "topic": "integrations",
+      "mentions": 4
     },
     {
       "name": "n8n-nodes-base.netlify",
@@ -16662,7 +18420,7 @@
       "name": "n8n-nodes-base.set",
       "kind": "node",
       "topic": "build",
-      "mentions": 18
+      "mentions": 20
     },
     {
       "name": "n8n-nodes-base.shopify",
@@ -16692,7 +18450,7 @@
       "name": "n8n-nodes-base.slacktrigger",
       "kind": "node",
       "topic": "changelog",
-      "mentions": 4
+      "mentions": 5
     },
     {
       "name": "n8n-nodes-base.sms77",
@@ -16745,8 +18503,8 @@
     {
       "name": "n8n-nodes-base.ssh",
       "kind": "node",
-      "topic": "changelog",
-      "mentions": 4
+      "topic": "administer",
+      "mentions": 5
     },
     {
       "name": "n8n-nodes-base.stackby",
@@ -16824,7 +18582,7 @@
       "name": "n8n-nodes-base.switch",
       "kind": "node",
       "topic": "build",
-      "mentions": 12
+      "mentions": 13
     },
     {
       "name": "n8n-nodes-base.syncromsp",
@@ -17034,13 +18792,13 @@
       "name": "n8n-nodes-base.wait",
       "kind": "node",
       "topic": "build",
-      "mentions": 12
+      "mentions": 13
     },
     {
       "name": "n8n-nodes-base.webflow",
       "kind": "node",
       "topic": "changelog",
-      "mentions": 5
+      "mentions": 6
     },
     {
       "name": "n8n-nodes-base.webflowtrigger",
@@ -17051,8 +18809,8 @@
     {
       "name": "n8n-nodes-base.webhook",
       "kind": "node",
-      "topic": "build",
-      "mentions": 18
+      "topic": "administer",
+      "mentions": 19
     },
     {
       "name": "n8n-nodes-base.wekan",
@@ -17184,7 +18942,7 @@
       "name": "n8n-nodes-langchain.agent",
       "kind": "node",
       "topic": "build",
-      "mentions": 51
+      "mentions": 55
     },
     {
       "name": "n8n-nodes-langchain.alibabacloud",
@@ -17208,7 +18966,7 @@
       "name": "n8n-nodes-langchain.chainretrievalqa",
       "kind": "node",
       "topic": "build",
-      "mentions": 20
+      "mentions": 21
     },
     {
       "name": "n8n-nodes-langchain.chainsummarization",
@@ -17226,19 +18984,25 @@
       "name": "n8n-nodes-langchain.chattrigger",
       "kind": "node",
       "topic": "administer",
-      "mentions": 18
+      "mentions": 21
     },
     {
       "name": "n8n-nodes-langchain.code",
       "kind": "node",
       "topic": "build",
-      "mentions": 4
+      "mentions": 6
+    },
+    {
+      "name": "n8n-nodes-langchain.databricksaiagent",
+      "kind": "node",
+      "topic": "integrations",
+      "mentions": 7
     },
     {
       "name": "n8n-nodes-langchain.documentdefaultdataloader",
       "kind": "node",
       "topic": "build",
-      "mentions": 9
+      "mentions": 10
     },
     {
       "name": "n8n-nodes-langchain.documentgithubloader",
@@ -17265,6 +19029,12 @@
       "mentions": 4
     },
     {
+      "name": "n8n-nodes-langchain.embeddingsdatabricks",
+      "kind": "node",
+      "topic": "integrations",
+      "mentions": 7
+    },
+    {
       "name": "n8n-nodes-langchain.embeddingsgooglegemini",
       "kind": "node",
       "topic": "changelog",
@@ -17280,7 +19050,7 @@
       "name": "n8n-nodes-langchain.embeddingsgooglevertex",
       "kind": "node",
       "topic": "integrations",
-      "mentions": 2
+      "mentions": 3
     },
     {
       "name": "n8n-nodes-langchain.embeddingshuggingfaceinference",
@@ -17370,7 +19140,7 @@
       "name": "n8n-nodes-langchain.lmchatdatabricks",
       "kind": "node",
       "topic": "integrations",
-      "mentions": 4
+      "mentions": 8
     },
     {
       "name": "n8n-nodes-langchain.lmchatdeepseek",
@@ -17388,7 +19158,7 @@
       "name": "n8n-nodes-langchain.lmchatgooglevertex",
       "kind": "node",
       "topic": "changelog",
-      "mentions": 3
+      "mentions": 4
     },
     {
       "name": "n8n-nodes-langchain.lmchatgroq",
@@ -17481,12 +19251,6 @@
       "mentions": 3
     },
     {
-      "name": "n8n-nodes-langchain.mcpclient",
-      "kind": "node",
-      "topic": "changelog",
-      "mentions": 1
-    },
-    {
       "name": "n8n-nodes-langchain.mcptrigger",
       "kind": "node",
       "topic": "build",
@@ -17496,13 +19260,19 @@
       "name": "n8n-nodes-langchain.memorybufferwindow",
       "kind": "node",
       "topic": "build",
-      "mentions": 8
+      "mentions": 9
+    },
+    {
+      "name": "n8n-nodes-langchain.memorylakebasechat",
+      "kind": "node",
+      "topic": "integrations",
+      "mentions": 3
     },
     {
       "name": "n8n-nodes-langchain.memorymanager",
       "kind": "node",
       "topic": "build",
-      "mentions": 12
+      "mentions": 13
     },
     {
       "name": "n8n-nodes-langchain.memorymongochat",
@@ -17520,7 +19290,7 @@
       "name": "n8n-nodes-langchain.memorypostgreschat",
       "kind": "node",
       "topic": "build",
-      "mentions": 6
+      "mentions": 7
     },
     {
       "name": "n8n-nodes-langchain.memoryredischat",
@@ -17616,7 +19386,7 @@
       "name": "n8n-nodes-langchain.retrievervectorstore",
       "kind": "node",
       "topic": "build",
-      "mentions": 16
+      "mentions": 17
     },
     {
       "name": "n8n-nodes-langchain.retrieverworkflow",
@@ -17700,7 +19470,7 @@
       "name": "n8n-nodes-langchain.toolvectorstore",
       "kind": "node",
       "topic": "build",
-      "mentions": 18
+      "mentions": 19
     },
     {
       "name": "n8n-nodes-langchain.toolwikipedia",
@@ -17733,10 +19503,16 @@
       "mentions": 2
     },
     {
+      "name": "n8n-nodes-langchain.vectorstoredatabricks",
+      "kind": "node",
+      "topic": "integrations",
+      "mentions": 6
+    },
+    {
       "name": "n8n-nodes-langchain.vectorstoreinmemory",
       "kind": "node",
       "topic": "build",
-      "mentions": 5
+      "mentions": 6
     },
     {
       "name": "n8n-nodes-langchain.vectorstoremilvus",

@@ -1,7 +1,7 @@
 ---
 id: "n8n-nodes-baseflow"
 title: "Flow node documentation"
-summary: "Use the Flow node to automate work in Flow, and integrate Flow with other applications."
+summary: "The Flow service has shut down and its API no longer responds, so the Flow and Flow Trigger nodes can't connect to it."
 topic: "integrations"
 difficulty: "intermediate"
 content_type: integration, reference
@@ -17,13 +17,17 @@ updated: 2026-11-12
 
 ## Summary
 
-Use the Flow node to automate work in Flow, and integrate Flow with other applications.
+The Flow service has shut down and its API no longer responds, so the Flow and Flow Trigger nodes can't connect to it.
 
 **Source**: https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.flow
 
 ---
 
 # Flow node
+
+**Feature availability**
+
+The Flow service has shut down and its API no longer responds, so the Flow and Flow Trigger nodes can't connect to it. Workflows using these nodes will fail. Remove them or switch to another service.
 
 Use the Flow node to automate work in Flow, and integrate Flow with other applications. n8n has built-in support for a wide range of Flow features, including creating, updating, and getting tasks.
 

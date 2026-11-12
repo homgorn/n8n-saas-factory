@@ -46,4 +46,4 @@ Tell n8n which workflow to call. You can choose either:
 
 ## Related resources
 
-Refer to [LangChain's general retriever documentation](https://js.langchain.com/docs/concepts/retrievers/) for more information about the service.
+Refer to [LangChain's retriever documentation](https://docs.langchain.com/oss/javascript/integrations/retrievers) for more information about the service.

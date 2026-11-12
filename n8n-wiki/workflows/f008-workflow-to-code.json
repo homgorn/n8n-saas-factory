@@ -1,0 +1,85 @@
+{
+  "name": "workflow-to-code-pr",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "workflow-changed",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Workflow changed",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-620, 100],
+      "webhookId": "a1b2c3d4-workflow-changed"
+    },
+    {
+      "parameters": {
+        "command": "python",
+        "args": [
+          "brain/scripts/analyzer.py",
+          "={{ $json.workflowFile || 'C:/susa ai/N8N/n8n-wiki/workflows/f008-sync-workflow.json' }}",
+          "--format",
+          "json"
+        ],
+        "options": {}
+      },
+      "id": "run-analyzer",
+      "name": "Run analyzer",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [-400, 100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.github.com/repos/{{ $env.GITHUB_REPO }}/pulls",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "=Bearer {{ $env.GITHUB_TOKEN }}" },
+            { "name": "Accept", "value": "application/vnd.github+json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"title\": \"workflow: {{ $json.name }}\",\n  \"head\": \"feature/{{ $json.slug }}\",\n  \"base\": \"main\",\n  \"body\": \"Generated from workflow change. Analysis:\\n{{ JSON.stringify($json) }}\"\n}",
+        "options": {}
+      },
+      "id": "create-pr",
+      "name": "Create GitHub PR",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-160, 100]
+    },
+    {
+      "parameters": {
+        "content": "## workflow -> code\n\nTrigger: webhook `workflow-changed`.\n\n1. Runs `brain/scripts/analyzer.py` on the changed workflow JSON.\n2. Opens a GitHub PR with the analysis in the body.\n\nNeeds `GITHUB_TOKEN` and `GITHUB_REPO` in the environment. The command node needs\n`NODE_FUNCTION_ALLOW_BUILTIN` and execute-command permission on the host.",
+        "height": 200,
+        "width": 620,
+        "color": 4
+      },
+      "id": "sticky-note",
+      "name": "Read me",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-620, -140]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Workflow changed": {
+      "main": [[{ "node": "Run analyzer", "type": "main", "index": 0 }]]
+    },
+    "Run analyzer": {
+      "main": [[{ "node": "Create GitHub PR", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "versionId": "f8-workflow-to-code-v1",
+  "id": "wf_workflow_to_code",
+  "tags": [{ "createdAt": "2026-11-12", "updatedAt": "2026-11-12", "id": 2, "name": "sync" }]
+}

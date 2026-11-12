@@ -39,6 +39,6 @@ On this page, you'll find the node parameters for the Vector Store Retriever nod
 
 ## Related resources
 
-Refer to [LangChain's vector store retriever documentation](https://js.langchain.com/docs/how_to/vectorstore_retriever/) for more information about the service.
+Refer to [LangChain's semantic search tutorial](https://docs.langchain.com/oss/javascript/langchain/knowledge-base) for more information about the service.
 
 [^1]: A vector store, or vector database, stores mathematical representations of information. Use with embeddings and retrievers to create a database that your AI can access when answering questions.

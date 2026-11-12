@@ -19,7 +19,7 @@ from __future__ import annotations
 import math
 import re
 import sqlite3
-from collections import Counter
+from collections import Counter, defaultdict
 
 STOPWORDS = {
     "the", "and", "for", "with", "that", "this", "these", "those", "how", "what",
@@ -32,9 +32,16 @@ STOPWORDS = {
 }
 
 TITLE_EXACT = 40
-TITLE_PREFIX = 20
-TITLE_CONTAINS = 8
-HEADING_BOOST = 12
+TITLE_PREFIX = 25
+TITLE_CONTAINS = 6
+# Ceiling on one term's contribution to a document's score. Low enough that one rare term
+# cannot win outright, high enough that a page matching two terms still beats a page matching
+# one term that happens to sit at the ceiling.
+MAX_TERM_SCORE = 70.0
+# A heading match is weaker evidence than a title match: a chunk whose heading happens to
+# mention a term is not necessarily a page about that term. At 12 the Docker Compose
+# deployment page outranked "Environment variables" for an environment-variables query.
+HEADING_BOOST = 5
 
 
 def tokenize(question: str) -> list[str]:
@@ -78,6 +85,7 @@ def score_chunks(
     word_re = {t: re.compile(rf"\b{re.escape(t)}\b", re.I) for t in terms}
 
     scores: Counter = Counter()
+    per_term: dict[str, Counter] = {t: Counter() for t in terms}
     best: dict[str, dict] = {}
 
     for term, weight in idf.items():
@@ -98,7 +106,7 @@ def score_chunks(
             # Without this, long code chunks outrank the actually relevant page.
             tokens = max(1, len(text) // 4)
             density = 1.0 / (1.0 + math.log(1 + tokens / 400))
-            scores[chunk_id] += weight * (body * density + in_heading)
+            per_term[term][chunk_id] += weight * (body * density + in_heading)
             best.setdefault(chunk_id, {
                 "chunk_id": chunk_id, "doc_id": doc_id,
                 "heading": heading, "kind": kind, "text": text,
@@ -109,10 +117,30 @@ def score_chunks(
         for slug, title in conn.execute("SELECT slug, title FROM docs"):
             ts = title_score(title, term)
             if ts:
-                scores[f"title::{slug}"] += weight * ts
+                per_term[term][f"title::{slug}"] += weight * ts
+
+    # Soft ceiling on what a single term can contribute. A hard cap flattened documents that
+    # were genuinely better ("Webhook" and a page titled "Build" both landed on the cap and
+    # the tie was broken by insertion order). Saturating instead of clipping keeps the
+    # ordering meaningful while still stopping one rare term from winning outright.
+    matched_terms: dict[str, set[str]] = defaultdict(set)
+    for term, contributions in per_term.items():
+        for cid, value in contributions.items():
+            capped = MAX_TERM_SCORE * (1 - math.exp(-value / MAX_TERM_SCORE))
+            scores[cid] += capped
+            matched_terms[cid].add(term)
+
+    # Coordination as a multiplier, not as a primary sort key. A page matching several query
+    # terms gets up to ~2.4x, but the base score still decides: otherwise a release-notes page
+    # that happens to contain all five words of a query outranks the page actually about them.
+    for cid in list(scores):
+        extra = max(0, len(matched_terms.get(cid, ())) - 1)
+        scores[cid] *= 1 + 0.35 * extra
+
+    ordered = sorted(scores.items(), key=lambda kv: kv[1], reverse=True)
 
     results = []
-    for cid, score in scores.most_common(limit):
+    for cid, score in ordered[:limit]:
         if cid.startswith("title::"):
             slug = cid.split("::", 1)[1]
             row = conn.execute(

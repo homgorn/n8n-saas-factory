@@ -33,6 +33,4 @@ The Contextual Compression Retriever node improves the answers returned from [ve
 
 ## Related resources
 
-Refer to [LangChain's contextual compression retriever documentation](https://js.langchain.com/docs/how_to/contextual_compression/) for more information about the service.
-
 [^1]: A vector store, or vector database, stores mathematical representations of information. Use with embeddings and retrievers to create a database that your AI can access when answering questions.

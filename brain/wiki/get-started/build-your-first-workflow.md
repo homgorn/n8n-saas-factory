@@ -1,12 +1,12 @@
 ---
 id: "build-your-first-workflow"
 title: "Build Your First Workflow"
-summary: "This guide will show you how to construct a workflow[^1] in n8n, explaining key concepts along the way."
+summary: "In this quick start, you’ll build a workflow that fetches the weather for Berlin every morning and turns it into a short report anyone can read at a glance."
 topic: "get-started"
 difficulty: "beginner"
 content_type: tutorial
 source: https://docs.n8n.io/get-started/build-your-first-workflow
-related_nodes: [n8n-nodes-base.if, n8n-nodes-base.nasa, n8n-nodes-base.scheduletrigger]
+related_nodes: [n8n-nodes-base.datatable, n8n-nodes-base.httprequest, n8n-nodes-base.scheduletrigger, n8n-nodes-base.set]
 claims: []
 updated: 2026-11-12
 ---
@@ -17,7 +17,7 @@ updated: 2026-11-12
 
 ## Summary
 
-This guide will show you how to construct a workflow[^1] in n8n, explaining key concepts along the way.
+In this quick start, you’ll build a workflow that fetches the weather for Berlin every morning and turns it into a short report anyone can read at a glance.
 
 **Source**: https://docs.n8n.io/get-started/build-your-first-workflow
 
@@ -25,163 +25,257 @@ This guide will show you how to construct a workflow[^1] in n8n, explaining key 
 
 # Build your first workflow
 
-This guide will show you how to construct a workflow[^1] in n8n, explaining key concepts along the way. You will:
+In this quick start, you’ll build a workflow that fetches the weather for Berlin every morning and turns it into a short report anyone can read at a glance. The workflow saves each report to a data table, so you build up a weather log over time.
 
-* Create a workflow from scratch.
-* Understand key concepts and skills, including:
-  * Starting workflows with trigger nodes
-  * Configuring credentials[^2]
-  * Processing data
-  * Representing logic in an n8n workflow
-  * Using expressions[^3]
+![8 AM schedule trigger connected to Get Berlin weather, Add weather report, and Save weather log](.gitbook/assets/build-your-first-workflow.png)
 
-![The completed workflow: Schedule Trigger connected to NASA, then an If node branching into two PostBin nodes](.gitbook/assets/tutorial-first.png)
+When it runs, your workflow produces a report like this:
 
-This quickstart uses [n8n Cloud](https://app.gitbook.com/s/jm0ZYRpZIPWge2ZSiDYO/use-n8n-cloud/), which is recommended for new users. A free trial is available. If you haven't already, [sign up](https://app.n8n.cloud/register) for an account now.
+```
+The temperature in Berlin is 6.8 degrees C and it's currently cloudy.
+```
 
-Prefer to self-host? Run `curl -fsSL https://get.n8n.io | sh` to get n8n running locally in one step (see the [one-line setup guide](https://app.gitbook.com/s/jm0ZYRpZIPWge2ZSiDYO/host-n8n/install-options/one-line-setup)), then come back and follow the steps below at `http://localhost:5678` instead of your Cloud instance.
+You’ll build it with n8n Assistant, which turns a prompt into a working workflow. That takes less than five minutes. If you’d rather build it node by node, an optional section at the end walks you through the same workflow by hand.
 
-## Step one: Create a new workflow
+You can also follow along with this video:
 
-When you open n8n, you'll see either:
+Apart from n8n, you don’t need any coding experience. The weather data comes from Mockingbird, a sample-data service n8n provides for tutorials, so you’ll get similar results to this guide.
 
-* A window with a welcome message and two large buttons: Choose **Start from Scratch** to create a new workflow.
-* The **Workflows** list on the **Overview** page. Select the **Create Workflow** to create a new workflow.
+## Before you start
 
-## Step two: Add a trigger node
+You need an n8n instance. Either:
 
-n8n provides two ways to start a workflow:
+- **n8n Cloud**: [sign up for a free trial](https://go.n8n.io/ekXKXJ), or
+- **Self-hosted**: follow the [host n8n](https://app.gitbook.com/s/jm0ZYRpZIPWge2ZSiDYO/host-n8n) guide, then [set up n8n Assistant](https://app.gitbook.com/s/jm0ZYRpZIPWge2ZSiDYO/host-n8n/configure-n8n/set-up-n8n-assistant) with your own AI provider account
 
-* Manually, by selecting **Execute Workflow**.
-* Automatically, using a trigger node as the first node. The trigger node runs the workflow in response to an external event, or based on your settings.
+## Build the workflow with n8n Assistant
 
-This tutorial uses the [Schedule trigger](https://app.gitbook.com/s/BKcbOzIWja8NfqKDcqHc/builtin/core-nodes/n8n-nodes-base.scheduletrigger), which lets you run the workflow on a schedule:
+**Feature availability**
 
-1. Select **Add first step**.
-2. Search for **Schedule**. n8n shows a list of nodes that match the search.
-3. Select **Schedule Trigger** to add the node to the canvas. n8n opens the node.
-4. For **Trigger Interval**, select **Weeks**.
-5. For **Weeks Between Triggers**, enter `1`.
-6. Enter a time and day. For this example, select **Monday** in **Trigger on Weekdays**, select **9am** in **Trigger at Hour**, and enter `0` in **Trigger at Minute**.
-7. Close the **node details view** to return to the canvas.
+n8n Assistant is available on:
 
-## Step three: Add the NASA node and set up credentials
+- **n8n Cloud:** Starter, Pro
+- **Self-hosted:** Community, Registered Community, Business
 
-The [NASA node](https://app.gitbook.com/s/BKcbOzIWja8NfqKDcqHc/builtin/app-nodes/n8n-nodes-base.nasa) interacts with NASA's [public APIs](https://api.nasa.gov/) to fetch useful data. This tutorial uses the real-time data from the API to find solar events.
+On n8n Cloud Enterprise and self-hosted Enterprise, contact your Customer Success Manager about preview access.
 
-1. Select the **Add node**  connector on the Schedule Trigger node.
-2. Search for **NASA**. n8n shows a list of nodes that match the search.
-3. Select **NASA** to view a list of operations.
-4. Search for and select **Get a DONKI solar flare**. This operation returns a report about recent solar flares. When you select the operation, n8n adds the node to the canvas and opens it.
-5. To access the NASA APIs, you need to set up credentials:
-   1. Select the **Credential for NASA API** dropdown.
-   2. Select **Create new credential**. n8n opens the credentials view.
-   3. Go to [NASA APIs](https://api.nasa.gov/) and fill out the form from the **Generate API Key** link. The NASA site generates the key and emails it to the address you entered.
-   4. Check your email account for the API key. If you don’t see it, check your junk or spam folder. Copy the key, and paste it into **API Key** in n8n.
-   5. Select **Save**.
-   6. Close the credentials screen. n8n returns to the node. The new credentials should be automatically selected in **Credential for NASA API**.
-6.  By default, DONKI Solar Flare provides data for the past 30 days. To limit it to just the last week, use **Additional Fields**:
+Your results may differ from the screenshots in this guide.
 
-    1. Select **Add field**.
-    2. Select **Start date**.
-    3. To get a report starting from a week ago, you can use an expression: next to **Start date**, select the **Expression** tab, then select the expand button  to open the full expressions editor.
-    4. In the **Expression** field, enter the following expression:
+n8n Assistant builds workflows from prompts. You describe what you want, approve each step, and end up with a workflow you can open, edit, and publish.
 
-    ```js
-    {{ $today.minus(7, 'days') }}
+1. Log in to your n8n instance and select **New chat** in the left menu to talk to the n8n Assistant.
+
+    ![New chat selected in the left menu, with the n8n Assistant chat box open](.gitbook/assets/build-your-first-workflow-assistant-01.png)
+
+2. Enter this prompt, or dictate it, and select the send arrow:
+
+    ```
+    Build a workflow called Weather Log that runs every day at 8 AM:
+    - Get the weather for Berlin from https://mockingbird.n8n.io/v1/weather/berlin
+    - Add a report field that contains the city, temperature, and conditions e.g. The temperature in Berlin is 10°C. It's currently overcast.
+    - Save the report to a new data table
     ```
 
-    This generates a date in the correct format, seven days before the current date.
-
-    ![Start Date expression editor, with the Result panel showing a resolved date one week before today](.gitbook/assets/tutorial-date.png)
-7. Close the **Edit Expression** modal to return to the NASA node.
-8. You can now check that the node is working and returning the expected date: select **Execute step** to run the node manually. n8n calls the NASA API and displays details of solar flares in the past seven days in the **OUTPUT** section.
-9. Close the NASA node to return to the workflow canvas.
-
-## Step four: Add logic with the If node
-
-n8n supports complex logic in workflows. This tutorial uses the [If node](https://app.gitbook.com/s/BKcbOzIWja8NfqKDcqHc/builtin/core-nodes/n8n-nodes-base.if) to create two branches that each generate a report from the NASA data. Solar flares have five possible classifications. The If node sends a report with the lower classifications to one output, and the higher classifications to another.
-
-Add the If node:
-
-1. Select the **Add node**  connector on the NASA node.
-2. Search for **If**. n8n shows a list of nodes that match the search.
-3. Select **If** to add the node to the canvas. n8n opens the node.
-4. You need to check the value of the `classType` property in the NASA data. To do this:
-   1.  Drag **classType** into **Value 1**.
+    ![The weather workflow prompt entered in the n8n Assistant chat box](.gitbook/assets/build-your-first-workflow-assistant-02.png)
 
 
-   2. Change the comparison operation to **String > Contains**.
-   3. In **Value 2**, enter **X**. This is the highest classification of solar flare. In the next step, you will create two reports: one for X class solar flares, and one for all the smaller solar flares.
-5.  You can now check that the node is working and returning the expected date: select **Execute step** to run the node manually. n8n tests the data against the condition, and shows which results match true or false in the **OUTPUT** panel.
+    Mockingbird is a sample API with weather for about 40 European cities. Other cities return an error.
 
 
-6. Once you are happy the node will return some events, you can close the node to return to the canvas.
+3. Approve any prompts from n8n Assistant with **Allow once**. As it builds the workflow, you'll see the progress on the canvas to the right of the chat.
 
-## Step five: Output data from your workflow
+    ![n8n Assistant asking the user for permission](.gitbook/assets/build-your-first-workflow-assistant-03.png)
 
-The last step of the workflow is to send the two reports about solar flares. For this example, you'll send data to [Postbin](https://www.toptal.com/developers/postbin/). Postbin is a service that receives data and displays it on a temporary web page.
+4. Approve a run if prompted by n8n Assistant. Otherwise, ask n8n Assistant to run a test for you.
 
-1. On the If node, select the **Add node**  connector labeled **true**.
-2. Search for **PostBin**. n8n shows a list of nodes that match the search.
-3. Select **PostBin**.
-4. Select **Send a request**. n8n adds the node to the canvas and opens it.
-5. Go to [Postbin](https://www.toptal.com/developers/postbin/) and select **Create Bin**. Leave the tab open so you can come back to it when testing the workflow.
-6. Copy the bin ID. It looks like `1651063625300-2016451240051`.
-7. In n8n, paste your Postbin ID into **Bin ID**.
-8. Now, configure the data to send to Postbin. Next to **Bin Content**, select the **Expression** tab (you will need to mouse-over the **Bin Content** for the tab to appear), then select the expand button  to open the full expressions editor.
-9. You can now click and drag the correct field from the If node output into the expressions editor to automatically create a reference for this label. In this case, the field you want is `classType`.
-10. Once dropped into the expressions editor it will transform into this reference: `{{$json["classType"]}}`. Add a message to it, so that the full expression is:
+    ![n8n Assistant asking to run a live test, with the finished workflow on the canvas](.gitbook/assets/build-your-first-workflow-assistant-04.png)
 
-    ```js
-    There was a solar flare of class {{$json["classType"]}}
+5. Select **Publish and enable the schedule** if prompted by n8n Assistant, as the workflow only runs at 8 AM every day once you publish it. Otherwise, ask n8n Assistant to publish it for you.
+
+    ![User asking assistant to publish workflow](.gitbook/assets/build-your-first-workflow-assistant-05.png)
+
+6. Select the `weather log` data table at the top of the right-hand pane to check the workflow ran as intended. Otherwise, ask n8n Assistant to show you the data table.
+
+    ![weather log tab selected at the top of the right-hand pane](.gitbook/assets/build-your-first-workflow-assistant-06.png)
+
+7. Select **Personal** in the left menu to see the workflow. n8n Assistant saves all workflows under **Personal**.
+
+    ![weather log listed under Personal, marked as Published](.gitbook/assets/build-your-first-workflow-assistant-07.png)
+
+## What your workflow does
+
+Open **weather log** on the canvas and you'll see four [nodes](https://app.gitbook.com/s/rPN1zU5jaYNvwH7RzxqA/understand-workflows/workflow-components/work-with-nodes), each doing one job and passing its result to the next:
+
+| Node | What it does |
+| --- | --- |
+| **Every day at 8 AM** | A [Schedule Trigger](https://app.gitbook.com/s/BKcbOzIWja8NfqKDcqHc/builtin/core-nodes/n8n-nodes-base.scheduletrigger) that starts the workflow at 8 AM every day. |
+| **Get Berlin weather** | An [HTTP Request](https://app.gitbook.com/s/BKcbOzIWja8NfqKDcqHc/builtin/core-nodes/n8n-nodes-base.httprequest) node that fetches the weather from the Mockingbird API. |
+| **Add weather report** | An [Edit Fields (Set)](https://app.gitbook.com/s/BKcbOzIWja8NfqKDcqHc/builtin/core-nodes/n8n-nodes-base.set) node that builds the `report` text, using an [expression](https://app.gitbook.com/s/rPN1zU5jaYNvwH7RzxqA/work-with-data/transform-data/expressions-for-data-transformation) to pull in the live weather values. |
+| **Save weather log** | A [Data table](https://app.gitbook.com/s/BKcbOzIWja8NfqKDcqHc/builtin/core-nodes/n8n-nodes-base.datatable) node that inserts the report as a new row in the table. |
+
+n8n Assistant chooses the node names itself, so yours may differ from the ones above.
+
+## Optional: Build the workflow yourself
+
+This section builds the weather log workflow by hand, one node at a time, without n8n Assistant.
+
+You'll end up with a second workflow built from the same four nodes: **Every day at 8 AM**, **Get Berlin weather**, **Add weather report**, and **Save weather log**. You'll also create a new data table in the process.
+
+### 1. Create the workflow
+
+1. Select **Personal** in the left menu followed by **Create workflow**. This opens the canvas, where you’ll build your workflow and spend most of this section.
+
+    ![Personal in the left menu and the create workflow button](.gitbook/assets/build-your-first-workflow-optional-01-01.png)
+
+2. Select the workflow’s name and change it to `Weather Log 2` (or something more creative). Select anywhere on the canvas to save the name.
+
+### 2. Run it at 8 AM every day
+
+You’ll use: **Schedule Trigger**
+
+When building a workflow, the first question to answer is: “How should this workflow start?” On a schedule, for example 8 AM every day? When a user submits a form? When an application like Telegram sends a message?
+
+For this build, you'll set it to run at 8 AM every day. While you build, you’ll run the workflow yourself to test it. Once you publish it at the end, the schedule runs it for you:
+
+1. Select **Add first step**, then select **On a schedule**.
+
+    ![On a schedule option](.gitbook/assets/build-your-first-workflow-optional-02-01.png)
+
+2. Select `8am` from the **Trigger at Hour** field in the Node details view. Select the close button in the top right to close the window.
+
+    ![Trigger at Hour set to 8 AM](.gitbook/assets/build-your-first-workflow-optional-02-02.png)
+
+3. Select the **Schedule Trigger** node and press space bar to open up the rename dialog box. Rename it to `Every day at 8 AM`.
+
+    ![Renamed Schedule Trigger](.gitbook/assets/build-your-first-workflow-optional-02-03.png)
+
+### 3. Get the weather for Berlin
+
+You’ll use: **HTTP Request**
+
+You’ve got your trigger, so it’s time to fetch the weather. The **HTTP Request** node sends a request to a web address, called an endpoint, and returns the data that address provides. Services that share data this way are APIs.
+
+1. Select **+** after the trigger, type `http` in the **Search nodes** box, and select **HTTP Request**.
+
+    ![HTTP Request in the search results](.gitbook/assets/build-your-first-workflow-optional-03-01.png)
+
+2. Paste `https://mockingbird.n8n.io/v1/weather/berlin` into the **URL** field in the Node details view.
+
+    ![Mockingbird URL in the URL field](.gitbook/assets/build-your-first-workflow-optional-03-02.png)
+
+
+    Mockingbird is a sample API with weather for about 40 European cities. Other cities return an error.
+
+
+3. Press **Execute step**. You should see the weather for Berlin in the output, including the `city`, `temp_c`, and `condition` fields you’ll use in the next step.
+
+    ![Berlin weather output](.gitbook/assets/build-your-first-workflow-optional-03-03.png)
+
+4. Rename the node to be `Get Berlin weather`.
+
+### 4. Turn the weather into a report
+
+You’ll use: **Edit Fields (Set)**
+
+Next, you’ll turn the weather data into a short report that anyone can read at a glance.
+
+1. Select **+** after **Get Berlin weather**, select **Data transformation**, then select **Edit Fields (Set)**.
+
+    ![Edit Fields (Set) under Data transformation](.gitbook/assets/build-your-first-workflow-optional-04-01.png)
+
+2. Select **Add Field** in the middle of the Node details view. For **Name**, enter `report`.
+
+    ![Add Field button](.gitbook/assets/build-your-first-workflow-optional-04-02-01.png)
+
+    ![Field named report](.gitbook/assets/build-your-first-workflow-optional-04-02-02.png)
+
+3. Enter `The temperature in` for **Value**, then drag `city` from the input panel on the left. When you drop a field in, n8n switches **Value** to **Expression** mode, and you see:
+
+    ```
+    The temperature in {{ $json.city }}
     ```
 
-    ![Expression editor for Bin Content, with the Result panel showing the rendered message text](.gitbook/assets/tutorial-expression.png)
-11. Close the expressions editor to return to the node.
-12. Close the Postbin node to return to the canvas.
-13. Add another Postbin node, to handle the **false** output path from the If node:
-    1. Hover over the Postbin node, then select **Node context menu**  > **Duplicate node** to duplicate the first Postbin node.
-    2. Drag the **false** connector from the If node to the left side of the new Postbin node.
+    ![city dragged into the Value field](.gitbook/assets/build-your-first-workflow-optional-04-03.png)
 
-## Step six: Test the workflow
 
-1. You can now test the entire workflow. Select **Execute Workflow**. n8n runs the workflow, showing each stage in progress.
-2. Go back to your Postbin bin. Refresh the page to see the output.
-3. If you want to use this workflow (in other words, if you want it to run once a week automatically), you need to publish it by clicking **Publish**.
+    **What's an expression?**
 
-**Time limit**
+    `{{ $json.city }}` is a placeholder, called an expression. When the workflow runs, n8n swaps it for the real value. The input panel shows the output from **Get Berlin weather**, which becomes the input to this node. You drag fields in rather than typing them, and the preview under the field shows you the finished sentence. To learn more, see [Expressions](https://app.gitbook.com/s/rPN1zU5jaYNvwH7RzxqA/work-with-data/expressions-versus-data-nodes#expressions).
 
-Postbin's bins exist for 30 minutes after creation. You may need to create a new bin and update the ID in the Postbin nodes, if you exceed this time limit.
 
-## Congratulations
+4. Drag `temp_c` in and update the wording to:
 
-You now have a fully functioning workflow that does something useful! It should look something like this:
+    ```
+    The temperature in {{ $json.city }} is {{ $json.temp_c }}°C.
+    ```
 
-Along the way you have discovered:
+    ![Value with city and temperature](.gitbook/assets/build-your-first-workflow-optional-04-04-01.png)
 
-* How to find the nodes you want and join them together
-* How to use expressions to manipulate data
-* How to create credentials and attach them to nodes
-* How to use logic in your workflows
+    Add `It's currently` to the end, then drag `condition` in:
 
-There are plenty of things you could add to this (perhaps add some more credentials and a node to send you an email of the results), or maybe you have a specific project in mind. Whatever your next steps, the resources linked below should help.
+    ```
+    The temperature in {{ $json.city }} is {{ $json.temp_c }}°C. It's currently {{ $json.condition }}.
+    ```
+
+    ![Value with city, temperature, and condition](.gitbook/assets/build-your-first-workflow-optional-04-04-02.png)
+
+5. Rename the node to `Add weather report` and select **Execute step**.
+
+### 5. Save the data
+
+You’ll use: **Data table**
+
+You’ve fetched the data and formatted it, so now it’s time to store it. You'll create a data table in the process.
+
+1. Add a **Data table** node after **Add weather report** and select **Insert row** as the action.
+
+    ![Insert row action](.gitbook/assets/build-your-first-workflow-optional-05-01.png)
+
+2. Open the node, select the drop down under **Data table**, then select **Create new data table**:
+
+    ![Create a new data table](.gitbook/assets/build-your-first-workflow-optional-05-02.png)
+
+    A new browser tab will open.
+
+3. Enter `weather log 2` for the name of your data table (or something creative!), and select **Create**:
+
+    ![Name the new data table](.gitbook/assets/build-your-first-workflow-optional-05-03.png)
+
+4. Select **Add Column** on the top right and enter `report` before selecting **Add Column**. This will be the column the data from the `Add weather report` node gets saved to.
+
+    ![Add a column to the new data table](.gitbook/assets/build-your-first-workflow-optional-05-04.png)
+
+    Navigate back to the workflow tab.
+
+5. Select the data table you just created from the **Data table** list and change **Mapping Column Mode** to **Map Automatically**. The `report` field from **Add weather report** has the same name as the column in the data table, so n8n maps them for you.
+
+    ![Data table node with the data table selected and Map Automatically set](.gitbook/assets/build-your-first-workflow-optional-05-05.png)
+
+6. Rename the node to `Save weather log`.
+
+### 6. Test and publish the workflow
+
+Your workflow is complete. Test it, then publish it so it runs every day at 8 AM.
+
+1. Select **Execute** under the canvas to test it. You should see green check marks on all four nodes:
+
+    ![Successful workflow run after execution](.gitbook/assets/build-your-first-workflow-optional-06-01.png)
+
+2. Navigate to **Personal** > **Data tables** to see the new row.
+
+3. Select **Publish** in the Canvas header and follow the prompts to publish the workflow.
+
+    ![Publish the workflow](.gitbook/assets/build-your-first-workflow-optional-06-03.png)
 
 ## Next steps
 
-* Interested in what you could do with AI? Find out [how to build an AI chat agent with n8n](https://app.gitbook.com/s/rPN1zU5jaYNvwH7RzxqA/integrate-ai).
-* Take [courses at n8n Academy](https://learn.n8n.io).
-* Explore more examples in [workflow templates](https://n8n.io/workflows/).
-
-[^1]: An n8n workflow is a collection of nodes that automate a process. Workflows begin execution when a trigger condition occurs and execute sequentially to achieve complex tasks.
-
-[^2]: In n8n, credentials store authentication information to connect with specific apps and services. After creating credentials with your authentication information (username and password, API key, OAuth secrets, etc.), you can use the associated app node to interact with the service.
-
-[^3]: In n8n, expressions allow you to populate node parameters dynamically by executing JavaScript code. Instead of providing a static value, you can use the n8n expression syntax to define the value using data from previous nodes, other workflows, or your n8n environment.
+- Take [courses at n8n Academy](https://go.n8n.io/gfzWgF).
+- Explore more examples in [workflow templates](https://n8n.io/workflows/).
 
 ## Related resources
 
 * [n8n Docs](./)
 * [Choose how to use n8n](choose-how-to-use-n8n.md)
+* [Use n8n Assistant](https://app.gitbook.com/s/rPN1zU5jaYNvwH7RzxqA/ways-of-building-workflows/n8n-assistant)
 * [Learning paths](learning-paths.md)
 * [Key concept glossary](key-concept-glossary.md)

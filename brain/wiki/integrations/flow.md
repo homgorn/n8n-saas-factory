@@ -1,7 +1,7 @@
 ---
 id: "flow"
 title: "Flow credentials"
-summary: "You can use these credentials to authenticate the following nodes:"
+summary: "The Flow service has shut down and its API no longer responds, so the Flow and Flow Trigger nodes can't connect to it."
 topic: "integrations"
 difficulty: "intermediate"
 content_type: integration, reference
@@ -17,13 +17,17 @@ updated: 2026-11-12
 
 ## Summary
 
-You can use these credentials to authenticate the following nodes:
+The Flow service has shut down and its API no longer responds, so the Flow and Flow Trigger nodes can't connect to it.
 
 **Source**: https://docs.n8n.io/integrations/builtin/credentials/flow
 
 ---
 
 # Flow credentials
+
+**Feature availability**
+
+The Flow service has shut down and its API no longer responds, so the Flow and Flow Trigger nodes can't connect to it. Workflows using these nodes will fail. Remove them or switch to another service.
 
 You can use these credentials to authenticate the following nodes:
 
@@ -32,15 +36,11 @@ You can use these credentials to authenticate the following nodes:
 
 ## Prerequisites
 
-Create a [Flow](https://www.getflow.com/) account.
+Create a Flow account.
 
 ## Supported authentication methods
 
 - API key
-
-## Related resources
-
-Refer to [Flow's API documentation](https://developer.getflow.com/) for more information about the service.
 
 ## Using API key
 
@@ -48,5 +48,3 @@ To configure this credential, you'll need:
 
 - Your numeric **Organization ID**
 - An **Access Token**
-
-Refer to the [Flow API Getting Started documentation](https://developer.getflow.com/#getting-started) for instructions on generating your Access Token and viewing your Organization ID.

@@ -42,7 +42,7 @@ Refer to the [MongoDB credentials documentation](../../credentials/mongodb.md) f
 
 ## Related resources
 
-Refer to [LangChain's MongoDB Chat Message History documentation](https://js.langchain.com/docs/integrations/memory/mongodb) for more information about the service.
+Refer to [LangChain's MongoDB short-term memory documentation](https://docs.langchain.com/oss/javascript/integrations/memory/mongodb-short-term-memory) for more information about the service.
 
 ## Single memory instance
 

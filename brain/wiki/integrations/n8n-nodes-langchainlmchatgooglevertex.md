@@ -31,12 +31,14 @@ On this page, you'll find the node parameters for the Google Vertex AI Chat Mode
 
 **Credentials**
 
-Refer to the [Google Service Account documentation](../../credentials/google/service-account.md) for authentication information for this node.
+Use [Google Vertex AI credentials](../../credentials/googlevertexai.md) to store the project and region with your service account details. This node also supports [Google Service Account credentials](../../credentials/google/service-account.md).
 
 ## Node parameters
 
-* **Project ID**: Select the project ID from your Google Cloud account to use. n8n dynamically loads projects from the Google Cloud account, but you can also enter it manually.
-* **Model Name**: Select the name of the model to use to generate the completion, for example `gemini-1.5-flash-001`, `gemini-1.5-pro-001`, etc. Refer to [Google models](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models) for a list of available models.
+* **Authentication**: Select **Google Service Account** (the default) or **Google Vertex AI**.
+* **Project ID**: For **Google Service Account** authentication, n8n loads the project list using the service account's access. Select a listed project, or enter the project ID manually. For **Google Vertex AI** authentication, configure the project in the credential.
+* **Model Name**: Enter the name of the model to use for completions, for example `gemini-2.5-flash`. Refer to [Google models](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models) for a list of available models.
+* **Region**: Select **Default (Use Credential Region)** to use the region set in the credential. To override it, select **Global**, **EU (Multi-Region)**, or **US (Multi-Region)**.
 
 ## Node options
 
@@ -53,6 +55,6 @@ Refer to the [Google Service Account documentation](../../credentials/google/ser
 
 ## Related resources
 
-Refer to [LangChain's Google Vertex AI documentation](https://js.langchain.com/docs/integrations/chat/google_vertex_ai/) for more information about the service.
+Refer to [LangChain's Google Vertex AI documentation](https://docs.langchain.com/oss/javascript/integrations/chat/google_vertex_ai) for more information about the service.
 
 [^1]: AI agents are artificial intelligence systems capable of responding to requests, making decisions, and performing real-world tasks for users. They use large language models (LLMs) to interpret user input and make decisions about how to best process requests using the information and resources they have available.

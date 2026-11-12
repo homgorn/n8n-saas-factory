@@ -82,4 +82,4 @@ This node doesn't support the [`NO_PROXY` environment variable](https://app.gitb
 
 ## Related resources
 
-Refer to [LangChains's AWS Bedrock Chat Model documentation](https://js.langchain.com/docs/integrations/chat/bedrock/) for more information about the service.
+Refer to [LangChain's AWS Bedrock Chat Model documentation](https://docs.langchain.com/oss/javascript/integrations/chat/bedrock_converse) for more information about the service.

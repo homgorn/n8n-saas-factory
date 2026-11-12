@@ -9,15 +9,15 @@ Regenerate with `python brain/scripts/forge.py build`. Never hand-edit — the n
 
 | Domain | Pages | Words | Chunks | What lives here |
 | --- | --- | --- | --- | --- |
-| [get-started](wiki/get-started/00-INDEX.md) | 6 | 4,221 | 26 | First workflow, learning paths, glossary, choosing Cloud vs self-hosted. |
-| [build](wiki/build/00-INDEX.md) | 137 | 76,926 | 920 | Core craft: workflow components, flow logic, data handling, expressions, AI nodes, code. |
-| [deploy](wiki/deploy/00-INDEX.md) | 129 | 86,030 | 938 | Run it: install options, configuration env vars, security, scaling, backup, OEM. |
-| [integrations](wiki/integrations/00-INDEX.md) | 957 | 310,093 | 4928 | The node library: core nodes, app nodes, trigger nodes, cluster nodes, credentials. |
-| [connect](wiki/connect/00-INDEX.md) | 48 | 49,236 | 423 | Wiring n8n to the outside world: public REST API, MCP server, building custom nodes. |
-| [administer](wiki/administer/00-INDEX.md) | 44 | 25,286 | 276 | Operating for a team: credentials, users, RBAC, SSO, source control, environments. |
-| [privacy-and-security](wiki/privacy-and-security/00-INDEX.md) | 4 | 2,023 | 23 | License terms, telemetry, data handling and the Sustainable Use License. |
-| [contribute](wiki/contribute/00-INDEX.md) | 7 | 10,803 | 90 | How the n8n docs repository itself is maintained. |
-| [changelog](wiki/changelog/00-INDEX.md) | 10 | 122,065 | 1933 | Dated list of documentation changes. |
+| [get-started](wiki/get-started/00-INDEX.md) | 11 | 10,418 | 101 | First workflow, learning paths, glossary, choosing Cloud vs self-hosted. |
+| [build](wiki/build/00-INDEX.md) | 282 | 189,956 | 2083 | Core craft: workflow components, flow logic, data handling, expressions, AI nodes, code. |
+| [deploy](wiki/deploy/00-INDEX.md) | 261 | 199,921 | 2025 | Run it: install options, configuration env vars, security, scaling, backup, OEM. |
+| [integrations](wiki/integrations/00-INDEX.md) | 1889 | 725,523 | 10259 | The node library: core nodes, app nodes, trigger nodes, cluster nodes, credentials. |
+| [connect](wiki/connect/00-INDEX.md) | 132 | 166,972 | 1231 | Wiring n8n to the outside world: public REST API, MCP server, building custom nodes. |
+| [administer](wiki/administer/00-INDEX.md) | 115 | 78,242 | 811 | Operating for a team: credentials, users, RBAC, SSO, source control, environments. |
+| [privacy-and-security](wiki/privacy-and-security/00-INDEX.md) | 7 | 4,460 | 48 | License terms, telemetry, data handling and the Sustainable Use License. |
+| [contribute](wiki/contribute/00-INDEX.md) | 21 | 29,918 | 245 | How the n8n docs repository itself is maintained. |
+| [changelog](wiki/changelog/00-INDEX.md) | 15 | 228,765 | 2994 | Dated list of documentation changes. |
 | [n8n-community-license](wiki/n8n-community-license/00-INDEX.md) | 3 | 1,765 | 20 | Text of the fair-code licence n8n ships under. |
 | [reusable-content](wiki/reusable-content/00-INDEX.md) | 3 | 18 | 1 |  |
 

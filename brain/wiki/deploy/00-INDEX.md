@@ -4,86 +4,170 @@
 
 Run it: install options, configuration env vars, security, scaling, backup, OEM.
 
-**Pages**: 129 · **Words**: 86,030
+**Pages**: 261 · **Words**: 199,921
 
 | Page | Summary | Difficulty | Chunks |
 | --- | --- | --- | --- |
 | [Ask n8n AI environment variables](ai-assistant.md) | Ask n8n AI environment variables — reference page with limited prose.… | advanced | 2 |
+| [Ask n8n AI](ask-n8n-ai.md) | Environment variables to configure Ask n8n AI.… | intermediate | 2 |
+| [Assistant credits](assistant-credits.md) | Understand Assistant credits: the monthly allowance included in your n8n Cloud plan, extra credits, and how n8… | intermediate | 12 |
+| [Back up and restore](back-up-and-restore.md) | Back up and restore a self-hosted n8n instance, including what CLI backups contain, what they miss, and how to… | intermediate | 8 |
 | [Backup And Restore](backup-and-restore.md) | Back up a self-hosted n8n instance so you can recover from data loss, roll back a failed update, or move to a … | intermediate | 8 |
 | [Configuration methods](basic-configuration.md) | You can change n8n's settings using environment variables.… | advanced | 7 |
+| [Basic configuration](basic-configuration-published.md) | How to set environment variables for n8n.… | intermediate | 7 |
 | [Binary data environment variables](binary-data.md) | By default, n8n uses memory to store binary data.… | advanced | 2 |
+| [Binary data](binary-data-published.md) | Customize binary data storage modes and paths with environment variables for your self-hosted n8n instance.… | intermediate | 2 |
 | [Block access to nodes](block-specific-nodes.md) | For security reasons, you may want to block your users from accessing or working with specific n8n nodes.… | advanced | 5 |
+| [Block specific nodes](block-specific-nodes-published.md) | Prevent your n8n users from accessing specific nodes.… | intermediate | 5 |
 | [Change the instance owner email for self-hosted n8n](change-instance-owner-email.md) | You can change the instance owner email from the UI, or from environment variables if you manage the instance … | advanced | 4 |
-| [Change Instance Ownership or Username](change-instance-ownership-or-username.md) | You can change the ownership of an instance by navigating to the **Settings > Personal** page in the owner's a… | intermediate | 3 |
+| [Change instance owner email](change-instance-owner-email-published.md) | Change the owner email address for a self-hosted n8n instance using the UI or environment variables.… | intermediate | 4 |
+| [Change Instance Ownership or Username](change-instance-ownership-or-username.md) | You can change the ownership of an instance by navigating to the **Settings > Profile & preferences** page in … | intermediate | 3 |
+| [Change instance ownership or username](change-instance-ownership-or-username-published.md) | You can change the ownership of an instance by navigating to the **Settings > Profile & preferences** page in … | intermediate | 3 |
 | [Choose N8Ns Database](choose-n8ns-database.md) | By default, n8n uses SQLite to save credentials, past executions, and workflows.… | advanced | 10 |
+| [Choose n8n's database](choose-n8ns-database-published.md) | By default, n8n uses SQLite to save credentials, past executions, and workflows.… | intermediate | 10 |
 | [Community Edition Features](community-edition-features.md) | Every self-hosted installation runs on the same underlying product.… | intermediate | 6 |
+| [Compare editions](compare-editions.md) | Compare the self-hosted n8n plans and editions: Community, Registered Community, Business, and Enterprise.… | intermediate | 6 |
+| [Configuration examples](configuration-examples.md) | An overview containing different configuration examples.… | intermediate | 3 |
 | [Configure a custom workflow templates library](configure-a-custom-workflow-templates-library.md) | n8n provides a library of workflow templates[^1].… | advanced | 3 |
+| [Configure a custom workflow templates library](configure-a-custom-workflow-templates-library-published.md) | Set up a custom workflow template library for your self-hosted n8n instance.… | intermediate | 6 |
+| [Configure Cloud](configure-cloud.md) | Configure timezone, IP addresses, data management, and ownership settings for your n8n Cloud instance.… | intermediate | 3 |
 | [Configure n8n to use your own certificate authority](configure-custom-ssl-certificate-authorities.md) | You can add your own certificate authority (CA) or self-signed certificate to n8n.… | advanced | 6 |
+| [Configure custom SSL certificate authorities](configure-custom-ssl-certificate-authorities-published.md) | Customize the n8n container to work with self signed certificates when connecting to services.… | intermediate | 6 |
+| [Configure Enterprise features on AWS](configure-enterprise-features-on-aws.md) | Configure execution data in S3, Prometheus metrics, OpenTelemetry tracing, log streaming, and external secrets… | intermediate | 8 |
+| [Configure n8n](configure-n8n.md) | Configure a self-hosted n8n instance, including database, security, scaling, and license settings.… | intermediate | 3 |
 | [Set up Single Sign-On (SSO)](configure-sso.md) | You need to be an instance owner or admin to enable and configure SAML or OIDC.… | advanced | 3 |
+| [Configure SSO](configure-sso-published.md) | Set up SAML or OIDC Single Sign-On for your self-hosted n8n instance.… | intermediate | 3 |
 | [Configure the Base URL for n8n's front end access](configure-the-base-url.md) | This use case involves configuring the `VUE_APP_URL_BASE_API` environmental variable which requires a manual b… | advanced | 2 |
-| [Configure webhook URLs with reverse proxy](configure-webhook-urls-with-reverse-proxy.md) | n8n creates the webhook URL by combining `N8N_PROTOCOL`, `N8N_HOST` and `N8N_PORT`.… | advanced | 2 |
+| [Configure the Base URL](configure-the-base-url-published.md) | Configure the Base URL environment variable to define the front end's access path to the back end's REST API f… | intermediate | 2 |
+| [Configure webhook URLs with reverse proxy](configure-webhook-urls-with-reverse-proxy.md) | n8n creates the webhook URL by combining `N8N_PROTOCOL`, `N8N_HOST` and `N8N_PORT`.… | advanced | 7 |
+| [Configure webhook URLs with reverse proxy](configure-webhook-urls-with-reverse-proxy-published.md) | Customize n8n webhook URLs for compatibility with reverse proxy setups.… | intermediate | 7 |
 | [Configure workflow timeout settings](configure-workflow-timeouts.md) | A workflow times out and gets canceled after this time (in seconds).… | advanced | 2 |
+| [Configure workflow timeouts](configure-workflow-timeouts-published.md) | Set execution timeouts to determine how long workflows can run.… | intermediate | 2 |
 | [Control Concurrency](control-concurrency.md) | This document is for self-hosted concurrency control.… | advanced | 4 |
+| [Control concurrency](control-concurrency-published.md) | This document is for self-hosted concurrency control.… | intermediate | 4 |
 | [Control Telemetry](control-telemetry.md) | n8n collects anonymous telemetry data from self-hosted n8n installations.… | advanced | 8 |
+| [Control telemetry](control-telemetry-published.md) | Opt out of data telemetry collection on your n8n instance.… | intermediate | 8 |
 | [Credentials environment variables](credentials.md) | Enable credential overwrites using the following environment variables.… | advanced | 2 |
+| [Customize the AWS infrastructure](customize-the-aws-infrastructure.md) | Bring your own VPC, database, cache, or cluster, split ingress, or use a custom n8n image with the terraform-a… | intermediate | 6 |
+| [Customize The Infrastructure](customize-the-infrastructure.md) | The [terraform-aws-n8n](https://github.com/n8n-io/terraform-aws-n8n) module can provision every layer of the d… | beginner | 6 |
 | [Database environment variables](database.md) | By default, n8n uses SQLite.… | advanced | 5 |
+| [Database](database-published.md) | Set up and configure databases with environment variables for your self-hosted n8n instance.… | intermediate | 6 |
 | [JWE token decryption for OAuth 2.0 credentials](decrypt-oauth-20-tokens-with-jwe.md) | JWE token decryption is in Preview and gated by an environment flag.… | advanced | 10 |
+| [Decrypt OAuth 2.0 tokens with JWE](decrypt-oauth-20-tokens-with-jwe-published.md) | Enable JWE-encrypted OAuth 2.0 tokens on your n8n instance so your identity provider can encrypt access and ID… | intermediate | 10 |
+| [Deploy](deploy.md) | Deploy n8n on n8n Cloud or self-host it, and find guides for installing, configuring, and maintaining your ins… | intermediate | 2 |
+| [Deploy as an OEM integration](deploy-as-an-oem-integration.md) | Overview of OEM deployment - surfacing n8n's interface inside your own product's UI under an OEM agreement.… | intermediate | 4 |
 | [Deploy n8n in canvas-only mode](deploy-n8n-in-canvas-only-mode.md) | In canvas-only mode, when you open a workflow you see only that workflow's canvas.… | advanced | 4 |
+| [Deploy n8n in canvas-only mode](deploy-n8n-in-canvas-only-mode-published.md) | How the N8N\_CANVAS\_ONLY environment variable hides n8n's navigation and workflow settings to show only the w… | intermediate | 4 |
 | [Deploy To Aws](deploy-to-aws.md) | This hosting guide shows you how to self-host n8n with Amazon Web Services (AWS).… | beginner | 17 |
+| [Deploy to AWS](deploy-to-aws-published.md) | This hosting guide shows you how to self-host n8n with Amazon Web Services (AWS).… | intermediate | 18 |
+| [Deploy to AWS with Terraform](deploy-to-aws-with-terraform.md) | Deploy a production-grade, highly available n8n instance on AWS using the official Terraform module.… | intermediate | 8 |
 | [Deploy To Azure](deploy-to-azure.md) | This hosting guide shows you how to self-host n8n on Azure.… | beginner | 19 |
+| [Deploy to Azure](deploy-to-azure-published.md) | This hosting guide shows you how to self-host n8n on Azure.… | intermediate | 20 |
 | [Deploy To Digital Ocean](deploy-to-digital-ocean.md) | This hosting guide shows you how to self-host n8n on a DigitalOcean droplet with a real domain and automatic H… | beginner | 17 |
+| [Deploy to Digital Ocean](deploy-to-digital-ocean-published.md) | This hosting guide shows you how to self-host n8n on a DigitalOcean droplet with a real domain and automatic H… | intermediate | 19 |
 | [Deploy To Google Cloud Run](deploy-to-google-cloud-run.md) | This hosting guide shows you how to self-host n8n on Google Cloud Run, a serverless container runtime.… | beginner | 12 |
+| [Deploy to Google Cloud Run](deploy-to-google-cloud-run-published.md) | This hosting guide shows you how to self-host n8n on Google Cloud Run, a serverless container runtime.… | intermediate | 12 |
 | [Deploy To Google Kubernetes](deploy-to-google-kubernetes.md) | Google Cloud offers several options suitable for hosting n8n, including Cloud Run (optimized for running conta… | beginner | 19 |
+| [Deploy to Google Kubernetes](deploy-to-google-kubernetes-published.md) | Google Cloud offers several options suitable for hosting n8n, including Cloud Run (optimized for running conta… | intermediate | 20 |
 | [Deploy To Heroku](deploy-to-heroku.md) | This hosting guide shows you how to self-host n8n on Heroku.… | beginner | 9 |
+| [Deploy to Heroku](deploy-to-heroku-published.md) | This hosting guide shows you how to self-host n8n on Heroku.… | intermediate | 10 |
 | [Deploy To Hetzner](deploy-to-hetzner.md) | This hosting guide shows you how to self-host n8n on a Hetzner cloud server.… | beginner | 18 |
+| [Deploy to Hetzner](deploy-to-hetzner-published.md) | This hosting guide shows you how to self-host n8n on a Hetzner cloud server.… | intermediate | 20 |
 | [Deploy To Openshift Local Crc](deploy-to-openshift-local-crc.md) | This guide walks you through deploying n8n on OpenShift Local (CRC), Red Hat's tool for running a local OpenSh… | beginner | 41 |
+| [Deploy to OpenShift Local (CRC)](deploy-to-openshift-local-crc-published.md) | This guide walks you through deploying n8n on OpenShift Local (CRC), Red Hat's tool for running a local OpenSh… | intermediate | 47 |
 | [Self-hosted AI Starter Kit](deploy-with-the-ai-starter-kit.md) | The Self-hosted AI Starter Kit is an open, docker compose template that bootstraps a fully featured Local AI a… | intermediate | 5 |
+| [Deploy with the AI starter kit](deploy-with-the-ai-starter-kit-published.md) | Use n8n's curated self-hosted AI Starter Kit to get a list of AI elements to quickly start building AI workflo… | intermediate | 5 |
+| [Deploy Your First Instance](deploy-your-first-instance.md) | This walkthrough takes you from an empty folder to a running n8n instance on AWS in six steps, using the [terr… | beginner | 11 |
+| [Deploy your first n8n instance on AWS](deploy-your-first-n8n-instance-on-aws.md) | A step-by-step walkthrough that deploys a working n8n instance on AWS with the terraform-aws-n8n module, from … | intermediate | 11 |
 | [Deployment](deployment.md) | This page lists the deployment configuration options for your self-hosted n8n instance, including setting up a… | advanced | 6 |
+| [Deployment](deployment-published.md) | Configure deployment options and application accessibility with environment variables for your self-hosted n8n… | intermediate | 8 |
 | [Disable the public REST API](disable-the-public-api.md) | The [n8n public REST API](https://app.gitbook.com/s/r7wKI4I1BgdBCuq5Cvcx/n8n-api) allows you to programmatical… | advanced | 3 |
-| [Download workflows](download-workflows.md) | n8n Cloud instance owners can download workflows from the most recent backup.… | intermediate | 4 |
-| [Durable scheduler](durable-scheduler.md) | The durable scheduler runs time-based workflows, such as those that start with a Schedule Trigger node, from a… | advanced | 15 |
+| [Disable the public API](disable-the-public-api-published.md) | Disable the n8n public REST API to prevent others from using it.… | intermediate | 3 |
+| [Download workflows](download-workflows.md) | n8n Cloud instance owners can download their workflows from an n8n Cloud backup in the [n8n Cloud console](use… | intermediate | 4 |
+| [Download workflows](download-workflows-published.md) | How to download workflows from an n8n Cloud backup in the n8n Cloud console.… | intermediate | 4 |
+| [Durable scheduler](durable-scheduler.md) | The durable scheduler runs time-based workflows, such as those that start with a Schedule Trigger node, from a… | advanced | 17 |
+| [Durable scheduler](durable-scheduler-published.md) | How the durable scheduler runs time-based workflows from a database-backed queue for your self-hosted n8n inst… | intermediate | 17 |
 | [Enable modules in Code node](enable-modules-in-code-node.md) | For security reasons, the Code node restricts importing modules.… | advanced | 2 |
+| [Enable modules in Code node](enable-modules-in-code-node-published.md) | Allow the use of both built-in and external modules within the Code node.… | intermediate | 2 |
 | [Enable Prometheus metrics](enable-prometheus-metrics.md) | To collect and expose metrics, n8n uses the [prom-client](https://www.npmjs.com/package/prom-client) library.… | advanced | 3 |
+| [Enable Prometheus metrics](enable-prometheus-metrics-published.md) | To collect and expose metrics, n8n uses the [prom-client](https://www.npmjs.com/package/prom-client) library.… | intermediate | 3 |
 | [Enable Queue Mode](enable-queue-mode.md) | You can run n8n in different modes depending on your needs.… | advanced | 22 |
+| [Enable queue mode](enable-queue-mode-published.md) | You can run n8n in different modes depending on your needs.… | intermediate | 22 |
 | [SSRF protection](enable-ssrf-protection.md) | SSRF protection is available from n8n 2.12.0.… | advanced | 5 |
+| [Enable SSRF protection](enable-ssrf-protection-published.md) | Protect your self-hosted n8n instance from Server-Side Request Forgery (SSRF) attacks.… | intermediate | 5 |
 | [Endpoints environment variables](endpoints.md) | This page lists environment variables for customizing endpoints in n8n.… | advanced | 2 |
+| [Endpoints](endpoints-published.md) | Customize the application's API and webhook endpoints with environment variables for your self-hosted n8n inst… | intermediate | 4 |
 | [Executions environment variables](executions.md) | This page lists environment variables to configure workflow execution settings.… | advanced | 2 |
 | [Expression engine environment variables](expression-engine.md) | The `legacy` engine runs expressions without isolation, so it gives less protection against malicious expressi… | advanced | 4 |
+| [Expression engine](expression-engine-published.md) | Choose the expression engines for the n8n backend and editor, and configure the sandbox pool for your self-hos… | intermediate | 4 |
 | [External data storage environment variables](external-data-storage.md) | Refer to [External storage](../../scaling/use-external-storage.md) for more information on using external stor… | advanced | 3 |
+| [External data storage](external-data-storage-published.md) | Environment variables to configure external data storage for your self-hosted n8n instance.… | intermediate | 3 |
 | [External hooks environment variables](external-hooks.md) | You can define external hooks that n8n executes whenever a specific operation runs.… | advanced | 2 |
 | [External hooks](external-hooks.md) | External hooks let you run custom code whenever n8n performs a specific operation.… | advanced | 14 |
+| [External hooks](external-hooks-published.md) | Environment variables to integrate external hooks into your self-hosted n8n instance.… | intermediate | 2 |
 | [External secrets environment variables](external-secrets.md) | You can use an external secrets store to manage credentials for n8n.… | advanced | 2 |
+| [External secrets](external-secrets-published.md) | Configure the update interval and the connect and refresh timeouts for external secrets in a self-hosted n8n i… | intermediate | 2 |
 | [Find Your Ip Addresses](find-your-ip-addresses.md) | When a workflow on n8n Cloud sends an outbound request, for example from the **HTTP Request** node or an app n… | intermediate | 5 |
+| [Find your IP addresses](find-your-ip-addresses-published.md) | When a workflow on n8n Cloud sends an outbound request, for example from the **HTTP Request** node or an app n… | intermediate | 5 |
 | [Fix Memory Issues](fix-memory-issues.md) | n8n doesn't restrict the amount of data each node can fetch and process.… | advanced | 8 |
+| [Fix memory issues](fix-memory-issues-published.md) | n8n doesn't restrict the amount of data each node can fetch and process.… | intermediate | 8 |
+| [Gateway credits](gateway-credits.md) | Use Gateway credits to run AI models and third-party services in your n8n workflows without provider accounts … | intermediate | 9 |
 | [Scaling binary data in n8n](handle-binary-data.md) | Binary data is any file-type data, such as image files or documents generated or processed during the executio… | advanced | 4 |
+| [Handle binary data](handle-binary-data-published.md) | How to handle large files without degrading n8n's performance.… | intermediate | 4 |
 | [Hardening task runners](harden-task-runners.md) | To increase the isolation between the core n8n process and code in the Code node, run task runners in [externa… | advanced | 7 |
+| [Harden task runners](harden-task-runners-published.md) | Harden task runners for better isolation for your self-hosted n8n instance.… | intermediate | 7 |
+| [Host n8n](host-n8n.md) | Access n8n hosting documentation and guides for setting up and managing self-hosted n8n instances.… | intermediate | 4 |
 | [How N8N Works](how-n8n-works.md) | Understanding n8n's underlying architecture is helpful if you need to:… | intermediate | 2 |
+| [How n8n works](how-n8n-works-published.md) | Understanding n8n's underlying architecture is helpful if you need to:… | intermediate | 2 |
 | [Insights environment variables](insights.md) | Insights gives instance owners and admins visibility into how workflows perform over time.… | advanced | 2 |
+| [Install options](install-options.md) | Compare ways to install self-hosted n8n, including one-line setup, Docker, Docker Compose, npm, and cloud prov… | intermediate | 3 |
 | [Install Using Docker Compose](install-using-docker-compose.md) | This guide walks through building your own Docker Compose setup by hand, including the sandbox stack that powe… | beginner | 15 |
+| [Install using Docker Compose](install-using-docker-compose-published.md) | Build a Docker Compose setup for self-hosted n8n, including the sandbox stack for n8n Assistant.… | intermediate | 16 |
 | [Install With Docker](install-with-docker.md) | n8n recommends using [Docker](https://www.docker.com/) for most self-hosting needs.… | beginner | 8 |
+| [Install with Docker](install-with-docker-published.md) | n8n recommends using [Docker](https://www.docker.com/) for most self-hosting needs.… | intermediate | 9 |
 | [Install With Npm](install-with-npm.md) | npm-based installs are deprecated from n8n 3.0.… | beginner | 8 |
+| [Install with npm](install-with-npm-published.md) | npm-based installs are deprecated from n8n 3.0.… | intermediate | 8 |
 | [Isolate n8n](isolate-n8n.md) | By default, a self-hosted n8n instance sends data to n8n's servers.… | advanced | 2 |
+| [Isolate n8n](isolate-n8n-published.md) | Prevent your n8n instance from connecting with n8n's servers.… | intermediate | 2 |
+| [Keep n8n running](keep-n8n-running.md) | Keep a self-hosted n8n instance running, including logging, monitoring, updates, and tracing.… | intermediate | 3 |
 | [License](license.md) | To enable certain licensed features, you must first activate your license.… | advanced | 2 |
+| [License](license-published.md) | Environment variables to configure license settings in n8n, including options to hide the usage page, manage l… | intermediate | 3 |
 | [Logs environment variables](logs.md) | This page lists environment variables to set up logging for debugging.… | advanced | 5 |
+| [Logs](logs-published.md) | Environment variables to configure logging and diagnostic data.… | intermediate | 5 |
+| [Maintain And Tear Down](maintain-and-tear-down.md) | The [terraform-aws-n8n](https://github.com/n8n-io/terraform-aws-n8n) module manages encryption keys and databa… | beginner | 6 |
+| [Maintain and tear down the AWS deployment](maintain-and-tear-down-the-aws-deployment.md) | Manage encryption keys, verify database TLS, and configure deletion protection in the terraform-aws-n8n module… | intermediate | 6 |
 | [Manage Execution Data](manage-execution-data.md) | Depending on your executions settings and volume, your n8n database can grow in size and run out of storage.… | advanced | 4 |
+| [Manage execution data](manage-execution-data-published.md) | Depending on your executions settings and volume, your n8n database can grow in size and run out of storage.… | intermediate | 4 |
 | [Manage Security Policies](manage-security-policies.md) | Some settings require specific license features.… | advanced | 9 |
+| [Manage security policies](manage-security-policies-published.md) | Manage instance-wide security policies including MFA enforcement and personal space controls.… | intermediate | 9 |
 | [Manage instance settings using environment variables](manage-settings-using-environment-variables.md) | You can manage a subset of instance settings from environment variables, instead of configuring them through t… | advanced | 12 |
+| [Manage settings using environment variables](manage-settings-using-environment-variables-published.md) | Configure a self-hosted n8n instance owner, SSO, security policy, log streaming, MCP, and community packages f… | intermediate | 14 |
 | [Managing workflows](manage-workflows.md) | When managing an n8n OEM deployment spanning across teams or organizations, you will likely need to run the sa… | intermediate | 10 |
 | [Manage Your Data](manage-your-data.md) | There are two concerns when managing data on n8n Cloud:… | intermediate | 7 |
+| [Manage your data](manage-your-data-published.md) | There are two concerns when managing data on n8n Cloud:… | intermediate | 7 |
 | [License key](manage-your-license.md) | To enable certain licensed features, you must first activate your license.… | advanced | 6 |
+| [Manage your license](manage-your-license-published.md) | To enable certain licensed features, you must first activate your license.… | intermediate | 6 |
 | [Measure Performance](measure-performance.md) | n8n can handle up to 220 workflow executions per second on a single instance, with the ability to scale up fur… | advanced | 6 |
+| [Measure performance](measure-performance-published.md) | n8n performance and resource consumption benchmarking.… | intermediate | 6 |
 | [Monitor N8N](monitor-n8n.md) | There are three API endpoints you can call to check the status of your instance: `/healthz`, `healthz/readines… | intermediate | 5 |
+| [Monitor n8n](monitor-n8n-published.md) | There are three API endpoints you can call to check the status of your instance: `/healthz`, `healthz/readines… | intermediate | 5 |
 | [Nodes environment variables](nodes.md) | This page lists the environment variables configuration options for managing nodes[^1] in n8n, including speci… | advanced | 5 |
 | [One Line Setup](one-line-setup.md) | This guide sets up a brand-new n8n instance with a single command that replaces the old `npm install n8n` / `n… | beginner | 11 |
+| [One-line setup](one-line-setup-published.md) | Install n8n from the command line using a one-line setup.… | intermediate | 12 |
 | [OpenTelemetry environment variables](opentelemetry.md) | n8n can export workflow and node execution traces over OTLP to an OpenTelemetry collector.… | advanced | 2 |
+| [OpenTelemetry](opentelemetry-published.md) | Configure OpenTelemetry tracing with environment variables for your self-hosted n8n instance.… | intermediate | 4 |
 | [Pre-configure Microsoft OAuth credentials](pre-configure-microsoft-oauth-credentials.md) | After [setting up a Microsoft Entra ID app registration with delegated…… | advanced | 10 |
+| [Pre-configure Microsoft OAuth credentials](pre-configure-microsoft-oauth-credentials-published.md) | Use credential overwrites to pre-configure Microsoft OAuth2 credentials in n8n so users can connect without th… | intermediate | 10 |
 | [Prerequisites](prerequisites.md) | The requirements provided here are an example based on n8n Cloud and are for illustrative purposes only.… | intermediate | 10 |
+| [Prerequisites](prerequisites-published.md) | Infrastructure sizing guidance and deployment best practices for an OEM deployment of n8n.… | intermediate | 10 |
 | [Queue mode environment variables](queue-mode.md) | You can run n8n in different modes depending on your needs.… | advanced | 4 |
+| [Queue mode](queue-mode-published.md) | Environment variables to configure queue mode on your self-hosted n8n instance.… | intermediate | 5 |
 | [Configuration examples](readme.md) | This section contains examples for how to configure n8n to solve particular use cases.… | advanced | 3 |
 | [Environment Variables Overview](readme.md) | This section lists the environment variables that you can use to change n8n's configuration settings when self… | advanced | 3 |
 | [Readme](readme.md) | Configure a self-hosted n8n instance, including database, security, scaling, and license settings.… | advanced | 3 |
 | [OEM deployment](readme.md) | n8n's OEM deployment option lets you embed and surface n8n's interface inside your own product's UI.… | intermediate | 4 |
 | [Readme](readme.md) | Compare ways to install self-hosted n8n.… | beginner | 3 |
+| [Readme](readme.md) | This differs from the manual [Kubernetes setup](../deploy-to-aws.md) n8n documents elsewhere: that guide walks… | beginner | 8 |
 | [Readme](readme.md) | Self-host with Google Cloud Run (with access to n8n workflow tools for Google Workspace, for example Gmail and… | beginner | 2 |
 | [Readme](readme.md) | Monitor, log, trace, and update your self-hosted n8n instance.… | intermediate | 3 |
 | [n8n Hosting Documentation and Guides](readme.md) | You can self-host n8n on your own infrastructure, on-premises, or in a private cloud, using Docker Compose, on… | intermediate | 4 |
@@ -94,46 +178,94 @@ Run it: install options, configuration env vars, security, scaling, backup, OEM.
 | [Readme](readme.md) | Gateway credits let you use supported AI models and third-party services in your workflows without creating pr… | intermediate | 9 |
 | [Readme](readme.md) | Manage your n8n Cloud trial, plan, and instance.… | intermediate | 3 |
 | [Redact Execution Data](redact-execution-data.md) | Per-workflow execution data redaction is available from n8n 2.16.0.… | advanced | 16 |
-| [Encryption key rotation](rotate-encryption-keys.md) | Encryption key rotation is available on:… | advanced | 10 |
+| [Redact execution data](redact-execution-data-published.md) | Control the visibility of execution data in workflows to protect sensitive information and meet compliance req… | intermediate | 16 |
+| [Encryption key rotation](rotate-encryption-keys.md) | Encryption key rotation is available on:… | advanced | 11 |
+| [Rotate encryption keys](rotate-encryption-keys-published.md) | Enable and rotate the data encryption key that protects credentials and other sensitive data on your self-host… | intermediate | 11 |
 | [Security audit](run-security-audits.md) | You can run a security audit on your n8n instance, to detect common security issues.… | advanced | 12 |
+| [Run security audits](run-security-audits-published.md) | Run a security audit on your n8n instance.… | intermediate | 12 |
+| [Scale And Run At High Availability](scale-and-run-at-high-availability.md) | The [terraform-aws-n8n](https://github.com/n8n-io/terraform-aws-n8n) module deploys n8n in [queue mode](../../… | beginner | 9 |
+| [Scale and run at high availability on AWS](scale-and-run-at-high-availability-on-aws.md) | Configure multi-main, worker autoscaling, and Redis high availability in the terraform-aws-n8n module.… | intermediate | 9 |
 | [Scaling](scaling.md) | When running n8n at scale, with a large number of users, workflows, or executions, you need to change your n8n… | advanced | 3 |
+| [Scaling](scaling-published.md) | When running n8n at scale, with a large number of users, workflows, or executions, you need to change your n8n… | intermediate | 3 |
 | [Scheduler environment variables](scheduler.md) | These environment variables configure the durable scheduler, which runs time-based workflows from a database-b… | advanced | 11 |
+| [Scheduler](scheduler-published.md) | Environment variables to configure the durable scheduler for your self-hosted n8n instance.… | intermediate | 11 |
 | [Security environment variables](security.md) | Set `N8N_SECURITY_POLICY_MANAGED_BY_ENV` to `true` to manage the security policy from environment variables.… | advanced | 3 |
 | [Securing n8n](security.md) | You can secure a self-hosted n8n instance to protect credentials and workflow data: run a security audit, set … | advanced | 3 |
+| [Security](security-published.md) | Configure authentication and environment variable access in self-hosted n8n instance.… | intermediate | 4 |
 | [Set a custom encryption key](set-a-custom-encryption-key.md) | n8n creates a random encryption key automatically on the first launch and saves it in the `~/.n8n` folder.… | advanced | 2 |
+| [Set a custom encryption key](set-a-custom-encryption-key-published.md) | Set a custom encryption key for n8n to securely encrypt credentials.… | intermediate | 2 |
 | [Set the self-hosted instance timezone](set-the-timezone.md) | The default timezone is America/New_York.… | advanced | 2 |
+| [Set the timezone](set-the-timezone-published.md) | Change the default timezone for your self-hosted n8n instance.… | intermediate | 2 |
 | [Set Up Logging](set-up-logging.md) | Logging is an important feature for debugging.… | intermediate | 8 |
-| [Set Up N8N Assistant](set-up-n8n-assistant.md) | It isn't ready for n8n Cloud Enterprise or self-hosted Enterprise yet.… | advanced | 15 |
+| [Set up logging](set-up-logging-published.md) | Logging is an important feature for debugging.… | intermediate | 8 |
+| [Set Up N8N Assistant](set-up-n8n-assistant.md) | n8n Assistant has **Limited enterprise readiness**.… | advanced | 17 |
+| [Set up n8n Assistant](set-up-n8n-assistant-published.md) | Set up n8n Assistant on self-hosted n8n using environment variables.… | intermediate | 17 |
 | [Set up SSL](set-up-ssl.md) | There are two methods to support TLS/SSL in n8n.… | advanced | 4 |
+| [Set up SSL](set-up-ssl-published.md) | Set up SSL for your self-hosted n8n instance.… | intermediate | 4 |
 | [Set Up Task Runners](set-up-task-runners.md) | Task runners are a generic mechanism to execute tasks in a secure and performant way.… | advanced | 13 |
+| [Set up task runners](set-up-task-runners-published.md) | How to configure task runners to execute tasks using internal or external runner processes.… | intermediate | 13 |
 | [Token exchange for embedding partners](set-up-token-exchange.md) | Enabled with the `N8N_ENV_FEAT_TOKEN_EXCHANGE` environment variable set to `true`.… | intermediate | 36 |
+| [Set up token exchange](set-up-token-exchange-published.md) | Use OAuth 2.0 Token Exchange to authenticate users and act on their behalf inside an embedded n8n instance, th… | intermediate | 36 |
 | [Set Your Timezone](set-your-timezone.md) | You can change the timezone for your n8n instance.… | intermediate | 2 |
+| [Set your timezone](set-your-timezone-published.md) | You can change the timezone for your n8n instance.… | intermediate | 2 |
 | [Source control environment variables](source-control.md) | n8n uses Git-based source control to support environments.… | advanced | 2 |
+| [Source control](source-control-published.md) | Environment variable to set the default SSH key type for source control setup.… | intermediate | 2 |
 | [Specify location for your custom nodes](specify-custom-nodes-location.md) | Every user can add custom nodes that get loaded by n8n on startup.… | advanced | 2 |
+| [Specify custom nodes location](specify-custom-nodes-location-published.md) | Add folders and specify paths for your custom nodes.… | intermediate | 2 |
 | [Specify user folder path](specify-user-folder-path.md) | n8n saves user-specific data like the encryption key, SQLite database file, and the ID of the tunnel (if used)… | advanced | 2 |
+| [Specify user folder path](specify-user-folder-path-published.md) | Specify location of the folder that stores user-specific data.… | intermediate | 2 |
 | [SSO environment variables](sso.md) | n8n Cloud Enterprise also supports single sign-on, but not through the environment variables on this page.… | advanced | 2 |
+| [SSO](sso-published.md) | Configure single sign-on for self-hosted n8n using environment variables.… | intermediate | 5 |
 | [SSRF protection environment variables](ssrf-protection.md) | Server-Side Request Forgery (SSRF) is an attack that tricks a server into making HTTP requests to addresses an… | advanced | 7 |
+| [SSRF protection](ssrf-protection-published.md) | Configure SSRF protection for your self-hosted n8n instance.… | intermediate | 7 |
 | [Try n8n Cloud free, then choose a plan](start-your-free-trial.md) | When you create a new n8n Cloud trial, you have 14 days to try all the features of the [Pro plan](https://n8n.… | intermediate | 8 |
 | [Summary](summary.md) | Summary — reference page with limited prose.… | intermediate | 3 |
-| [System tasks](system-tasks.md) | System tasks are the recurring maintenance jobs n8n runs on itself: pruning old executions, compacting insight… | advanced | 8 |
+| [System tasks](system-tasks.md) | System tasks are the recurring maintenance jobs n8n runs on itself: pruning old executions, compacting insight… | advanced | 9 |
+| [System tasks](system-tasks-published.md) | How n8n runs its internal maintenance tasks, and the Prometheus metrics they expose on your self-hosted instan… | intermediate | 9 |
 | [Task runner environment variables](task-runners.md) | Unlike the main n8n image, you CANNOT use file-based configuration for secrets in the task runner image.… | advanced | 7 |
+| [Task runners](task-runners-published.md) | Environment variables to confgure task runners your self-hosted n8n instance.… | intermediate | 10 |
 | [Timezone and localization environment variables](timezone-and-localization.md) | Timezone and localization environment variables — reference page with limited prose.… | advanced | 2 |
+| [Timezone and localization](timezone-and-localization-published.md) | Set the timezone and default language locale for self-hosted n8n instance.… | intermediate | 2 |
 | [Top Up Assistant Credits](top-up-assistant-credits.md) | Your n8n Cloud plan includes a monthly allowance of [Assistant credits](README.md) that resets on the first da… | intermediate | 5 |
-| [Top Up Gateway Credits](top-up-gateway-credits.md) | When your [Gateway credits](README.md) balance runs low, top it up from the Cloud admin dashboard.… | intermediate | 6 |
-| [OpenTelemetry tracing](trace-executions-with-opentelemetry.md) | OpenTelemetry tracing is in Preview from n8n 2.19.0 and may change in future releases.… | intermediate | 36 |
-| [Track Assistant Credit Spend](track-assistant-credit-spend.md) | The **Assistant credits** tab in the Cloud admin dashboard shows your [Assistant credit](README.md) balance, s… | intermediate | 7 |
-| [Track Gateway Credit Spend](track-gateway-credit-spend.md) | The **Gateway credits** tab in the Cloud admin dashboard shows your balance, your spend over time, and your to… | intermediate | 7 |
+| [Top up Assistant credits](top-up-assistant-credits-published.md) | Buy extra Assistant credits manually or with auto top-up in the n8n Cloud console, so you can keep using n8n A… | intermediate | 5 |
+| [Top Up Gateway Credits](top-up-gateway-credits.md) | When your [Gateway credits](README.md) balance runs low, top it up from the n8n Cloud console.… | intermediate | 6 |
+| [Top up Gateway credits](top-up-gateway-credits-published.md) | Add credit to your Gateway credits balance manually or with auto top-up in the n8n Cloud console.… | intermediate | 6 |
+| [OpenTelemetry tracing](trace-executions-with-opentelemetry.md) | OpenTelemetry tracing is in Preview from n8n 2.19.0 and may change in future releases.… | intermediate | 41 |
+| [Trace executions with OpenTelemetry](trace-executions-with-opentelemetry-published.md) | Send workflow and node execution traces from n8n to an OpenTelemetry collector.… | intermediate | 41 |
+| [Track Assistant Credit Spend](track-assistant-credit-spend.md) | The **Assistant credits** page in the n8n Cloud console shows your [Assistant credit](README.md) balance, spen… | intermediate | 7 |
+| [Track Assistant credit spend](track-assistant-credit-spend-published.md) | Monitor your Assistant credit balance, spend, top users, and top-up history in the n8n Cloud console and the n… | intermediate | 7 |
+| [Track Gateway Credit Spend](track-gateway-credit-spend.md) | The **Gateway credits** page in the n8n Cloud console shows your balance, your spend over time, and your top-u… | intermediate | 7 |
+| [Track Gateway credit spend](track-gateway-credit-spend-published.md) | Monitor your Gateway credits balance, spend by model or workflow, and top-up history in the n8n Cloud console.… | intermediate | 7 |
+| [Try free then choose a plan](try-free-then-choose-a-plan.md) | Start a free n8n Cloud trial, then compare the Starter, Pro, and Enterprise plans to choose the right one.… | intermediate | 8 |
 | [Understand Concurrency](understand-concurrency.md) | This document discusses concurrency in n8n Cloud.… | intermediate | 5 |
+| [Understand concurrency](understand-concurrency-published.md) | This document discusses concurrency in n8n Cloud.… | intermediate | 5 |
+| [Understand the architecture](understand-the-architecture.md) | Learn how n8n works and how it structures its database.… | intermediate | 3 |
 | [Understand The Database](understand-the-database.md) | This page describes the purpose of each table in the n8n database.… | intermediate | 29 |
-| [Update self-hosted n8n](update-n8n.md) | Keep your n8n version up to date to get the latest features and fixes.… | intermediate | 2 |
+| [Understand the database](understand-the-database-published.md) | This page describes the purpose of each table in the n8n database.… | intermediate | 29 |
+| [Update self-hosted n8n](update-n8n.md) | Keep your n8n version up to date to get the latest features and fixes.… | intermediate | 7 |
+| [Update n8n](update-n8n-published.md) | Best practices for updating your self-hosted n8n… | intermediate | 7 |
 | [Update Your Version](update-your-version.md) | n8n recommends keeping your Cloud version up to date.… | intermediate | 6 |
+| [Update your version](update-your-version-published.md) | How to update your n8n version on Cloud.… | intermediate | 6 |
+| [Use a cloud provider](use-a-cloud-provider.md) | Deploy self-hosted n8n to a cloud provider, including DigitalOcean, AWS, Azure, and Google Cloud.… | intermediate | 3 |
 | [Use Docker Compose](use-docker-compose.md) | These instructions cover how to run n8n on a Linux server using Docker Compose.… | beginner | 10 |
-| [Use External Storage](use-external-storage.md) | n8n can store binary data and execution data produced by workflow executions externally.… | advanced | 11 |
-| [Use The Admin Dashboard](use-the-admin-dashboard.md) | Instance owners can access the admin dashboard to manage their Cloud instance.… | intermediate | 4 |
+| [Use Docker Compose](use-docker-compose-published.md) | Install and run n8n using Docker Compose… | intermediate | 11 |
+| [Use Enterprise Features On Aws](use-enterprise-features-on-aws.md) | The [terraform-aws-n8n](https://github.com/n8n-io/terraform-aws-n8n) module provides Terraform inputs that wir… | beginner | 8 |
+| [Use environment variables](use-environment-variables.md) | An overview of configuration environment variables for self-hosted n8n.… | intermediate | 3 |
+| [Use External Storage](use-external-storage.md) | n8n can store binary data and execution data produced by workflow executions externally.… | advanced | 15 |
+| [Use external storage](use-external-storage-published.md) | External storage of binary data and execution data for your n8n instance.… | intermediate | 15 |
+| [Use n8n Cloud](use-n8n-cloud.md) | Manage your n8n Cloud trial, plan, and instance, including the n8n Cloud console and updates.… | intermediate | 3 |
+| [Use The Cloud Console](use-the-cloud-console.md) | The n8n Cloud console at [app.n8n.cloud](https://app.n8n.cloud) is where the instance owner manages their n8n … | intermediate | 6 |
+| [Use the Cloud console](use-the-cloud-console-published.md) | How to open and find your way around the n8n Cloud console, where instance owners manage their n8n Cloud insta… | intermediate | 6 |
 | [Use The Command Line](use-the-command-line.md) | The **Server CLI** is a built-in command-line interface that runs on the same machine as your n8n installation… | advanced | 26 |
+| [Use the command line](use-the-command-line-published.md) | Commands available in the Server CLI, the built-in n8n command-line interface.… | intermediate | 26 |
 | [User Management](user-management.md) | User management in n8n allows you to invite people to work in your n8n instance.… | advanced | 5 |
 | [User management SMTP, and two-factor authentication environment variables](user-management-and-2fa.md) | Refer to [User management](../../user-management.md) for more information on setting up user management and em… | advanced | 3 |
+| [User management and 2FA](user-management-and-2fa-published.md) | Environment variables to set up user management and emails.… | intermediate | 4 |
+| [User management](user-management-published.md) | Configure self-hosted n8n for user management… | intermediate | 6 |
 | [Restrict account registration to email-verified users](verify-user-emails.md) | You can require all new accounts to be verified by email.… | advanced | 4 |
+| [Verify user emails](verify-user-emails-published.md) | Require all new accounts to be verified by email.… | intermediate | 4 |
 | [Visualize Metrics With Grafana](visualize-metrics-with-grafana.md) | Enable the Prometheus metrics endpoint in n8n, then connect Grafana through a Prometheus instance to visualize… | intermediate | 15 |
+| [Visualize metrics with Grafana](visualize-metrics-with-grafana-published.md) | Enable the Prometheus metrics endpoint in n8n, then connect Grafana through a Prometheus instance to visualize… | intermediate | 15 |
 | [Workflow history environment variables](workflow-history.md) | Workflow history environment variables — reference page with limited prose.… | advanced | 2 |
+| [Workflow history](workflow-history-published.md) | Environment variables to configure workflow history in n8n.… | intermediate | 2 |
 | [Workflows environment variables](workflows.md) | Workflows environment variables — reference page with limited prose.… | advanced | 2 |

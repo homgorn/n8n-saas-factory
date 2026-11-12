@@ -214,9 +214,9 @@ Whether to clear the collection or tenant before inserting new data.
 
 ## Related resources
 
-Refer to [LangChain's Weaviate documentation](https://js.langchain.com/docs/integrations/vectorstores/weaviate/) for more information about the service.
+Refer to [LangChain's Weaviate documentation](https://docs.langchain.com/oss/javascript/integrations/vectorstores/weaviate) for more information about the service.
 
-Refer to [Weaviate Installation](https://docs.weaviate.io/deploy) for a self hosted Weaviate Cluster.
+Refer to [Weaviate Installation](https://docs.weaviate.io/deploy) for a self-hosted Weaviate Cluster.
 
 [^1]: A vector store, or vector database, stores mathematical representations of information. Use with embeddings and retrievers to create a database that your AI can access when answering questions.
 [^2]: AI chains allow you to interact with large language models (LLMs) and other resources in sequences of calls to components. AI chains in n8n don't use persistent memory, so you can't use them to reference previous context (use AI agents for this).

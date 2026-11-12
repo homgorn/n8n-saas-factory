@@ -50,6 +50,6 @@ Learn more about available models in [Mistral's models documentation](https://do
 
 ## Related resources
 
-Refer to [Langchain's Mistral embeddings documentation](https://js.langchain.com/docs/integrations/text_embedding/mistralai) for more information about the service.
+Refer to [LangChain's Mistral embeddings documentation](https://docs.langchain.com/oss/javascript/integrations/embeddings/mistralai) for more information about the service.
 
 [^1]: Embeddings are numerical representations of data using vectors. They're used by AI to interpret complex data and relationships by mapping values across many dimensions. Vector databases, or vector stores, are databases designed to store and access embeddings.

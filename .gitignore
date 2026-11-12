@@ -24,6 +24,10 @@ out/
 .turbo/
 *.egg-info/
 
+# --- generated caches: regenerable, large ------------------------------
+# published llms corpus cache (8 MB), rebuilt by llms_corpus.py
+brain/data/llms-pages.json
+
 # --- generated index: small, and the machine-readable entry points -------
 # brain/wiki/, brain/index/ and brain/*.md ARE committed — they are the deliverable.
 # Only the SQLite binary is excluded: 17 MB of regenerable data.

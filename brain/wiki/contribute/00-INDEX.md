@@ -4,14 +4,28 @@
 
 How the n8n docs repository itself is maintained.
 
-**Pages**: 7 · **Words**: 10,803
+**Pages**: 21 · **Words**: 29,918
 
 | Page | Summary | Difficulty | Chunks |
 | --- | --- | --- | --- |
+| [Add sticky notes to templates](add-sticky-notes-to-templates.md) | Document template behavior, setup, and workflow sections with sticky notes.… | intermediate | 6 |
 | [Agent Friendly Docs](agent-friendly-docs.md) | People and AI agents both read n8n Docs.… | intermediate | 10 |
+| [Agent-friendly docs](agent-friendly-docs-published.md) | What n8n Docs means by agent-friendly documentation, and how the standard relates to the style guide.… | intermediate | 10 |
+| [Contribute to n8n](contribute-to-n8n.md) | You can contribute to n8n in several ways, depending on your skills and interests.… | intermediate | 10 |
+| [Contribution guide for n8n Docs](contribution-guide-for-n8n-docs.md) | n8n Docs welcomes contributions from everyone.… | intermediate | 17 |
+| [Create workflow templates](create-workflow-templates.md) | Create, test, and submit workflow templates to the n8n template library.… | intermediate | 6 |
 | [Readme](readme.md) | n8n Docs welcomes contributions from everyone.… | intermediate | 17 |
-| [Readme](readme.md) | You can contribute to n8n in several ways, depending on your skills and interests.… | intermediate | 9 |
-| [Style Guide For N8N Docs](style-guide-for-n8n-docs.md) | n8n uses the [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/).… | intermediate | 32 |
+| [Readme](readme.md) | Share workflows that solve practical problems by submitting them to the [n8n template library](https://n8n.io/… | intermediate | 6 |
+| [Readme](readme.md) | You can contribute to n8n in several ways, depending on your skills and interests.… | intermediate | 10 |
+| [Sticky Note Guidelines](sticky-note-guidelines.md) | Add sticky notes so someone can understand and set up your template from the workflow canvas.… | intermediate | 6 |
+| [Style Guide For N8N Docs](style-guide-for-n8n-docs.md) | n8n uses the [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/).… | intermediate | 33 |
+| [Style guide for n8n Docs](style-guide-for-n8n-docs-published.md) | n8n uses the [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/).… | intermediate | 37 |
+| [Submission Guidelines](submission-guidelines.md) | Submit an original workflow that solves a practical problem, works after import, and includes the instructions… | intermediate | 10 |
 | [Summary](summary.md) | Summary — reference page with limited prose.… | intermediate | 1 |
+| [Template submission guidelines](template-submission-guidelines.md) | Requirements for useful, original, tested, and documented n8n workflow templates.… | intermediate | 10 |
 | [Terminology](terminology.md) | This page is a companion to the [style guide](style-guide-for-n8n-docs.md): the style guide covers writing sty… | intermediate | 14 |
+| [Terminology and naming](terminology-and-naming.md) | The official n8n terms to use in documentation, with the non-official terms to avoid.… | intermediate | 14 |
 | [Where To Get Help](where-to-get-help.md) | n8n provides different support options depending on your plan and the nature of your problem.… | intermediate | 7 |
+| [Where to get help](where-to-get-help-published.md) | n8n provides different support options depending on your plan and the nature of your problem.… | intermediate | 8 |
+| [Workflow Template Ideas](workflow-template-ideas.md) | This page lists use cases and suggested scopes you can build into workflow templates for the n8n template libr… | intermediate | 6 |
+| [Workflow template ideas](workflow-template-ideas-published.md) | Choose a practical use case and develop it into a useful n8n workflow template.… | intermediate | 7 |

@@ -203,6 +203,12 @@ HEADING_RE = re.compile(r"^(#{1,6})\s+(.*)$", re.M)
 LINK_RE = re.compile(r"\[[^\]]+\]\((/[^)\s]+)\)")
 
 
+
+def pathlib_pure_slug(title: str) -> str:
+    """Slug for a published page title (which may contain characters slugify drops)."""
+    return title or "page"
+
+
 def slugify(text: str) -> str:
     text = re.sub(r"[^\w\s-]", "", text.lower())
     return re.sub(r"[\s_]+", "-", text).strip("-")[:80] or "untitled"
@@ -585,6 +591,89 @@ def build() -> dict:
             [(c["chunk_id"], doc_id, c["ordinal"], c["heading"], c["kind"], c["text"], c["tokens"]) for c in chunks],
         )
 
+    # ---- published corpus (llms.txt / llms-full.txt) -------------------
+    # The repo clone is not a complete mirror of the published site: docs.n8n.io serves
+    # pages the repository does not contain (measured 2026-11-12 — repo 1348 pages vs
+    # 1351 published, different sets). Ingesting the machine-readable corpus on top of
+    # the clone covers the union. Pages already present from the clone are skipped.
+    published_added = 0
+    try:
+        from llms_corpus import load_or_fetch
+
+        pages, diagnostics = load_or_fetch(use_cache=True)
+        existing_urls = {
+            url for (url,) in conn.execute("SELECT source_url FROM docs")
+        }
+        used_slugs = {r["slug"] for recs in by_topic.values() for r in recs}
+        now = started.isoformat()
+
+        for page in pages:
+            url = page["url"]
+            if url in existing_urls:
+                continue
+
+            rel = url.replace("https://docs.n8n.io/", "")
+            rel_clean = rel[:-3] if rel.endswith(".md") else rel
+            # A published URL's first path segment is the domain. Root-level pages
+            # (/build-your-first-workflow.md) belong to the getting-started domain, not to a
+            # domain named after the file.
+            if "/" in rel_clean:
+                topic = rel_clean.split("/")[0]
+            else:
+                topic = "get-started"
+            title = page["title"]
+            body_text = page["body"]
+            slug = slugify(pathlib_pure_slug(title))
+            if slug in used_slugs:
+                slug = f"{slug}-published"
+            used_slugs.add(slug)
+
+            doc_id = hashlib.sha1(url.encode()).hexdigest()[:12]
+            summary = summarise(body_text, title)
+            chunks = chunk_document(body_text, doc_id)
+            content_hash = hashlib.sha256(body_text.encode()).hexdigest()
+
+            record = {
+                "doc_id": doc_id,
+                "slug": slug,
+                "title": title,
+                "topic": topic,
+                "rel_path": f"published/{rel}",
+                "source_url": url,
+                "summary": summary,
+                "difficulty": "intermediate",
+                "content_type": "reference",
+                "content_hash": content_hash,
+                "bytes": len(body_text),
+                "words": len(body_text.split()),
+                "headings": [h for _, h in extract_headings(body_text)],
+                "body": body_text,
+                "frontmatter": {},
+                "chunk_count": len(chunks),
+            }
+            by_topic.setdefault(topic, []).append(record)
+            existing_urls.add(url)
+
+            conn.execute(
+                """INSERT OR REPLACE INTO docs
+                   (doc_id, slug, title, topic, source_path, source_url, summary, difficulty,
+                    content_type, content_hash, bytes, words, chunk_count, fetched_at, updated_at)
+                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                (doc_id, slug, title, topic, f"published://{rel}", url, summary, "intermediate",
+                 "reference", content_hash, len(body_text), record["words"], len(chunks), now, now),
+            )
+            conn.execute("DELETE FROM chunks WHERE doc_id = ?", (doc_id,))
+            conn.executemany(
+                "INSERT OR REPLACE INTO chunks (chunk_id, doc_id, ordinal, heading, kind, text, tokens) VALUES (?,?,?,?,?,?,?)",
+                [(c["chunk_id"], doc_id, c["ordinal"], c["heading"], c["kind"], c["text"], c["tokens"]) for c in chunks],
+            )
+            published_added += 1
+
+        print(f"  + {published_added} published pages (llms corpus), "
+              f"{diagnostics['parts_fetched']}/{diagnostics['parts']} parts")
+    except Exception as exc:  # noqa: BLE001 - the published corpus is an addition, not a requirement
+        print(f"  ! published corpus not ingested: {type(exc).__name__}: {exc}")
+
     # Claims survive a rebuild. They are authored, not derived: forge.py recreates the
     # database from scratch, so anything asserted by a human must be re-applied from a file
     # that lives in git. brain/index/claims.json is that file; seed_claims.py writes it.
@@ -637,11 +726,15 @@ def build() -> dict:
     # ---- markdown output -------------------------------------------------
     write_markdown(by_topic)
 
+    # Counts are read before the connection closes — a closed cursor cannot be queried.
+    total_chunks_now = conn.execute("SELECT COUNT(*) FROM chunks").fetchone()[0]
+    total_docs_now = conn.execute("SELECT COUNT(*) FROM docs").fetchone()[0]
+
     conn.close()
     return {
         "files": len(files),
-        "docs": written,
-        "chunks": total_chunks,
+        "docs": total_docs_now,
+        "chunks": total_chunks_now,
         "entities": len(entities),
         "triples": len(triples),
         "topics": len(by_topic),

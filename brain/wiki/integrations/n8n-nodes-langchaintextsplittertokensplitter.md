@@ -40,4 +40,4 @@ On this page, you'll find the node parameters for the Token Splitter node, and l
 
 ## Related resources
 
-Refer to [LangChain's token documentation](https://js.langchain.com/docs/concepts/tokens/) and [LangChain's text splitter documentation](https://js.langchain.com/docs/concepts/text_splitters/) for more information about the service.
+Refer to [LangChain's split by token documentation](https://docs.langchain.com/oss/javascript/integrations/splitters/split_by_token) and [LangChain's text splitter documentation](https://docs.langchain.com/oss/javascript/integrations/splitters) for more information about the service.

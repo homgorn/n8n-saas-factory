@@ -6,7 +6,7 @@ topic: "changelog"
 difficulty: "intermediate"
 content_type: reference
 source: https://docs.n8n.io/changelog/release-notes-2.x
-related_nodes: [n8n-nodes-langchain.chat, n8n-nodes-langchain.mcpclient, n8n-nodes-langchain.memorymotorhead, n8n-nodes-langchain.microsoftagent365trigger]
+related_nodes: [n8n-nodes-langchain.chat, n8n-nodes-langchain.memorymotorhead, n8n-nodes-langchain.microsoftagent365trigger]
 claims: []
 updated: 2026-11-12
 ---
@@ -199,7 +199,7 @@ This release contains bug fixes.
 [niclox44](https://github.com/niclox44)\
 [Rohit-Gahlawat](https://github.com/Rohit-Gahlawat)\
 [hammadxcm](https://github.com/hammadxcm)\
-[aikido-autofix\[bot\]](https://github.com/apps/aikido-autofix-bot)\
+[aikido-autofix\[bot\]](https://github.com/apps/aikido-autofix)\
 [corazzione](https://github.com/corazzione)\
 [Wujerry](https://github.com/Wujerry)\
 [davidangularme](https://github.com/davidangularme)\
@@ -501,11 +501,11 @@ This release contains bug fixes and features.
 
 ### Connect to MCP servers with less setup
 
-Connect your agent to select MCP servers without setting up an [MCP Client node](https://app.gitbook.com/s/BKcbOzIWja8NfqKDcqHc/builtin/core-nodes/n8n-nodes-langchain.mcpclient) and credential by hand. Pick a server from the nodes panel, sign in, and it's available to your agent.
+Connect your agent to select MCP servers without setting up an [MCP Client node](https://app.gitbook.com/s/BKcbOzIWja8NfqKDcqHc/builtin/core-nodes/n8n-nodes-langchain.mcpClient) and credential by hand. Pick a server from the nodes panel, sign in, and it's available to your agent.
 
 Initial coverage includes some of the most used services in the official MCP registry, including Apify, Linear, monday.com, Notion, and PostHog. We'll expand the list to cover more services soon.
 
-If you need to connect to an MCP server that isn't in the list, you can still use the [MCP Client node](https://app.gitbook.com/s/BKcbOzIWja8NfqKDcqHc/builtin/core-nodes/n8n-nodes-langchain.mcpclient) with manual configuration.
+If you need to connect to an MCP server that isn't in the list, you can still use the [MCP Client node](https://app.gitbook.com/s/BKcbOzIWja8NfqKDcqHc/builtin/core-nodes/n8n-nodes-langchain.mcpClient) with manual configuration.
 
 ### Contributors
 

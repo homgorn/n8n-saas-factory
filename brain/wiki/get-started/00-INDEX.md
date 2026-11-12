@@ -4,13 +4,18 @@
 
 First workflow, learning paths, glossary, choosing Cloud vs self-hosted.
 
-**Pages**: 6 · **Words**: 4,221
+**Pages**: 11 · **Words**: 10,418
 
 | Page | Summary | Difficulty | Chunks |
 | --- | --- | --- | --- |
-| [Build Your First Workflow](build-your-first-workflow.md) | This guide will show you how to construct a workflow[^1] in n8n, explaining key concepts along the way.… | beginner | 10 |
+| [Build Your First Workflow](build-your-first-workflow.md) | In this quick start, you’ll build a workflow that fetches the weather for Berlin every morning and turns it in… | beginner | 13 |
+| [Build your first workflow](build-your-first-workflow-published.md) | Create your first workflow in n8n and learn some key concepts.… | intermediate | 13 |
 | [Choose How To Use N8N](choose-how-to-use-n8n.md) | n8n offers two primary deployment options: **n8n Cloud** (fully-managed) and **Self-hosted** (deploy on your o… | beginner | 9 |
-| [n8n Glossary](key-concept-glossary.md) | AI agents are artificial intelligence systems capable of responding to requests, making decisions, and perform… | beginner | 3 |
+| [Choose how to use n8n](choose-how-to-use-n8n-published.md) | Choose between n8n Cloud and self-hosting, and learn about licenses and plans.… | intermediate | 9 |
+| [n8n Glossary](key-concept-glossary.md) | This glossary defines the terms n8n uses for building, running, and managing workflows and agents.… | beginner | 42 |
+| [Key concept glossary](key-concept-glossary-published.md) | Definitions of the terms n8n uses for workflows, agents, AI, and hosting, with links to the pages that explain… | intermediate | 8 |
 | [Learning Paths](learning-paths.md) | Learn n8n through interactive courses at [n8n Academy](https://learn.n8n.io/).… | beginner | 2 |
+| [Learning paths](learning-paths-published.md) | Interactive courses to learn n8n through hands-on exercises, quizzes, and real workflow building.… | intermediate | 2 |
+| [n8n Docs](n8n-docs.md) | Get set up on n8n, build your first workflow, and find inspiration for what to automate.… | intermediate | 1 |
 | [Readme](readme.md) | n8n is a fair-code licensed workflow automation tool that combines AI features with business process automatio… | beginner | 1 |
 | [Summary](summary.md) | Summary — reference page with limited prose.… | beginner | 1 |

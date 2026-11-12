@@ -39,7 +39,7 @@ The performance of n8n depends on factors including:
 
 ## Run your own benchmarking
 
-To get an accurate estimate for your use case, run n8n's [benchmarking framework](https://github.com/n8n-io/n8n/tree/master/packages/%40n8n/benchmark). The repository contains more information about the benchmarking.
+To get an accurate estimate for your use case, run n8n's [benchmarking framework](https://github.com/n8n-io/n8n/tree/master/packages/quality/efficiency/scale/benchmark). The repository contains more information about the benchmarking.
 
 ## Example: Single instance performance
 

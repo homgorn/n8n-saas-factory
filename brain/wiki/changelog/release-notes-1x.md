@@ -2356,7 +2356,7 @@ If you’ve ever accidentally removed a workflow, you’ll appreciate the new ar
 
 ### Contributors
 
-[LeaDevelop](https://github.com/LeaDevelop)\
+LeaDevelop\
 [ayhandoslu](https://github.com/ayhandoslu)\
 [valentina98](https://github.com/valentina98)
 

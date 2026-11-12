@@ -4,24 +4,66 @@
 
 Operating for a team: credentials, users, RBAC, SSO, source control, environments.
 
-**Pages**: 44 · **Words**: 25,286
+**Pages**: 115 · **Words**: 78,242
 
 | Page | Summary | Difficulty | Chunks |
 | --- | --- | --- | --- |
 | [Add And Remove Users](add-and-remove-users.md) | The **Settings** > **Users** page shows all users, including ones with pending invitations.… | intermediate | 4 |
+| [Add and remove users](add-and-remove-users-published.md) | The **Settings** > **Users** page shows all users, including ones with pending invitations.… | intermediate | 4 |
+| [Administer](administer.md) | Secure, manage, and operate your n8n instance.… | intermediate | 6 |
+| [Apply Changes](apply-changes.md) | Applying changes brings your work from an environment into your instance.… | intermediate | 10 |
+| [Apply changes](apply-changes-published.md) | Apply changes from an environment to a project or to a whole n8n instance, resolve blockers, and see how Apply… | intermediate | 10 |
 | [Branch patterns](choose-branching-patterns.md) | The relationship between n8n instances and Git branches is flexible.… | intermediate | 6 |
+| [Choose branching patterns](choose-branching-patterns-published.md) | Understand the different relationships between n8n instances and Git branches that are possible with source co… | intermediate | 6 |
 | [Compare changes with workflow diffs](compare-versions.md) | Workflow diffs allow you to visually compare changes between the workflow you have on an instance and the most… | intermediate | 10 |
-| [Connect Ldap](connect-ldap.md) | You need access to the n8n instance owner account.… | intermediate | 6 |
+| [Compare versions](compare-versions-published.md) | Use workflow diffs to compare local and remote changes… | intermediate | 10 |
+| [Connect Ldap](connect-ldap.md) | You need access to the n8n instance owner account.… | intermediate | 8 |
+| [Connect LDAP](connect-ldap-published.md) | You need access to the n8n instance owner account.… | intermediate | 8 |
+| [Control Node Availability](control-node-availability.md) | Node type policies are rules that decide which nodes users can use, for the whole instance or for one project.… | intermediate | 13 |
+| [Control node availability](control-node-availability-published.md) | Use node type policies to control which nodes users can add, publish, and run in an instance or a project.… | intermediate | 13 |
 | [Custom instance roles](create-custom-instance-roles.md) | Available from n8n 2.30.0 (released July 7, 2026)… | intermediate | 8 |
+| [Create custom instance roles](create-custom-instance-roles-published.md) | Create and manage custom instance roles with granular permissions in n8n.… | intermediate | 8 |
 | [Custom project roles](create-custom-project-roles.md) | Custom project roles allow you to create roles with specific permissions tailored to your team's needs.… | intermediate | 23 |
+| [Create custom project roles](create-custom-project-roles-published.md) | Create and manage custom project roles with granular permissions in n8n.… | intermediate | 23 |
 | [Custom roles](create-custom-roles.md) | Custom roles let you define granular permissions beyond the built-in roles.… | intermediate | 3 |
 | [Credential overwrites](credential-overwrites.md) | Credential overwrites let you set credential data globally.… | intermediate | 6 |
+| [Credential overwrites](credential-overwrites-published.md) | Set credential data globally on a self-hosted n8n instance so users can authenticate without seeing or enterin… | intermediate | 6 |
+| [Custom roles](custom-roles.md) | Overview of custom roles in n8n, project-level and instance-level.… | intermediate | 3 |
 | [End User Credentials](end-user-credentials.md) | End-user credentials let workflows run with the credentials of the person who triggers them, rather than a fix… | intermediate | 11 |
+| [End-user credentials](end-user-credentials-published.md) | Let each user connect their own account to a credential, so a workflow runs with the credentials of the person… | intermediate | 11 |
+| [Environments](environments.md) | Move workflows and what they use from development to production through environments.… | intermediate | 11 |
+| [Environments (Classic)](environments-classic.md) | Overview of source control and environments in n8n… | intermediate | 4 |
+| [First Promotion](first-promotion.md) | Bring your work from a source instance, such as development, to a target instance, such as production, for the… | intermediate | 4 |
 | [Follow Best Practices](follow-best-practices.md) | This page contains advice on best practices relating to user management in n8n.… | intermediate | 4 |
+| [Follow best practices](follow-best-practices-published.md) | This page contains advice on best practices relating to user management in n8n.… | intermediate | 4 |
+| [Generic Git](generic-git.md) | The Generic Git provider connects an environment to any Git repository by URL, including repositories on GitHu… | intermediate | 6 |
+| [Generic Git](generic-git-published.md) | Connect Environments to any Git repository, including GitHub and Bitbucket, using an SSH deploy key or a usern… | intermediate | 6 |
+| [Git-based promotion](git-based-promotion.md) | How Environments use Git repositories and branches, which Git providers n8n supports, and how to troubleshoot … | intermediate | 8 |
+| [Gitlab](gitlab.md) | The GitLab provider connects an environment to a repository on GitLab.com or a self-managed GitLab instance.… | intermediate | 8 |
+| [GitLab](gitlab-published.md) | Learn how to use the GitLab node in n8n.… | intermediate | 6 |
+| [Known Limitations](known-limitations.md) | Environments are in Preview, and n8n is actively improving and extending them.… | intermediate | 18 |
+| [Known limitations](known-limitations-published.md) | What Environments don't support yet during the Preview, and how to work around each limitation.… | intermediate | 18 |
+| [Manage credentials](manage-credentials.md) | Store and share the authentication details your workflows need, without spreading secrets across your instance… | intermediate | 3 |
+| [Manage users and access](manage-users-and-access.md) | User management in n8n allows you to invite people to work in your n8n instance.… | intermediate | 4 |
 | [Manage users with SAML](manage-users-with-saml.md) | There are some user management tasks that are affected by SAML.… | intermediate | 4 |
+| [Manage users with SAML](manage-users-with-saml-published.md) | How to manage users and user logins with SAML enabled.… | intermediate | 4 |
 | [Copy work between environments](move-work-between-environments.md) | The steps to send work from one n8n instance to another are different depending on whether you use a single Gi… | intermediate | 5 |
-| [Organize Work In Projects](organize-work-in-projects.md) | Different plans have different numbers of projects and roles.… | intermediate | 7 |
+| [Move work between environments](move-work-between-environments-published.md) | How to get changes from one environment into another.… | intermediate | 5 |
+| [Observe and log](observe-and-log.md) | Track usage across your instance, and send events from n8n to your own logging tools.… | intermediate | 3 |
+| [Organize Work In Projects](organize-work-in-projects.md) | Different plans have different numbers of projects and roles.… | intermediate | 8 |
+| [Organize work in projects](organize-work-in-projects-published.md) | Understand how n8n uses project for RBAC.… | intermediate | 8 |
+| [Plan Your Environments](plan-your-environments.md) | Decide which instances promote changes, which instances apply them, and which repository and branch stand for … | intermediate | 7 |
+| [Plan your environments](plan-your-environments-published.md) | Choose how your n8n instances, environments, and Git branches connect before you set up Environments.… | intermediate | 7 |
+| [Promote Changes](promote-changes.md) | Promote sends workflows and their dependencies from your instance to the environment you promote to.… | intermediate | 7 |
+| [Promote changes](promote-changes-published.md) | Promote changes from a project or from a whole n8n instance to the environment the instance promotes changes t… | intermediate | 7 |
+| [Promotion Reviews](promotion-reviews.md) | A promotion review lets someone approve promoted changes on the source instance before they reach the branch o… | intermediate | 9 |
+| [Promotion reviews](promotion-reviews-published.md) | Approve promoted changes in n8n before they reach the environment's branch, using promotion reviews.… | intermediate | 9 |
+| [Protect A Production Instance](protect-a-production-instance.md) | On instances that only apply changes, such as production, turn on **Protected instance** in **Settings** > **E… | intermediate | 2 |
+| [Protect a production instance](protect-a-production-instance-published.md) | Stop people from changing an instance that only applies changes, such as production, in the UI.… | intermediate | 2 |
 | [Push and pull](push-and-pull-changes.md) | If your n8n instance connects to a Git repository, you need to keep your work in sync with Git.… | intermediate | 12 |
+| [Push and pull changes](push-and-pull-changes-published.md) | Send work to Git, and fetch work from Git to your instance.… | intermediate | 12 |
+| [Readme](readme.md) | With Git-based promotion, changes travel between n8n instances through a Git repository.… | intermediate | 8 |
+| [Readme](readme.md) | Environments let you move workflows and other n8n resources, such as credentials, variables, and data tables, … | intermediate | 11 |
 | [Readme](readme.md) | Store and share the authentication details your workflows need, without spreading secrets across your instance… | intermediate | 3 |
 | [Readme](readme.md) | User management in n8n allows you to invite people to work in your n8n instance.… | intermediate | 4 |
 | [Role-based access control (RBAC)](readme.md) | Custom roles (instance and project) are available on:… | intermediate | 3 |
@@ -30,25 +72,54 @@ Operating for a team: credentials, users, RBAC, SSO, source control, environment
 | [Readme](readme.md) | This section tells you how to enable SAML SSO (single sign-on) in n8n.… | intermediate | 3 |
 | [Readme](readme.md) | Track usage across your instance, and send events from n8n to your own logging tools.… | intermediate | 3 |
 | [Readme](readme.md) | Administer n8n by controlling access, securing credentials, managing changes, and monitoring activity.… | intermediate | 5 |
-| [Source control and environments](readme.md) | n8n uses Git-based source control to support environments.… | intermediate | 4 |
+| [Source control and environments](readme.md) | These pages cover Environments (Classic).… | intermediate | 4 |
 | [Require Two Factor Auth](require-two-factor-auth.md) | Two-factor authentication (2FA) adds a second authentication method on top of username and password.… | intermediate | 4 |
+| [Require two-factor auth](require-two-factor-auth-published.md) | Two-factor authentication (2FA) adds a second authentication method on top of username and password.… | intermediate | 4 |
 | [RBAC role types](see-available-roles.md) | The **Project Editor** role is available on:… | intermediate | 5 |
+| [See available roles](see-available-roles-published.md) | Understand the RBAC roles available in n8n, and the access they have.… | intermediate | 5 |
+| [Set permissions and roles (RBAC)](set-permissions-and-roles-rbac.md) | Set up and use role-based access control (RBAC) in n8n.… | intermediate | 3 |
 | [Azure AD SAML setup](set-up-azure-ad-saml.md) | This document provides instructions for configuring Azure AD to send role information to n8n via SAML attribut… | intermediate | 9 |
+| [Set up Azure AD SAML](set-up-azure-ad-saml-published.md) | This document provides instructions for configuring Azure AD to send role information to n8n via SAML attribut… | intermediate | 9 |
 | [Set Up For Cloud](set-up-for-cloud.md) | User management is available from n8n 0.195.0.… | intermediate | 2 |
+| [Set up for Cloud](set-up-for-cloud-published.md) | User management is available from n8n 0.195.0.… | intermediate | 4 |
 | [Set up OIDC](set-up-oidc.md) | Configuring OIDC using environment variables instead of the UI is available from n8n 2.18.0.… | intermediate | 8 |
+| [Set up OIDC](set-up-oidc-published.md) | Set up instructions for enabling OIDC SSO with n8n.… | intermediate | 8 |
 | [Okta Workforce Identity SAML setup](set-up-okta-workforce-identity-saml.md) | This guide covers setting up Workforce Identity.… | intermediate | 5 |
+| [Set up Okta Workforce Identity SAML](set-up-okta-workforce-identity-saml-published.md) | This guide covers setting up Workforce Identity.… | intermediate | 5 |
 | [Set up SAML](set-up-saml.md) | Configuring SAML using environment variables instead of the UI is available from n8n 2.18.0.… | intermediate | 6 |
+| [Set up SAML](set-up-saml-published.md) | Generic setup instructions for using SAML SSO with n8n.… | intermediate | 7 |
 | [Set up source control](set-up-source-control.md) | Link a Git repository to an n8n instance and configure your source control.… | intermediate | 8 |
-| [Share Credentials Securely](share-credentials-securely.md) | You can share a credential directly with other users to use in their own workflows.… | intermediate | 4 |
-| [Stream Logs To External Systems](stream-logs-to-external-systems.md) | Log streaming allows you to send events from n8n to your own logging tools.… | intermediate | 15 |
+| [Set up source control](set-up-source-control-published.md) | Link a Git repository to an n8n instance and configure your source control.… | intermediate | 9 |
+| [Share Credentials Securely](share-credentials-securely.md) | You can share a credential directly with other users to use in their own workflows.… | intermediate | 5 |
+| [Share credentials securely](share-credentials-securely-published.md) | Share credentials within an organization.… | intermediate | 5 |
+| [Stream Logs To External Systems](stream-logs-to-external-systems.md) | Log streaming allows you to send events from n8n to your own logging tools.… | intermediate | 16 |
+| [Stream logs to external systems](stream-logs-to-external-systems-published.md) | Stream events from n8n to your logging tools.… | intermediate | 16 |
 | [Summary](summary.md) | Summary — reference page with limited prose.… | intermediate | 1 |
 | [Track Usage With Insights](track-usage-with-insights.md) | Insights gives instance owners and admins visibility into how workflows perform over time.… | intermediate | 11 |
+| [Track usage with Insights](track-usage-with-insights-published.md) | Insights gives instance owners and admins visibility into how workflows perform over time.… | intermediate | 11 |
 | [Troubleshooting for OIDC SSO](troubleshoot-oidc.md) | When using OIDC providers that enforce the use of the `state` CSRF token parameter, authentication fails with … | intermediate | 3 |
-| [Troubleshooting SAML SSO](troubleshoot-saml.md) | If you get an error when testing your SAML setup, check the following:… | intermediate | 2 |
+| [Troubleshoot OIDC](troubleshoot-oidc-published.md) | Things to be aware of and troubleshooting OIDC within n8n… | intermediate | 4 |
+| [Troubleshooting SAML SSO](troubleshoot-saml.md) | If you get an error when testing your SAML setup, check the following:… | intermediate | 3 |
+| [Troubleshoot SAML](troubleshoot-saml-published.md) | A list of things to check if you encounter issues with SAML.… | intermediate | 3 |
 | [Tutorial - Create environments with source control](tutorial-create-environments-with-source-control.md) | This tutorial walks through the process of setting up environments end-to-end.… | intermediate | 13 |
-| [Understand Instance Roles](understand-instance-roles.md) | Every user has one instance role.… | intermediate | 3 |
+| [Tutorial: Create environments with source control](tutorial-create-environments-with-source-control-published.md) | How to use n8n's source control feature to create environments.… | intermediate | 14 |
+| [Understand Instance Roles](understand-instance-roles.md) | Every user has one instance role.… | intermediate | 4 |
+| [Understand instance roles](understand-instance-roles-published.md) | Every user has one instance role.… | intermediate | 4 |
 | [Understand source control and environments](understand-source-control.md) | Understand source control and environments — reference page with limited prose.… | intermediate | 1 |
+| [Understand source control](understand-source-control-published.md) | Understand how source control and environments work in n8n.… | intermediate | 2 |
+| [Upgrade From Environments Classic](upgrade-from-environments-classic.md) | Environments improve on and replace [Environments (Classic)](../use-source-control-and-environments/README.md)… | intermediate | 8 |
+| [Upgrade from Environments (Classic)](upgrade-from-environments-classic-published.md) | Compare Environments with Environments (Classic), migrate your n8n instances, and switch back if needed.… | intermediate | 8 |
+| [Use environments programmatically with the public API](use-environments-programmatically-with-the-public-api.md) | Use the n8n public API to preview, push, and pull source control changes between environments.… | intermediate | 9 |
 | [Use Environments Via Api](use-environments-via-api.md) | You can manage n8n environments from scripts and pipelines using the public API, without opening the n8n UI.… | intermediate | 9 |
 | [External secrets](use-external-secret-stores.md) | n8n supports the following secret providers: 1Password (using [Connect Server](https://developer.1password.com… | intermediate | 17 |
+| [Use external secret stores](use-external-secret-stores-published.md) | n8n supports the following secret providers: 1Password (using [Connect Server](https://developer.1password.com… | intermediate | 17 |
 | [Git and n8n](use-git-in-n8n.md) | n8n uses Git to provide source control.… | intermediate | 6 |
+| [Use Git in n8n](use-git-in-n8n-published.md) | n8n uses Git to provide source control.… | intermediate | 6 |
+| [Use OIDC](use-oidc.md) | This section covers how to enable and manage OpenID Connect (OIDC) for single sign-on (SSO).… | intermediate | 3 |
+| [Use Personal Credentials In Projects](use-personal-credentials-in-projects.md) | You can use your personal credentials in any team project you're a member of without sharing them.… | intermediate | 9 |
+| [Use personal credentials in projects](use-personal-credentials-in-projects-published.md) | Use your personal credentials in team projects, and understand who can view, use, and edit a credential and wh… | intermediate | 9 |
+| [Use SAML](use-saml.md) | This section tells you how to enable SAML SSO (single sign-on) in n8n.… | intermediate | 3 |
+| [Verify user identity](verify-user-identity.md) | Confirm who's signing in to your n8n instance, from two-factor auth to directory-backed single sign-on.… | intermediate | 3 |
 | [Environments in n8n](work-with-environments.md) | n8n has built its environments feature on top of Git, a version control software.… | intermediate | 4 |
+| [Work with environments](work-with-environments-published.md) | Understand the concepts behind environments in n8n.… | intermediate | 4 |
+| [Your first promotion](your-first-promotion.md) | Bring your work from a source instance to a new target instance for the first time.… | intermediate | 4 |

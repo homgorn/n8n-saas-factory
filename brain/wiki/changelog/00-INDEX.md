@@ -4,17 +4,22 @@
 
 Dated list of documentation changes.
 
-**Pages**: 10 · **Words**: 122,065
+**Pages**: 15 · **Words**: 228,765
 
 | Page | Summary | Difficulty | Chunks |
 | --- | --- | --- | --- |
-| [Readme](readme.md) | Every n8n release moves the platform forward.… | intermediate | 57 |
-| [Release Notes](release-notes.md) | This page is a running log of feature-level updates from each n8n release: what shipped in the editor and the … | intermediate | 71 |
+| [Changelog](changelog.md) | A curated, narrative summary of the most important new n8n features as they roll out.… | intermediate | 61 |
+| [Readme](readme.md) | Every n8n release moves the platform forward.… | intermediate | 61 |
+| [Release Notes](release-notes.md) | This page is a running log of feature-level updates from each n8n release: what shipped in the editor and the … | intermediate | 86 |
 | [Release Notes 0.X](release-notes-0x.md) | These release notes are now archived and won't receive further updates.… | intermediate | 849 |
 | [Release Notes 1.X](release-notes-1x.md) | These release notes are now archived and won't receive further updates.… | intermediate | 634 |
+| [Release notes 1.x](release-notes-1x-published.md) | Release notes detailing new features and bug fixes for n8n.… | intermediate | 635 |
 | [Release Notes 2.X](release-notes-2x.md) | These release notes are now archived and won't receive further updates.… | intermediate | 236 |
+| [Release notes 2.x](release-notes-2x-published.md) | Archived release notes detailing new features and bug fixes for n8n 2.x.… | intermediate | 237 |
+| [Release notes](release-notes-published.md) | A running log of feature-level updates from each n8n release, newest first.… | intermediate | 89 |
 | [Summary](summary.md) | Summary — reference page with limited prose.… | intermediate | 1 |
 | [n8n 1.0 migration guide](v10-migration-guide.md) | This document provides a summary of what you should be aware of before updating to n8n 1.0.… | intermediate | 18 |
 | [n8n 2.0 breaking changes](v20-breaking-changes.md) | n8n 2.0 has been released, and with it came some important changes.… | intermediate | 26 |
 | [n8n 2.0 Migration Tool](v20-migration-tool.md) | The migration tool helps you prepare your n8n instance for upgrading to n8n 2.0 by identifying workflows and c… | intermediate | 15 |
-| [n8n 3.0 breaking changes](v30-breaking-changes.md) | This document highlights breaking changes and actions to prepare for the upcoming transition to n8n 3.0, sched… | intermediate | 26 |
+| [V30 Breaking Changes](v30-breaking-changes.md) | n8n 3.0 comes with some important changes.… | intermediate | 30 |
+| [V30 Migration Tool](v30-migration-tool.md) | The migration tool scans your n8n instance and lists the workflows and instance settings that n8n 3.0 changes,… | intermediate | 16 |

@@ -41,4 +41,4 @@ On this page, you'll find the node parameters for the Character Text Splitter no
 
 ## Related resources
 
-Refer to [LangChain's text splitter documentation](https://js.langchain.com/docs/concepts/text_splitters) and [LangChain's API documentation for character text splitting](https://v03.api.js.langchain.com/classes/langchain.text_splitter.CharacterTextSplitter.html) for more information about the service.
+Refer to [LangChain's text splitter documentation](https://docs.langchain.com/oss/javascript/integrations/splitters) and [LangChain's API documentation for character text splitting](https://reference.langchain.com/javascript/langchain-textsplitters/CharacterTextSplitter) for more information about the service.

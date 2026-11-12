@@ -64,4 +64,4 @@ The quality and availability of search results depend on the configuration and h
 
 ## Related resources
 
-Refer to [SearXNG's documentation](https://docs.searxng.org/) for more information about the service. You can also view [LangChain's documentation on their SearXNG integration](https://python.langchain.com/docs/integrations/tools/searx_search/).
+Refer to [SearXNG's documentation](https://docs.searxng.org/) for more information about the service.

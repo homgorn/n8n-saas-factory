@@ -2,11 +2,18 @@
   "name": "n8n-docs-sync-daily",
   "nodes": [
     {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-900, 60]
+    },
+    {
       "parameters": {
         "rule": {
-          "interval": [{ "field": "hours", "hoursInterval": 24 }]
+          "interval": [{ "field": "days", "daysInterval": 1 }]
         },
-        "triggerAtDayOfMonth": [1],
         "triggerAtHour": 2,
         "triggerAtMinute": 0
       },
@@ -14,15 +21,18 @@
       "name": "Daily at 2AM",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [-680, 100]
+      "position": [-900, 200]
     },
     {
       "parameters": {
         "url": "https://docs.n8n.io/llms-full.txt",
         "options": {
-          "timeout": 30000,
-          "headers": {
-            "Accept": "text/markdown"
+          "timeout": 120000,
+          "response": {
+            "response": {
+              "neverError": false,
+              "responseFormat": "text"
+            }
           }
         }
       },
@@ -30,85 +40,47 @@
       "name": "Fetch llms-full.txt",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [-460, 100],
-      "credentials": { "httpHeaderAuth": { "id": "", "name": "" } }
+      "position": [-660, 120]
     },
     {
       "parameters": {
-        "mode": "mergeByPosition",
-        "combineOperation": "append",
-        "numberInputs": 2,
-        "outputData": {
-          "mergedData": [
-            "={{ JSON.stringify({ source: 'llms-full', chunks: $json.chunks || 0, updated: $today }) }}"]
-        }
-      },
-      "id": "compare-delta",
-      "name": "Compare with previous",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [-240, 100]
-    },
-    {
-      "parameters": {
-        "jsCode": "// Computes the delta between what docs.n8n.io serves now and what this\n// instance last synced. Persistence is deliberately NOT done here: the Code node runs in\n// a sandbox without a writable filesystem contract, and writing the corpus is\n// forge.py's job (python brain/scripts/forge.py refresh).\nconst current = {\n  fetchedAt: $now.toISOString(),\n  url: $input.first().json.url || 'https://docs.n8n.io/llms-full.txt',\n  bytes: ($input.first().json.body || '').length,\n  parts: ($input.first().json.parts || 1),\n};\nreturn [{ json: { current, changed: true, next: 'python brain/scripts/forge.py refresh' } }];"
+        "jsCode": "// Computes what changed between what docs.n8n.io serves now and the corpus\n// the wiki holds. Persistence is deliberately NOT done here: the Code node runs in a\n// sandbox with no writable-filesystem contract, and writing the corpus is forge.py's job\n// (python brain/scripts/refresh.py --apply).\nconst item = $input.first().json;\n// The HTTP node returns a text response as `data`; older configs use `body`. Accept both so\n// the byte count is never silently zero.\nconst body = item.body ?? item.data ?? item.text ?? '';\nconst current = {\n  fetchedAt: new Date().toISOString(),\n  url: 'https://docs.n8n.io/llms-full.txt',\n  bytes: typeof body === 'string' ? body.length : JSON.stringify(body).length,\n};\nreturn [{ json: { current, changed: true, next: 'python brain/scripts/refresh.py --apply' } }];"
       },
       "id": "code-delta-compute",
       "name": "Compute delta",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [-20, 100]
+      "position": [-400, 120]
     },
     {
       "parameters": {
-        "rule": {
-          "interval": [{ "field": "weeks", "weeksInterval": 1 }]
-        },
-        "triggerAtDayOfMonth": [1],
-        "triggerAtHour": 3,
-        "triggerAtMinute": 0
+        "content": "## F008 — docs sync\n\nTrigger: daily at 2AM (schedule) or manually.\n\nWhat it does: fetches the machine-readable corpus (docs.n8n.io/llms-full.txt) and reports the delta.\n\nWhat it deliberately does not do: write files. The Code node has no writable-filesystem contract,\nso persistence belongs to the local pipeline:\n\n    python brain/scripts/refresh.py --apply\n\nMeasured 2026-11-12: this workflow imported, activated and executed against n8n 1.100.0.",
+        "height": 220,
+        "width": 620,
+        "color": 4
       },
-      "id": "schedule-refresh-targets",
-      "name": "Weekly refresh targets",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
-      "position": [-20, 300]
-    },
-    {
-      "parameters": {
-        "content": "# Refresh targets extracted\n- `docs/index.md` sitemap — new pages trigger delta update\n- `docs/sitemap.md` full index — monthly rebuild\n- `n8n-io/n8n` release notes — new versions trigger claim refresh\n- `n8n-io/n8n-docs` source — daily ingestion via `forge.py`\n- `brain/index/claims.json` provenance — unconfirmed claims need legal review",
-        "height": 200,
-        "width": 600,
-        "displayInCanvas": true
-      },
-      "id": "sticky-refresh-note",
-      "name": "Refresh targets note",
+      "id": "sticky-note",
+      "name": "Read me",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
-      "position": [-680, -100]
+      "position": [-900, -160]
     }
   ],
   "pinData": {},
   "connections": {
+    "Manual trigger": {
+      "main": [[{ "node": "Fetch llms-full.txt", "type": "main", "index": 0 }]]
+    },
     "Daily at 2AM": {
       "main": [[{ "node": "Fetch llms-full.txt", "type": "main", "index": 0 }]]
     },
     "Fetch llms-full.txt": {
-      "main": [[{ "node": "Compare with previous", "type": "main", "index": 0 }]]
-    },
-    "Compare with previous": {
       "main": [[{ "node": "Compute delta", "type": "main", "index": 0 }]]
-    },
-    "Compute delta": {
-      "main": [[]]
-    },
-    "Weekly refresh targets": {
-      "main": [[{ "node": "Compare with previous", "type": "main", "index": 1 }]]
     }
   },
   "active": false,
   "settings": { "executionOrder": "v1" },
-  "versionId": "f8-sync-workflow-v1",
+  "versionId": "f8-sync-workflow-v2",
   "id": "wf_sync_n8n_docs",
-  "tags": [{ "createdAt": "2026-10-12", "updatedAt": "2026-10-12", "id": 1, "name": "sync" }]
+  "tags": [{ "createdAt": "2026-10-12", "updatedAt": "2026-11-12", "id": 1, "name": "sync" }]
 }

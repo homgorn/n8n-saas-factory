@@ -51,6 +51,6 @@ Refer to the [Serp credentials documentation](../../credentials/serp.md) for aut
 
 ## Related resources
 
-Refer to [Serp's documentation](https://serpapi.com/search-api) for more information about the service. You can also view [LangChain's documentation on their Serp integration](https://js.langchain.com/docs/integrations/tools/serpapi/).
+Refer to [Serp's documentation](https://serpapi.com/search-api) for more information about the service.
 
 [^1]: AI agents are artificial intelligence systems capable of responding to requests, making decisions, and performing real-world tasks for users. They use large language models (LLMs) to interpret user input and make decisions about how to best process requests using the information and resources they have available.

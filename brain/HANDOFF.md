@@ -5,7 +5,7 @@
 ## What this is
 
 A regenerable knowledge base over the n8n documentation, built so an agent with no chat history can
-navigate it: 1348 pages across 11 domains, indexed at four levels.
+navigate it: 2739 pages across 11 domains, indexed at four levels.
 
 ## State
 

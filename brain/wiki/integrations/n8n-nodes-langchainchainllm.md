@@ -77,7 +77,7 @@ For both the **Image** types, select the **Image Details** to control how the mo
 
 ## Related resources
 
-Refer to [LangChain's documentation on Basic LLM Chains](https://js.langchain.com/docs/tutorials/llm_chain/) for more information about the service.
+Refer to [LangChain's models documentation](https://docs.langchain.com/oss/javascript/langchain/models) for more information about the service.
 
 ## Common issues
 

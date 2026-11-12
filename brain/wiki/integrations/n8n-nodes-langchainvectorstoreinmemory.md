@@ -129,7 +129,7 @@ On n8n Cloud, these values are preset to 100MB (about 8,000 documents, depending
 
 ## Related resources
 
-Refer to [LangChains's Memory Vector Store documentation](https://js.langchain.com/docs/integrations/vectorstores/memory/) for more information about the service.
+Refer to [LangChain's Memory Vector Store documentation](https://docs.langchain.com/oss/javascript/integrations/vectorstores/memory) for more information about the service.
 
 [^1]: Embeddings are numerical representations of data using vectors. They're used by AI to interpret complex data and relationships by mapping values across many dimensions. Vector databases, or vector stores, are databases designed to store and access embeddings.
 [^2]: A vector store, or vector database, stores mathematical representations of information. Use with embeddings and retrievers to create a database that your AI can access when answering questions.

@@ -45,6 +45,6 @@ Learn more about available models in [Google Gemini's models documentation](http
 
 ## Related resources
 
-Refer to [Langchain's Google Generative AI embeddings documentation](https://js.langchain.com/docs/integrations/text_embedding/google_generativeai) for more information about the service.
+Refer to [LangChain's Google Generative AI embeddings documentation](https://docs.langchain.com/oss/javascript/integrations/embeddings/google_generative_ai) for more information about the service.
 
 [^1]: Embeddings are numerical representations of data using vectors. They're used by AI to interpret complex data and relationships by mapping values across many dimensions. Vector databases, or vector stores, are databases designed to store and access embeddings.

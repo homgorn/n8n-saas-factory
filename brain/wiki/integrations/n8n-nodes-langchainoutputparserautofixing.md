@@ -33,4 +33,4 @@ The Auto-fixing Output Parser node wraps another output parser. If the first one
 
 ## Related resources
 
-Refer to [LangChain's output parser documentation](https://js.langchain.com/docs/concepts/output_parsers/) for more information about the service.
+Refer to [LangChain's structured output documentation](https://docs.langchain.com/oss/javascript/langchain/structured-output) for more information about the service.

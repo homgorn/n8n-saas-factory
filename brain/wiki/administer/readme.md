@@ -1,7 +1,7 @@
 ---
 id: "readme"
 title: "Source control and environments"
-summary: "n8n uses Git-based source control to support environments."
+summary: "These pages cover Environments (Classic)."
 topic: "administer"
 difficulty: "intermediate"
 content_type: overview
@@ -17,13 +17,17 @@ updated: 2026-11-12
 
 ## Summary
 
-n8n uses Git-based source control to support environments.
+These pages cover Environments (Classic).
 
 **Source**: https://docs.n8n.io/administer/use-source-control-and-environments/README
 
 ---
 
 # Source control and environments
+
+**New version available**
+
+These pages cover Environments (Classic). For the new version, in Preview and available on Enterprise plans, see [Environments](../environments/README.md). To compare the versions and upgrade an instance, see [Upgrade from Environments (Classic)](../environments/upgrade-from-environments-classic.md).
 
 n8n uses Git-based source control to support environments. Linking your n8n instances to a Git repository lets you create multiple n8n environments, backed by Git branches.
 

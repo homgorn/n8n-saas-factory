@@ -38,4 +38,4 @@ Use the Item List Output Parser node to return a list of items with a specific l
 
 ## Related resources
 
-Refer to [LangChain's output parser documentation](https://js.langchain.com/docs/concepts/output_parsers) for more information about the service.
+Refer to [LangChain's structured output documentation](https://docs.langchain.com/oss/javascript/langchain/structured-output) for more information about the service.

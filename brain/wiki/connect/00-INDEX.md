@@ -4,35 +4,91 @@
 
 Wiring n8n to the outside world: public REST API, MCP server, building custom nodes.
 
-**Pages**: 48 · **Words**: 49,236
+**Pages**: 132 · **Words**: 166,972
 
 | Page | Summary | Difficulty | Chunks |
 | --- | --- | --- | --- |
+| [Access and organization](access-and-organization.md) | Manage projects, users, roles, and role-mapping rules… | intermediate | 1 |
 | [Api Reference](api-reference.md) | This section is the complete endpoint reference for n8n's public REST API, generated from the OpenAPI specific… | advanced | 4 |
+| [Audit](audit.md) | Audit — reference page with limited prose.… | intermediate | 3 |
 | [Authentication](authentication.md) | n8n uses API keys to authenticate API calls.… | intermediate | 24 |
+| [Authentication](authentication-published.md) | Authentication for n8n's public REST API.… | intermediate | 24 |
+| [Base files](base-files.md) | The node base file contains the core code of your node.… | intermediate | 3 |
+| [Build and run](build-and-run.md) | Build, run, and test workflows, and manage the resources that they use… | intermediate | 1 |
+| [Build your node](build-your-node.md) | This section provides tutorials on building nodes.… | intermediate | 3 |
 | [Choose A Node Building Style](choose-a-node-building-style.md) | n8n has two node-building styles, declarative and programmatic.… | advanced | 5 |
+| [Choose a node building style](choose-a-node-building-style-published.md) | n8n has two node-building styles, declarative and programmatic.… | intermediate | 5 |
 | [Choose A Node Type](choose-a-node-type.md) | There are two node types you can build for n8n: trigger nodes and action nodes.… | advanced | 4 |
+| [Choose a node type](choose-a-node-type-published.md) | There are two node types you can build for n8n: trigger nodes and action nodes.… | intermediate | 4 |
 | [Choose Node File Structure](choose-node-file-structure.md) | Following best practices and standards in your node structure makes your node easier to maintain.… | advanced | 7 |
+| [Choose node file structure](choose-node-file-structure-published.md) | Following best practices and standards in your node structure makes your node easier to maintain.… | intermediate | 7 |
 | [Code Standards](code-standards.md) | Following defined code standards when building your node makes your code more readable and maintainable, and h… | advanced | 12 |
+| [Code standards](code-standards-published.md) | Following defined code standards when building your node makes your code more readable and maintainable, and h… | intermediate | 12 |
 | [Codex Files](codex-files.md) | The codex file contains metadata about your node.… | advanced | 3 |
+| [Codex files](codex-files-published.md) | The codex file contains metadata about your node.… | intermediate | 3 |
+| [Community Packages](community-packages.md) | Community Packages — reference page with limited prose.… | intermediate | 5 |
+| [Connect](connect.md) | Use the API, CLI, and MCP server to connect to n8n programmatically.… | intermediate | 1 |
 | [Connect To N8N Docs Mcp Server](connect-to-n8n-docs-mcp-server.md) | The n8n documentation publishes two [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) servers.… | intermediate | 8 |
 | [Connect To N8N Mcp Server](connect-to-n8n-mcp-server.md) | n8n's built-in MCP server lets supported clients, such as Lovable or Claude Desktop, connect securely to your … | intermediate | 29 |
+| [Connect to n8n MCP server](connect-to-n8n-mcp-server-published.md) | Connect, authenticate, and integrate MCP clients to build and execute n8n workflows programmatically… | intermediate | 29 |
+| [Connect to the n8n docs MCP server](connect-to-the-n8n-docs-mcp-server.md) | Connect an AI tool to an n8n docs Model Context Protocol (MCP) server to search and answer questions from the … | intermediate | 8 |
+| [Create nodes](create-nodes.md) | Plan, build, test, and deploy a custom n8n node.… | intermediate | 3 |
+| [Credential Type Policy](credential-type-policy.md) | Preview — breaking changes may still occur without major version bump.… | intermediate | 15 |
 | [Credentials Files](credentials-files.md) | The credentials file defines the authorization methods for the node.… | advanced | 10 |
+| [Credentials files](credentials-files-published.md) | The credentials file defines the authorization methods for the node.… | intermediate | 10 |
+| [Credentials](credentials-published.md) | Manage default credentials and override them through environment variables your self-hosted n8n instance.… | intermediate | 2 |
+| [Data Tables](data-tables-published.md) | Operations about data tables and their rows… | intermediate | 18 |
 | [Declarative-style parameters](declarative-style-parameters.md) | These are the parameters available for [node base file](README.md) of declarative-style nodes.… | advanced | 6 |
+| [Declarative-style parameters](declarative-style-parameters-published.md) | A reference document listing the declarative-style parameters of the node base file.… | intermediate | 6 |
+| [Deploy your node](deploy-your-node.md) | This section contains details on how to deploy and share your node.… | intermediate | 3 |
+| [Discover](discover.md) | Discover — reference page with limited prose.… | intermediate | 2 |
+| [Endpoint reference](endpoint-reference.md) | Endpoint reference for n8n's public REST API, generated from the OpenAPI specification.… | intermediate | 4 |
 | [Error Handling](error-handling.md) | Proper error handling is crucial for creating robust n8n nodes that provide clear feedback to users when thing… | advanced | 10 |
+| [Error handling](error-handling-published.md) | Proper error handling is crucial for creating robust n8n nodes that provide clear feedback to users when thing… | intermediate | 10 |
+| [Evaluations](evaluations.md) | Evaluations — reference page with limited prose.… | intermediate | 6 |
+| [Executions](executions-published.md) | Environment variables to configure settings related to workflow executions.… | intermediate | 4 |
+| [Folders](folders.md) | Folders — reference page with limited prose.… | intermediate | 6 |
 | [Http Request Helpers](http-request-helpers.md) | n8n provides a flexible helper for making HTTP requests, which abstracts away most of the complexity.… | advanced | 6 |
+| [HTTP request helpers](http-request-helpers-published.md) | n8n provides a flexible helper for making HTTP requests, which abstracts away most of the complexity.… | intermediate | 6 |
+| [Idempotency](idempotency.md) | Send an `Idempotency-Key` header on a public API POST so a retry returns the first successful response instead… | intermediate | 10 |
+| [Idempotency](idempotency-published.md) | Retry an n8n public API POST with an Idempotency-Key header.… | intermediate | 10 |
+| [Insights](insights-published.md) | Configure insights metrics collection with environment variables for your self-hosted n8n instance.… | intermediate | 2 |
 | [Install Private Nodes](install-private-nodes.md) | You can build your own nodes and install them in your n8n instance without publishing them on npm.… | advanced | 4 |
+| [Install private nodes](install-private-nodes-published.md) | You can build your own nodes and install them in your n8n instance without publishing them on npm.… | intermediate | 4 |
+| [Instance operations](instance-operations.md) | Audit, extend, version, promote, and monitor the instance… | intermediate | 1 |
+| [Instance settings](instance-settings.md) | Configure sign-in, security, type policies, log streaming, and telemetry for the instance… | intermediate | 1 |
 | [Item Linking](item-linking.md) | Item Linking — reference page with limited prose.… | advanced | 1 |
+| [Item linking](item-linking-published.md) | This guidance applies to programmatic-style nodes.… | intermediate | 2 |
+| [Log Streaming](log-streaming.md) | Operations about log streaming destinations… | intermediate | 18 |
+| [MCP client connection examples](mcp-client-connection-examples.md) | Copy-paste connection commands and configuration for Lovable, Claude Desktop, Claude Code, Codex, Gemini CLI, … | intermediate | 12 |
 | [MCP client connection examples](mcp-client-examples.md) | These examples show the exact commands and configuration for connecting specific clients to n8n's MCP server.… | intermediate | 12 |
-| [n8n MCP server tools reference](mcp-server-tools-reference.md) | This page describes all tools exposed by the instance-level MCP server.… | advanced | 61 |
+| [Mcp Server Tools Reference](mcp-server-tools-reference.md) | This page describes all tools exposed by the instance-level MCP server.… | advanced | 78 |
+| [MCP server tools reference](mcp-server-tools-reference-published.md) | Complete reference for all tools exposed by the n8n MCP server, including workflow management, workflow builde… | intermediate | 80 |
+| [Models](models.md) | Models — reference page with limited prose.… | intermediate | 48 |
+| [n8n API](n8n-api.md) | Use n8n's public REST API to perform tasks programmatically instead of through the GUI.… | intermediate | 6 |
 | [N8N Cli](n8n-cli.md) | All operations respect the permissions of the user and the scope of the API key.… | intermediate | 17 |
+| [n8n CLI](n8n-cli-published.md) | n8n CLI is a lightweight client for interacting with n8n programmatically through the Public API.… | intermediate | 17 |
+| [n8n Packages](n8n-packages-published.md) | Beta — breaking changes may still occur without major version bump.… | intermediate | 24 |
 | [Node Linter](node-linter.md) | n8n's node linter, [`@n8n/eslint-plugin-community-nodes`](https://github.com/n8n-io/n8n/tree/master/packages/%… | advanced | 6 |
+| [Node linter](node-linter-published.md) | n8n's node linter, [`@n8n/eslint-plugin-community-nodes`](https://github.com/n8n-io/n8n/tree/master/packages/%… | intermediate | 6 |
+| [Node Type Policy](node-type-policy.md) | Preview — breaking changes may still occur without major version bump.… | intermediate | 12 |
 | [Node Ui Design](node-ui-design.md) | Most nodes are a GUI (graphical user interface) representation of an API.… | advanced | 9 |
+| [Node UI design](node-ui-design-published.md) | Most nodes are a GUI (graphical user interface) representation of an API.… | intermediate | 10 |
 | [Node Ui Elements](node-ui-elements.md) | n8n provides a set of predefined UI components (based on a JSON file) that allows users to input all sorts of … | advanced | 25 |
+| [Node UI elements](node-ui-elements-published.md) | n8n provides a set of predefined UI components (based on a JSON file) that allows users to input all sorts of … | intermediate | 25 |
 | [Overview](overview.md) | Learn how to build your own custom nodes[^1].… | advanced | 3 |
+| [Overview](overview-published.md) | Learn how to build your own custom nodes[^1].… | intermediate | 3 |
 | [Pagination](pagination.md) | The default page size is 100 results.… | intermediate | 2 |
+| [Pagination](pagination-published.md) | Pagination examples for the HTTP Request node.… | intermediate | 7 |
+| [Plan your node](plan-your-node.md) | This section provides guidance on designing your node, including key technical decisions such as choosing your… | intermediate | 3 |
 | [Programmatic-style execute() method](programmatic-style-execute-method.md) | The main difference between the declarative and programmatic styles is how they handle incoming data and build… | advanced | 2 |
+| [Programmatic-style execute method](programmatic-style-execute-method-published.md) | A reference document for the programmatic-style execute() method of the node base file.… | intermediate | 2 |
 | [Programmatic-style parameters](programmatic-style-parameters.md) | These are the parameters available for [node base file](README.md) of programmatic-style nodes.… | advanced | 6 |
+| [Programmatic-style parameters](programmatic-style-parameters-published.md) | A reference document listing the programmatic-style parameters of the node base file.… | intermediate | 6 |
+| [Projects](projects.md) | Projects — reference page with limited prose.… | intermediate | 9 |
+| [Promotions](promotions.md) | Operations about promotion providers, environments, and package operations… | intermediate | 50 |
+| [Rate Limits](rate-limits.md) | n8n can limit how many public API requests each API key makes.… | intermediate | 13 |
+| [Rate limits](rate-limits-published.md) | Understand the n8n public API rate limits and handle a 429 response.… | intermediate | 13 |
 | [Readme](readme.md) | This section provides tutorials on building nodes.… | advanced | 3 |
 | [Readme](readme.md) | The node base file contains the core code of your node.… | advanced | 3 |
 | [Readme](readme.md) | This section contains reference information for node builders.… | advanced | 3 |
@@ -42,17 +98,45 @@ Wiring n8n to the outside world: public REST API, MCP server, building custom no
 | [Readme](readme.md) | This section contains information about testing your node.… | advanced | 3 |
 | [n8n public REST API Documentation and Guides](readme.md) | Using n8n's public API[^1], you can programmatically perform many of the same tasks as you can in the GUI.… | intermediate | 6 |
 | [Readme](readme.md) | Connect to n8n from code, scripts, and AI tools.… | intermediate | 1 |
+| [Reference](reference.md) | This section contains reference information for node builders.… | intermediate | 3 |
+| [Role Mapping Rules](role-mapping-rules.md) | Operations about identity-provider role-mapping rules… | intermediate | 6 |
+| [Roles](roles.md) | Roles — reference page with limited prose.… | intermediate | 6 |
 | [Run Your Node Locally](run-your-node-locally.md) | Run Your Node Locally — reference page with limited prose.… | advanced | 1 |
+| [Run your node locally](run-your-node-locally-published.md) | You can test your node as you build it by running it in a local n8n instance with the [`n8n-node` tool](/conne… | intermediate | 2 |
+| [Security Policy](security-policy.md) | Operations about the instance security policy settings… | intermediate | 4 |
 | [Set Up Your Development Environment](set-up-your-development-environment.md) | This document lists the essential dependencies for developing a node, as well as guidance on setting up your e… | advanced | 4 |
+| [Set up your development environment](set-up-your-development-environment-published.md) | This document lists the essential dependencies for developing a node, as well as guidance on setting up your e… | intermediate | 4 |
+| [Settings LDAP](settings-ldap.md) | Settings LDAP — reference page with limited prose.… | intermediate | 6 |
+| [Settings OTel](settings-otel.md) | Settings OTel — reference page with limited prose.… | intermediate | 6 |
+| [Settings Rate Limits](settings-rate-limits.md) | Operations about Public API rate-limit settings… | intermediate | 4 |
+| [Settings SSO OIDC](settings-sso-oidc.md) | Settings SSO OIDC — reference page with limited prose.… | intermediate | 4 |
+| [Settings SSO SAML](settings-sso-saml.md) | Settings SSO SAML — reference page with limited prose.… | intermediate | 6 |
+| [Source Control](source-control-published.md) | Source Control — reference page with limited prose.… | intermediate | 6 |
 | [Standard parameters](standard-parameters.md) | These are the standard parameters for the [node base file](README.md).… | advanced | 18 |
+| [Standard parameters](standard-parameters-published.md) | A reference document listing the standard parameters of the node base file.… | intermediate | 18 |
 | [Structure of the node base file](structure.md) | The node base file follows this basic structure:… | advanced | 4 |
+| [Structure](structure-published.md) | A reference document detailing the basic structure of the node base file.… | intermediate | 4 |
 | [Submit Community Nodes](submit-community-nodes.md) | Submit Community Nodes — reference page with limited prose.… | advanced | 1 |
+| [Submit community nodes](submit-community-nodes-published.md) | Community nodes are npm packages, hosted in the npm registry.… | intermediate | 6 |
 | [Summary](summary.md) | Summary — reference page with limited prose.… | intermediate | 1 |
+| [Tags](tags.md) | Tags — reference page with limited prose.… | intermediate | 6 |
+| [Test your node](test-your-node.md) | This section contains information about testing your node.… | intermediate | 3 |
 | [Troubleshooting](troubleshooting.md) | Check that the name in the credentials array matches the name used in the property name of the credentials' cl… | advanced | 8 |
+| [Troubleshooting](troubleshooting-published.md) | n8n installs community nodes directly onto the hard disk.… | intermediate | 2 |
 | [Tutorial Build A Declarative Style Node](tutorial-build-a-declarative-style-node.md) | This tutorial walks through building a declarative-style node.… | advanced | 12 |
+| [Tutorial: Build a declarative-style node](tutorial-build-a-declarative-style-node-published.md) | This tutorial walks through building a declarative-style node.… | intermediate | 13 |
 | [Tutorial Build A Programmatic Style Node](tutorial-build-a-programmatic-style-node.md) | This tutorial walks through building a programmatic-style node.… | advanced | 12 |
+| [Tutorial: Build a programmatic-style node](tutorial-build-a-programmatic-style-node-published.md) | This tutorial walks through building a programmatic-style node.… | intermediate | 13 |
 | [Use An Api Playground](use-an-api-playground.md) | This documentation site provides a playground to test out calls.… | intermediate | 4 |
+| [Use an API playground](use-an-api-playground-published.md) | How to use an API playground to try out n8n's public REST API.… | intermediate | 4 |
+| [Users](users.md) | Users — reference page with limited prose.… | intermediate | 6 |
 | [Using The N8N Node Tool](using-the-n8n-node-tool.md) | The `n8n-node` tool is the official CLI for developing community nodes for n8n.… | advanced | 17 |
+| [Using the n8n-node tool](using-the-n8n-node-tool-published.md) | The `n8n-node` tool is the official CLI for developing community nodes for n8n.… | intermediate | 17 |
 | [Ux Guidelines](ux-guidelines.md) | Your node's UI must conform to these guidelines to be a [verified community node](../../deploy-your-node/submi… | advanced | 19 |
+| [UX guidelines](ux-guidelines-published.md) | Your node's UI must conform to these guidelines to be a [verified community node](/connect/create-nodes/deploy… | intermediate | 19 |
+| [Variables](variables.md) | Variables — reference page with limited prose.… | intermediate | 5 |
 | [Verification Guidelines](verification-guidelines.md) | Follow these guidelines while building your node if you want to submit it for verification by n8n.… | advanced | 10 |
+| [Verification guidelines](verification-guidelines-published.md) | Follow these guidelines while building your node if you want to submit it for verification by n8n.… | intermediate | 10 |
 | [Versioning](versioning.md) | n8n supports node versioning.… | advanced | 8 |
+| [Versioning](versioning-published.md) | n8n supports node versioning.… | intermediate | 8 |
+| [Workflows](workflows-published.md) | Environment variables to configure workflows in n8n, including default naming, onboarding flow preferences, ta… | intermediate | 2 |

@@ -1,0 +1,100 @@
+{
+  "name": "openchamber-session-state",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "session-state",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook-session",
+      "name": "Session state changed",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-620, 100],
+      "webhookId": "c3d4e5f6-session-state"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.github.com/repos/{{ $env.GITHUB_REPO }}/contents/feature_list.json",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "=Bearer {{ $env.GITHUB_TOKEN }}" },
+            { "name": "Accept", "value": "application/vnd.github+json" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fetch-feature-list",
+      "name": "Fetch feature list",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-400, 100]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Recomputes the project state from the session event plus the tracked feature\n// list, so the knowledge base reflects what the agents actually did.\nconst event = $input.first().json.body || $input.first().json;\nconst featureList = $('Fetch feature list').first().json;\nconst features = Array.isArray(featureList) ? featureList : [];\nconst passing = features.filter((f) => f.passes).map((f) => f.id);\nconst state = {\n  session: event.sessionId || event.session || null,\n  event: event.type || 'session.state',\n  featuresTotal: features.length,\n  featuresPassing: passing,\n  updatedAt: new Date().toISOString(),\n};\nreturn [{ json: state }];"
+      },
+      "id": "recompute-state",
+      "name": "Recompute project state",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-160, 100]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.github.com/repos/{{ $env.GITHUB_REPO }}/contents/brain/index/project-state.json",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "=Bearer {{ $env.GITHUB_TOKEN }}" },
+            { "name": "Accept", "value": "application/vnd.github+json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\": \"chore: project state from OpenChamber session\",\n  \"content\": \"{{ Buffer.from(JSON.stringify($json)).toString('base64') }}\",\n  \"branch\": \"main\"\n}",
+        "options": {}
+      },
+      "id": "commit-state",
+      "name": "Commit project state",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [80, 100]
+    },
+    {
+      "parameters": {
+        "content": "## OpenChamber session -> project state\n\nTrigger: webhook `session-state`.\n\nReads the tracked feature list from GitHub, recomputes the state from the session\nevent, and commits it to `brain/index/project-state.json`.\n\nThis is the fourth sync workflow; the first three live in the same folder:\n`f008-sync-workflow.json`, `f008-workflow-to-code.json`, `f008-deploy-pipeline.json`.",
+        "height": 200,
+        "width": 620,
+        "color": 4
+      },
+      "id": "sticky-note",
+      "name": "Read me",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-620, -140]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Session state changed": {
+      "main": [[{ "node": "Fetch feature list", "type": "main", "index": 0 }]]
+    },
+    "Fetch feature list": {
+      "main": [[{ "node": "Recompute project state", "type": "main", "index": 0 }]]
+    },
+    "Recompute project state": {
+      "main": [[{ "node": "Commit project state", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "versionId": "f8-session-state-v1",
+  "id": "wf_session_state",
+  "tags": [{ "createdAt": "2026-11-12", "updatedAt": "2026-11-12", "id": 4, "name": "sync" }]
+}

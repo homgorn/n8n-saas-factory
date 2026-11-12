@@ -1,7 +1,7 @@
 ---
 id: "change-instance-ownership-or-username"
 title: "Change Instance Ownership or Username"
-summary: "You can change the ownership of an instance by navigating to the **Settings > Personal** page in the owner's account and editing the **Email** field."
+summary: "You can change the ownership of an instance by navigating to the **Settings > Profile & preferences** page in the owner's account and editing the **Email** field."
 topic: "deploy"
 difficulty: "intermediate"
 content_type: howto
@@ -17,7 +17,7 @@ updated: 2026-11-12
 
 ## Summary
 
-You can change the ownership of an instance by navigating to the **Settings > Personal** page in the owner's account and editing the **Email** field.
+You can change the ownership of an instance by navigating to the **Settings > Profile & preferences** page in the owner's account and editing the **Email** field.
 
 **Source**: https://docs.n8n.io/deploy/use-n8n-cloud/configure-cloud/change-instance-ownership-or-username
 
@@ -25,12 +25,12 @@ You can change the ownership of an instance by navigating to the **Settings > Pe
 
 ## Change instance ownership
 
-You can change the ownership of an instance by navigating to the **Settings > Personal** page in the owner's account and editing the **Email** field. After making the changes, scroll down and press **Save**.
+You can change the ownership of an instance by navigating to the **Settings > Profile & preferences** page in the owner's account and editing the **Email** field. After making the changes, scroll down and press **Save**.
 Note that for the change to be effective, the new email address must not be associated with any other n8n account, as each instance can have only one **unique owner email**. If the intended email is already linked to an existing user, change or delete that user first so the email becomes available.
 
 Changing emails will change the owner of the instance, the email you log in with, and the email your invoices and general communication gets sent to.
 
-If the workspace is deactivated, there will be no **Settings** page and no possibility to change the email address or the owner info.
+If the instance is deactivated, there will be no **Settings** page and no possibility to change the email address or the owner info.
 
 ## Change instance username
 

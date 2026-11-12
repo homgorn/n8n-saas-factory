@@ -124,7 +124,7 @@ Connect the Pinecone Vector Store node to the AI agent's tool connector, so the 
 
 ## Related resources
 
-Refer to [LangChain's Pinecone documentation](https://js.langchain.com/docs/integrations/vectorstores/pinecone/) for more information about the service.
+Refer to [LangChain's Pinecone documentation](https://docs.langchain.com/oss/javascript/integrations/vectorstores/pinecone) for more information about the service.
 
 ### Find your Pinecone index and namespace
 

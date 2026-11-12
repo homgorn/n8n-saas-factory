@@ -53,6 +53,6 @@ Refer to the [Mistral Cloud credentials documentation](../../credentials/mistral
 
 ## Related resources
 
-Refer to [LangChains's Mistral documentation](https://js.langchain.com/docs/integrations/chat/mistral) for more information about the service.
+Refer to [LangChain's Mistral documentation](https://docs.langchain.com/oss/javascript/integrations/chat/mistral) for more information about the service.
 
 [^1]: AI agents are artificial intelligence systems capable of responding to requests, making decisions, and performing real-world tasks for users. They use large language models (LLMs) to interpret user input and make decisions about how to best process requests using the information and resources they have available.

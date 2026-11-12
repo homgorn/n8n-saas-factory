@@ -46,4 +46,4 @@ Refer to the [Cohere credentials documentation](../../credentials/cohere.md) for
 
 ## Related resources
 
-Refer to [LangChains's Cohere documentation](https://js.langchain.com/docs/integrations/llms/cohere/) for more information about the service.
+Refer to [LangChain's Cohere documentation](https://docs.langchain.com/oss/javascript/integrations/llms/cohere) for more information about the service.

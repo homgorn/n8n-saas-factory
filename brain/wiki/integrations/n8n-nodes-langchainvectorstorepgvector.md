@@ -113,7 +113,7 @@ The following options specify the names of the columns to store the vectors and 
 
 ## Related resources
 
-Refer to [LangChain's PGVector documentation](https://js.langchain.com/docs/integrations/vectorstores/pgvector) for more information about the service.
+Refer to [LangChain's PGVector documentation](https://docs.langchain.com/oss/javascript/integrations/vectorstores/pgvector) for more information about the service.
 
 [^1]: AI chains allow you to interact with large language models (LLMs) and other resources in sequences of calls to components. AI chains in n8n don't use persistent memory, so you can't use them to reference previous context (use AI agents for this).
 [^2]: AI agents are artificial intelligence systems capable of responding to requests, making decisions, and performing real-world tasks for users. They use large language models (LLMs) to interpret user input and make decisions about how to best process requests using the information and resources they have available.
