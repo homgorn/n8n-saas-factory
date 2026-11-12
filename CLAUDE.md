@@ -80,16 +80,18 @@ Delegate by task shape, not by habit:
 
 A feature is done when `python brain/scripts/verify.py` prints `VERDICT: PASS`, not when the code
 looks right. The gate checks: sources present, build idempotence, corpus floor, summaries within
-200 chars, live source URLs, retrieval answers real questions, claims typed and sourced, no secrets,
-licence documented, feature list honest, query interface works.
+200 chars, live source URLs, retrieval answers real questions, query interface, workflow analyzer,
+claims typed and sourced, no secrets, licence documented, feature list honest.
 
 Only `verifier` may set `passes: true` in `feature_list.json`.
 
 ## Verification gate (current state)
 
 ```
-11/11 gates passing
-5 features passing: F002, F003, F004, F005, F006
+12/12 gates passing
+3 of 10 features measured-verified: F001, F002, F003
+(F004–F010 implemented but unverified — the template has never been built,
+the agents have never run a sample task, the smoke tests have never executed)
 ```
 
 ## Key files

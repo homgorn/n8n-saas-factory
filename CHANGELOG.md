@@ -7,7 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
+### Fixed — verification honesty correction
+- `feature_list.json` claimed 9 of 10 features passing. Measured re-check showed only F001 (gate
+  rebuilds the corpus and checks idempotence), F002 (gate runs the query interface on real questions)
+  and F003 (gate now runs the analyzer on a known workflow and asserts an agent with a resolved
+  lmChat* model) carry verification evidence. The rest — the template never npm-installed or built,
+  agents never tested on a sample task, Playwright never executed, MCP never connected — are
+  implemented but unverified, and are now marked `passes: false`.
+- Gate is now 12/12: added "workflow analyzer detects AI agents" (order 63), so F003 carries a
+  standing gate check instead of one inspection read.
+- Site EN/RU and CLAUDE.md corrected to "3 of 10 measured-verified".
+
+### Changed
+- GitHub Pages source: `main /` → `main /docs`. The site returns HTTP 200 at
+  https://homgorn.github.io/n8n-saas-factory/ (previously 404).
 - `brain/` — LLM wiki over the n8n documentation, generated and regenerable
   - `scripts/forge.py` (stdlib only, idempotent): `build | stats | query | ask`
   - 1,348 pages, 9,578 chunks, 688,466 words, 11 domains, 12 importable workflow JSON

@@ -37,7 +37,7 @@
     <section class="hero" id="hero" aria-label="Главная">
       <div class="hero-content">
         <div class="hero-badge animate-in" aria-label="Статус проекта">
-          <span>Публичный · MIT · 9 из 10 функций готово · 11/11 гейтов</span>
+          <span>Публичный · MIT · измерено-верифицировано: 3 из 10 · 12/12 гейтов</span>
         </div>
         <h1 class="animate-in delay-1">
           Преврати воркфлоу n8n в <span class="gradient">готовый SaaS</span>
@@ -57,7 +57,7 @@
       <div class="stat animate-in delay-1"><div class="stat-value">1 348</div><div class="stat-label">Страниц документации</div></div>
       <div class="stat animate-in delay-2"><div class="stat-value">9 578</div><div class="stat-label">Индексированных фрагментов</div></div>
       <div class="stat animate-in delay-3"><div class="stat-value">688 тыс.</div><div class="stat-label">Слов в корпусе</div></div>
-      <div class="stat animate-in delay-3"><div class="stat-value">11 / 11</div><div class="stat-label">Гейтов верификации</div></div>
+      <div class="stat animate-in delay-3"><div class="stat-value">12 / 12</div><div class="stat-label">Гейтов верификации</div></div>
     </section>
 
     <section class="section" id="features" aria-label="Возможности">
@@ -68,7 +68,7 @@
         <article class="feature-card animate-in delay-2"><div class="feature-icon">🧩</div><h3>Анализатор воркфлоу</h3><p>Парсит JSON воркфлоу, находит агенты, сложность, учётные данные.</p></article>
         <article class="feature-card animate-in delay-3"><div class="feature-icon">⚙️</div><h3>Шаблон SaaS</h3><p>Next.js 14 + Clerk + Stripe + собственный n8n клиента.</p></article>
         <article class="feature-card animate-in delay-1"><div class="feature-icon">🤖</div><h3>Агенты</h3><p>7 ролей с таблицей маршрутизации и правилами изоляции.</p></article>
-        <article class="feature-card animate-in delay-2"><div class="feature-icon">🔒</div><h3>Гейт верификации</h3><p>11 автоматизированных проверок; выводится `VERDICT`; выходной код ≠ 0.</p></article>
+        <article class="feature-card animate-in delay-2"><div class="feature-icon">🔒</div><h3>Гейт верификации</h3><p>12 автоматизированных проверок; выводится `VERDICT`; выходной код ≠ 0.</p></article>
       </div>
     </section>
 
@@ -88,7 +88,7 @@
           <span class="arch-arrow">→</span>
           <div class="arch-box"><h4>OpenChamber</h4><p>7 агентов, 6 MCP-серверов</p></div>
           <span class="arch-arrow">→</span>
-          <div class="arch-box"><h4>Верификация</h4><p>11 гейтов, выходной код ≠ 0</p></div>
+          <div class="arch-box"><h4>Верификация</h4><p>12 гейтов, выходной код ≠ 0</p></div>
         </div>
         <p style="text-align:center;color:var(--text-secondary);font-size:.85rem;margin-top:2rem;">
           Лицензионное ограничение: клиент сам держит свой n8n. См. ADR-001.
@@ -99,8 +99,8 @@
     <section class="section" id="roadmap" aria-label="План">
       <div class="section-header"><h2>Что готово и что остаётся</h2><p>Каждая функция проверяется независимо от памяти агента.</p></div>
       <div class="timeline">
-        <div class="timeline-item animate-in"><h4>Готово (9 из 10)</h4><p>F001 · F002 · F003 · F004 · F005 · F006 · F007 · F009 (Playwright smoke tests) · F010</p></div>
-        <div class="timeline-item animate-in delay-1"><h4>Осталось (1)</h4><p>F008 — синхронизация (нужен запущенный n8n для webhook/cron-верификации)</p></div>
+        <div class="timeline-item animate-in"><h4>Измерено-верифицировано (3 из 10)</h4><p>F001 — ingestion (гейт пересобирает корпус из источника, проверяет идемпотентность) · F002 — запросы (гейт прогоняет классификатор и JSON-проверку) · F003 — анализатор (гейт гоняет анализатор на известном воркфлоу и утверждает разрешение AI-агента).</p></div>
+        <div class="timeline-item animate-in delay-1"><h4>Реализовано, не проверено (7 из 10)</h4><p>F004 (шаблон никогда не npm-устанавливался и не собирался) · F005 (генератор работает, но проект никогда не собирался) · F006 (MCP-конфиг есть, соединения не тестировались) · F007 (агенты определены, на пробном задании не проверялись) · F009 (smoke-тесты написаны, ни разу не запускались) · F010 (документация и сайт есть, видео не записано) · F008 (нужен работающий n8n для webhook/cron).</p><p>По правилу проекта `passes: true` ставится только после проверки. Ранний значок «9 из 10» был оптимистичным; честное число — 3.</p></div>
         <div class="timeline-item animate-in delay-2"><h4>Следующий гейт</h4><p><b>F008 верификация</b>: запустить n8n локально, импортировать <code>n8n-wiki/workflows/f008-sync-workflow.json</code>, прогнать webhook и cron. Только после этого ставить <code>passes: true</code>.</p></div>
       </div>
     </section>

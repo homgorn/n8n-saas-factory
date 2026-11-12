@@ -214,6 +214,46 @@ def gate_retrieval():
     return "\n".join(lines)
 
 
+@gate("workflow analyzer detects AI agents", order=63, needs_build=True)
+def gate_analyzer():
+    """F003: the analyzer must run on a known workflow and resolve its AI agent.
+
+    Chat with Google Sheets (docs version) is a fixed known input: one agent, one
+    lmChatOpenAi model. If a future change of node-type parsing breaks resolution,
+    this fails loudly instead of passing on a decorated prompt.
+    """
+    import json as _json
+    import subprocess
+
+    workflow = ROOT / "n8n-docs-source" / "docs" / "_workflows" / "advanced-ai" / "examples" / "chat_with_google_sheets_docs_version.json"
+    if not workflow.exists():
+        raise AssertionError(f"known workflow not found: {workflow}")
+
+    out = subprocess.run(
+        [sys.executable, str(ROOT / "brain" / "scripts" / "analyzer.py"), str(workflow),
+         "--format", "json"],
+        capture_output=True, text=True,
+    )
+    if out.returncode != 0:
+        raise AssertionError(f"analyzer failed: {out.stderr[:400]}")
+
+    try:
+        data = _json.loads(out.stdout)
+    except _json.JSONDecodeError:
+        raise AssertionError(f"analyzer produced invalid JSON: {out.stdout[:200]}")
+
+    agents = data.get("ai_agents") or []
+    if not agents:
+        raise AssertionError("analyzer found no AI agents in the known Google Sheets workflow")
+
+    resolved = [a for a in agents if a.get("model") and "lmChat" in a["model"]]
+    if not resolved:
+        raise AssertionError(f"no agent with a resolved lmChat* model: {[a.get('model') for a in agents]}")
+
+    return (f"{len(agents)} AI agent(s), model {resolved[0]['model']!r}, "
+            f"complexity {data.get('complexity_score')}/10")
+
+
 @gate("query interface answers real questions", order=65, needs_build=True)
 def gate_query_interface():
     """F002: verify the query interface works end-to-end."""

@@ -59,7 +59,7 @@
       "Add deployment configuration for Vercel + n8n (Docker/Railway)"
     ],
     "priority": 4,
-    "passes": true
+    "passes": false
   },
   {
     "id": "F005",
@@ -75,7 +75,7 @@
       "Output complete project to generated-saas/<name>/"
     ],
     "priority": 5,
-    "passes": true
+    "passes": false
   },
   {
     "id": "F006",
@@ -91,7 +91,7 @@
       "Verify all MCP connections work from test session"
     ],
     "priority": 6,
-    "passes": true
+    "passes": false
   },
   {
     "id": "F007",
@@ -107,7 +107,7 @@
       "Test each agent with sample task"
     ],
     "priority": 7,
-    "passes": true
+    "passes": false
   },
   {
     "id": "F008",
@@ -136,7 +136,7 @@
       "Configure git hooks: pre-commit (lint, typecheck), pre-push (tests)"
     ],
     "priority": 9,
-    "passes": true
+    "passes": false
   },
   {
     "id": "F010",
@@ -151,6 +151,6 @@
       "Record video walkthrough of full pipeline"
     ],
     "priority": 10,
-    "passes": true
+    "passes": false
   }
 ]

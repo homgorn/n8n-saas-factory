@@ -2,7 +2,7 @@
 
 # n8n Knowledge Wiki
 
-Generated 2026-11-11 from `n8n-docs-source/docs` (GitBook source, GitHub `n8n-io/n8n-docs`).
+Generated 2026-11-12 from `n8n-docs-source/docs` (GitBook source, GitHub `n8n-io/n8n-docs`).
 Regenerate with `python brain/scripts/forge.py build`. Never hand-edit — the next build overwrites it.
 
 ## Domains
