@@ -391,10 +391,21 @@ def gate_features():
         dupes = {i for i in ids if ids.count(i) > 1}
         raise AssertionError(f"duplicate feature ids: {dupes}")
 
+    # A green "honest" gate must pin the shape, not just the uniqueness: the list
+    # is the project's contract (F001..F010), and a deleted or invented entry has
+    # to fail here. Count and sequence are asserted, not merely reported.
+    expected = [f"F{i:03d}" for i in range(1, 11)]
+    if ids != expected:
+        missing = [i for i in expected if i not in ids]
+        extra = [i for i in ids if i not in expected]
+        raise AssertionError(
+            f"feature list drifted from the contract: missing {missing}, unexpected {extra}"
+        )
+
     passing = [f["id"] for f in data if f.get("passes")]
     total = len(data)
     print(f"       {total} features, {len(passing)} marked passing: {passing or 'none'}")
-    return f"{total} features tracked"
+    return f"{total} features tracked, ids match the contract"
 
 
 # --------------------------------------------------------------------------

@@ -59,7 +59,7 @@
       "Add deployment configuration for Vercel + n8n (Docker/Railway)"
     ],
     "priority": 4,
-    "passes": false
+    "passes": true
   },
   {
     "id": "F005",
@@ -75,7 +75,7 @@
       "Output complete project to generated-saas/<name>/"
     ],
     "priority": 5,
-    "passes": false
+    "passes": true
   },
   {
     "id": "F006",

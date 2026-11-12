@@ -44,7 +44,7 @@
     },
     "playwright": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-playwright"],
+      "args": ["-y", "@playwright/mcp"],
       "description": "Browser automation for verification"
     }
   }

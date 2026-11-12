@@ -10,7 +10,7 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-8">
       <div className="max-w-3xl text-center space-y-6">
         <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-          {{WORKFLOW_NAME}}
+          {"{{WORKFLOW_NAME}}"}
         </h1>
         <p className="text-xl text-muted-foreground">
           Monitor and manage your n8n workflows from a single dashboard.
