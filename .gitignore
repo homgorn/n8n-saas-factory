@@ -24,6 +24,12 @@ out/
 .turbo/
 *.egg-info/
 
+# --- test artifacts -------------------------------------------------------
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
 # --- generated caches: regenerable, large ------------------------------
 # published llms corpus cache (8 MB), rebuilt by llms_corpus.py
 brain/data/llms-pages.json
