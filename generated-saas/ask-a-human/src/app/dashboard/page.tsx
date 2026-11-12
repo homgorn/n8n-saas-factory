@@ -1,10 +1,13 @@
-import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
+import { safeAuth, authConfigured } from "@/lib/auth";
 
 export default async function DashboardPage() {
-  const { userId } = await auth();
+  const { userId } = await safeAuth();
+  // Without an auth provider configured there is nothing to sign in to, so the dashboard
+  // cannot be reached at all — send the visitor to the landing page instead of erroring.
+  if (!authConfigured) redirect("/");
   if (!userId) redirect("/sign-in");
 
   const supabase = createClient();

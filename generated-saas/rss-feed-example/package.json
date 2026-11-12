@@ -40,6 +40,7 @@
     "autoprefixer": "^10.4.0",
     "vitest": "^1.6.0",
     "@vitejs/plugin-react": "^4.3.0",
-    "supabase": "^1.160.0"
+    "supabase": "^1.160.0",
+    "@playwright/test": "^1.48.0"
   }
 }

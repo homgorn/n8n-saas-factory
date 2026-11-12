@@ -1,16 +1,16 @@
-import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { safeAuth } from "@/lib/auth";
 
 export default async function Home() {
-  const { userId } = await auth();
+  const { userId } = await safeAuth();
   if (userId) redirect("/dashboard");
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-8">
       <div className="max-w-3xl text-center space-y-6">
         <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-          Extract from file example
+          {"Extract from file example"}
         </h1>
         <p className="text-xl text-muted-foreground">
           Monitor and manage your n8n workflows from a single dashboard.

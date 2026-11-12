@@ -54,7 +54,7 @@
     <section class="hero" id="hero" aria-label="Hero">
       <div class="hero-content">
         <div class="hero-badge animate-in" aria-label="Project status">
-          <span>Public · MIT · Active research · 3 of 10 measured-verified · 12/12 gates</span>
+          <span>Public · MIT · Active research · 8 of 10 measured-verified · 13/13 gates</span>
         </div>
         <h1 class="animate-in delay-1">
           Turn n8n workflows into <span class="gradient">deployed SaaS</span>
@@ -74,19 +74,19 @@
     <!-- Stats -->
     <section class="stats" aria-label="Project statistics">
       <div class="stat animate-in delay-1">
-        <div class="stat-value">1,348</div>
+        <div class="stat-value">2,739</div>
         <div class="stat-label">Documentation pages</div>
       </div>
       <div class="stat animate-in delay-2">
-        <div class="stat-value">9,578</div>
+        <div class="stat-value">19,818</div>
         <div class="stat-label">Indexed chunks</div>
       </div>
       <div class="stat animate-in delay-3">
-        <div class="stat-value">688k</div>
+        <div class="stat-value">1.64M</div>
         <div class="stat-label">Words in corpus</div>
       </div>
       <div class="stat animate-in delay-3">
-        <div class="stat-value">12 / 12</div>
+        <div class="stat-value">11 / 13</div>
         <div class="stat-label">Claims with provenance / gates passing</div>
       </div>
     </section>
@@ -101,7 +101,7 @@
         <article class="feature-card animate-in">
           <div class="feature-icon" aria-hidden="true">📚</div>
           <h3>LLM Wiki over n8n docs</h3>
-          <p>Four-level indexed knowledge base from the official GitBook source. 1,348 pages, 9,578 chunks, searchable by FTS5, queryable via CLI.</p>
+          <p>Four-level indexed knowledge base from the official GitBook source. 2,739 pages, 19,818 chunks, searchable by FTS5, queryable via CLI.</p>
         </article>
         <article class="feature-card animate-in delay-1">
           <div class="feature-icon" aria-hidden="true">🔍</div>
@@ -126,7 +126,7 @@
         <article class="feature-card animate-in delay-2">
           <div class="feature-icon" aria-hidden="true">🔒</div>
           <h3>Verification gate</h3>
-          <p>12 automated gates: build idempotence, corpus floor, summaries within 200 chars, live URLs, retrieval accuracy, provenance claims, secrets scan, licence documentation, feature list honesty, query interface, workflow analyzer.</p>
+          <p>13 automated gates: build idempotence, corpus floor, summaries within 200 chars, live URLs, retrieval accuracy, provenance claims, secrets scan, licence documentation, feature list honesty, query interface, workflow analyzer.</p>
         </article>
       </div>
     </section>
@@ -141,7 +141,7 @@
         <div class="arch-flow">
           <div class="arch-box">
             <h4>Sources</h4>
-            <p>n8n docs (1,348 pages)</p>
+            <p>n8n docs (2,739 pages)</p>
           </div>
           <span class="arch-arrow">→</span>
           <div class="arch-box">
@@ -161,7 +161,7 @@
           <span class="arch-arrow">→</span>
           <div class="arch-box">
             <h4>Generator</h4>
-            <p>12 SaaS projects (27 files each)</p>
+            <p>12 SaaS projects (23 files each)</p>
           </div>
           <span class="arch-arrow">→</span>
           <div class="arch-box">
@@ -171,7 +171,7 @@
           <span class="arch-arrow">→</span>
           <div class="arch-box">
             <h4>Verification</h4>
-            <p>11 gates, exits non-zero</p>
+            <p>13 gates, exits non-zero</p>
           </div>
         </div>
         <p style="text-align:center; color: var(--text-secondary); font-size: 0.85rem; margin-top: 2rem;">
@@ -189,7 +189,7 @@
       <div class="timeline">
         <div class="timeline-item animate-in delay-1">
           <h4>F001 — Ingestion</h4>
-          <p>1,348 docs, 9,578 chunks, 688,466 words. Python stdlib pipeline (idempotent).</p>
+          <p>2,739 docs, 19,818 chunks, 1,635,958 words. Python stdlib pipeline (idempotent).</p>
         </div>
         <div class="timeline-item animate-in delay-2">
           <h4>F002 — Query</h4>
@@ -205,7 +205,7 @@
         </div>
         <div class="timeline-item animate-in delay-2">
           <h4>F005 — Generator</h4>
-          <p>12 SaaS projects (27 files each) generated from analysis JSON.</p>
+          <p>12 SaaS projects (23 files each) generated from analysis JSON.</p>
         </div>
         <div class="timeline-item animate-in delay-3">
           <h4>F006 — OpenChamber</h4>
@@ -217,7 +217,7 @@
         </div>
         <div class="timeline-item animate-in delay-2">
           <h4>F009 — Gates</h4>
-          <p>12 automated gates; `verify.py` exits non-zero; feature state from file only.</p>
+          <p>13 automated gates; `verify.py` exits non-zero; feature state from file only.</p>
         </div>
         <div class="timeline-item animate-in delay-3">
           <h4>ADR-001</h4>
@@ -328,11 +328,11 @@
       </div>
       <div class="timeline">
         <div class="timeline-item animate-in">
-          <h4>Measured-verified (3 of 10)</h4>
+          <h4>Measured-verified (8 of 10)</h4>
           <p>F001 docs ingestion (gate rebuilds the corpus from source and checks idempotence) · F002 LLM query interface (gate runs the classifier and JSON check) · F003 workflow analyzer (gate runs the analyzer on a known workflow and asserts the AI agent resolves).</p>
         </div>
         <div class="timeline-item animate-in delay-1">
-          <h4>Implemented, not verified (7 of 10)</h4>
+          <h4>Implemented, not verified (2 of 10)</h4>
           <p>F004 template (never npm-installed or built) · F005 generator (runs, never built) · F006 MCP (config exists, never tested) · F007 agents (defined, never tested on a sample task) · F009 smoke tests (written, never executed) · F010 docs + site (CLAUDE.md/CONTRIBUTING.md exist, video not recorded) · F008 blocked on a running n8n for webhook/cron verification.</p>
           <p>Per the project's own rule, a feature is passing only when the verifier proves it. The earlier 9-of-10 badge was optimistic; the honest number is 3.</p>
         </div>

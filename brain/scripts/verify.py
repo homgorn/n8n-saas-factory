@@ -434,6 +434,31 @@ def gate_integrations():
     return f"{passed} integration checks passed (MCP packages + agent definitions)"
 
 
+@gate("site counters match the measured truth", order=95)
+def gate_site_counters():
+    """The landing page states the corpus size, the gate count and the verified feature count.
+
+    After the corpus doubled, the site still claimed 1,348 pages and 12 gates. Nothing failed:
+    the numbers were simply stale. This gate makes that a build failure.
+    """
+    import json as _json
+    import subprocess
+
+    script = ROOT / "brain" / "scripts" / "update_site.py"
+    proc = subprocess.run(
+        [sys.executable, str(script), "--check"],
+        capture_output=True, text=True, timeout=300,
+    )
+    if proc.returncode != 0:
+        detail = "\n".join((proc.stdout or proc.stderr).strip().splitlines()[-8:])
+        raise AssertionError(
+            "the site's numbers drifted from the measured truth:\n"
+            f"{detail}\n"
+            "  fix: python brain/scripts/update_site.py"
+        )
+    return proc.stdout.strip().splitlines()[0] if proc.stdout.strip() else "counters current"
+
+
 @gate("feature list is honest", order=100)
 def gate_features():
     import json
