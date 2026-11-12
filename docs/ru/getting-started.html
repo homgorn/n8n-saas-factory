@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Начало работы — n8n SaaS Factory</title>
+  <meta name="description" content="Клонировать, собрать вики, проверить гейт, запросить базу знаний, сгенерировать SaaS.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+  <link rel="alternate" hreflang="en" href="https://homgorn.github.io/n8n-saas-factory/getting-started.html">
+  <link rel="alternate" hreflang="ru" href="https://homgorn.github.io/n8n-saas-factory/ru/getting-started.html">
+  <link rel="canonical" href="https://homgorn.github.io/n8n-saas-factory/ru/getting-started.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Начало работы — n8n SaaS Factory">
+  <meta property="og:description" content="Клонировать, собрать вики, проверить гейт, запросить базу знаний, сгенерировать SaaS.">
+  <meta property="og:url" content="https://homgorn.github.io/n8n-saas-factory/ru/getting-started.html">
+  <meta property="og:image" content="https://homgorn.github.io/n8n-saas-factory/assets/img/og-card.jpg">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html">n8n SaaS Factory</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#hero">Обзор</a></li>
+        <li><a href="how-it-works.html">Архитектура</a></li>
+        <li><a href="getting-started.html">Начать</a></li>
+        <li><a href="wiki.html">Вики</a></li>
+        <li><a href="cli.html">CLI</a></li>
+        <li><a href="troubleshooting.html">Ошибки и решения</a></li>
+        <li><a href="contact.html">Контакт</a></li>
+        <li><span class="lang-switch"><a href="../getting-started.html">EN</a><a class="active" href="getting-started.html">RU</a></span></li>
+      </ul>
+      <a class="nav-cta" href="https://github.com/homgorn/n8n-saas-factory">GitHub</a>
+    </div>
+  </nav>
+
+  <main class="page-content">
+
+<h1>Начало работы</h1>
+<p>Четыре команды отделяют холодную машину от проверенного ответа по 688 466 словам документации n8n.</p>
+
+<h2>1. Клонировать репозиторий</h2>
+<pre><code>git clone https://github.com/homgorn/n8n-saas-factory.git
+cd n8n-saas-factory</code></pre>
+
+<h2>2. Клонировать исходники документации n8n</h2>
+<p>Вики строится из GitBook-источника <code>n8n-io/n8n-docs</code> (достаточно поверхностного клонирования):</p>
+<pre><code>git clone --depth 1 https://github.com/n8n-io/n8n-docs.git n8n-docs-source</code></pre>
+<p>Это ~100 МБ и Sustainable Use License — мы внедряем только как справочный материал, без перераспространения. Папка исключена из git и из MIT-лицензии <code>LICENSE</code>.</p>
+
+<h2>3. Построить вики и проверить гейт</h2>
+<pre><code>python brain/scripts/forge.py build
+python brain/scripts/verify.py            # ожидайте VERDICT: PASS, 12/12</code></pre>
+
+<h2>4. Запросить вики</h2>
+<pre><code>python brain/scripts/query.py ask "how do I paginate API results"</code></pre>
+<p>Верхним ответом будет документация HTTP Request node | Pagination с кодом и цитатами. Для самого SaaS нужен собственный n8n <em>клиента</em> (ADR-001): анализатор и генератор работают с импортированным JSON воркфлоу.</p>
+
+<h2>Требования</h2>
+<ul>
+  <li>Python 3.10+ (для forge сторонних пакетов не нужно)</li>
+  <li>~1,5 ГБ свободного места под клонирование и построенную вики</li>
+  <li>Гейт пересобирает всё из источника, кэш между запусками не используется</li>
+</ul>
+
+<h2>Ограничения</h2>
+<ul>
+  <li>Векторного поиска нет — поиск — SQLite FTS5 + IDF с весом заголовка</li>
+  <li>F008 (sync) и F009 (Playwright) требуют запущенного n8n и развёрнутого preview соответственно</li>
+</ul>
+  </main>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p><strong>n8n SaaS Factory</strong></p>
+        <p>Преврати воркфлоу n8n в готовый SaaS. Открытый код, MIT.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Проект</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/BACKLOG.md">Бэклог</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/PROJECT_PLAN.md">План</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CHANGELOG.md">Изменения</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CONTRIBUTING.md">Вклад</a>
+      </div>
+      <div class="footer-col">
+        <h4>Сайт</h4>
+        <a href="wiki.html">Вики</a>
+        <a href="getting-started.html">Начало работы</a>
+        <a href="cli.html">CLI</a>
+        <a href="troubleshooting.html">Решение проблем</a>
+      </div>
+      <div class="footer-col">
+        <h4>Правовое</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/LICENSE">MIT — этот проект</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-001-n8n-licence-blocks-hosted-saas.md">ADR-001 — лицензия n8n</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-002-saas-architecture-under-licence.md">ADR-002 — архитектура</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 — <a href="https://github.com/homgorn/n8n-saas-factory">homgorn/n8n-saas-factory</a> · MIT</p>
+      <p>Документация n8n включена как справочный материал — Sustainable Use License. Сайт не связан с n8n GmbH.</p>
+    </div>
+  </footer>
+</body>
+</html>

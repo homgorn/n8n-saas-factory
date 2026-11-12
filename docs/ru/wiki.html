@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вики — n8n SaaS Factory</title>
+  <meta name="description" content="Документация n8n как регенерируемая LLM-база знаний: 4 уровня индекса, првенанс, SQLite.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+  <link rel="alternate" hreflang="en" href="https://homgorn.github.io/n8n-saas-factory/wiki.html">
+  <link rel="alternate" hreflang="ru" href="https://homgorn.github.io/n8n-saas-factory/ru/wiki.html">
+  <link rel="canonical" href="https://homgorn.github.io/n8n-saas-factory/ru/wiki.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Вики — n8n SaaS Factory">
+  <meta property="og:description" content="Документация n8n как регенерируемая LLM-база знаний: 4 уровня индекса, првенанс, SQLite.">
+  <meta property="og:url" content="https://homgorn.github.io/n8n-saas-factory/ru/wiki.html">
+  <meta property="og:image" content="https://homgorn.github.io/n8n-saas-factory/assets/img/og-card.jpg">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html">n8n SaaS Factory</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#hero">Обзор</a></li>
+        <li><a href="how-it-works.html">Архитектура</a></li>
+        <li><a href="getting-started.html">Начать</a></li>
+        <li><a href="wiki.html">Вики</a></li>
+        <li><a href="cli.html">CLI</a></li>
+        <li><a href="troubleshooting.html">Ошибки и решения</a></li>
+        <li><a href="contact.html">Контакт</a></li>
+        <li><span class="lang-switch"><a href="../wiki.html">EN</a><a class="active" href="wiki.html">RU</a></span></li>
+      </ul>
+      <a class="nav-cta" href="https://github.com/homgorn/n8n-saas-factory">GitHub</a>
+    </div>
+  </nav>
+
+  <main class="page-content">
+
+<h1>Вики</h1>
+<p>Регенерируемая база знаний по документации n8n: 1348 страниц, 9,578 фрагментов, 688,466 слов, 11 доменов, 12 импортируемых воркфлоу, 2,966 сущностей, 2,552 триплетов.</p>
+
+<h2>Чем она не является</h2>
+<p>Это не документация для людей. Это поиск для «холодного» агента, у которого нет истории чата. Каждая страница несёт самодостаточное summary ≤ 200 символов.</p>
+
+<h2>Четыре уровня индекса</h2>
+<ol>
+  <li><code>brain/INDEX.md</code> — домены</li>
+  <li><code>brain/wiki/&lt;topic&gt;/00-INDEX.md</code> — страницы домена</li>
+  <li><code>brain/wiki/&lt;topic&gt;/&lt;slug&gt;.md</code> — файл на страницу с YAML front-matter</li>
+  <li><code>brain/index/topics.json</code> — машинный индекс с summary и URL источника</li>
+</ol>
+
+<h2>Пересборка</h2>
+<pre><code>python brain/scripts/forge.py build      # полная пересборка (идемпотентна)
+python brain/scripts/forge.py stats      # форма корпуса</code></pre>
+
+<h2>Примеры запросов</h2>
+<pre><code>python brain/scripts/query.py ask "how do I paginate API results"
+python brain/scripts/query.py query "pagination"
+python brain/scripts/query.py classify "why does my workflow fail"</code></pre>
+
+<h2>Самые упоминаемые узлы</h2>
+<table>
+      <thead><tr><th>Node</th><th>Mentions</th></tr></thead>
+      <tbody>
+        <tr><td><code>n8n-nodes-langchain.agent</code></td><td class="oc-num">51</td></tr>
+        <tr><td><code>n8n-nodes-base.httprequest</code></td><td class="oc-num">29</td></tr>
+        <tr><td><code>n8n-nodes-base.code</code></td><td class="oc-num">24</td></tr>
+        <tr><td><code>n8n-nodes-langchain.chainretrievalqa</code></td><td class="oc-num">20</td></tr>
+        <tr><td><code>n8n-nodes-langchain.chattrigger</code></td><td class="oc-num">18</td></tr>
+        <tr><td><code>n8n-nodes-base.webhook</code></td><td class="oc-num">18</td></tr>
+        <tr><td><code>n8n-nodes-base.set</code></td><td class="oc-num">18</td></tr>
+        <tr><td><code>n8n-nodes-langchain.toolvectorstore</code></td><td class="oc-num">18</td></tr>
+      </tbody>
+    </table>
+
+<p>Вики индексируется из официального GitBook-источника <code>n8n-io/n8n-docs</code>. Она поставляется как read-only; проект её не перераспространяет.</p>
+  </main>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p><strong>n8n SaaS Factory</strong></p>
+        <p>Преврати воркфлоу n8n в готовый SaaS. Открытый код, MIT.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Проект</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/BACKLOG.md">Бэклог</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/PROJECT_PLAN.md">План</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CHANGELOG.md">Изменения</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CONTRIBUTING.md">Вклад</a>
+      </div>
+      <div class="footer-col">
+        <h4>Сайт</h4>
+        <a href="wiki.html">Вики</a>
+        <a href="getting-started.html">Начало работы</a>
+        <a href="cli.html">CLI</a>
+        <a href="troubleshooting.html">Решение проблем</a>
+      </div>
+      <div class="footer-col">
+        <h4>Правовое</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/LICENSE">MIT — этот проект</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-001-n8n-licence-blocks-hosted-saas.md">ADR-001 — лицензия n8n</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-002-saas-architecture-under-licence.md">ADR-002 — архитектура</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 — <a href="https://github.com/homgorn/n8n-saas-factory">homgorn/n8n-saas-factory</a> · MIT</p>
+      <p>Документация n8n включена как справочный материал — Sustainable Use License. Сайт не связан с n8n GmbH.</p>
+    </div>
+  </footer>
+</body>
+</html>

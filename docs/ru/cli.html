@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Справочник CLI — n8n SaaS Factory</title>
+  <meta name="description" content="Все команды brain/scripts/ с реальными примерами и выводом.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+  <link rel="alternate" hreflang="en" href="https://homgorn.github.io/n8n-saas-factory/cli.html">
+  <link rel="alternate" hreflang="ru" href="https://homgorn.github.io/n8n-saas-factory/ru/cli.html">
+  <link rel="canonical" href="https://homgorn.github.io/n8n-saas-factory/ru/cli.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Справочник CLI — n8n SaaS Factory">
+  <meta property="og:description" content="Все команды brain/scripts/ с реальными примерами и выводом.">
+  <meta property="og:url" content="https://homgorn.github.io/n8n-saas-factory/ru/cli.html">
+  <meta property="og:image" content="https://homgorn.github.io/n8n-saas-factory/assets/img/og-card.jpg">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html">n8n SaaS Factory</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#hero">Обзор</a></li>
+        <li><a href="how-it-works.html">Архитектура</a></li>
+        <li><a href="getting-started.html">Начать</a></li>
+        <li><a href="wiki.html">Вики</a></li>
+        <li><a href="cli.html">CLI</a></li>
+        <li><a href="troubleshooting.html">Ошибки и решения</a></li>
+        <li><a href="contact.html">Контакт</a></li>
+        <li><span class="lang-switch"><a href="../cli.html">EN</a><a class="active" href="cli.html">RU</a></span></li>
+      </ul>
+      <a class="nav-cta" href="https://github.com/homgorn/n8n-saas-factory">GitHub</a>
+    </div>
+  </nav>
+
+  <main class="page-content">
+
+<h1>Справочник CLI</h1>
+<p>Все команды запускаются из корня репозитория с Python 3.10+. forge работает только на stdlib.</p>
+
+<h2>forge.py — сборка и поиск по вики</h2>
+<pre><code>python brain/scripts/forge.py build        # полная пересборка (идемпотентна)
+python brain/scripts/forge.py stats        # форма корпуса
+python brain/scripts/forge.py query &quot;pagination&quot;    # полнотекстовый поиск по страницам
+python brain/scripts/forge.py ask &quot;retry failed executions error handling&quot;</code></pre>
+
+<h2>query.py — структурированные ответы</h2>
+<pre><code>python brain/scripts/query.py ask &quot;how do I paginate API results&quot;
+python brain/scripts/query.py query &quot;pagination&quot;
+python brain/scripts/query.py classify &quot;what parameters does the Slack node have&quot;
+python brain/scripts/query.py --format json ask &quot;queue mode redis scaling&quot;</code></pre>
+
+<h2>analyzer.py — анализ воркфлоу</h2>
+<pre><code>python brain/scripts/analyzer.py --all                 # проанализировать все воркфлоу из доков
+python brain/scripts/analyzer.py &lt;workflow.json&gt; --format json
+python brain/scripts/analyzer.py &lt;workflow.json&gt; --format md</code></pre>
+<p>Текущий результат на Google Sheets (docs version): найден один AI-агент (<code>@n8n/n8n-nodes-langchain.agent</code>), модель разрешилась в <code>lmChatOpenAi</code>, сложность 9/10.</p>
+
+<h2>generator.py — spec → SaaS-проект</h2>
+<pre><code>python brain/scripts/generator.py brain/research/workflow-analyses/agents-vs-chains.json -o generated-saas
+python brain/scripts/generator.py --all -o generated-saas</code></pre>
+
+<h2>verify.py — гейт</h2>
+<pre><code>python brain/scripts/verify.py            # 12 гейтов, печатает VERDICT
+python brain/scripts/verify.py --quick    # пропустить гейты, зависящие от пересборки</code></pre>
+<p>Гейты: sources present, wiki rebuild is idempotent, corpus floor, every page has a standalone summary, every page resolves to a live source URL, retrieval answers a real question, workflow analyzer detects AI agents, query interface answers real questions, claims are typed and sourced, no secrets committed, licence position is documented, feature list is honest.</p>
+
+<h2>seed_claims.py — claims с првенансом</h2>
+<pre><code>python brain/scripts/seed_claims.py</code></pre>
+  </main>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p><strong>n8n SaaS Factory</strong></p>
+        <p>Преврати воркфлоу n8n в готовый SaaS. Открытый код, MIT.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Проект</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/BACKLOG.md">Бэклог</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/PROJECT_PLAN.md">План</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CHANGELOG.md">Изменения</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CONTRIBUTING.md">Вклад</a>
+      </div>
+      <div class="footer-col">
+        <h4>Сайт</h4>
+        <a href="wiki.html">Вики</a>
+        <a href="getting-started.html">Начало работы</a>
+        <a href="cli.html">CLI</a>
+        <a href="troubleshooting.html">Решение проблем</a>
+      </div>
+      <div class="footer-col">
+        <h4>Правовое</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/LICENSE">MIT — этот проект</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-001-n8n-licence-blocks-hosted-saas.md">ADR-001 — лицензия n8n</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-002-saas-architecture-under-licence.md">ADR-002 — архитектура</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 — <a href="https://github.com/homgorn/n8n-saas-factory">homgorn/n8n-saas-factory</a> · MIT</p>
+      <p>Документация n8n включена как справочный материал — Sustainable Use License. Сайт не связан с n8n GmbH.</p>
+    </div>
+  </footer>
+</body>
+</html>

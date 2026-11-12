@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Решение проблем — n8n SaaS Factory</title>
+  <meta name="description" content="Ошибки, с которыми проект столкнулся на самом деле, и рабочие фиксы.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+  <link rel="alternate" hreflang="en" href="https://homgorn.github.io/n8n-saas-factory/troubleshooting.html">
+  <link rel="alternate" hreflang="ru" href="https://homgorn.github.io/n8n-saas-factory/ru/troubleshooting.html">
+  <link rel="canonical" href="https://homgorn.github.io/n8n-saas-factory/ru/troubleshooting.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Решение проблем — n8n SaaS Factory">
+  <meta property="og:description" content="Ошибки, с которыми проект столкнулся на самом деле, и рабочие фиксы.">
+  <meta property="og:url" content="https://homgorn.github.io/n8n-saas-factory/ru/troubleshooting.html">
+  <meta property="og:image" content="https://homgorn.github.io/n8n-saas-factory/assets/img/og-card.jpg">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html">n8n SaaS Factory</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#hero">Обзор</a></li>
+        <li><a href="how-it-works.html">Архитектура</a></li>
+        <li><a href="getting-started.html">Начать</a></li>
+        <li><a href="wiki.html">Вики</a></li>
+        <li><a href="cli.html">CLI</a></li>
+        <li><a href="troubleshooting.html">Ошибки и решения</a></li>
+        <li><a href="contact.html">Контакт</a></li>
+        <li><span class="lang-switch"><a href="../troubleshooting.html">EN</a><a class="active" href="troubleshooting.html">RU</a></span></li>
+      </ul>
+      <a class="nav-cta" href="https://github.com/homgorn/n8n-saas-factory">GitHub</a>
+    </div>
+  </nav>
+
+  <main class="page-content">
+
+<h1>Решение проблем</h1>
+<p>Каждая запись — реальная ошибка этого проекта с конкретным фиксом. Ничего спекулятивного.</p>
+
+<h2>WinError 32 — сборка не может удалить БД (Windows)</h2>
+<p><strong>Симптом:</strong> <code>PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'wiki.db'</code></p>
+<p><strong>Фикс:</strong> <code>forge.py db_connect(recreate=True)</code> теперь сначала удаляет stale WAL/SHM sidecar и при заблокированном файле падает обратно на сброс схемы на месте. Зафиксировано в коде путей пересборки.</p>
+
+<h2>FTS5 был тихо отключён при первой сборке</h2>
+<p><strong>Симптом:</strong> <code>no such column: T.headings</code></p>
+<p><strong>Причина:</strong> FTS5 был объявлен как external-content таблица поверх <code>docs</code>, у которого нет колонки headings.</p>
+<p><strong>Фикс:</strong> отдельная standalone-таблица <code>docs_fts</code>; теперь поиск на самом деле работает.</p>
+
+<h2>Падение cp1252 на Windows для не-ASCII вывода</h2>
+<p><strong>Симптом:</strong> <code>UnicodeEncodeError: 'charmap' codec can't encode character '\u25b8'</code></p>
+<p><strong>Фикс:</strong> <code>sys.stdout.reconfigure(encoding='utf-8')</code> в скриптах; статус-символы убраны.</p>
+
+<h2>Сайт отдавал 404 на Pages-адресе</h2>
+<p><strong>Причина:</strong> источник Pages был <code>main /</code> (корень), тогда как сайт жил в <code>/docs</code>.</p>
+<p><strong>Фикс:</strong> <code>gh api ... -X PUT -f source[path]=/docs</code>. Подтверждено: сборка <code>built</code>, страница отдаёт 200.</p>
+
+<h2>Отсутствующий favicon / og-card</h2>
+<p><code>logo.svg</code> ссылался, но файла не было; <code>og-card.jpg</code> заявлялся в meta, но не был закоммичен. Сгенерированы и закоммичены.</p>
+
+<h2>GitHub Actions заблокирован биллингом</h2>
+<p><strong>Симптом:</strong> <code>The job was not started because your account is locked due to a billing issue.</code></p>
+<p><strong>Фикс:</strong> реальная проверка — локальный гейт (<code>python brain/scripts/verify.py</code>), 12 гейтов, ненулевой код выхода при провале. CI не доказан, пока биллинг не исправят; зелёным его считать нельзя.</p>
+
+<h2>F008 sync заблокирован</h2>
+<p>Файл воркфлоу есть (<code>n8n-wiki/workflows/f008-sync-workflow.json</code>); нужен запущенный n8n для webhook/cron-проверки. Заблокирован окружением, не дизайном.</p>
+  </main>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p><strong>n8n SaaS Factory</strong></p>
+        <p>Преврати воркфлоу n8n в готовый SaaS. Открытый код, MIT.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Проект</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/BACKLOG.md">Бэклог</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/PROJECT_PLAN.md">План</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CHANGELOG.md">Изменения</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CONTRIBUTING.md">Вклад</a>
+      </div>
+      <div class="footer-col">
+        <h4>Сайт</h4>
+        <a href="wiki.html">Вики</a>
+        <a href="getting-started.html">Начало работы</a>
+        <a href="cli.html">CLI</a>
+        <a href="troubleshooting.html">Решение проблем</a>
+      </div>
+      <div class="footer-col">
+        <h4>Правовое</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/LICENSE">MIT — этот проект</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-001-n8n-licence-blocks-hosted-saas.md">ADR-001 — лицензия n8n</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-002-saas-architecture-under-licence.md">ADR-002 — архитектура</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 — <a href="https://github.com/homgorn/n8n-saas-factory">homgorn/n8n-saas-factory</a> · MIT</p>
+      <p>Документация n8n включена как справочный материал — Sustainable Use License. Сайт не связан с n8n GmbH.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting started — n8n SaaS Factory</title>
+  <meta name="description" content="Clone, build the wiki, verify the gate, query the knowledge base, generate a SaaS.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="alternate" hreflang="en" href="https://homgorn.github.io/n8n-saas-factory/getting-started.html">
+  <link rel="alternate" hreflang="ru" href="https://homgorn.github.io/n8n-saas-factory/ru/getting-started.html">
+  <link rel="canonical" href="https://homgorn.github.io/n8n-saas-factory/getting-started.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Getting started — n8n SaaS Factory">
+  <meta property="og:description" content="Clone, build the wiki, verify the gate, query the knowledge base, generate a SaaS.">
+  <meta property="og:url" content="https://homgorn.github.io/n8n-saas-factory/getting-started.html">
+  <meta property="og:image" content="https://homgorn.github.io/n8n-saas-factory/assets/img/og-card.jpg">
+  <script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">n8n SaaS Factory</a>
+      <ul class="nav-links">
+        <li><a href="index.html#hero">Overview</a></li>
+        <li><a href="how-it-works.html">Architecture</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+        <li><a href="wiki.html">Wiki</a></li>
+        <li><a href="cli.html">CLI</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><span class="lang-switch"><a href="ru/getting-started.html">RU</a><a class="active" href="getting-started.html">EN</a></span></li>
+      </ul>
+      <a class="nav-cta" href="https://github.com/homgorn/n8n-saas-factory">GitHub</a>
+    </div>
+  </nav>
+
+  <main class="page-content">
+
+<h1>Getting started</h1>
+<p>Four commands separate a cold machine from a verified query over 688,466 words of n8n documentation.</p>
+
+<h2>1. Clone the repository</h2>
+<pre><code>git clone https://github.com/homgorn/n8n-saas-factory.git
+cd n8n-saas-factory</code></pre>
+
+<h2>2. Clone the n8n documentation source</h2>
+<p>The wiki is built from the GitBook source at <code>n8n-io/n8n-docs</code> (a shallow clone is enough):</p>
+<pre><code>git clone --depth 1 https://github.com/n8n-io/n8n-docs.git n8n-docs-source</code></pre>
+<p>This is ~100&nbsp;MB and carries n8n&rsquo;s Sustainable Use License — we vendor, we don&rsquo;t redistribute. It is excluded from tracked files and from the licence grant in <code>LICENSE</code>.</p>
+
+<h2>3. Build the wiki and verify the gate</h2>
+<pre><code>python brain/scripts/forge.py build
+python brain/scripts/verify.py            # expect VERDICT: PASS, 12/12 gates</code></pre>
+
+<h2>4. Query it</h2>
+<pre><code>python brain/scripts/query.py ask "how do I paginate API results"</code></pre>
+<p>Top hit is the HTTP Request node pagination docs. The answer includes citations and a code path. Bring your own n8n instance (the customer&rsquo;s) to build the actual SaaS — the analyzer and generator work on imported workflow JSON.</p>
+
+<h2>Requirements</h2>
+<ul>
+  <li>Python 3.10+ (no third-party packages for the forge)</li>
+  <li>~1.5&nbsp;GB free disk for the clone and built wiki</li>
+  <li>The gate rebuilds everything from source; nothing is cached between runs</li>
+</ul>
+
+<h2>Known limits</h2>
+<ul>
+  <li>No vector search — retrieval is SQLite FTS5 + IDF with heading boosts</li>
+  <li>F008 sync workflows and F009 Playwright smoke tests require a running n8n instance and a deployed preview; see <a href="cli.html">CLI</a> and <a href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+  </main>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p><strong>n8n SaaS Factory</strong></p>
+        <p>Turn n8n workflows into deployable SaaS products. Open-source, public.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/BACKLOG.md">Backlog</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/PROJECT_PLAN.md">Plan</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CONTRIBUTING.md">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="wiki.html">Wiki</a>
+        <a href="getting-started.html">Getting started</a>
+        <a href="cli.html">CLI</a>
+        <a href="troubleshooting.html">Troubleshooting</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/LICENSE">MIT — this project</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-001-n8n-licence-blocks-hosted-saas.md">ADR-001 — n8n licence</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-002-saas-architecture-under-licence.md">ADR-002 — architecture</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 — <a href="https://github.com/homgorn/n8n-saas-factory">homgorn/n8n-saas-factory</a> · MIT</p>
+      <p>n8n documentation is vendored, not ours — Sustainable Use License. This site is not affiliated with n8n GmbH.</p>
+    </div>
+  </footer>
+</body>
+</html>

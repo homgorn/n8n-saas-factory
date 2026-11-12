@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troubleshooting — n8n SaaS Factory</title>
+  <meta name="description" content="The errors this project actually hit, and the fixes that stuck.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="alternate" hreflang="en" href="https://homgorn.github.io/n8n-saas-factory/troubleshooting.html">
+  <link rel="alternate" hreflang="ru" href="https://homgorn.github.io/n8n-saas-factory/ru/troubleshooting.html">
+  <link rel="canonical" href="https://homgorn.github.io/n8n-saas-factory/troubleshooting.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Troubleshooting — n8n SaaS Factory">
+  <meta property="og:description" content="The errors this project actually hit, and the fixes that stuck.">
+  <meta property="og:url" content="https://homgorn.github.io/n8n-saas-factory/troubleshooting.html">
+  <meta property="og:image" content="https://homgorn.github.io/n8n-saas-factory/assets/img/og-card.jpg">
+  <script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">n8n SaaS Factory</a>
+      <ul class="nav-links">
+        <li><a href="index.html#hero">Overview</a></li>
+        <li><a href="how-it-works.html">Architecture</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+        <li><a href="wiki.html">Wiki</a></li>
+        <li><a href="cli.html">CLI</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><span class="lang-switch"><a href="ru/troubleshooting.html">RU</a><a class="active" href="troubleshooting.html">EN</a></span></li>
+      </ul>
+      <a class="nav-cta" href="https://github.com/homgorn/n8n-saas-factory">GitHub</a>
+    </div>
+  </nav>
+
+  <main class="page-content">
+
+<h1>Troubleshooting</h1>
+<p>Every entry below is an error this project has actually hit, the evidence it is real, and the fix that stuck. Nothing here is speculative.</p>
+
+<h2>WinError 32 — the build could not unlink the database (Windows)</h2>
+<p><strong>Symptom:</strong> <code>PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'wiki.db'</code></p>
+<p><strong>Fix:</strong> <code>forge.py db_connect(recreate=True)</code> now deletes stale WAL/SHM sidecars first, and falls back to dropping the schema in place when the file is locked. Committed with the rebuild-from-scratch path.</p>
+
+<h2>FTS5 was silently disabled on first build</h2>
+<p><strong>Symptom:</strong> <code>no such column: T.headings</code></p>
+<p><strong>Cause:</strong> FTS5 was declared as an external-content table over <code>docs</code>, which has no headings column.</p>
+<p><strong>Fix:</strong> standalone <code>docs_fts</code> table; page-level search actually runs now.</p>
+
+<h2>cp1252 crash on Windows for non-ASCII output</h2>
+<p><strong>Symptom:</strong> <code>UnicodeEncodeError: 'charmap' codec can't encode character '\u25b8'</code></p>
+<p><strong>Fix:</strong> <code>sys.stdout.reconfigure(encoding='utf-8')</code> in the scripts and box-drawing characters removed from Status.</p>
+
+<h2>Site served 404 at the Pages URL</h2>
+<p><strong>Cause:</strong> Pages source was set to <code>main /</code> (repo root), but the site lived in <code>/docs</code>.</p>
+<p><strong>Fix:</strong> <code>gh api ... -X PUT -f source[path]=/docs</code>. Confirmed 200 via build status and a fetched page.</p>
+
+<h2>Missing favicon / og:card image</h2>
+<p><code>logo.svg</code> was referenced but never existed; <code>og-card.jpg</code> was declared in meta but not committed. Generated and committed.</p>
+
+<h2>GitHub Actions is billing-locked</h2>
+<p><strong>Symptom:</strong> <code>The job was not started because your account is locked due to a billing issue.</code></p>
+<p><strong>Fix:</strong> the local gate (<code>python brain/scripts/verify.py</code>) is what actually proves correctness — 12 gates, exit code non-zero on failure. CI is unproven until billing is resolved; do not assume green.</p>
+
+<h2>F008 sync workflows blocked</h2>
+<p>The n8n workflow file exists (<code>n8n-wiki/workflows/f008-sync-workflow.json</code>); it needs a running n8n instance for webhook/cron verification. Environment-blocked, not design-blocked.</p>
+  </main>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p><strong>n8n SaaS Factory</strong></p>
+        <p>Turn n8n workflows into deployable SaaS products. Open-source, public.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/BACKLOG.md">Backlog</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/PROJECT_PLAN.md">Plan</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CONTRIBUTING.md">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="wiki.html">Wiki</a>
+        <a href="getting-started.html">Getting started</a>
+        <a href="cli.html">CLI</a>
+        <a href="troubleshooting.html">Troubleshooting</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/LICENSE">MIT — this project</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-001-n8n-licence-blocks-hosted-saas.md">ADR-001 — n8n licence</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-002-saas-architecture-under-licence.md">ADR-002 — architecture</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 — <a href="https://github.com/homgorn/n8n-saas-factory">homgorn/n8n-saas-factory</a> · MIT</p>
+      <p>n8n documentation is vendored, not ours — Sustainable Use License. This site is not affiliated with n8n GmbH.</p>
+    </div>
+  </footer>
+</body>
+</html>

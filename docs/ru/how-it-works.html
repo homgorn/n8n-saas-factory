@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Как это устроено — n8n SaaS Factory</title>
+  <meta name="description" content="Sources → wiki → analyzer → generator → gate: весь конвейер с пояснениями.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+  <link rel="alternate" hreflang="en" href="https://homgorn.github.io/n8n-saas-factory/how-it-works.html">
+  <link rel="alternate" hreflang="ru" href="https://homgorn.github.io/n8n-saas-factory/ru/how-it-works.html">
+  <link rel="canonical" href="https://homgorn.github.io/n8n-saas-factory/ru/how-it-works.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Как это устроено — n8n SaaS Factory">
+  <meta property="og:description" content="Sources → wiki → analyzer → generator → gate: весь конвейер с пояснениями.">
+  <meta property="og:url" content="https://homgorn.github.io/n8n-saas-factory/ru/how-it-works.html">
+  <meta property="og:image" content="https://homgorn.github.io/n8n-saas-factory/assets/img/og-card.jpg">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html">n8n SaaS Factory</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#hero">Обзор</a></li>
+        <li><a href="how-it-works.html">Архитектура</a></li>
+        <li><a href="getting-started.html">Начать</a></li>
+        <li><a href="wiki.html">Вики</a></li>
+        <li><a href="cli.html">CLI</a></li>
+        <li><a href="troubleshooting.html">Ошибки и решения</a></li>
+        <li><a href="contact.html">Контакт</a></li>
+        <li><span class="lang-switch"><a href="../how-it-works.html">EN</a><a class="active" href="how-it-works.html">RU</a></span></li>
+      </ul>
+      <a class="nav-cta" href="https://github.com/homgorn/n8n-saas-factory">GitHub</a>
+    </div>
+  </nav>
+
+  <main class="page-content">
+
+<h1>Как это устроено</h1>
+<p>Каждый компонент либо проверен локально гейтом, либо заблокирован известным лицензионным ограничением. Слоя «просто поверьте мне» нет.</p>
+
+<h2>Конвейер</h2>
+<pre><code>n8n-docs-source/docs/  (GitBook-источник)
+        │  forge.py — разбиение, извлечение сущностей, запись вики
+        ▼
+brain/wiki/&lt;topic&gt;/&lt;slug&gt;.md  +  brain/data/wiki.db
+        │  query.py ask  — FTS5 + IDF, цитаты, JSON
+        ▼
+brain/scripts/analyzer.py  — JSON воркфлоу → spec
+brain/scripts/generator.py — spec + шаблон → SaaS-проект
+        │  verify.py — 12 гейтов
+        ▼
+GitHub Actions: .github/workflows/verify.yml  (заблокирован биллингом; реальная проверка — локальный гейт)
+</code></pre>
+
+<h2>12 гейтов</h2>
+<ul>
+      <li>sources present</li>
+      <li>wiki rebuild is idempotent</li>
+      <li>corpus floor</li>
+      <li>every page has a standalone summary</li>
+      <li>every page resolves to a live source URL</li>
+      <li>retrieval answers a real question</li>
+      <li>workflow analyzer detects AI agents</li>
+      <li>query interface answers real questions</li>
+      <li>claims are typed and sourced</li>
+      <li>no secrets committed</li>
+      <li>licence position is documented</li>
+      <li>feature list is honest</li>
+    </ul>
+
+<h2>Лицензионная архитектура (ADR-001)</h2>
+<p>Sustainable Use License не разрешает предоставлять n8n третьим лицам для прибыли. Поэтому продукт обращается к n8n-инстанции, которым владеет <em>клиент</em>, через публичный REST API с ключом, выданным клиентом. Мы не хостим и не перепродаём движок; генерируемый SaaS — это дашборд, биллинг и наблюдаемость, а движок остаётся у клиента.</p>
+
+<h2>Claims с првенансом</h2>
+<p>На страницы допускаются только типизированные утверждения: <code>measured</code> (запущено, артефакт указан), <code>reported</code> (источник говорит так, URL + дата), <code>inferred</code> (вывод с рассуждением), <code>unconfirmed</code> (искал, не нашёл). Сейчас <strong>11 claims</strong> в <code>brain/index/claims.json</code>, они переприменяются при каждой пересборке.</p>
+  </main>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p><strong>n8n SaaS Factory</strong></p>
+        <p>Преврати воркфлоу n8n в готовый SaaS. Открытый код, MIT.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Проект</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/BACKLOG.md">Бэклог</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/PROJECT_PLAN.md">План</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CHANGELOG.md">Изменения</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/CONTRIBUTING.md">Вклад</a>
+      </div>
+      <div class="footer-col">
+        <h4>Сайт</h4>
+        <a href="wiki.html">Вики</a>
+        <a href="getting-started.html">Начало работы</a>
+        <a href="cli.html">CLI</a>
+        <a href="troubleshooting.html">Решение проблем</a>
+      </div>
+      <div class="footer-col">
+        <h4>Правовое</h4>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/LICENSE">MIT — этот проект</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-001-n8n-licence-blocks-hosted-saas.md">ADR-001 — лицензия n8n</a>
+        <a href="https://github.com/homgorn/n8n-saas-factory/blob/main/brain/decisions/ADR-002-saas-architecture-under-licence.md">ADR-002 — архитектура</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 — <a href="https://github.com/homgorn/n8n-saas-factory">homgorn/n8n-saas-factory</a> · MIT</p>
+      <p>Документация n8n включена как справочный материал — Sustainable Use License. Сайт не связан с n8n GmbH.</p>
+    </div>
+  </footer>
+</body>
+</html>

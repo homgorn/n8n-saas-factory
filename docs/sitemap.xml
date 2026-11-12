@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://homgorn.github.io/n8n-saas-factory/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://homgorn.github.io/n8n-saas-factory/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://homgorn.github.io/n8n-saas-factory/ru/index.html"/>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://homgorn.github.io/n8n-saas-factory/ru/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://homgorn.github.io/n8n-saas-factory/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://homgorn.github.io/n8n-saas-factory/ru/index.html"/>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url><loc>https://homgorn.github.io/n8n-saas-factory/getting-started.html</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://homgorn.github.io/n8n-saas-factory/ru/getting-started.html</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://homgorn.github.io/n8n-saas-factory/how-it-works.html</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://homgorn.github.io/n8n-saas-factory/ru/how-it-works.html</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://homgorn.github.io/n8n-saas-factory/wiki.html</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://homgorn.github.io/n8n-saas-factory/ru/wiki.html</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://homgorn.github.io/n8n-saas-factory/cli.html</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://homgorn.github.io/n8n-saas-factory/ru/cli.html</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://homgorn.github.io/n8n-saas-factory/troubleshooting.html</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://homgorn.github.io/n8n-saas-factory/ru/troubleshooting.html</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://homgorn.github.io/n8n-saas-factory/contact.html</loc><lastmod>2026-11-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://homgorn.github.io/n8n-saas-factory/ru/contact.html</loc><lastmod>2026-11-12</lastmod><priority>0.6</priority></url>
+</urlset>
