@@ -329,16 +329,17 @@
       <div class="timeline">
         <div class="timeline-item animate-in">
           <h4>Measured-verified (8 of 10)</h4>
-          <p>F001 docs ingestion (gate rebuilds the corpus from source and checks idempotence) · F002 LLM query interface (gate runs the classifier and JSON check) · F003 workflow analyzer (gate runs the analyzer on a known workflow and asserts the AI agent resolves).</p>
+          <p><b>F001</b> — Ingest n8n documentation from GitHub clone and llms-full.txt into structured markdown with metadata. <b>F002</b> — Build LLM query interface for n8n knowledge base. <b>F003</b> — Build n8n workflow analyzer. <b>F004</b> — Create SaaS template: AI Tool. <b>F005</b> — Build workflow-to-code generator. <b>F006</b> — Set up OpenChamber project with n8n, GitHub, Vercel, Supabase MCP servers. <b>F008</b> — Build n8n synchronization workflows. <b>F009</b> — Implement verification gates for generated SaaS.</p>
         </div>
         <div class="timeline-item animate-in delay-1">
           <h4>Implemented, not verified (2 of 10)</h4>
-          <p>F004 template (never npm-installed or built) · F005 generator (runs, never built) · F006 MCP (config exists, never tested) · F007 agents (defined, never tested on a sample task) · F009 smoke tests (written, never executed) · F010 docs + site (CLAUDE.md/CONTRIBUTING.md exist, video not recorded) · F008 blocked on a running n8n for webhook/cron verification.</p>
-          <p>Per the project's own rule, a feature is passing only when the verifier proves it. The earlier 9-of-10 badge was optimistic; the honest number is 3.</p>
+          <p><b>F007</b> — Define and register OpenChamber agents. <b>F010</b> — Documentation and developer experience.</p>
+          <p>A feature counts as passing only when something measures it. Implemented-but-unverified means the code exists but no check has run it yet.</p>
         </div>
         <div class="timeline-item animate-in delay-2">
           <h4>Next gates</h4>
-          <p><b>F008:</b> start n8n locally, import <code>n8n-wiki/workflows/f008-sync-workflow.json</code>, verify webhook and cron. Only then mark it passing.</p>
+          <p><b>F007:</b> run sample tasks for the two roles that still lack one (architect, implementer) — they were blocked by the free-model daily rate limit, not by the project.</p>
+          <p><b>F010:</b> record the video walkthrough of the full pipeline.</p>
         </div>
       </div>
     </section>

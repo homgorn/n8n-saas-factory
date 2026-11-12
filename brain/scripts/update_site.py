@@ -59,7 +59,6 @@ def facts() -> dict:
     features = json.loads(FEATURES.read_text(encoding="utf-8"))
     passing = [f["id"] for f in features if f.get("passes")]
     total = len(features)
-
     # The site-counters gate reads this number, so including it makes the count
     # self-referential: adding the gate changes the number it is asked to state. The
     # site therefore states the substantive gates, and the self-check is named separately.
@@ -91,6 +90,7 @@ def facts() -> dict:
         "PROJECTS": str(project_count),
         "PROJECT_FILES": str(file_count),
         "PASSING_IDS": ", ".join(passing),
+        "FEATURES": features,
     }
 
 
@@ -157,6 +157,114 @@ def apply_counters(html: str, f: dict, lang: str) -> str:
     return html
 
 
+def _replace_paragraph_after_heading(html: str, heading_pattern: str, paragraphs: list[str]) -> str:
+    """Replace the <p> elements that follow a heading, keeping the heading itself."""
+    m = re.search(heading_pattern, html)
+    if not m:
+        return html
+    start = m.end()
+    # consume the <p>...</p> blocks that follow
+    pos = start
+    for _ in range(len(paragraphs)):
+        pm = re.compile(r"\s*<p>.*?</p>", re.S).match(html, pos)
+        if not pm:
+            break
+        pos = pm.end()
+    replacement = "".join(f"\n          <p>{p}</p>" for p in paragraphs)
+    return html[:start] + replacement + html[pos:]
+
+
+def feature_lines(features: list[dict], passing: bool, f: dict) -> list[str]:
+    """One short sentence per feature, split by verified / not verified."""
+    out = []
+    for feat in features:
+        if bool(feat.get("passes")) != passing:
+            continue
+        fid = feat["id"]
+        desc = feat["description"]
+        # shorten: keep the first clause
+        short = desc.split("(")[0].strip().rstrip(".")
+        out.append(f"<b>{fid}</b> — {short}.")
+    return out
+
+
+def apply_narrative(html: str, f: dict, features: list[dict], lang: str) -> str:
+    """Rewrite the roadmap blocks and the corpus line from the feature list."""
+    verified = feature_lines(features, True, f)
+    unverified = feature_lines(features, False, f)
+
+    if lang == "en":
+        html = _replace_paragraph_after_heading(
+            html,
+            r"<h4>Measured-verified \(\d+ of \d+\)</h4>",
+            [" ".join(verified)],
+        )
+        html = _replace_paragraph_after_heading(
+            html,
+            r"<h4>Implemented, not verified \(\d+ of \d+\)</h4>",
+            [
+                " ".join(unverified),
+                "A feature counts as passing only when something measures it. "
+                "Implemented-but-unverified means the code exists but no check has run it yet.",
+            ],
+        )
+        html = re.sub(
+            r"(Corpus\n\s*)[\d,\.]+ docs · [\d\.km]+ words · [\d,]+ entities · [\d,]+ triples · \d+ workflows\.",
+            r"\g<1>" + f"{f['PAGES']} docs · {f['WORDS']} words · {f['ENTITIES']} entities · "
+                       f"{f['TRIPLES']} triples · {f['WORKFLOWS']} workflows.",
+            html,
+        )
+        html = _replace_paragraph_after_heading(
+            html, r"<h4>Next gates</h4>", next_gates_html(features, lang)
+        )
+    else:
+        html = _replace_paragraph_after_heading(
+            html,
+            r"<h4>[^<]*\((\d+) из (\d+)\)</h4>",
+            [" ".join(verified)],
+        )
+        html = _replace_paragraph_after_heading(
+            html,
+            r"<h4>Осталось \(\d+\)</h4>",
+            [
+                " ".join(unverified),
+                "Фича считается прошедшей только когда её что-то измерило. "
+                "«Реализовано, но не проверено» — код есть, но ни одна проверка его не запускала.",
+            ],
+        )
+        html = re.sub(
+            r"(Корпус\n\s*)[\d,\.]+ docs · [\d\.km]+ words · [\d,]+ entities · [\d,]+ triples · \d+ workflows\.",
+            r"\g<1>" + f"{f['PAGES']} docs · {f['WORDS']} words · {f['ENTITIES']} entities · "
+                       f"{f['TRIPLES']} triples · {f['WORKFLOWS']} workflows.",
+            html,
+        )
+    return html
+
+
+NEXT_STEPS = {
+    "F007": "run sample tasks for the two roles that still lack one (architect, implementer) — "
+             "they were blocked by the free-model daily rate limit, not by the project",
+    "F010": "record the video walkthrough of the full pipeline",
+}
+
+
+def next_gates_html(features: list[dict], lang: str) -> list[str]:
+    """One actionable line per unverified feature."""
+    lines = []
+    for feat in features:
+        if feat.get("passes"):
+            continue
+        fid = feat["id"]
+        step = NEXT_STEPS.get(fid)
+        if not step:
+            step = f"verify {fid}: run the checks its description names"
+        if lang == "en":
+            lines.append(f"<b>{fid}:</b> {step}.")
+        else:
+            lines.append(f"<b>{fid}:</b> {step}.")
+    return lines
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true", help="report drift, do not write")
@@ -173,6 +281,7 @@ def main() -> None:
             continue
         original = path.read_text(encoding="utf-8")
         updated = apply_counters(original, f, lang)
+        updated = apply_narrative(updated, f, f["FEATURES"], lang)
         if updated != original:
             drift.append(path)
             if not args.check:
