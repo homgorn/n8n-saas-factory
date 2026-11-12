@@ -277,21 +277,25 @@ NEXT_STEPS = {
     "F010": "record the video walkthrough of the full pipeline",
 }
 
+NEXT_STEPS_RU = {
+    "F007": "прогнать образцовые задачи для двух ролей, у которых их ещё нет (architect, "
+             "implementer) — их заблокировал дневной лимит бесплатных моделей, а не проект",
+    "F010": "записать видеообзор полного конвейера",
+}
+
 
 def next_gates_html(features: list[dict], lang: str) -> list[str]:
     """One actionable line per unverified feature."""
     lines = []
+    table = NEXT_STEPS if lang == "en" else NEXT_STEPS_RU
     for feat in features:
         if feat.get("passes"):
             continue
         fid = feat["id"]
-        step = NEXT_STEPS.get(fid)
+        step = table.get(fid)
         if not step:
             step = f"verify {fid}: run the checks its description names"
-        if lang == "en":
-            lines.append(f"<b>{fid}:</b> {step}.")
-        else:
-            lines.append(f"<b>{fid}:</b> {step}.")
+        lines.append(f"<b>{fid}:</b> {step}.")
     return lines
 
 
