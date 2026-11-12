@@ -176,17 +176,32 @@ def _replace_paragraph_after_heading(html: str, heading_pattern: str, paragraphs
     return html[:start] + replacement + html[pos:]
 
 
-def feature_lines(features: list[dict], passing: bool, f: dict) -> list[str]:
+FEATURE_DESC_RU = {
+    "F001": "Загрузка документации n8n в структурированную разметку с метаданными",
+    "F002": "Интерфейс запросов к базе знаний n8n на естественном языке",
+    "F003": "Анализатор воркфлоу n8n: JSON → структурированный анализ",
+    "F004": "Шаблон SaaS «AI Tool»: один воркфлоу → Next.js-приложение",
+    "F005": "Генератор: анализ воркфлоу → готовый проект SaaS",
+    "F006": "Интеграция OpenChamber: MCP-серверы, маршрутизация, агенты",
+    "F007": "Агенты: определения ролей и образцовые задачи",
+    "F008": "Sync-воркфлоу n8n: документация, workflow→code, деплой",
+    "F009": "Гейты верификации для сгенерированного SaaS",
+    "F010": "Документация и опыт разработчика",
+}
+
+
+def feature_lines(features: list[dict], passing: bool, f: dict, lang: str = "en") -> list[str]:
     """One short sentence per feature, split by verified / not verified."""
     out = []
     for feat in features:
         if bool(feat.get("passes")) != passing:
             continue
         fid = feat["id"]
-        desc = feat["description"]
-        # shorten: keep the first clause
-        short = desc.split("(")[0].strip().rstrip(".")
-        out.append(f"<b>{fid}</b> — {short}.")
+        if lang == "ru":
+            desc = FEATURE_DESC_RU.get(fid, feat["description"].split("(")[0].strip().rstrip("."))
+        else:
+            desc = feat["description"].split("(")[0].strip().rstrip(".")
+        out.append(f"<b>{fid}</b> — {desc}.")
     return out
 
 
@@ -220,22 +235,35 @@ def apply_narrative(html: str, f: dict, features: list[dict], lang: str) -> str:
             html, r"<h4>Next gates</h4>", next_gates_html(features, lang)
         )
     else:
+        html = re.sub(r"Измерено-верифицировано \(\d+ из \d+\)",
+                       f"Измерено-верифицировано ({f['PASSING']} из {f['TOTAL']})", html)
+        html = re.sub(r"Реализовано, не проверено \(\d+ из \d+\)",
+                       f"Реализовано, не проверено ({int(f['TOTAL']) - int(f['PASSING'])} из {f['TOTAL']})", html)
         html = _replace_paragraph_after_heading(
             html,
-            r"<h4>[^<]*\((\d+) из (\d+)\)</h4>",
-            [" ".join(verified)],
+            r"<h4>[^<]*верифицировано[^<]*\((\d+) из (\d+)\)</h4>",
+            [" ".join(feature_lines(features, True, f, "ru"))],
         )
         html = _replace_paragraph_after_heading(
             html,
-            r"<h4>Осталось \(\d+\)</h4>",
+            r"<h4>Реализовано, не проверено \(\d+ из \d+\)</h4>",
             [
-                " ".join(unverified),
+                " ".join(feature_lines(features, False, f, "ru")),
                 "Фича считается прошедшей только когда её что-то измерило. "
                 "«Реализовано, но не проверено» — код есть, но ни одна проверка его не запускала.",
             ],
         )
+        html = _replace_paragraph_after_heading(
+            html, r"<h4>Следующий гейт</h4>", next_gates_html(features, "ru")
+        )
+        # numbers in the architecture diagram
+        html = re.sub(r"документы n8n \(\d[\d\s]* страниц\)",
+                       f"документы n8n ({f['PAGES']} страниц)", html)
+        html = re.sub(r"\d+ гейтов, выходной код", f"{f['GATES']} гейтов, выходной код", html)
+        html = re.sub(r"\d+ проектов SaaS \(\d+ файлов\)",
+                       f"{f['PROJECTS']} проектов SaaS ({f['PROJECT_FILES']} файлов)", html)
         html = re.sub(
-            r"(Корпус\n\s*)[\d,\.]+ docs · [\d\.km]+ words · [\d,]+ entities · [\d,]+ triples · \d+ workflows\.",
+            r"(<h3>Корпус</h3>\s*<p>)[\d,\.]+ docs . [\d\.km]+ words . [\d,]+ entities . [\d,]+ triples . \d+ workflows\.",
             r"\g<1>" + f"{f['PAGES']} docs · {f['WORDS']} words · {f['ENTITIES']} entities · "
                        f"{f['TRIPLES']} triples · {f['WORKFLOWS']} workflows.",
             html,
