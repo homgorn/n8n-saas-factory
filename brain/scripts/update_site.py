@@ -322,6 +322,45 @@ def update_github_description(f: dict) -> str:
     return "repo description updated"
 
 
+CLAUDE_MD = ROOT / "CLAUDE.md"
+
+
+def update_claude_md(f: dict) -> str:
+    """Keep the state block in CLAUDE.md equal to the measured truth.
+
+    CLAUDE.md said "12/12 gates, 3 of 10 features" long after both had moved. It is the
+    file an agent reads first, so a stale state block there is worse than on the site.
+    """
+    if not CLAUDE_MD.exists():
+        return "CLAUDE.md missing"
+
+    text = CLAUDE_MD.read_text(encoding="utf-8")
+    passing = f["PASSING"]
+    total = f["TOTAL"]
+    gates = f["GATES"]
+
+    new_state = (
+        "## Verification gate (current state)\n\n"
+        "```\n"
+        f"{gates}/{gates} gates passing\n"
+        f"{passing} of {total} features measured-verified: {f['PASSING_IDS']}\n"
+        f"({int(total) - int(passing)} pending — see feature_list.json for what each one needs)\n"
+        "```"
+    )
+
+    pattern = re.compile(
+        r"## Verification gate \(current state\)\n\n```\n.*?\n```", re.S
+    )
+    if not pattern.search(text):
+        return "state block not found — left alone"
+
+    updated = pattern.sub(lambda _: new_state, text, count=1)
+    if updated != text:
+        CLAUDE_MD.write_text(updated, encoding="utf-8")
+        return "state block updated"
+    return "state block current"
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true", help="report drift, do not write")
@@ -350,6 +389,17 @@ def main() -> None:
         else:
             print(f"  {path.relative_to(ROOT)}: current")
 
+    if args.check:
+        drift = list(drift)
+        claude = CLAUDE_MD.read_text(encoding="utf-8") if CLAUDE_MD.exists() else ""
+        expected = (
+            f"{f['GATES']}/{f['GATES']} gates passing\n"
+            f"{f['PASSING']} of {f['TOTAL']} features measured-verified"
+        )
+        if expected not in claude:
+            drift.append(CLAUDE_MD)
+            print(f"  {CLAUDE_MD.name}: DRIFT")
+
     if args.check and drift:
         sys.exit(1)
     if not args.check and drift:
@@ -357,6 +407,7 @@ def main() -> None:
 
     if not args.check and not args.skip_github:
         print(f"  github: {update_github_description(f)}")
+        print(f"  CLAUDE.md: {update_claude_md(f)}")
 
 
 if __name__ == "__main__":
