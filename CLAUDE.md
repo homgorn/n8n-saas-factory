@@ -91,8 +91,8 @@ step it could not attempt is BLOCKED, not PASS.
 
 ```
 14/14 gates passing
-9 of 10 features measured-verified: F001, F002, F003, F004, F005, F006, F007, F008, F009
-(1 pending — see feature_list.json for what each one needs)
+10 of 10 features measured-verified: F001, F002, F003, F004, F005, F006, F007, F008, F009, F010
+(0 pending — see feature_list.json for what each one needs)
 ```
 
 The gate: sources present · build idempotence · corpus floor · summaries ≤200 chars ·

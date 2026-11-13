@@ -151,6 +151,6 @@
       "Record video walkthrough of full pipeline"
     ],
     "priority": 10,
-    "passes": false
+    "passes": true
   }
 ]
