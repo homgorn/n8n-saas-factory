@@ -160,15 +160,20 @@ def apply_counters(html: str, f: dict, lang: str) -> str:
 
 
 def _replace_paragraph_after_heading(html: str, heading_pattern: str, paragraphs: list[str]) -> str:
-    """Replace the <p> elements that follow a heading, keeping the heading itself."""
+    """Replace the <p> elements that follow a heading, keeping the heading itself.
+
+    Consumes every contiguous <p> that follows the heading, including when `paragraphs` is
+    empty — otherwise an emptied list leaves the stale paragraphs behind and the same line
+    appears twice (that is how "Next gates" came to list F010 twice).
+    """
     m = re.search(heading_pattern, html)
     if not m:
         return html
     start = m.end()
-    # consume the <p>...</p> blocks that follow
     pos = start
-    for _ in range(len(paragraphs)):
-        pm = re.compile(r"\s*<p>.*?</p>", re.S).match(html, pos)
+    para_re = re.compile(r"\s*<p>.*?</p>", re.S)
+    while True:
+        pm = para_re.match(html, pos)
         if not pm:
             break
         pos = pm.end()
