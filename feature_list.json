@@ -107,7 +107,7 @@
       "Test each agent with sample task"
     ],
     "priority": 7,
-    "passes": false
+    "passes": true
   },
   {
     "id": "F008",
